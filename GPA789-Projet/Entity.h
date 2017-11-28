@@ -6,10 +6,8 @@
 class Entity : public QGraphicsItem
 {
 
-	Q_OBJECT
-
 public:
-	Entity();
+	Entity(QGraphicsItem * parent = Q_NULLPTR);
 	~Entity();
 
 private:

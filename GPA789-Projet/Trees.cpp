@@ -27,7 +27,7 @@ void Trees::die()
 
 int Trees::getHeight()
 {
-
+	return 0;
 }
 
 void Trees::adjustDryness(bool isRaining)

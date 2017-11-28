@@ -4,15 +4,6 @@
     <ClCompile Include="GPA789Projet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GPA789Projet.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_GPA789Projet.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -49,12 +40,6 @@
     <ClCompile Include="Trees.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_EnvironmentalFactor.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_EnvironmentalFactor.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="EnvironmentalFactor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,16 +67,10 @@
     <ClCompile Include="Fertility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Fertility.cpp">
+    <ClCompile Include="GeneratedFiles\qrc_GPA789Projet.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Fertility.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Entity.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Entity.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,9 +137,6 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_GPA789Projet.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="Animals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -196,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="Local.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_GPA789Projet.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

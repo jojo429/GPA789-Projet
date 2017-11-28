@@ -7,10 +7,9 @@
 
 class EnvironmentalFactor : public QGraphicsItem
 {
-	Q_OBJECT
 
 public:
-	EnvironmentalFactor();
+	EnvironmentalFactor(QGraphicsItem * parent = Q_NULLPTR);
 	~EnvironmentalFactor();
 };
 

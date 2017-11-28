@@ -1,7 +1,7 @@
 #include "Entity.h"
 
-Entity::Entity()
-	: QGraphicsItem(Q_NULLPTR)
+Entity::Entity(QGraphicsItem * parent)
+	: QGraphicsItem(parent)
 {
 
 }
