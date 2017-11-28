@@ -12,7 +12,7 @@ Fertility::~Fertility()
 
 char Fertility::getFertility(qreal x, qreal y)
 {
-
+	return 0;
 }
 
 void Fertility::setFertility(qreal x, qreal y, char fertility)
