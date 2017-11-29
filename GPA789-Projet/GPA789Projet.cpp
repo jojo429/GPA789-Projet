@@ -1,6 +1,7 @@
 #include "GPA789Projet.h"
 
-#include <QGraphicsScene>
+#include "QSimulation.h"
+#include "QStatistic.h"
 #include <QGraphicsGridLayout>
 #include <QGraphicsView>
 #include <QGraphicsItem>
@@ -18,8 +19,17 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	QGraphicsScene *animationScene = new QGraphicsScene(0, 0, 5000, 800);
-	QGraphicsScene *settingsScene = new QGraphicsScene(0, 0, 250, 800);
+	QSimulation *mSimulation = new QSimulation;
+	QStatistic *mStatistic = new QStatistic;
+
+	QTabWidget *mMainTab = new QTabWidget;
+
+	mMainTab->addTab(mSimulation, "Simulation");
+	mMainTab->addTab(mStatistic, "Statistics");
+
+	
+
+/*
 
 	QHBoxLayout *firstLvlSettings = new QHBoxLayout;
 
@@ -46,8 +56,8 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	layout->addWidget(settingsView);
 
 	QWidget *mainWindow = new QWidget;
-	mainWindow->setLayout(layout);
+	mainWindow->setLayout(layout);*/
 
-	setCentralWidget(mainWindow);
+	setCentralWidget(mMainTab);
 
 }
