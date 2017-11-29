@@ -94,7 +94,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-<<<<<<< HEAD
+
     <ClCompile Include="GeneratedFiles\Release\moc_QForestScene.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -104,28 +104,16 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QStatistic.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Global.cpp" />
-=======
+
     <ClCompile Include="QGlobal.cpp" />
->>>>>>> ec61a03cf701f701abea5ae9c910c5fcef6260e8
     <ClCompile Include="GPA789Projet.cpp" />
     <ClCompile Include="QHazel.cpp" />
     <ClCompile Include="QLocal.cpp" />
     <ClCompile Include="QLuminosity.cpp" />
     <ClCompile Include="main.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="Oak.cpp" />
-    <ClCompile Include="Precipitation.cpp" />
     <ClCompile Include="QForestScene.cpp" />
     <ClCompile Include="QSimulation.cpp" />
     <ClCompile Include="QStatistic.cpp" />
-    <ClCompile Include="Seeds.cpp" />
-    <ClCompile Include="Squirrel.cpp" />
-    <ClCompile Include="Static.cpp" />
-    <ClCompile Include="Temperature.cpp" />
-    <ClCompile Include="Trees.cpp" />
-    <ClCompile Include="Wind.cpp" />
-=======
     <ClCompile Include="QOak.cpp" />
     <ClCompile Include="QPrecipitation.cpp" />
     <ClCompile Include="QSeeds.cpp" />
@@ -134,7 +122,6 @@
     <ClCompile Include="QTemperature.cpp" />
     <ClCompile Include="QTrees.cpp" />
     <ClCompile Include="QWind.cpp" />
->>>>>>> ec61a03cf701f701abea5ae9c910c5fcef6260e8
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="GPA789Projet.h">
@@ -176,9 +163,8 @@
       </Command>
     </CustomBuild>
     <ClInclude Include="GeneratedFiles\ui_GPA789Projet.h" />
-<<<<<<< HEAD
+
     <ClInclude Include="Local.h" />
-    <ClInclude Include="Precipitation.h" />
     <CustomBuild Include="QForestScene.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing QForestScene.h...</Message>
@@ -209,16 +195,13 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
-    <ClInclude Include="Temperature.h" />
-    <ClInclude Include="Wind.h" />
-    <CustomBuild Include="Entity.h">
-=======
+
     <ClInclude Include="QLocal.h" />
     <ClInclude Include="QPrecipitation.h" />
     <ClInclude Include="QTemperature.h" />
     <ClInclude Include="QWind.h" />
     <CustomBuild Include="QEntity.h">
->>>>>>> ec61a03cf701f701abea5ae9c910c5fcef6260e8
+
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
