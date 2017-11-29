@@ -3,25 +3,32 @@
 #include "QSimulationMenu.h"
 #include <QSplitter>
 #include <QGraphicsView>
+#include <QHBoxLayout>
+#include <QGraphicsRectItem>
 
-QSimulation::QSimulation(QWidget *parent)
+QSimulation::QSimulation(QForestScene & forestScene, QWidget *parent)
 	: QWidget(parent)
 {
 
 	
 
-	QSimulationMenu *mSimulationMenu = new QSimulationMenu;
-	QForestScene *mForestScene = new QForestScene;
-	QSplitter *mSimulationSplitter = new QSplitter;
+	QSimulationMenu * SimulationMenu = new QSimulationMenu;
+	QHBoxLayout * mainLayout = new QHBoxLayout;
 
 
+	QGraphicsView *mForestView = new QGraphicsView();
+	mForestView->setScene(&forestScene);
 
-	QGraphicsView *mForestView = new QGraphicsView(mForestScene, Q_NULLPTR);
+	QPen mainPen(Qt::black);
 
+	QGraphicsRectItem * rectangle = new QGraphicsRectItem(0, 0, 80, 100);
 
+	forestScene.addItem(rectangle);
 
-	mSimulationSplitter->addWidget(mForestView);
-	mSimulationSplitter->addWidget(mSimulationMenu);
+	mainLayout->addWidget(mForestView);
+	mainLayout->addWidget(SimulationMenu);
+	
+	setLayout(mainLayout);
 }
 
 QSimulation::~QSimulation()
