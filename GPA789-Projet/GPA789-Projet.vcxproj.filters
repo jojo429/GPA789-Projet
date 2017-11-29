@@ -100,6 +100,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QSimulation.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QSimulationMenu.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QSimulationMenu.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QSimulationMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -169,6 +178,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QStatistic.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSimulationMenu.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
