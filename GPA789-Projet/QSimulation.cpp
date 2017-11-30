@@ -17,13 +17,8 @@ QSimulation::QSimulation(QForestScene & forestScene, QWidget *parent)
 
 
 	QGraphicsView *mForestView = new QGraphicsView();
+	mForestView->setRenderHint(QPainter::Antialiasing);
 	mForestView->setScene(&forestScene);
-
-	QPen mainPen(Qt::black);
-
-	QGraphicsRectItem * rectangle = new QGraphicsRectItem(0, 0, 80, 100);
-
-	forestScene.addItem(rectangle);
 
 	mainLayout->addWidget(mForestView);
 	mainLayout->addWidget(SimulationMenu);

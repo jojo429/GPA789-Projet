@@ -16,6 +16,10 @@ public:
 	int getHeight();
 	void adjustDryness(bool isRaining);
 	void setOnFire(bool gotHit, int dryness);
+	QRectF boundingRect() const;
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = Q_NULLPTR);
+	void advance(int phase);
+
 
 private:
 	int mHeight;
@@ -23,6 +27,8 @@ private:
 	int mLeafRadius;
 	int mDryness;
 	bool mGotHit;
+
+
 
 };
 
