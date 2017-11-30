@@ -1,6 +1,7 @@
 #include "GPA789Projet.h"
 
 #include "QSimulation.h"
+#include "QSimulationMenu.h"
 #include "QStatistic.h"
 #include <QGraphicsGridLayout>
 #include <QGraphicsView>
@@ -8,6 +9,7 @@
 #include <QGraphicsWidget>
 #include <QGraphicsProxyWidget>
 #include <QWidget>
+#include <QSplitter>
 #include <QScrollBar>
 #include <QPushButton>
 #include <QHBoxLayout>
@@ -20,11 +22,16 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	ui.setupUi(this);
 
 	QSimulation *mSimulation = new QSimulation;
+	QSimulationMenu *mSimulationMenu = new QSimulationMenu;
 	QStatistic *mStatistic = new QStatistic;
 
 	QTabWidget *mMainTab = new QTabWidget;
 
-	mMainTab->addTab(mSimulation, "Simulation");
+	QSplitter *mMainTabSplitter = new QSplitter;
+	mMainTabSplitter->addWidget(mSimulation);
+	mMainTabSplitter->addWidget(mSimulationMenu);
+
+	mMainTab->addTab(mMainTabSplitter, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
 
 	
