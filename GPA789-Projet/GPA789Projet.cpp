@@ -22,16 +22,11 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	ui.setupUi(this);
 
 	QSimulation *mSimulation = new QSimulation;
-	QSimulationMenu *mSimulationMenu = new QSimulationMenu;
 	QStatistic *mStatistic = new QStatistic;
 
 	QTabWidget *mMainTab = new QTabWidget;
 
-	QSplitter *mMainTabSplitter = new QSplitter;
-	mMainTabSplitter->addWidget(mSimulation);
-	mMainTabSplitter->addWidget(mSimulationMenu);
-
-	mMainTab->addTab(mMainTabSplitter, "Simulation");
+	mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
 
 	

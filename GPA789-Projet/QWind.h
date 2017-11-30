@@ -2,6 +2,7 @@
 #define Q_WIND_H
 
 #include "QGlobal.h"
+#include <array>
 
 class QWind : public QGlobal
 {
@@ -13,8 +14,8 @@ public:
 	int getWindForce();
 	void setWindAngle(int angle); //float angle?
 	void setWindForce(int force);
-	float adjustDryness() override;
-	//array<double,3> airDisplacement()
+	float adjustDryness();
+	std::array<double, 3> airDisplacement();
 
 private:
 	float mWindAngle;

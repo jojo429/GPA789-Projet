@@ -4,6 +4,7 @@
 #include <QGraphicsItem>
 
 #include "QEnvironment.h"
+#include <array>
 
 class QEnvironmentalFactor : public QGraphicsItem
 {
@@ -11,10 +12,10 @@ class QEnvironmentalFactor : public QGraphicsItem
 public:
 	QEnvironmentalFactor(QGraphicsItem * parent = Q_NULLPTR);
 	~QEnvironmentalFactor();
-	virtual float germinate();
-	virtual float grow();
-	virtual float adjustDryness();
-	//array<double,3)> airDisplacement();
+	float germinate();
+	float grow();
+	float adjustDryness();
+	std::array<double,3> airDisplacement();
 };
 
 #endif //Q_ENVIRONMENTAL_FACTOR_H

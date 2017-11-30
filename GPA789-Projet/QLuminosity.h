@@ -13,8 +13,8 @@ public:
 	void setLuminosity(int luminosity);
 	void luminosity();
 	void luminosity(int luminosity);
-	float germinate() override;
-	float grow() override;
+	float germinate();
+	float grow();
 
 private:
 	int mLuminosity;

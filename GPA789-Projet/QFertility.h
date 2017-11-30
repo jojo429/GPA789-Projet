@@ -3,6 +3,7 @@
 
 #include "QLocal.h"
 
+#include <list>
 #include <QImage>
 #include <QPointF>
 
@@ -22,7 +23,7 @@ public:
 	float grow(QPointF pt2D);
 
 private:
-	//list<table<char>> mFertility
+	std::list<std::list<char>> mFertility;
 	QImage mMap;
 
 };

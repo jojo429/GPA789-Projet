@@ -10,21 +10,6 @@ QPrecipitation::~QPrecipitation()
 
 }
 
-int QPrecipitation::getPrecipitation()
-{
-	return 0;
-}
-
-void QPrecipitation::setPrecipitation(int precipitation)
-{
-
-}
-
-bool QPrecipitation::getIsRaining()
-{
-	return 0;
-}
-
 float QPrecipitation::germinate()
 {
 	return 0;
@@ -38,4 +23,41 @@ float QPrecipitation::grow()
 float QPrecipitation::adjustDryness()
 {
 	return 0;
+}
+
+std::array<double, 3> QPrecipitation::airDisplacement()
+{
+	std::array<double, 3> tmp;
+
+	return tmp;
+}
+
+int QPrecipitation::getAverage_mm()
+{
+	return 0;
+}
+
+int QPrecipitation::getVariation_mm()
+{
+	return 0;
+}
+
+int QPrecipitation::getCycle()
+{
+	return 0;
+}
+
+void QPrecipitation::setAveragemm(int average_mm)
+{
+
+}
+
+void QPrecipitation::setVariationmm(int variation_mm)
+{
+
+}
+
+void QPrecipitation::setCycle(int cycle)
+{
+
 }

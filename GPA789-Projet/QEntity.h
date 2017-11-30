@@ -22,7 +22,7 @@ private:
 	bool mGotHit;
 
 };
-
 */
+
 #endif //Q_ENTITY_H
 

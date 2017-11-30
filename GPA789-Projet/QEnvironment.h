@@ -1,6 +1,8 @@
 #ifndef Q_ENVIRONMENT_H
 #define Q_ENVIRONMENT_H
 
+#include <list>
+#include "QEnvironmentalFactor.h"
 #include "QSeeds.h"
 #include "QTrees.h"
 
@@ -18,6 +20,9 @@ public:
 	//list<float> getGrow();
 	//list<float> getAdjustDryness();
 	//array<double,3> getAirDisplacement();
+
+private:
+	//std::list<QEnvironmentalFactor> mEnvironmentalFactor;
 
 };
 

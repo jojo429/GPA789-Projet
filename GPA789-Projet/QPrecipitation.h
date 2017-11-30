@@ -2,6 +2,7 @@
 #define Q_PRECIPITATION_H
 
 #include "QGlobal.h"
+#include <array>
 
 class QPrecipitation : public QGlobal
 {
@@ -9,20 +10,21 @@ class QPrecipitation : public QGlobal
 public:
 	QPrecipitation();
 	~QPrecipitation();
-	int getPrecipitation();
-	//enum getCyle();
-	void setPrecipitation(int precipitation);
-	//int setCycle(enum cycle);
-	bool getIsRaining();
-	float germinate() override;
-	float grow() override;
-	float adjustDryness() override;
-	//array<double,3> airDisplacement();
+	int getAverage_mm();
+	int getVariation_mm();
+	int getCycle();
+	void setAveragemm(int average_mm);
+	void setVariationmm(int variation_mm);
+	void setCycle(int cycle);
+	float germinate();
+	float grow();
+	float adjustDryness();
+	std::array<double,3> airDisplacement();
 
 private:
-	int mChanceOfPrecipitation;
-	bool mIsRaining;
-	//enum mCycle;
+	int mAverage_mm;
+	int mVariation_mm;
+	int mCycle;
 
 };
 

@@ -25,3 +25,10 @@ float QEnvironmentalFactor::adjustDryness()
 {
 	return 0;
 }
+
+std::array<double, 3> QEnvironmentalFactor::airDisplacement()
+{
+	std::array<double, 3> tmp;
+	
+	return tmp;
+}

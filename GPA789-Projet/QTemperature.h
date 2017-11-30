@@ -11,14 +11,15 @@ public:
 	~QTemperature();
 	int getTemperature();
 	void setTemperature();
-	float germinate() override;
-	float grow() override;
-	float adjustDryness() override;
+	float germinate();
+	float grow();
+	float adjustDryness();
 
 private:
 	int mTemperatureMax;
 	int mTemperatureMin;
 	int mTemperature;
+	int mCycle;
 
 };
 
