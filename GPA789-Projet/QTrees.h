@@ -22,9 +22,9 @@ public:
 
 
 private:
-	int mHeight;
-	int mTrunkRadius;
-	int mLeafRadius;
+	double mHeight;
+	double mTrunkRadius;
+	double mLeafRadius;
 	int mDryness;
 	bool mGotHit;
 

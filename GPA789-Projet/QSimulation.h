@@ -11,5 +11,8 @@ class QSimulation : public QWidget
 public:
 	QSimulation(QForestScene & forestScene, QWidget *parent = Q_NULLPTR);
 	~QSimulation();
+
+private:
+	QTimer *mTimer;
 };
 #endif //Q_SIMULATION_H
