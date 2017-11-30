@@ -1,6 +1,7 @@
 #ifndef Q_SEEDS_H
 #define Q_SEEDS_H
 
+/*
 #include "QDynamic.h"
 #include "QTrees.h"
 
@@ -10,7 +11,7 @@ class QSeeds : public QDynamic
 public:
 	QSeeds();
 	~QSeeds();
-	void germinate(int luminosity, bool isRaining, char fertility, int age, int lifeSpan);
+	/*void germinate();
 	void die() override;
 
 protected:
@@ -19,9 +20,10 @@ protected:
 private:
 	int mHeight;
 	int mWeight;
-	QTrees *mTree;
+	//vector<double,5> mWeightingGerminate;
 
 };
+*/
 
 #endif //Q_SEEDS_H
 

@@ -16,9 +16,13 @@ public:
 	void setFertility(qreal x, qreal y, char fertility);
 	void setFertility(QPointF f, char fertility);
 	void showFertility(bool enable);
-	void fertility(bool enable);
+	void enableFertility();
+	void disableFertility();
+	float germinate(QPointF pt2D);
+	float grow(QPointF pt2D);
 
 private:
+	//list<table<char>> mFertility
 	QImage mMap;
 
 };

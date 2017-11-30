@@ -1,5 +1,6 @@
 #include "QTrees.h"
 
+/*
 QTrees::QTrees()
 {
 
@@ -39,3 +40,9 @@ void QTrees::setOnFire(bool gotHit, int dryness)
 {
 
 }
+
+void QTrees::striked()
+{
+
+}
+*/

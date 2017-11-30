@@ -16,7 +16,7 @@ class QSimulationMenu : public QWidget
 public:
 	QSimulationMenu(QWidget *parent = Q_NULLPTR);
 	~QSimulationMenu();
-	QDial setWindAngleButton();
+	//QDial setWindAngleButton();
 	
 private:
 	QVBoxLayout *mMenuLayout;

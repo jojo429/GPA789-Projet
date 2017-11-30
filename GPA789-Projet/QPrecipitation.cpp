@@ -24,3 +24,18 @@ bool QPrecipitation::getIsRaining()
 {
 	return 0;
 }
+
+float QPrecipitation::germinate()
+{
+	return 0;
+}
+
+float QPrecipitation::grow()
+{
+	return 0;
+}
+
+float QPrecipitation::adjustDryness()
+{
+	return 0;
+}

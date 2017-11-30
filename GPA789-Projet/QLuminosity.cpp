@@ -29,3 +29,13 @@ void QLuminosity::luminosity(int luminosity)
 {
 
 }
+
+float QLuminosity::germinate()
+{
+	return 0;
+}
+
+float QLuminosity::grow()
+{
+	return 0;
+}

@@ -30,7 +30,22 @@ void QFertility::showFertility(bool enable)
 
 }
 
-void QFertility::fertility(bool enable)
+void QFertility:: enableFertility()
 {
 
+}
+
+void QFertility::disableFertility()
+{
+
+}
+
+float QFertility::germinate(QPointF pt2D)
+{
+	return 0;
+}
+
+float QFertility::grow(QPointF pt2D)
+{
+	return 0;
 }

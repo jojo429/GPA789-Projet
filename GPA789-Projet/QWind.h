@@ -9,13 +9,15 @@ class QWind : public QGlobal
 public:
 	QWind();
 	~QWind();
-	int getWindAngle();
+	float getWindAngle();
 	int getWindForce();
-	void setWindAngle(int angle);
+	void setWindAngle(int angle); //float angle?
 	void setWindForce(int force);
+	float adjustDryness() override;
+	//array<double,3> airDisplacement()
 
 private:
-	int mWindAngle;
+	float mWindAngle;
 	int mWindForce;
 
 };

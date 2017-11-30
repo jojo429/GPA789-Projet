@@ -1,6 +1,7 @@
 #ifndef Q_SQUIRREL_H
 #define Q_SQUIRREL_H
 
+/*
 #include "QAnimals.h"
 #include "QSeeds.h"
 
@@ -16,14 +17,15 @@ private:
 	float mHunger;
 	int mMaxReach;
 	int mMinReach;
-	QSeeds *mSeed;
-	void movement();
+	void move() override;
 	void reproduce(int age);
 	void die(int age);
 	void eat();
 	void pickSeed();
+	void striked() override;
 
 };
+*/
 
 #endif //Q_SQUIRREL_H
 

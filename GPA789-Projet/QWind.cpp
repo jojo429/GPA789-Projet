@@ -10,7 +10,7 @@ QWind::~QWind()
 
 }
 
-int QWind::getWindAngle()
+float QWind::getWindAngle()
 {
 	return 0;
 }
@@ -20,7 +20,7 @@ int QWind::getWindForce()
 	return 0;
 }
 
-void QWind::setWindAngle(int angle)
+void QWind::setWindAngle(int angle)  //float angle?
 {
 
 }
@@ -28,4 +28,9 @@ void QWind::setWindAngle(int angle)
 void QWind::setWindForce(int force)
 {
 
+}
+
+float QWind::adjustDryness()
+{
+	return 0;
 }

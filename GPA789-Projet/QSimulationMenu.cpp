@@ -41,7 +41,7 @@ QSimulationMenu::~QSimulationMenu()
 
 }
 
-QDial QSimulationMenu::setWindAngleButton()
-{
-
-}
+//QDial QSimulationMenu::setWindAngleButton()
+//{
+	
+//}

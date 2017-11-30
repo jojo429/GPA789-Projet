@@ -1,5 +1,6 @@
 #include "QSquirrel.h"
 
+/*
 QSquirrel::QSquirrel()
 {
 
@@ -10,7 +11,7 @@ QSquirrel::~QSquirrel()
 
 }
 
-void QSquirrel::movement()
+void QSquirrel::move()
 {
 
 }
@@ -34,3 +35,9 @@ void QSquirrel::pickSeed()
 {
 
 }
+
+void QSquirrel::striked()
+{
+
+}
+*/
