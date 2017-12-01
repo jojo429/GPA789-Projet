@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_GPA789Projet.h"
+#include "QForestScene.h"
 
 class GPA789Projet : public QMainWindow
 {
@@ -9,6 +10,11 @@ class GPA789Projet : public QMainWindow
 
 public:
 	GPA789Projet(QWidget *parent = Q_NULLPTR);
+
+private:
+	QForestScene mForestScene;
+
+
 
 private:
 	Ui::GPA789ProjetClass ui;

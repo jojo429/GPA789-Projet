@@ -2,13 +2,17 @@
 #define Q_SIMULATION_H
 
 #include <QWidget>
+#include "QForestScene.h"
 
 class QSimulation : public QWidget
 {
 	Q_OBJECT
 
 public:
-	QSimulation(QWidget *parent = Q_NULLPTR);
+	QSimulation(QForestScene & forestScene, QWidget *parent = Q_NULLPTR);
 	~QSimulation();
+
+private:
+	QTimer *mTimer;
 };
 #endif //Q_SIMULATION_H

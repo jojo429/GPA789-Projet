@@ -3,25 +3,34 @@
 #include "QSimulationMenu.h"
 #include <QSplitter>
 #include <QGraphicsView>
+#include <QHBoxLayout>
+#include <QGraphicsRectItem>
+#include <QTimer>
 
-QSimulation::QSimulation(QWidget *parent)
+QSimulation::QSimulation(QForestScene & forestScene, QWidget *parent)
 	: QWidget(parent)
 {
 
 	
 
-	QSimulationMenu *mSimulationMenu = new QSimulationMenu;
-	QForestScene *mForestScene = new QForestScene;
-	QSplitter *mSimulationSplitter = new QSplitter;
+	QSimulationMenu * SimulationMenu = new QSimulationMenu;
+	QHBoxLayout * mainLayout = new QHBoxLayout;
 
 
+	QGraphicsView *mForestView = new QGraphicsView();
+	mForestView->setRenderHint(QPainter::Antialiasing);
+	mForestView->setScene(&forestScene);
 
-	QGraphicsView *mForestView = new QGraphicsView(mForestScene, Q_NULLPTR);
 
+	mainLayout->addWidget(mForestView);
+	mainLayout->addWidget(SimulationMenu);
+	
+	setLayout(mainLayout);
 
+	mTimer = new QTimer(this);
+	connect(mTimer, SIGNAL(timeout()), &forestScene, SLOT(advance()));
+	mTimer->start(50);
 
-	mSimulationSplitter->addWidget(mForestView);
-	mSimulationSplitter->addWidget(mSimulationMenu);
 }
 
 QSimulation::~QSimulation()
