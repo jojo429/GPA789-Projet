@@ -131,6 +131,8 @@
     <ClCompile Include="QTemperature.cpp" />
     <ClCompile Include="QTrees.cpp" />
     <ClCompile Include="QWind.cpp" />
+    <ClCompile Include="RandomGenerator.cpp" />
+    <ClCompile Include="RandomUniform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="GPA789Projet.h">
@@ -157,6 +159,8 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RandomGenerator.h" />
+    <ClInclude Include="RandomUniform.h" />
     <CustomBuild Include="QFertility.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </Message>
