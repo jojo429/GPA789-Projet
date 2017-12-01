@@ -1,7 +1,7 @@
 #include "QStatic.h"
 
-/*
-QStatic::QStatic()
+QStatic::QStatic(QEnvironment environment)
+	: QEntity{ environment }
 {
 
 }
@@ -11,4 +11,4 @@ QStatic::~QStatic()
 {
 
 }
-*/
+

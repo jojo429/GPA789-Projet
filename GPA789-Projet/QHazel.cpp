@@ -1,7 +1,7 @@
 #include "QHazel.h"
 
-/*
-QHazel::QHazel()
+QHazel::QHazel(QEnvironment const & environment)
+	: QTrees{ environment }
 {
 
 }
@@ -10,4 +10,8 @@ QHazel::~QHazel()
 {
 
 }
-*/
+
+void QHazel::grow()
+{
+
+}

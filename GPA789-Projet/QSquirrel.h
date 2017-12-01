@@ -1,15 +1,15 @@
 #ifndef Q_SQUIRREL_H
 #define Q_SQUIRREL_H
 
-/*
 #include "QAnimals.h"
-#include "QSeeds.h"
+//class QSeeds;
+#include <list>
 
 class QSquirrel : public QAnimals
 {
 
 public:
-	QSquirrel();
+	QSquirrel(QEnvironment const & environment);
 	~QSquirrel();
 
 private:
@@ -23,9 +23,9 @@ private:
 	void eat();
 	void pickSeed();
 	void striked() override;
+	std::list<QSeeds*> mSeeds;
 
 };
-*/
 
 #endif //Q_SQUIRREL_H
 

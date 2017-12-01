@@ -1,23 +1,21 @@
 #ifndef Q_BIRCH_H
 #define Q_BIRCH_H
 
-/*
 #include "QTrees.h"
 
 class QBirch : public QTrees
 {
 
 public:
-	QBirch();
+	QBirch(QEnvironment const & environment);
 	~QBirch();
-	//void grow();
+	void grow();
 
 private:
-	//list<char> mLeafColor;
-	//vector<double,5> mWeightingGrow;
-	//vector<double,5> mWeightingDryness;
+	std::list<char> mLeafColor;
+	std::array<std::vector<double>, 5> mWeightingGrow;
+	std::array<std::vector<double>, 5> mWeightingDryness;
 
 };
-*/
 
 #endif //Q_BIRCH_H

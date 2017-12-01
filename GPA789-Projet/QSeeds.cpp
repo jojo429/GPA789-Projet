@@ -1,7 +1,7 @@
 #include "QSeeds.h"
 
-/*
-QSeeds::QSeeds()
+QSeeds::QSeeds(QEnvironment const & environment) 
+	: QDynamic{ environment }
 {
 
 }
@@ -21,8 +21,9 @@ void QSeeds::die()
 
 }
 
-void QSeeds::move(int windAngle, int windForce)
+void QSeeds::move()
 {
 
 }
-*/
+
+

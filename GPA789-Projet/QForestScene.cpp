@@ -23,3 +23,13 @@ QForestScene::~QForestScene()
 	
 
 }
+
+void QForestScene::closestTree(QPointF pt2D)
+{
+
+}
+
+void QForestScene::lightningStrike(QPointF pt2D)
+{
+
+}

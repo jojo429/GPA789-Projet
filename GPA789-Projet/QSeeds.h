@@ -1,29 +1,26 @@
 #ifndef Q_SEEDS_H
 #define Q_SEEDS_H
 
-/*
 #include "QDynamic.h"
-#include "QTrees.h"
+#include <vector>
 
 class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds();
+	QSeeds(QEnvironment const & environment);
 	~QSeeds();
-	/*void germinate();
+	void germinate();
 	void die() override;
-
-protected:
-	void move(int windAngle, int windForce);
 
 private:
 	int mHeight;
 	int mWeight;
-	//vector<double,5> mWeightingGerminate;
+	std::array<std::vector<double>, 5> mWeightingGerminate;
+	void move() override;
 
 };
-*/
+
 
 #endif //Q_SEEDS_H
 

@@ -1,23 +1,21 @@
 #ifndef Q_FIR_H
 #define Q_FIR_H
 
-/*
 #include "QTrees.h"
 
 class QFir : public QTrees
 {
 
 public:
-	QFir();
+	QFir(QEnvironment const & environment);
 	~QFir();
-	//void grow();
+	void grow();
 
 private:
-	//list<char> mLeafColor;
-	//vector<double,5> mWeightingGrow;
-	//vector<double,5> mWeightingDryness;
+	std::list<char> mLeafColor;
+	std::array<std::vector<double>, 5> mWeightingGrow;
+	std::array<std::vector<double>, 5> mWeightingDryness;
 
 };
-*/
 
 #endif //Q_FIR_H

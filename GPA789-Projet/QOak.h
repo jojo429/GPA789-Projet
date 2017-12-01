@@ -1,22 +1,20 @@
 #ifndef Q_OAK_H
 #define Q_OAK_H
 
-/*
 #include "QTrees.h"
 
 class QOak : public QTrees
 {
 
 public:
-	QOak();
+	QOak(QEnvironment const & environment);
 	~QOak();
-	//void grow();
+	void grow();
 
 private:
-	//list<char> mLeafColor;
-	//vector<double,5> mWeightingGrow;
-	//vector<double,5> mWeightingDryness;
+	std::list<char> mLeafColor;
+	std::array<std::vector<double>, 5> mWeightingGrow;
+	std::array<std::vector<double>, 5> mWeightingDryness;
 };
-*/
 
 #endif //Q_OAK_H

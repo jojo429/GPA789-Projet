@@ -1,7 +1,7 @@
 #include "QSquirrel.h"
 
-/*
-QSquirrel::QSquirrel()
+QSquirrel::QSquirrel(QEnvironment const & environment)
+	: QAnimals{ environment }
 {
 
 }
@@ -40,4 +40,3 @@ void QSquirrel::striked()
 {
 
 }
-*/

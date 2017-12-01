@@ -14,9 +14,9 @@ public:
 	QFertility();
 	~QFertility();
 	char getFertility(qreal x, qreal y);
+	char getFertility(QPointF pt2D);
 	void setFertility(qreal x, qreal y, char fertility);
-	void setFertility(QPointF f, char fertility);
-	void showFertility(bool enable);
+	void setFertility(QPointF pt2D, char fertility);
 	void enableFertility();
 	void disableFertility();
 	float germinate(QPointF pt2D);

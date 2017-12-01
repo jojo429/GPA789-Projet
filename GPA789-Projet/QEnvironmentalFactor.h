@@ -2,15 +2,13 @@
 #define Q_ENVIRONMENTAL_FACTOR_H
 
 #include <QGraphicsItem>
-
-#include "QEnvironment.h"
 #include <array>
 
-class QEnvironmentalFactor : public QGraphicsItem
+class QEnvironmentalFactor
 {
 
 public:
-	QEnvironmentalFactor(QGraphicsItem * parent = Q_NULLPTR);
+	QEnvironmentalFactor();
 	~QEnvironmentalFactor();
 	float germinate();
 	float grow();
