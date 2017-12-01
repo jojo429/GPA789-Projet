@@ -1,31 +1,12 @@
 #include "QLuminosity.h"
 
-QLuminosity::QLuminosity()
+QLuminosity::QLuminosity(int cycle, int average, int variation)
+	: QCyclic{ cycle, average, variation }
 {
 
 }
 
 QLuminosity::~QLuminosity()
-{
-
-}
-
-int QLuminosity::getLuminosity()
-{
-	return 0;
-}
-
-void QLuminosity::setLuminosity(int luminosity)
-{
-
-}
-
-void QLuminosity::luminosity()
-{
-
-}
-
-void QLuminosity::luminosity(int luminosity)
 {
 
 }

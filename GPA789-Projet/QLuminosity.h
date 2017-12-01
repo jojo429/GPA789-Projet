@@ -1,23 +1,16 @@
 #ifndef Q_LUMINOSITY_H
 #define Q_LUMINOSITY_H
 
-#include "QGlobal.h"
+#include "QCyclic.h"
 
-class QLuminosity : public QGlobal
+class QLuminosity : public QCyclic
 {
 
 public:
-	QLuminosity();
+	QLuminosity(int cycle, int average, int variation);
 	~QLuminosity();
-	int getLuminosity();
-	void setLuminosity(int luminosity);
-	void luminosity();
-	void luminosity(int luminosity);
 	float germinate();
 	float grow();
-
-private:
-	int mLuminosity;
 
 };
 

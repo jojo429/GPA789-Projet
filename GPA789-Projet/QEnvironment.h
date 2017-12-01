@@ -19,7 +19,7 @@ public:
 	//list<float> getGerminate();
 	//list<float> getGrow();
 	//list<float> getAdjustDryness();
-	//array<double,3> getAirDisplacement();
+	//array<double,2> getAirDisplacement();
 
 private:
 	//std::list<QEnvironmentalFactor> mEnvironmentalFactor;

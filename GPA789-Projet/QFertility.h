@@ -1,13 +1,13 @@
 #ifndef Q_FERTILITY_H
 #define Q_FERTILITY_H
 
-#include "QLocal.h"
+#include "QPonctual.h"
 
 #include <list>
 #include <QImage>
 #include <QPointF>
 
-class QFertility : public QLocal
+class QFertility : public QPonctual
 {
 
 public:

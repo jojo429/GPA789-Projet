@@ -110,10 +110,10 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QStatistic.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="QGlobal.cpp" />
+    <ClCompile Include="QCyclic.cpp" />
     <ClCompile Include="GPA789Projet.cpp" />
     <ClCompile Include="QHazel.cpp" />
-    <ClCompile Include="QLocal.cpp" />
+    <ClCompile Include="QPonctual.cpp" />
     <ClCompile Include="QLuminosity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QForestScene.cpp" />
@@ -199,7 +199,7 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
-    <ClInclude Include="QLocal.h" />
+    <ClInclude Include="QPonctual.h" />
     <ClInclude Include="QPrecipitation.h" />
     <CustomBuild Include="QSimulationMenu.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
@@ -244,7 +244,7 @@
       </Command>
     </CustomBuild>
     <ClInclude Include="QEnvironment.h" />
-    <ClInclude Include="QGlobal.h" />
+    <ClInclude Include="QCyclic.h" />
     <ClInclude Include="QLuminosity.h" />
     <ClInclude Include="QSeeds.h" />
     <ClInclude Include="QSquirrel.h" />

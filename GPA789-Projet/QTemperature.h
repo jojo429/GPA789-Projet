@@ -1,25 +1,17 @@
 #ifndef Q_TEMPERATURE_H
 #define Q_TEMPERATURE_H
 
-#include "QGlobal.h"
+#include "QCyclic.h"
 
-class QTemperature : public QGlobal
+class QTemperature : public QCyclic
 {
 
 public:
-	QTemperature();
+	QTemperature(int cycle, int average, int variation);
 	~QTemperature();
-	int getTemperature();
-	void setTemperature();
 	float germinate();
 	float grow();
 	float adjustDryness();
-
-private:
-	int mTemperatureMax;
-	int mTemperatureMin;
-	int mTemperature;
-	int mCycle;
 
 };
 
