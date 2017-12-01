@@ -3,13 +3,14 @@
 
 #include <QWidget>
 #include "QForestScene.h"
+#include "QEnvironment.h"
 
 class QSimulation : public QWidget
 {
 	Q_OBJECT
 
 public:
-	QSimulation(QForestScene & forestScene, QWidget *parent = Q_NULLPTR);
+	QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent = Q_NULLPTR);
 	~QSimulation();
 
 private:

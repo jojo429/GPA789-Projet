@@ -1,5 +1,4 @@
 #include "QSimulation.h"
-#include "QForestScene.h"
 #include "QSimulationMenu.h"
 #include <QSplitter>
 #include <QGraphicsView>
@@ -7,7 +6,7 @@
 #include <QGraphicsRectItem>
 #include <QTimer>
 
-QSimulation::QSimulation(QForestScene & forestScene, QWidget *parent)
+QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent)
 	: QWidget(parent)
 {
 

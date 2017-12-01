@@ -21,7 +21,7 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	QSimulation *mSimulation = new QSimulation(mForestScene);
+	QSimulation *mSimulation = new QSimulation(mForestScene, mEnvironment);
 	QStatistic *mStatistic = new QStatistic;
 
 	QTabWidget *mMainTab = new QTabWidget;

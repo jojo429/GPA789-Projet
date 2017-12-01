@@ -3,6 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_GPA789Projet.h"
 #include "QForestScene.h"
+#include "QEnvironment.h"
 
 class GPA789Projet : public QMainWindow
 {
@@ -13,7 +14,7 @@ public:
 
 private:
 	QForestScene mForestScene;
-
+	QEnvironment mEnvironment;
 
 
 private:
