@@ -3,6 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QPointF>
+#include "QEnvironment.h"
 /*class QOak;
 class QBirch;
 class QHazel;
@@ -19,6 +20,8 @@ public:
 	QBirch const & mMasterBirch;
 	QHazel const & mMasterHazel;
 	QFir const & mMasterFir;*/
+
+	void initialize( QEnvironment const & enviromnent);
 
 private:
 	void closestTree(QPointF pt2D);
