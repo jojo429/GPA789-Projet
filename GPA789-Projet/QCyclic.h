@@ -2,6 +2,7 @@
 #define Q_CYCLIC_H
 
 #include "QEnvironmentalFactor.h"
+#include "CyclicTable.h"
 
 class QCyclic : public QEnvironmentalFactor
 {
@@ -17,6 +18,7 @@ private:
 	int mCycle;
 	int mAverage;
 	int mVariation;
+	CyclicTable mCycleTable;
 
 };
 

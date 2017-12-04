@@ -4,6 +4,9 @@ QPrecipitation::QPrecipitation(int cycle, int average, int variation)
 	: QCyclic{ cycle, average, variation }
 {
 
+
+
+
 }
 
 QPrecipitation::~QPrecipitation()

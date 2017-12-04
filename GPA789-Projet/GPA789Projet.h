@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GPA789_PROJET_H
+#define GPA789_PROJET_H
 
 #include <QtWidgets/QMainWindow>
 #include "ui_GPA789Projet.h"
@@ -20,3 +21,5 @@ private:
 private:
 	Ui::GPA789ProjetClass ui;
 };
+
+#endif //GPA789_PROJET_H
