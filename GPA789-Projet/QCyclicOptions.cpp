@@ -24,7 +24,7 @@ QCyclicOptions::QCyclicOptions(QString name, QString iconName, int averageMin, i
 	mCycleSlider->setMinimum(cycleMin);
 	mCycleSlider->setMaximum(cycleMax);
 
-	mAverageLabel = new QLabel("Average");
+	mAverageLabel = new QLabel("Middle Average");
 	mVariationLabel = new QLabel("Variation");
 	mCycleLabel = new QLabel("Cycle");
 
@@ -43,10 +43,8 @@ QCyclicOptions::QCyclicOptions(QString name, QString iconName, int averageMin, i
 	mCyclicOptionsGroupBox->setLayout(mCyclicOptionsGridLayout);
 
 	mLayout = new QHBoxLayout;
-	mLayout->addStretch();
 	mLayout->addWidget(mIconLabel);
 	mLayout->addWidget(mCyclicOptionsGroupBox);
-	mLayout->addStretch();
 
 	setLayout(mLayout);
 }
