@@ -1,4 +1,8 @@
 <RCC>
-    <qresource prefix="GPA789Projet">
+    <qresource prefix="/GPA789Projet">
+        <file alias="iconLuminosity">Resources/iconLuminosity.ico</file>
+        <file alias="iconRain">Resources/iconRain.ico</file>
+        <file alias="iconTemperature">Resources/iconTemperature.png</file>
+        <file alias="iconWind">Resources/iconWind.png</file>
     </qresource>
 </RCC>

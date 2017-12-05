@@ -3,6 +3,7 @@
 #include "QSimulation.h"
 #include "QSimulationMenu.h"
 #include "QStatistic.h"
+
 #include <QGraphicsGridLayout>
 #include <QGraphicsView>
 #include <QGraphicsItem>
@@ -28,7 +29,11 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 
 	QTabWidget *mMainTab = new QTabWidget;
 
-	mMainTab->addTab(mSimulation, "Simulation");
+	//TEST
+	QSimulationMenu *mSimulationMenu = new QSimulationMenu();
+	mMainTab->addTab(mSimulationMenu, "Simulation");
+
+	//mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
 
 	

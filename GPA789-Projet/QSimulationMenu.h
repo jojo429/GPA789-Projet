@@ -1,13 +1,14 @@
 #ifndef Q_SIMULATION_MENU_H
 #define	Q_SIMULATION_MENU_H
 
+#include "QCyclicOptions.h"
+
 #include <QWidget>
 #include <QGridLayout>
 #include <QVBoxLayout>
 #include <QSlider>
 #include <QCheckBox>
 #include <QRadioButton>
-#include <QDial>
 
 class QSimulationMenu : public QWidget
 {
@@ -16,16 +17,11 @@ class QSimulationMenu : public QWidget
 public:
 	QSimulationMenu(QWidget *parent = Q_NULLPTR);
 	~QSimulationMenu();
-	//QDial setWindAngleButton();
 	
 private:
 	QVBoxLayout *mMenuLayout;
 	QGridLayout *mMenuGridLayout;
 
-	QSlider *mTemperatureSlider;
-	QSlider *mPrecipitationSlider;
-	QSlider *mLuminositySlider;
-	QSlider *mWindForceSlider;
 	QSlider *mPointOfViewSlider;
 
 	QRadioButton *mPlayButton;
@@ -35,7 +31,10 @@ private:
 
 	QCheckBox *mThunderButton;
 
-	QDial *mWindAngleButton;
+	QCyclicOptions *mLuminosity;
+	QCyclicOptions *mWind;
+	QCyclicOptions *mPrecipitation;
+	QCyclicOptions *mTemperature;
 };
 
 #endif //Q_SIMULATION_MENU_H
