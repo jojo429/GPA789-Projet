@@ -9,6 +9,7 @@ public:
 	SinusTable();
 	~SinusTable();
 	void Initialize(int cycle, int average, int variation, int lenght);
+	void Reset(int cycle, int average, int variation);
 
 private:
 	std::vector <double> mTable;
