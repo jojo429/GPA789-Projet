@@ -69,7 +69,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CyclicTable.cpp" />
+    <ClCompile Include="SinusTable.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -160,7 +160,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CyclicTable.h" />
+    <ClInclude Include="SinusTable.h" />
     <ClInclude Include="RandomGenerator.h" />
     <ClInclude Include="RandomUniform.h" />
     <CustomBuild Include="QFertility.h">
