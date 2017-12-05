@@ -3,7 +3,7 @@
 QCyclic::QCyclic(int cycle, int average, int variation)
 {
 	int year = 150;
-	mCycleTable.Initialize(cycle, average, variation, year);
+	mSinusTable.Initialize(cycle, average, variation, year);
 }
 
 QCyclic::~QCyclic()

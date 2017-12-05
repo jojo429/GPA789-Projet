@@ -1,15 +1,15 @@
-#include "CyclicTable.h"
+#include "SinusTable.h"
 #include <math.h>
 
 #define PI 3.14159265
 
-CyclicTable::CyclicTable()
+SinusTable::SinusTable()
 {
 
 
 }
 
-void CyclicTable::Initialize(int cycle, int average, int variation, int lenght)
+void SinusTable::Initialize(int cycle, int average, int variation, int lenght)
 {
 	mLenght = lenght;
 
@@ -23,6 +23,6 @@ void CyclicTable::Initialize(int cycle, int average, int variation, int lenght)
 }
 
 
-CyclicTable::~CyclicTable()
+SinusTable::~SinusTable()
 {
 }
