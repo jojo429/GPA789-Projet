@@ -16,11 +16,14 @@ class QCyclicOptions : public QWidget
 
 public:
 	QCyclicOptions(QWidget *parent = Q_NULLPTR);
-	QCyclicOptions(QString name, QString iconName, int averageMin, int averageMax,
+	QCyclicOptions(QString caption, QString iconName, QString averageName,
+		QString variationName, QString cycleName, int averageMin, int averageMax,
 		int variationMin, int variationMax, int cycleMin, int cycleMax);
 	~QCyclicOptions();
 
 private:
+	QString mCaption;
+
 	QPixmap mIcon;
 
 	QSlider *mAverageSlider;
@@ -31,12 +34,18 @@ private:
 	QLabel *mAverageLabel;
 	QLabel *mVariationLabel;
 	QLabel *mCycleLabel;
+	QLabel *mAverageValue;
+	QLabel *mVariationValue;
+	QLabel *mCycleValue;
 
 	QGridLayout *mCyclicOptionsGridLayout;
 
 	QHBoxLayout *mLayout;
 
 	QGroupBox *mCyclicOptionsGroupBox;
+
+protected slots:
+	void updateValues();
 };
 
 #endif //Q_CYCLIC_OPTIONS_H
