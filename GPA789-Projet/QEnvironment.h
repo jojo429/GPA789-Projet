@@ -17,10 +17,10 @@ public:
 	void grow(QTrees &trees);
 	void adjustDryness(QTrees &trees);
 	void airDisplacement(QSeeds &seeds);
-	std::list<float> getGerminate();
-	std::list<float> getGrow();
-	std::list<float> getAdjustDryness();
-	std::array<double,2> getAirDisplacement();
+	std::list<float> getGerminate() const;
+	std::list<float> getGrow() const;
+	std::list<float> getAdjustDryness() const;
+	std::array<double,2>  getAirDisplacement() const;
 
 private:
 	std::list<QEnvironmentalFactor> mEnvironmentalFactor;

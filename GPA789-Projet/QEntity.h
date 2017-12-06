@@ -16,7 +16,7 @@ public:
 	virtual void die();
 	virtual void striked();
 
-private:
+protected:
 	QPointF mPosition;
 	int mLifeSpan;
 	int mAge;

@@ -33,28 +33,28 @@ void QEnvironment::airDisplacement(QSeeds &seeds)
 
 }
 
-std::list<float> QEnvironment::getGerminate()
+std::list<float> QEnvironment::getGerminate() const
 {
 	std::list<float> tmp;
 
 	return tmp;
 }
 
-std::list<float> QEnvironment::getGrow()
+std::list<float> QEnvironment::getGrow() const
 {
 	std::list<float> tmp;
 
 	return tmp;
 }
 
-std::list<float> QEnvironment::getAdjustDryness()
+std::list<float> QEnvironment::getAdjustDryness() const
 {
 	std::list<float> tmp;
 
 	return tmp;
 }
 
-std::array<double, 2> QEnvironment::getAirDisplacement()
+std::array<double, 2> QEnvironment::getAirDisplacement() const
 {
 	std::array<double, 2> tmp;
 

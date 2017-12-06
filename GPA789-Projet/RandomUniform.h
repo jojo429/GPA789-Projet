@@ -5,12 +5,12 @@
 class RandomUniform : public RandomGenerator
 {
 public:
-	RandomUniform();
+	RandomUniform(int min = 0, int max = 100);
 	~RandomUniform();
-	int randomInt(int max, int min);
-	double randomDouble(double max, double min);
-//private:
-	//std::uniform_int_distribution<int> mDistributionInt;
+	int random();
+	//double randomDouble(double max, double min);
+protected:
+	std::uniform_int_distribution<int> mDistribution;
 	//std::uniform_int_distribution<double> mDistributionDouble;
 };
 

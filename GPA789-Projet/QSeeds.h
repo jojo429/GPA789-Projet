@@ -17,8 +17,14 @@ private:
 	int mHeight;
 	int mWeight;
 	std::array<std::vector<double>, 5> mWeightingGerminate;
-	void move() override;
 
+	int mCountFallDown;
+	double mSeedRadius { 5.0 };
+	QPointF mCenter = QPointF(0, 0);
+	void move() override;
+	QRectF QSeeds::boundingRect() const;
+	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR);
+	void QSeeds::advance(int phase);
 };
 
 
