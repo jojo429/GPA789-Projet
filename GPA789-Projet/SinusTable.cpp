@@ -11,14 +11,43 @@ SinusTable::SinusTable()
 
 void SinusTable::Initialize(int cycle, int average, int variation, int lenght)
 {
-	mLenght = lenght;
+	SinusTable::Initialize(cycle, average, variation, lenght, false);
 
-	for (int i(0); i < mLenght; i++)
+}
+
+void SinusTable::Initialize(int cycle, int average, int variation, int lenght, bool noNegative)
+{
+	mLenght = lenght;
+	mNoNegative = noNegative;
+
+	double temporary = 0;
+
+	if (mNoNegative)
 	{
-		mTable.push_back(average + variation*cos((2 * PI / cycle)*i));
+
+		for (int i(0); i < mLenght; i++)
+		{
+			temporary = average + variation*cos((2 * PI / cycle)*i);
+
+			if (temporary<0)
+			mTable.push_back(0);
+			else
+			mTable.push_back(temporary);
+
+		}
 
 	}
+	else
+	{
+		for (int i(0); i < mLenght; i++)
+		{
+			mTable.push_back(average + variation*cos((2 * PI / cycle)*i));
 
+		}
+
+	}
+	
+	
 
 }
 
@@ -26,11 +55,33 @@ void SinusTable::Reset(int cycle, int average, int variation)
 {
 	mTable.clear();
 
-	for (int i(0); i < mLenght; i++)
+	double temporary = 0;
+
+	if (mNoNegative)
 	{
-		mTable.push_back(average + variation*cos((2 * PI / cycle)*i));
+
+		for (int i(0); i < mLenght; i++)
+		{
+			temporary = average + variation*cos((2 * PI / cycle)*i);
+
+			if (temporary<0)
+				mTable.push_back(0);
+			else
+				mTable.push_back(temporary);
+
+		}
 
 	}
+	else
+	{
+		for (int i(0); i < mLenght; i++)
+		{
+			mTable.push_back(average + variation*cos((2 * PI / cycle)*i));
+
+		}
+
+	}
+
 
 
 }
