@@ -1,0 +1,4 @@
+﻿1>------ Build started: Project: GPA789-Projet, Configuration: Debug x64 ------
+1>GPA789Projet.cpp
+1>GPA789-Projet.vcxproj -> C:\GitSource\GPA798-Projet\x64\Debug\GPA789-Projet.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

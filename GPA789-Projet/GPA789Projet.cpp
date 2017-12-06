@@ -29,6 +29,8 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 
 	QTabWidget *mMainTab = new QTabWidget;
 
+
+
 	mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
 

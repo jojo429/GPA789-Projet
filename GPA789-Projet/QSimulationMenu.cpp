@@ -5,22 +5,33 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 {
 	//Définition des options cycliques
 	mLuminosity = new QCyclicOptions("Luminosity", ":/GPA789Projet/iconLuminosity",
-		0, 100, 0, 100, 0, 100);
+		"Average", "Variation", "Cycle", 0, 100, 0, 100, 0, 100);
 	mWind = new QCyclicOptions("Wind", ":/GPA789Projet/iconWind",
-		0, 100, 0, 100, 0, 100);
+		"Average", "Variation", "Cycle", 0, 100, 0, 100, 0, 100);
 	mPrecipitation = new QCyclicOptions("Precipitation", ":/GPA789Projet/iconRain",
-		0, 100, 0, 100, 0, 100);
+		"Middle Value", "Variation", "Cycle", 0, 100, 0, 100, 0, 1);
 	mTemperature = new QCyclicOptions("Temperature", ":/GPA789Projet/iconTemperature",
-		0, 100, 0, 100, 0, 100);
+		"Average", "Variation", "Cycle", 0, 100, 0, 100, 0, 100);
+
+	//Définition de l'icône de l'éclar
+	mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
 
 	//Définition du bouton générant un éclair
 	mThunderButton = new QCheckBox;
+	mThunderButton->setText("Act of God");
+	mThunderButton->setIcon(mThunderIcon);
+
+	//Définition du layout du bouton générant un éclair
+	mThunderLayout = new QHBoxLayout;
+	mThunderLayout->addStretch();
+	mThunderLayout->addWidget(mThunderButton);
+	mThunderLayout->addStretch();
 
 	//Définition des boutons d'avancement
-	mPlayButton = new QRadioButton(QStringLiteral("Play"));
-	mPauseButton = new QRadioButton(QStringLiteral("Pause"));
-	mStopButton = new QRadioButton(QStringLiteral("Stop"));
-	mStepButton = new QRadioButton(QStringLiteral("Step"));
+	mPlayButton = new QSimulationAdvancementOptions("Play", ":/GPA789Projet/iconPlay");
+	mPauseButton = new QSimulationAdvancementOptions("Pause", ":/GPA789Projet/iconPause");
+	mStopButton = new QSimulationAdvancementOptions("Stop", ":/GPA789Projet/iconStop");
+	mStepButton = new QSimulationAdvancementOptions("Step", ":/GPA789Projet/iconStep");
 
 	//Définition du slider de point de vue
 	mPointOfViewSlider = new QSlider(Qt::Horizontal);
@@ -38,7 +49,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuLayout->addWidget(mWind);
 	mMenuLayout->addWidget(mPrecipitation);
 	mMenuLayout->addWidget(mTemperature);
-	mMenuLayout->addWidget(mThunderButton, 1, 0);
+	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addWidget(mPointOfViewSlider);
 	mMenuLayout->addStretch();

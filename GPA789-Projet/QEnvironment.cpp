@@ -7,6 +7,13 @@ QEnvironment::QEnvironment()
 
 }
 
+void QEnvironment::advance()
+{
+
+
+
+}
+
 QEnvironment::~QEnvironment()
 {
 
