@@ -7,8 +7,9 @@
 class QSeeds;
 class QTrees;
 
-class QEnvironment
+class QEnvironment : public QObject
 {
+	Q_OBJECT
 
 public:
 	QEnvironment();

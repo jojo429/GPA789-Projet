@@ -27,7 +27,7 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	setLayout(mainLayout);
 
 	mTimer = new QTimer(this);
-	//connect(mTimer, SIGNAL(timeout()), &environment, SLOT(advance()));
+	connect(mTimer, SIGNAL(timeout()), &environment, SLOT(advance()));
 	connect(mTimer, SIGNAL(timeout()), &forestScene, SLOT(advance()));
 	mTimer->start(50);
 

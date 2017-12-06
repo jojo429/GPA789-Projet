@@ -7,7 +7,7 @@ class QStatic : public QEntity
 {
 
 public:
-	QStatic(QEnvironment environment);
+	QStatic(QEnvironment const & environment);
 	~QStatic();
 
 };
