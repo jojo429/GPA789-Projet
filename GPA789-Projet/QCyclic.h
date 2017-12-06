@@ -9,6 +9,7 @@ class QCyclic : public QEnvironmentalFactor
 
 public:
 	QCyclic(int cycle, int average, int variation);
+	QCyclic(int cycle, int average, int variation, bool noNegative);
 	~QCyclic();
 	void setCycle(int cycle);
 	void setAverage(int average);

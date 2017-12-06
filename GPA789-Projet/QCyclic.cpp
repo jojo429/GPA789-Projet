@@ -1,9 +1,14 @@
 #include "QCyclic.h"
 
+QCyclic::QCyclic(int cycle, int average, int variation, bool noNegative)
+{
+	int year = 2190;
+	mSinusTable.Initialize(cycle, average, variation, year, noNegative);
+}
+
 QCyclic::QCyclic(int cycle, int average, int variation)
 {
-	int year = 150;
-	mSinusTable.Initialize(cycle, average, variation, year);
+	QCyclic::QCyclic(cycle, average, variation, false);
 }
 
 QCyclic::~QCyclic()
