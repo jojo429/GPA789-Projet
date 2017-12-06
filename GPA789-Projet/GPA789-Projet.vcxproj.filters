@@ -139,6 +139,12 @@
     <ClCompile Include="QSimulationAdvancementOptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QEnvironment.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QEnvironment.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -219,6 +225,9 @@
     <CustomBuild Include="QSimulationAdvancementOptions.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="QEnvironment.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_GPA789Projet.h">
@@ -234,9 +243,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QDynamic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QEnvironment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QLuminosity.h">
