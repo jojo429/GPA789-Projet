@@ -1,6 +1,6 @@
 #include "QStatic.h"
 
-QStatic::QStatic(QEnvironment environment)
+QStatic::QStatic(QEnvironment const & environment)
 	: QEntity{ environment }
 {
 

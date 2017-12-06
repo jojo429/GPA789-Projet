@@ -3,7 +3,7 @@
 #include <QPainter>
 
 QTrees::QTrees(QEnvironment const & environment)
-	: QStatic{ environment }
+	: QStatic(environment)
 {
 
 	mLeafRadius = 1;

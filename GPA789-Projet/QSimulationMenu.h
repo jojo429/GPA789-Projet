@@ -2,13 +2,16 @@
 #define	Q_SIMULATION_MENU_H
 
 #include "QCyclicOptions.h"
+#include "QSimulationAdvancementOptions.h"
 
 #include <QWidget>
 #include <QGridLayout>
+#include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QSlider>
 #include <QCheckBox>
 #include <QRadioButton>
+#include <QPixmap>
 
 class QSimulationMenu : public QWidget
 {
@@ -20,14 +23,17 @@ public:
 	
 private:
 	QVBoxLayout *mMenuLayout;
+	QHBoxLayout *mThunderLayout;
 	QGridLayout *mMenuGridLayout;
+
+	QPixmap mThunderIcon;
 
 	QSlider *mPointOfViewSlider;
 
-	QRadioButton *mPlayButton;
-	QRadioButton *mPauseButton;
-	QRadioButton *mStopButton;
-	QRadioButton *mStepButton;
+	QSimulationAdvancementOptions *mPlayButton;
+	QSimulationAdvancementOptions *mPauseButton;
+	QSimulationAdvancementOptions *mStopButton;
+	QSimulationAdvancementOptions *mStepButton;
 
 	QCheckBox *mThunderButton;
 

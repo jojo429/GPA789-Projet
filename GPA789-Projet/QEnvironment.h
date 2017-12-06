@@ -7,8 +7,9 @@
 class QSeeds;
 class QTrees;
 
-class QEnvironment
+class QEnvironment : public QObject
 {
+	Q_OBJECT
 
 public:
 	QEnvironment();
@@ -21,6 +22,9 @@ public:
 	std::list<float> getGrow();
 	std::list<float> getAdjustDryness();
 	std::array<double,2> getAirDisplacement();
+
+public slots:
+	void advance();
 
 private:
 	std::list<QEnvironmentalFactor> mEnvironmentalFactor;

@@ -4,5 +4,10 @@
         <file alias="iconRain">Resources/iconRain.ico</file>
         <file alias="iconTemperature">Resources/iconTemperature.png</file>
         <file alias="iconWind">Resources/iconWind.png</file>
+        <file alias="iconPlay">Resources/iconPlay.ico</file>
+        <file alias="iconStop">Resources/iconStop.ico</file>
+        <file alias="iconPause">Resources/iconPause.png</file>
+        <file alias="iconStep">Resources/iconStep.ico</file>
+        <file alias="iconThunder">Resources/iconThunder.png</file>
     </qresource>
 </RCC>
