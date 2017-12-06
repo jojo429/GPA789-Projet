@@ -22,6 +22,9 @@ public:
 	std::list<float> getAdjustDryness();
 	std::array<double,2> getAirDisplacement();
 
+public slots:
+	void advance();
+
 private:
 	std::list<QEnvironmentalFactor> mEnvironmentalFactor;
 

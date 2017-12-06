@@ -1,7 +1,7 @@
 #include "QPrecipitation.h"
 
 QPrecipitation::QPrecipitation(int cycle, int average, int variation)
-	: QCyclic{ cycle, average, variation }
+	: QCyclic{ cycle, average, variation, true}
 {
 
 

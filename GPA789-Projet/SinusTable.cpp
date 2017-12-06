@@ -9,13 +9,13 @@ SinusTable::SinusTable()
 
 }
 
-void SinusTable::Initialize(int cycle, int average, int variation, int lenght)
+void SinusTable::initialize(int cycle, int average, int variation, int lenght)
 {
-	SinusTable::Initialize(cycle, average, variation, lenght, false);
+	SinusTable::initialize(cycle, average, variation, lenght, false);
 
 }
 
-void SinusTable::Initialize(int cycle, int average, int variation, int lenght, bool noNegative)
+void SinusTable::initialize(int cycle, int average, int variation, int lenght, bool noNegative)
 {
 	mLenght = lenght;
 	mNoNegative = noNegative;
@@ -51,7 +51,7 @@ void SinusTable::Initialize(int cycle, int average, int variation, int lenght, b
 
 }
 
-void SinusTable::Reset(int cycle, int average, int variation)
+void SinusTable::reset(int cycle, int average, int variation)
 {
 	mTable.clear();
 

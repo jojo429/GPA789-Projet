@@ -8,9 +8,10 @@ class SinusTable
 public:
 	SinusTable();
 	~SinusTable();
-	void Initialize(int cycle, int average, int variation, int lenght);
-	void Initialize(int cycle, int average, int variation, int lenght, bool noNegative);
-	void Reset(int cycle, int average, int variation);
+	void initialize(int cycle, int average, int variation, int lenght);
+	void initialize(int cycle, int average, int variation, int lenght, bool noNegative);
+	void reset(int cycle, int average, int variation);
+	double getValue(int );
 
 private:
 	std::vector <double> mTable;
