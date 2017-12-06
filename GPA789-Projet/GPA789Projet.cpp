@@ -31,9 +31,8 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 
 	//TEST
 	QSimulationMenu *mSimulationMenu = new QSimulationMenu();
+	mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mSimulationMenu, "Simulation");
-
-	//mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
 
 	

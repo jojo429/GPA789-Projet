@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "QForestScene.h"
 #include "QEnvironment.h"
+#include <QTimer>
 
 class QSimulation : public QWidget
 {
@@ -14,6 +15,6 @@ public:
 	~QSimulation();
 
 private:
-	QTimer *mTimer;
+	QTimer mTimer{this};
 };
 #endif //Q_SIMULATION_H

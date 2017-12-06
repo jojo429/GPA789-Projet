@@ -2,6 +2,8 @@
 #define Q_TREES_H
 
 #include "QStatic.h"
+#include <QBrush>
+#include <QPen>
 
 class QTrees : public QStatic
 {
@@ -18,11 +20,12 @@ public:
 	void setOnFire();
 	void striked() override;
 
-	QRectF boundingRect() const;
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = Q_NULLPTR);
-	void advance(int phase);
+	
 
-private:
+
+protected:
+	QColor mLeafColor;
+	QColor mTrunkColor;
 	double mHeight;
 	double mTrunkRadius;
 	double mLeafRadius;
@@ -30,7 +33,11 @@ private:
 	enum mState {isAlive, isDead, isOnFire};
 	bool mGotHit;
 	QTrees *mMasterTree;
-
+	QPointF mCenter = QPointF(0, 0);
+	QBrush mBrush;
+	QPen mPen;
+	void advance(int phase);
+	QRectF boundingRect() const;
 };
 
 
