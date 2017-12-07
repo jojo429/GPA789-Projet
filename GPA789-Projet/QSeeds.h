@@ -18,7 +18,7 @@ private:
 	int mWeight;
 	std::array<std::vector<double>, 5> mWeightingGerminate;
 
-	int mCountFallDown;
+	int mCountFallDown{ 0 };
 	double mSeedRadius { 5.0 };
 	QPointF mCenter = QPointF(0, 0);
 	void move() override;

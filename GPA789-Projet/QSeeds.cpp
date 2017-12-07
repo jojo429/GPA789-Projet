@@ -49,18 +49,15 @@ void QSeeds::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 
 void QSeeds::advance(int phase)
 {
-	std::array<double, 2> coordinate;
+	std::array<double, 2> movingVector;
+	double movingFactor{ 1.5 };
 
 	if (mCountFallDown < 50) {
-		//coordinate = mEnvironment.getAirDisplacement();
-		//setPos(pos().x, pos().y);
-		//setPos();
-		//update(boundingRect());
-
-		++mCountFallDown;
+		//movingVector = mEnvironment.getAirDisplacement();
+		moveBy(/*movingVector[0]*/0.5 * movingFactor,/*movingVector[1]*/0.5 * movingFactor);
+		update();
+		mCountFallDown++;
 	}
-	else {
-		//update();
-	}
+	update();
 }
 
