@@ -9,6 +9,7 @@
 
 class QFertility : public QPonctual
 {
+	Q_OBJECT
 
 public:
 	QFertility();
@@ -22,13 +23,9 @@ public:
 	float germinate(QPointF pt2D);
 	float grow(QPointF pt2D);
 
-	void setFertility(double maxFertilityValue);
-	void drawFertility();
-
 private:
 	std::list<std::list<char>> mFertility;
 	QImage mMap;
-	int mFertilityMap[2049][2049];
 
 };
 
