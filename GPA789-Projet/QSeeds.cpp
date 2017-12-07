@@ -25,18 +25,23 @@ void QSeeds::initialize(QEnvironment const & enviromnent)
 {
 	int treeKind;
 
-	switch ( treeKind ) {
-		case 0 :
-			QTrees *newTree = new QOak(enviromnent);
-		case 1 :
-			QTrees *newTree = new QBirch(enviromnent);
-		case 2 :
-			QTrees *newTree = new QHazel(enviromnent);
-		case 3 :
-			QTrees *newTree = new QFir(enviromnent);
-		default :
-			QTrees *newTree = new QOak(enviromnent);
-	}	
+//	switch ( treeKind ) 
+//	{
+//		case 0 :
+////			QTrees *newTree = new QOak(enviromnent);
+//			break;
+//		case 1 :
+////			QTrees *newTree = new QBirch(enviromnent);
+//			break;
+//		case 2 :
+////			QTrees *newTree = new QHazel(enviromnent);
+//			break;
+//		case 3 :
+////			QTrees *newTree = new QFir(enviromnent);
+//			break;
+//		default :
+////			QTrees *newTree = new QOak(enviromnent);
+//	}
 }
 
 void QSeeds::germinate()
