@@ -1,4 +1,11 @@
 #include "QSeeds.h"
+#include "QTrees.h"
+//////
+#include "QOak.h"
+#include "QFir.h"
+#include "QBirch.h"
+#include "QHazel.h"
+//////
 #include <QBrush>
 #include <QPainter>
 #include <array>
@@ -14,9 +21,27 @@ QSeeds::~QSeeds()
 
 }
 
+void QSeeds::initialize(QEnvironment const & enviromnent)
+{
+	int treeKind;
+
+	switch ( treeKind ) {
+		case 0 :
+			QTrees *newTree = new QOak(enviromnent);
+		case 1 :
+			QTrees *newTree = new QBirch(enviromnent);
+		case 2 :
+			QTrees *newTree = new QHazel(enviromnent);
+		case 3 :
+			QTrees *newTree = new QFir(enviromnent);
+		default :
+			QTrees *newTree = new QOak(enviromnent);
+	}	
+}
+
 void QSeeds::germinate()
 {
-
+	
 }
 
 void QSeeds::die()
@@ -50,12 +75,11 @@ void QSeeds::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 void QSeeds::advance(int phase)
 {
 	std::array<double, 2> movingVector;
-	double movingFactor{ 1.5 };
+	double movingFactor{ 1.3 };
 
 	if (mCountFallDown < 50) {
-		//movingVector = mEnvironment.getAirDisplacement();
-		moveBy(/*movingVector[0]*/0.5 * movingFactor,/*movingVector[1]*/0.5 * movingFactor);
-		update();
+		movingVector = mEnvironment.getAirDisplacement();
+		moveBy(movingVector[0] * movingFactor,movingVector[1] * movingFactor);
 		mCountFallDown++;
 	}
 	update();

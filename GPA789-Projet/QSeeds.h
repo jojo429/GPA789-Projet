@@ -12,6 +12,7 @@ public:
 	~QSeeds();
 	void germinate();
 	void die() override;
+	void QSeeds::initialize(QEnvironment const & enviromnent);
 
 private:
 	int mHeight;
