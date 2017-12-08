@@ -22,6 +22,7 @@ public slots:
 
 private:
 	QTimer mTimer{this};
+	
 
 };
 #endif //Q_SIMULATION_H
