@@ -2,7 +2,7 @@
 
 QFertility::QFertility()
 {
-
+	
 }
 
 QFertility::~QFertility()
