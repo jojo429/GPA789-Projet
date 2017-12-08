@@ -5,15 +5,14 @@
 #include "QFir.h"
 #include "QBirch.h"
 #include "QHazel.h"
-//////
+///////
 #include <QBrush>
 #include <QPainter>
 #include <array>
 
-QSeeds::QSeeds(QEnvironment const & environment) 
-	: QDynamic{ environment }
+QSeeds::QSeeds(QEnvironment const & environment, QTrees const & masterTree)
+	: QDynamic{ environment }, mMasterTree{ masterTree }
 {
-
 }
 
 QSeeds::~QSeeds()
@@ -21,42 +20,40 @@ QSeeds::~QSeeds()
 
 }
 
-void QSeeds::initialize(QEnvironment const & enviromnent)
+void QSeeds::germinate()
 {
-	int treeKind;
-
-//	switch ( treeKind ) 
-//	{
-//		case 0 :
-////			QTrees *newTree = new QOak(enviromnent);
-//			break;
-//		case 1 :
-////			QTrees *newTree = new QBirch(enviromnent);
-//			break;
-//		case 2 :
-////			QTrees *newTree = new QHazel(enviromnent);
-//			break;
-//		case 3 :
-////			QTrees *newTree = new QFir(enviromnent);
-//			break;
-//		default :
-////			QTrees *newTree = new QOak(enviromnent);
-//	}
+	//Comment le faire?	
+	//QTrees * newTree = new QTrees(mMasterTree);
 }
 
-void QSeeds::germinate()
+void QSeeds::die()
 {
 	
 }
 
-void QSeeds::die()
+bool QSeeds::isItDead()
 {
 
 }
 
 void QSeeds::move()
 {
+	std::array<double, 2> movingVector;
+	movingVector = mEnvironment.getAirDisplacement();
+	moveBy(movingVector[0] * mMovingFactor, movingVector[1] * mMovingFactor);
+	mCountFallDown++;
+	update();
+}
 
+void QSeeds::piked()
+{
+	setVisible(false);
+}
+
+void QSeeds::droped( QPointF coordinate )
+{
+	setPos(coordinate);
+	setVisible(true);
 }
 
 QRectF QSeeds::boundingRect() const
@@ -80,14 +77,9 @@ void QSeeds::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 
 void QSeeds::advance(int phase)
 {
-	std::array<double, 2> movingVector;
-	double movingFactor{ 1.3 };
-
 	if (mCountFallDown < 50) {
-		movingVector = mEnvironment.getAirDisplacement();
-		moveBy(movingVector[0] * movingFactor,movingVector[1] * movingFactor);
-		mCountFallDown++;
+		mMovingFactor = 1.3;
+		move();
 	}
-	update();
 }
 
