@@ -4,6 +4,7 @@
 #include "QStatic.h"
 #include <QBrush>
 #include <QPen>
+#include <QColor>
 
 class QTrees : public QStatic
 {
@@ -33,9 +34,6 @@ protected:
 	enum mState {isAlive, isDead, isOnFire};
 	bool mGotHit;
 	QTrees *mMasterTree;
-	QPointF mCenter = QPointF(0, 0);
-	QBrush mBrush;
-	QPen mPen;
 	void advance(int phase);
 	QRectF boundingRect() const;
 };

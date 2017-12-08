@@ -1,14 +1,15 @@
 #include "QOak.h"
 #include <QBrush>
 #include <QPainter>
+#include <QColor>
 
 QOak::QOak(QEnvironment const & environment)
 	: QTrees{ environment }
 {
-
-
-
-
+	mLeafColor.setRgb(100, 186, 63);
+	mTrunkColor.setRgb(68, 49, 3);
+	mPen.setColor(Qt::white);
+	mPen.setWidth(0.1);
 
 
 }
@@ -26,24 +27,18 @@ void QOak::grow()
 void QOak::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {
 
-	QBrush brush(Qt::green);
-	QPen pen = QPen(Qt::white, 2);
-	QColor darkGreen = QColor(100, 186, 63);
-	QColor darkBrown = QColor(86, 75, 52);
-
-
 
 	//Dessine le tronc
-	brush.setColor(darkBrown);
-	brush.setStyle(Qt::SolidPattern);
+	mBrush.setColor(mTrunkColor);
+	mBrush.setStyle(Qt::SolidPattern);
 	painter->setOpacity(1);
-	painter->setBrush(brush);
-	painter->setPen(pen);
+	painter->setBrush(mBrush);
+	painter->setPen(mPen);
 	painter->drawEllipse(mCenter, mTrunkRadius, mTrunkRadius);
 	//Dessine les feuilles
-	brush.setColor(darkGreen);
-	brush.setStyle(Qt::Dense5Pattern);
-	painter->setBrush(brush);
+	mBrush.setColor(mLeafColor);
+	mBrush.setStyle(Qt::Dense5Pattern);
+	painter->setBrush(mBrush);
 	painter->drawEllipse(mCenter, mLeafRadius, mLeafRadius);
 }
 

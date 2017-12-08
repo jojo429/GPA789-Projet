@@ -3,7 +3,7 @@
 #include "QSimulation.h"
 #include "QSimulationMenu.h"
 #include "QStatistic.h"
-#include "QFertility.h"
+#include "QRandomMap.h"
 
 #include <QGraphicsGridLayout>
 #include <QGraphicsView>
@@ -32,6 +32,12 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 
 	mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
+
+	QRandomMap *mMap= new QRandomMap;
+	mMap->setMap();
+	mMap->findMinMax();
+	mMap->scaleMap();
+	mMap->drawMap();
 	
 
 /*

@@ -5,6 +5,8 @@
 #include "QEnvironment.h"
 #include <QGraphicsItem>
 #include <QPointF>
+#include <QBrush>
+#include <QPen>
 
 class QEntity : public QGraphicsItem
 {
@@ -20,9 +22,12 @@ public:
 protected:
 	QPointF mPosition;
 	int mLifeSpan;
-	int mAge;
+	int mAge{0};
 	bool mGotHit;
 	QEnvironment const & mEnvironment;
+	QPointF mCenter = QPointF(0, 0);
+	QBrush mBrush;
+	QPen mPen;
 
 };
 
