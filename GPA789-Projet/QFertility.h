@@ -9,7 +9,6 @@
 
 class QFertility : public QPonctual
 {
-	Q_OBJECT
 
 public:
 	QFertility();

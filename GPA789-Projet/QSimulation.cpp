@@ -32,11 +32,38 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 
 	connect(&mTimer, SIGNAL(timeout()), &environment, SLOT(advance()));
 	connect(&mTimer, SIGNAL(timeout()), &forestScene, SLOT(advance()));
-	mTimer.start(30);
+	
+	connect(SimulationMenu, &QSimulationMenu::Play, this, &QSimulation::Play);
+	connect(SimulationMenu, &QSimulationMenu::Pause, this, &QSimulation::Pause);
+	connect(SimulationMenu, &QSimulationMenu::Stop, this, &QSimulation::Stop);
+	connect(SimulationMenu, &QSimulationMenu::Step, this, &QSimulation::Step);
 
 
 }
 
 QSimulation::~QSimulation()
+{
+	
+}
+
+void QSimulation::Play()
+{
+	mTimer.start(30);
+
+}
+
+void QSimulation::Pause()
+{
+
+	mTimer.stop();
+}
+
+void QSimulation::Stop()
+{
+
+	mTimer.stop();
+}
+
+void QSimulation::Step()
 {
 }
