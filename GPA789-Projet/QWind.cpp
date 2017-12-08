@@ -1,8 +1,9 @@
 #include "QWind.h"
 
 QWind::QWind(int cycle, int average, int variation)
-	: QCyclic{ cycle, average, variation , true}
 {
+	QCyclic::Initialize(cycle, average, variation, true);
+
 
 }
 

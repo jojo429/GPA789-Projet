@@ -1,8 +1,15 @@
 #include "QLuminosity.h"
 
-QLuminosity::QLuminosity(int cycle, int average, int variation)
-	: QCyclic{ cycle, average, variation, true }
+QLuminosity::QLuminosity()
+	: QCyclic()
 {
+
+}
+
+void QLuminosity::Initialize(int cycle, int average, int variation)
+{
+	QCyclic::Initialize(cycle, average, variation, true);
+
 
 }
 

@@ -1,10 +1,20 @@
 #include "QTemperature.h"
 
-QTemperature::QTemperature(int cycle, int average, int variation)
-	: QCyclic{ cycle, average, variation }
+QTemperature::QTemperature()
 {
+	
+
 
 }
+
+
+void QTemperature::Initialize(int cycle, int average, int variation)
+{
+	QCyclic::Initialize(cycle, average, variation);
+
+
+}
+
 
 QTemperature::~QTemperature()
 {
