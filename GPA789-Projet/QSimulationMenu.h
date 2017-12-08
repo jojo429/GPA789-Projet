@@ -20,7 +20,15 @@ class QSimulationMenu : public QWidget
 public:
 	QSimulationMenu(QWidget *parent = Q_NULLPTR);
 	~QSimulationMenu();
-	
+
+
+signals:
+
+	void Play();
+	void Pause();
+	void Stop();
+	void Step();
+
 private:
 	QVBoxLayout *mMenuLayout;
 	QHBoxLayout *mThunderLayout;

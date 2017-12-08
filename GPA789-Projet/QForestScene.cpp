@@ -31,9 +31,9 @@ void QForestScene::initialize(QEnvironment const & enviromnent)
 		newTree->setPos(spawnPoint);
 
 		//Add seeds
-		QSeeds *newSeed = new QSeeds(enviromnent);
-		this->addItem(newSeed);
-		newSeed->setPos(spawnPoint);
+		//QSeeds *newSeed = new QSeeds(enviromnent);
+		//this->addItem(newSeed);
+		//newSeed->setPos(spawnPoint);
 	}
 
 }

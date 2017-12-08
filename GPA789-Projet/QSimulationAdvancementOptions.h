@@ -15,6 +15,10 @@ public:
 	QSimulationAdvancementOptions(QString caption, QString iconName);
 	~QSimulationAdvancementOptions();
 
+
+signals:
+	void Clicked();
+
 private:
 	QPixmap mIcon;
 
