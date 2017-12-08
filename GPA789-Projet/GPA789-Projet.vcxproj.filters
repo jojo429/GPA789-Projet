@@ -145,12 +145,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QEnvironment.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QFertility.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QFertility.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QRandomMap.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
