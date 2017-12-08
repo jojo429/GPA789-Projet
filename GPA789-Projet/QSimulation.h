@@ -22,7 +22,7 @@ public slots:
 
 private:
 	QTimer mTimer{this};
-	
+	QEnvironment  & mEnvironment;
 
 };
 #endif //Q_SIMULATION_H

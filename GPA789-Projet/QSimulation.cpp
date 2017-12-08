@@ -7,7 +7,7 @@
 #include <QTimer>
 
 QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent)
-	: QWidget(parent)
+	: QWidget(parent), mEnvironment {environment}
 {
 
 	
