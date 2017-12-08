@@ -1,32 +1,25 @@
 #include "QCyclic.h"
 
-QCyclic::QCyclic(int cycle, int average, int variation, bool noNegative)
+QCyclic::QCyclic()
 {
-	int year = 2190;
-	mSinusTable.initialize(cycle, average, variation, year, noNegative);
+	
 }
 
-QCyclic::QCyclic(int cycle, int average, int variation)
-{
-	QCyclic::QCyclic(cycle, average, variation, false);
-}
 
 QCyclic::~QCyclic()
 {
 
 }
 
-void QCyclic::setCycle(int cycle)
+void QCyclic::Initialize(int cycle, int average, int variation, bool noNegative)
 {
-
+	int year = 2190;
+	mSinusTable.initialize(cycle, average, variation, year, noNegative);
 }
 
-void QCyclic::setAverage(int average)
+void QCyclic::Initialize(int cycle, int average, int variation)
 {
-
+	QCyclic::Initialize(cycle, average, variation, false);
 }
 
-void QCyclic::setVariation(int variation)
-{
 
-}

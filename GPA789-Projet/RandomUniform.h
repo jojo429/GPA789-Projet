@@ -8,6 +8,7 @@ public:
 	RandomUniform(int min = 0, int max = 100);
 	~RandomUniform();
 	int random();
+	int random(int min, int max);
 	//double randomDouble(double max, double min);
 protected:
 	std::uniform_int_distribution<int> mDistribution;

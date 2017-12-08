@@ -33,7 +33,12 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mStopButton = new QSimulationAdvancementOptions("Stop", ":/GPA789Projet/iconStop");
 	mStepButton = new QSimulationAdvancementOptions("Step", ":/GPA789Projet/iconStep");
 
-	//Définition du slider de point de vue
+
+	connect(mPlayButton, &QSimulationAdvancementOptions::Clicked, this, &QSimulationMenu::Play);
+	connect(mPauseButton, &QSimulationAdvancementOptions::Clicked, this, &QSimulationMenu::Pause);
+	connect(mStopButton, &QSimulationAdvancementOptions::Clicked, this, &QSimulationMenu::Stop);
+	connect(mStepButton, &QSimulationAdvancementOptions::Clicked, this, &QSimulationMenu::Step);
+		//Définition du slider de point de vue
 	mPointOfViewSlider = new QSlider(Qt::Horizontal);
 
 	//Définition du layout de certains boutons
@@ -61,3 +66,5 @@ QSimulationMenu::~QSimulationMenu()
 {
 
 }
+
+

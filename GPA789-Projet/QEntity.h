@@ -16,6 +16,7 @@ public:
 	~QEntity();
 	virtual void reproduce();
 	virtual void die();
+	virtual bool isItDead();
 	virtual void striked();
 
 protected:
