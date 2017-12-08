@@ -107,3 +107,23 @@ void QCyclicOptions::updateValues()
 		mCycleValue->setText(QString::number(mCycleSlider->value()));
 	}
 }
+
+
+int QCyclicOptions::getAverageValue()
+{
+	//return mAverageSlider->value;
+	return 0;
+
+}
+int QCyclicOptions::getCycleValue()
+{
+
+	//return mCycleSlider->value;
+	return 0;
+}
+int QCyclicOptions::getVariationValue()
+{
+
+	//return mVariationSlider->value;
+	return 0;
+}

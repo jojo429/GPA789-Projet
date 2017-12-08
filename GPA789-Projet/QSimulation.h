@@ -5,6 +5,8 @@
 #include "QForestScene.h"
 #include "QEnvironment.h"
 #include <QTimer>
+#include "SimulationParameters.h"
+#include "QSimulationMenu.h"
 
 class QSimulation : public QWidget
 {
@@ -23,6 +25,9 @@ public slots:
 private:
 	QTimer mTimer{this};
 	QEnvironment  & mEnvironment;
+	SimulationParameters mSimulationParameters;
+	QSimulationMenu *mSimulationMenu;
+
 
 };
 #endif //Q_SIMULATION_H
