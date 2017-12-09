@@ -10,6 +10,15 @@ public:
 	int PrecipitationCycle;
 	int PrecipitationAverage;
 	int PrecipitationVariation;
+	int TemperatureCycle;
+	int TemperatureAverage;
+	int TemperatureVariation;
+	int LuminosityCycle;
+	int LuminosityAverage;
+	int LuminosityVariation;
+	int WindCycle;
+	int WindAverage;
+	int WindVariation;
 
 };
 

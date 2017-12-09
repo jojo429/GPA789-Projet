@@ -10,8 +10,8 @@ public:
 	~SinusTable();
 	void initialize(int cycle, int average, int variation, int lenght);
 	void initialize(int cycle, int average, int variation, int lenght, bool noNegative);
-	void reset(int cycle, int average, int variation);
-	double getValue(int );
+	void set(int cycle, int average, int variation);
+	//double getValue(int value);
 
 private:
 	std::vector <double> mTable;

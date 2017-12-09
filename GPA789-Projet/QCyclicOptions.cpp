@@ -111,19 +111,19 @@ void QCyclicOptions::updateValues()
 
 int QCyclicOptions::getAverageValue()
 {
-	//return mAverageSlider->value;
-	return 0;
+	return mAverageSlider->value();
+
 
 }
 int QCyclicOptions::getCycleValue()
 {
 
-	//return mCycleSlider->value;
-	return 0;
+	return mCycleSlider->value();
+
 }
 int QCyclicOptions::getVariationValue()
 {
 
-	//return mVariationSlider->value;
-	return 0;
+	return mVariationSlider->value();
+
 }

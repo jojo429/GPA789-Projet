@@ -74,6 +74,15 @@ void QSimulationMenu::GetParameters(SimulationParameters *simulationParameters)
 	simulationParameters->PrecipitationAverage = mPrecipitation->getAverageValue();
 	simulationParameters->PrecipitationCycle = mPrecipitation->getCycleValue();
 	simulationParameters->PrecipitationVariation = mPrecipitation->getVariationValue();
+	simulationParameters->TemperatureAverage = mTemperature->getAverageValue();
+	simulationParameters->TemperatureCycle = mTemperature->getCycleValue();
+	simulationParameters->TemperatureVariation = mTemperature->getVariationValue();
+	simulationParameters->LuminosityAverage = mLuminosity->getAverageValue();
+	simulationParameters->LuminosityCycle = mLuminosity->getCycleValue();
+	simulationParameters->LuminosityVariation = mLuminosity->getVariationValue();
+	simulationParameters->WindAverage = mWind->getAverageValue();
+	simulationParameters->WindCycle = mWind->getCycleValue();
+	simulationParameters->WindVariation = mWind->getVariationValue();
 
 
 
