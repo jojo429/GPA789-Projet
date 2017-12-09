@@ -68,3 +68,15 @@ QSimulationMenu::~QSimulationMenu()
 }
 
 
+void QSimulationMenu::GetParameters(SimulationParameters *simulationParameters)
+{
+
+	simulationParameters->PrecipitationAverage = mPrecipitation->getAverageValue();
+	simulationParameters->PrecipitationCycle = mPrecipitation->getCycleValue();
+	simulationParameters->PrecipitationVariation = mPrecipitation->getVariationValue();
+
+
+
+}
+
+

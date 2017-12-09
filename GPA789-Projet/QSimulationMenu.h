@@ -3,7 +3,7 @@
 
 #include "QCyclicOptions.h"
 #include "QSimulationAdvancementOptions.h"
-
+#include "SimulationParameters.h"
 #include <QWidget>
 #include <QGridLayout>
 #include <QHBoxLayout>
@@ -21,7 +21,7 @@ public:
 	QSimulationMenu(QWidget *parent = Q_NULLPTR);
 	~QSimulationMenu();
 
-
+	void GetParameters(SimulationParameters *simulationParameters);
 signals:
 
 	void Play();

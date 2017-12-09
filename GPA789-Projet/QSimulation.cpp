@@ -48,9 +48,8 @@ QSimulation::~QSimulation()
 
 void QSimulation::Play()
 {
-	//mSimulationParameters.PrecipitationCycle = mSimulationMenu->mPrecipitation.getCycle();
-	//mSimulationParameters.PrecipitationAverage = mSimulationMenu->mPrecipitation.getAverage();
-	//mSimulationParameters.PrecipitationVariation = mSimulationMenu->mPrecipitation.getVariation();
+	
+	mSimulationMenu->GetParameters(&mSimulationParameters);
 
 	mTimer.start(30);
 
