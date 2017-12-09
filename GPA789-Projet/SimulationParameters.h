@@ -7,18 +7,18 @@ public:
 	SimulationParameters();
 	~SimulationParameters();
 
-	int PrecipitationCycle;
-	int PrecipitationAverage;
-	int PrecipitationVariation;
-	int TemperatureCycle;
-	int TemperatureAverage;
-	int TemperatureVariation;
-	int LuminosityCycle;
-	int LuminosityAverage;
-	int LuminosityVariation;
-	int WindCycle;
-	int WindAverage;
-	int WindVariation;
+	int mPrecipitationCycle;
+	int mPrecipitationAverage;
+	int mPrecipitationVariation;
+	int mTemperatureCycle;
+	int mTemperatureAverage;
+	int mTemperatureVariation;
+	int mLuminosityCycle;
+	int mLuminosityAverage;
+	int mLuminosityVariation;
+	int mWindCycle;
+	int mWindAverage;
+	int mWindVariation;
 
 };
 

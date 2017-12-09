@@ -21,13 +21,13 @@ public:
 	QSimulationMenu(QWidget *parent = Q_NULLPTR);
 	~QSimulationMenu();
 
-	void GetParameters(SimulationParameters *simulationParameters);
+	void getParameters(SimulationParameters *simulationParameters);
 signals:
 
-	void Play();
-	void Pause();
-	void Stop();
-	void Step();
+	void play();
+	void pause();
+	void stop();
+	void step();
 
 private:
 	QVBoxLayout *mMenuLayout;

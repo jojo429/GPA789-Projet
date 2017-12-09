@@ -67,3 +67,10 @@ std::array<double, 2> QEnvironment::getAirDisplacement() const
 
 	return tmp;
 }
+
+
+void QEnvironment::setParameters(SimulationParameters &simulationParameters)
+{
+	
+
+}

@@ -13,7 +13,7 @@ public:
 	float germinate();
 	float grow();
 	float adjustDryness();
-	void Initialize(int cycle, int average, int variation);
+	void initialize(int cycle, int average, int variation);
 
 };
 

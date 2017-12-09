@@ -20,7 +20,7 @@ public:
 		QString variationName, QString cycleName, int averageMin, int averageMax,
 		int variationMin, int variationMax, int cycleMin, int cycleMax);
 	~QCyclicOptions();
-public:
+
 	int getAverageValue();
 	int getCycleValue();
 	int getVariationValue();
