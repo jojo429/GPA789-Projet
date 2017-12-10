@@ -13,7 +13,7 @@ public:
 	void set(int cycle, int average, int variation);
 	//double getValue(int value);
 
-private:
+protected:
 	std::vector <double> mTable;
 	int mLenght;
 	bool mNoNegative;

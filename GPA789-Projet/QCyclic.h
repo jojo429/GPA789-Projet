@@ -14,7 +14,7 @@ public:
 
 
 
-private:
+protected:
 
 	SinusTable mSinusTable;
 

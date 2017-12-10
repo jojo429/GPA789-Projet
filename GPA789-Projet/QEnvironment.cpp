@@ -75,8 +75,8 @@ std::array<double, 2> QEnvironment::getAirDisplacement() const
 
 void QEnvironment::setParameters(SimulationParameters &simulationParameters)
 {
-	mEnvironmentalFactor.emplace_back((QPrecipitation(simulationParameters.mPrecipitationCycle, simulationParameters.mPrecipitationAverage, simulationParameters.mPrecipitationVariation)));
 	mEnvironmentalFactor.emplace_back((QTemperature(simulationParameters.mTemperatureCycle, simulationParameters.mTemperatureAverage, simulationParameters.mTemperatureVariation)));
-	mEnvironmentalFactor.emplace_back((QLuminosity(simulationParameters.mLuminosityCycle, simulationParameters.mLuminosityAverage, simulationParameters.mLuminosityVariation)));
+	mEnvironmentalFactor.emplace_back((QPrecipitation(simulationParameters.mPrecipitationCycle, simulationParameters.mPrecipitationAverage, simulationParameters.mPrecipitationVariation)));
+	mEnvironmentalFactor.emplace_back((QLuminosity(simulationParameters.mLuminosityCycle, simulationParameters.mLuminosityAverage,100, simulationParameters.mLuminosityVariation)));
 	mEnvironmentalFactor.emplace_back((QWind(simulationParameters.mWindCycle, simulationParameters.mWindAverage, simulationParameters.mWindVariation)));
 }
