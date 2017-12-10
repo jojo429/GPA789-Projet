@@ -2,7 +2,7 @@
 
 QWind::QWind(int cycle, int average, int variation)
 {
-	QCyclic::Initialize(cycle, average, variation, true);
+	QCyclic::initialize(cycle, average, variation, true);
 
 
 }

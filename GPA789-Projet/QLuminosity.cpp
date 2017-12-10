@@ -6,9 +6,9 @@ QLuminosity::QLuminosity()
 
 }
 
-void QLuminosity::Initialize(int cycle, int average, int variation)
+void QLuminosity::initialize(int cycle, int average, int variation)
 {
-	QCyclic::Initialize(cycle, average, variation, true);
+	QCyclic::initialize(cycle, average, variation, true);
 
 
 }

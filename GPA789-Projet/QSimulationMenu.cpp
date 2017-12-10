@@ -34,10 +34,10 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mStepButton = new QSimulationAdvancementOptions("Step", ":/GPA789Projet/iconStep");
 
 
-	connect(mPlayButton, &QSimulationAdvancementOptions::Clicked, this, &QSimulationMenu::Play);
-	connect(mPauseButton, &QSimulationAdvancementOptions::Clicked, this, &QSimulationMenu::Pause);
-	connect(mStopButton, &QSimulationAdvancementOptions::Clicked, this, &QSimulationMenu::Stop);
-	connect(mStepButton, &QSimulationAdvancementOptions::Clicked, this, &QSimulationMenu::Step);
+	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::play);
+	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::pause);
+	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::stop);
+	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::step);
 		//Définition du slider de point de vue
 	mPointOfViewSlider = new QSlider(Qt::Horizontal);
 
@@ -64,6 +64,27 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 
 QSimulationMenu::~QSimulationMenu()
 {
+
+}
+
+
+void QSimulationMenu::getParameters(SimulationParameters *simulationParameters)
+{
+
+	simulationParameters->mPrecipitationAverage = mPrecipitation->getAverageValue();
+	simulationParameters->mPrecipitationCycle = mPrecipitation->getCycleValue();
+	simulationParameters->mPrecipitationVariation = mPrecipitation->getVariationValue();
+	simulationParameters->mTemperatureAverage = mTemperature->getAverageValue();
+	simulationParameters->mTemperatureCycle = mTemperature->getCycleValue();
+	simulationParameters->mTemperatureVariation = mTemperature->getVariationValue();
+	simulationParameters->mLuminosityAverage = mLuminosity->getAverageValue();
+	simulationParameters->mLuminosityCycle = mLuminosity->getCycleValue();
+	simulationParameters->mLuminosityVariation = mLuminosity->getVariationValue();
+	simulationParameters->mWindAverage = mWind->getAverageValue();
+	simulationParameters->mWindCycle = mWind->getCycleValue();
+	simulationParameters->mWindVariation = mWind->getVariationValue();
+
+
 
 }
 

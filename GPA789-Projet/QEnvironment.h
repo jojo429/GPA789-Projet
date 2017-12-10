@@ -4,6 +4,7 @@
 #include <list>
 #include <array>
 #include "QEnvironmentalFactor.h"
+#include "SimulationParameters.h"
 class QSeeds;
 class QTrees;
 
@@ -22,6 +23,7 @@ public:
 	std::list<float> getGrow() const;
 	std::list<float> getAdjustDryness() const;
 	std::array<double,2>  getAirDisplacement() const;
+	void setParameters(SimulationParameters &simulationParameters);
 
 public slots:
 	void advance();

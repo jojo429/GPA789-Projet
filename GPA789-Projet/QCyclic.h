@@ -10,8 +10,8 @@ class QCyclic : public QEnvironmentalFactor
 public:
 	QCyclic();
 	~QCyclic();
-	void Initialize(int cycle, int average, int variation);
-	void Initialize(int cycle, int average, int variation, bool noNegative);
+	void initialize(int cycle, int average, int variation);
+	void initialize(int cycle, int average, int variation, bool noNegative);
 
 
 private:

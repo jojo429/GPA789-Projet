@@ -30,10 +30,10 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	connect(&mTimer, &QTimer::timeout, &forestScene, &QForestScene::advance);
 	connect(&mTimer, &QTimer::timeout, this, &QSimulation::timerTimeout);
 	
-	connect(mSimulationMenu, &QSimulationMenu::Play, this, &QSimulation::Play);
-	connect(mSimulationMenu, &QSimulationMenu::Pause, this, &QSimulation::Pause);
-	connect(mSimulationMenu, &QSimulationMenu::Stop, this, &QSimulation::Stop);
-	connect(mSimulationMenu, &QSimulationMenu::Step, this, &QSimulation::Step);
+	connect(mSimulationMenu, &QSimulationMenu::play, this, &QSimulation::play);
+	connect(mSimulationMenu, &QSimulationMenu::pause, this, &QSimulation::pause);
+	connect(mSimulationMenu, &QSimulationMenu::stop, this, &QSimulation::stop);
+	connect(mSimulationMenu, &QSimulationMenu::step, this, &QSimulation::step);
 
 
 }
@@ -43,29 +43,28 @@ QSimulation::~QSimulation()
 	
 }
 
-void QSimulation::Play()
+void QSimulation::play()
 {
-	//mSimulationParameters.PrecipitationCycle = mSimulationMenu->mPrecipitation.getCycle();
-	//mSimulationParameters.PrecipitationAverage = mSimulationMenu->mPrecipitation.getAverage();
-	//mSimulationParameters.PrecipitationVariation = mSimulationMenu->mPrecipitation.getVariation();
+	
+	mSimulationMenu->getParameters(&mSimulationParameters);
 
 	mTimer.start(30);
 
 }
 
-void QSimulation::Pause()
+void QSimulation::pause()
 {
 
 	mTimer.stop();
 }
 
-void QSimulation::Stop()
+void QSimulation::stop()
 {
 
 	mTimer.stop();
 }
 
-void QSimulation::Step()
+void QSimulation::step()
 {
 
 

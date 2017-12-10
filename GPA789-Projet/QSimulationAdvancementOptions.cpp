@@ -17,7 +17,7 @@ QSimulationAdvancementOptions::QSimulationAdvancementOptions(QString caption, QS
 	mLayout = new QGridLayout;
 	mLayout->addWidget(mButton);
 	setLayout(mLayout);
-	connect(mButton, &QPushButton::clicked, this, & QSimulationAdvancementOptions::Clicked);
+	connect(mButton, &QPushButton::clicked, this, & QSimulationAdvancementOptions::clicked);
 }
 
 QSimulationAdvancementOptions::~QSimulationAdvancementOptions()

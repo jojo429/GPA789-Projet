@@ -8,9 +8,9 @@ QTemperature::QTemperature()
 }
 
 
-void QTemperature::Initialize(int cycle, int average, int variation)
+void QTemperature::initialize(int cycle, int average, int variation)
 {
-	QCyclic::Initialize(cycle, average, variation);
+	QCyclic::initialize(cycle, average, variation);
 
 
 }

@@ -20,10 +20,10 @@ signals:
 	void timerTimeout();
 
 public slots:
-	void Play();
-	void Pause();
-	void Stop();
-	void Step();
+	void play();
+	void pause();
+	void stop();
+	void step();
 
 private:
 	QTimer mTimer{ this };

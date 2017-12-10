@@ -17,7 +17,7 @@ public:
 
 
 signals:
-	void Clicked();
+	void clicked();
 
 private:
 	QPixmap mIcon;
