@@ -106,12 +106,6 @@
     <ClCompile Include="QPonctual.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GPA789Projet.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="RandomUniform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -157,6 +151,18 @@
     <ClCompile Include="SimulationParameters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QEvolutionGraph.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QEvolutionGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_GPA789Projet.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -186,19 +192,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="GPA789Projet.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="GPA789Projet.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="GPA789Projet.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="GPA789Projet.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="QBirch.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="QCyclicOptions.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="QEntity.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QEnvironment.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QEnvironmentalFactor.h">
@@ -210,37 +222,34 @@
     <CustomBuild Include="QFir.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="QForestScene.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="QHazel.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QOak.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="QTrees.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QForestScene.h">
+    <CustomBuild Include="QRandomMap.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QSimulation.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="QStatistic.h">
+    <CustomBuild Include="QSimulationAdvancementOptions.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QSimulationMenu.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="QCyclicOptions.h">
+    <CustomBuild Include="QStatistic.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="QSimulationAdvancementOptions.h">
+    <CustomBuild Include="QEvolutionGraph.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="QEnvironment.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QRandomMap.h">
+    <CustomBuild Include="QTrees.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -251,10 +260,7 @@
     <ClInclude Include="QAnimals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QSquirrel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QSeeds.h">
+    <ClInclude Include="QCyclic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QDynamic.h">
@@ -263,7 +269,16 @@
     <ClInclude Include="QLuminosity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QPonctual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="QPrecipitation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QSeeds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QSquirrel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QStatic.h">
@@ -275,25 +290,19 @@
     <ClInclude Include="QWind.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QCyclic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QPonctual.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomUniform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RandomGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SinusTable.h">
+    <ClInclude Include="RandomUniform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SimulationParameters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SinusTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -26,12 +26,9 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	
 	setLayout(mainLayout);
 
-
-	
-
-
 	connect(&mTimer, &QTimer::timeout, &environment, &QEnvironment::advance);
 	connect(&mTimer, &QTimer::timeout, &forestScene, &QForestScene::advance);
+	connect(&mTimer, &QTimer::timeout, this, &QSimulation::timerTimeout);
 	
 	connect(mSimulationMenu, &QSimulationMenu::Play, this, &QSimulation::Play);
 	connect(mSimulationMenu, &QSimulationMenu::Pause, this, &QSimulation::Pause);

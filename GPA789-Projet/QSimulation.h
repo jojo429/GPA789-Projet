@@ -16,6 +16,9 @@ public:
 	QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent = Q_NULLPTR);
 	~QSimulation();
 
+signals:
+	void timerTimeout();
+
 public slots:
 	void Play();
 	void Pause();
@@ -23,11 +26,10 @@ public slots:
 	void Step();
 
 private:
-	QTimer mTimer{this};
+	QTimer mTimer{ this };
 	QEnvironment  & mEnvironment;
 	SimulationParameters mSimulationParameters;
 	QSimulationMenu *mSimulationMenu;
-
-
+	
 };
 #endif //Q_SIMULATION_H

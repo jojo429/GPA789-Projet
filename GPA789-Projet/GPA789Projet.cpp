@@ -39,7 +39,7 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	mMap->scaleMap();
 	mMap->drawMap();
 	
-
+	connect(mSimulation, &QSimulation::timerTimeout, mStatistic, &QStatistic::updateData);
 /*
 
 	QHBoxLayout *firstLvlSettings = new QHBoxLayout;
