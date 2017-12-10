@@ -1,6 +1,7 @@
 #include "QTemperature.h"
 
-QTemperature::QTemperature()
+QTemperature::QTemperature(int cycle, int average, int variation)
+	:QCyclic(cycle, average, variation)
 {
 	
 
@@ -8,12 +9,7 @@ QTemperature::QTemperature()
 }
 
 
-void QTemperature::initialize(int cycle, int average, int variation)
-{
-	QCyclic::initialize(cycle, average, variation);
 
-
-}
 
 
 QTemperature::~QTemperature()

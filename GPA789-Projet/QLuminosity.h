@@ -7,11 +7,11 @@ class QLuminosity : public QCyclic
 {
 
 public:
-	QLuminosity();
+	QLuminosity(int cycle, int average, int variation);
 	~QLuminosity();
 	float germinate();
 	float grow();
-	void initialize(int cycle, int average, int variation);
+
 };
 
 #endif //Q_LUMINOSITY_H

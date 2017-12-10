@@ -1,6 +1,10 @@
 #include "QEnvironment.h"
 #include "QSeeds.h"
 #include "QTrees.h"
+#include "QPrecipitation.h"
+#include "QTemperature.h"
+#include "QLuminosity.h"
+#include "QWind.h"
 
 QEnvironment::QEnvironment()
 {
@@ -19,23 +23,23 @@ QEnvironment::~QEnvironment()
 
 }
 
-void QEnvironment::germinate(QSeeds &seeds)
+void QEnvironment::germinateFactors()
 {
 
 }
 
 
-void QEnvironment::grow(QTrees &trees)
+void QEnvironment::growFactors()
 {
 
 }
 
-void QEnvironment::adjustDryness(QTrees &trees)
+void QEnvironment::adjustDrynessFactors()
 {
 
 }
 
-void QEnvironment::airDisplacement(QSeeds &seeds)
+void QEnvironment::airDisplacementFactors()
 {
 
 }
@@ -71,6 +75,8 @@ std::array<double, 2> QEnvironment::getAirDisplacement() const
 
 void QEnvironment::setParameters(SimulationParameters &simulationParameters)
 {
-	
-
+	mEnvironmentalFactor.emplace_back((QPrecipitation(simulationParameters.mPrecipitationCycle, simulationParameters.mPrecipitationAverage, simulationParameters.mPrecipitationVariation)));
+	mEnvironmentalFactor.emplace_back((QTemperature(simulationParameters.mTemperatureCycle, simulationParameters.mTemperatureAverage, simulationParameters.mTemperatureVariation)));
+	mEnvironmentalFactor.emplace_back((QLuminosity(simulationParameters.mLuminosityCycle, simulationParameters.mLuminosityAverage, simulationParameters.mLuminosityVariation)));
+	mEnvironmentalFactor.emplace_back((QWind(simulationParameters.mWindCycle, simulationParameters.mWindAverage, simulationParameters.mWindVariation)));
 }

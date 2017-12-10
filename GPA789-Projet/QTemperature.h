@@ -7,13 +7,13 @@ class QTemperature : public QCyclic
 {
 
 public:
-	QTemperature();
+	QTemperature(int cycle, int average, int variation);
 
 	~QTemperature();
 	float germinate();
 	float grow();
 	float adjustDryness();
-	void initialize(int cycle, int average, int variation);
+
 
 };
 

@@ -15,10 +15,10 @@ class QEnvironment : public QObject
 public:
 	QEnvironment();
 	~QEnvironment();
-	void germinate(QSeeds &seeds);
-	void grow(QTrees &trees);
-	void adjustDryness(QTrees &trees);
-	void airDisplacement(QSeeds &seeds);
+	void germinateFactors();
+	void growFactors();
+	void adjustDrynessFactors();
+	void airDisplacementFactors();
 	std::list<float> getGerminate() const;
 	std::list<float> getGrow() const;
 	std::list<float> getAdjustDryness() const;
@@ -30,6 +30,7 @@ public slots:
 
 private:
 	std::list<QEnvironmentalFactor> mEnvironmentalFactor;
+	//std::list<QEnvironmentalFactor>::iterator it;
 
 };
 
