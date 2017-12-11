@@ -1,17 +1,20 @@
 #include "QRandomMap.h"
-
 #include "RandomUniform.h"
 
 #include <array>
 #include <QDebug>
-#include <QPainter>
 #include <QColor>
 #include <QImage>
 
 QRandomMap::QRandomMap(QWidget *parent)
 	: QWidget(parent)
 {
-	//qDebug() << "Hello";
+	/*
+	qDebug() << QString::number(mMap[2000][1000]);
+	qDebug() << QString::number(mMap[1000][1000]);
+	qDebug() << QString::number(mMap[500][1000]);
+	qDebug() << QString::number(mMap[200][1000]);
+	qDebug() << QString::number(randNumberValue.random(-50,50));*/
 }
 
 QRandomMap::~QRandomMap()
@@ -85,29 +88,19 @@ void QRandomMap::setMap()
 		}
 		step = id;
 	}
-
-	/*
-	qDebug() << QString::number(mMap[2000][1000]);
-	qDebug() << QString::number(mMap[1000][1000]);
-	qDebug() << QString::number(mMap[500][1000]);
-	qDebug() << QString::number(mMap[200][1000]);
-	qDebug() << QString::number(randNumberValue.random(-50,50));*/
 }
 
-void QRandomMap::scaleMap()
+void QRandomMap::scaleMap(double minScaleValue, double maxScaleValue)
 {
 	int i, j;
 
+	this->findMinMax();
+
 	for (i = 0; i < 513; ++i) {
 		for (j = 0; j < 513; ++j) {
-			mMap[i][j] = (((100 - 0)*(mMap[i][j] - mMin)) / (mMax - mMin)) - 0;
+			mMap[i][j] = (((maxScaleValue - minScaleValue)*(mMap[i][j] - mMin)) / (mMax - mMin)) - 0;
 		}
 	}
-
-	/*
-	qDebug() << QString::number(mMapScaled[2000][1000]);
-	qDebug() << QString::number(mMapScaled[1000][1000]);
-	qDebug() << QString::number(mMapScaled[500][1000]);*/
 }
 
 void QRandomMap::findMinMax()
@@ -126,33 +119,44 @@ void QRandomMap::findMinMax()
 			}
 		}
 	}
-	/*
-	qDebug() << QString::number(mMin);
-	qDebug() << QString::number(mMax);*/
 }
 
-void QRandomMap::drawMap()
+void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 {
 	int i, j;
 	qreal shade;
-	
-	mPixelsMap = QPixmap(513, 513);
-
 	QColor mapColor;
-
-	QPainter painter(&mPixelsMap);
-	//painter.setPen(Qt::red);
-	//painter.drawPoint(10, 10);
 
 	for (i = 0; i < 513; ++i) {
 		for (j = 0; j < 513; ++j) {
 			shade = mMap[i][j] / 150.0;
-			mapColor.setRgb(244*shade, 164*shade, 96*shade);
-			painter.setPen(mapColor);
-			painter.drawPoint(i, j);
+			mapColor.setRgb(rColor*shade, gColor*shade, bColor*shade);
+			mPainterMap.setPen(mapColor);
+			mPainterMap.drawPoint(i, j);
 		}
 	}
 
-	QImage image = mPixelsMap.toImage();
-	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
+	//QImage image = mPixelsMap.toImage();
+	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
+}
+
+void QRandomMap::updateDrawMap(int x, int y, int rColor, int gColor, int bColor)
+{
+	qreal shade;
+	QColor mapColor;
+	
+	shade = mMap[x][y] / 150.0;
+	mapColor.setRgb(rColor * shade, gColor * shade, bColor * shade);
+	mPainterMap.setPen(mapColor);
+	mPainterMap.drawPoint(x, y); 
+}
+
+double QRandomMap::getMapValue(int x, int y)
+{
+	return mMap[x][y];
+}
+
+void QRandomMap::setMapValue(int x, int y, double value)
+{
+	mMap[x][y] = mMap[x][y] + value;
 }
