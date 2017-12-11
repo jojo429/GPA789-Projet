@@ -23,7 +23,6 @@ QStatistic::~QStatistic()
 
 void QStatistic::updateData() 
 {
-		x++;
 		y++;
-		mTestGraph1->addPoint(QPointF(x, y));
+		mTestGraph1->addPoint(y);
 }

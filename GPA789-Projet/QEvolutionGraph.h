@@ -13,7 +13,7 @@ public:
 	QEvolutionGraph(QWidget *parent = Q_NULLPTR);
 	~QEvolutionGraph();
 
-	void addPoint(QPointF pt2D);
+	void addPoint(double value);
 	void initializeGraph(QString xAxisName, QString yAxisName, QString graphTitle);
 
 private:
@@ -24,6 +24,7 @@ private:
 	QValueAxis * mXAxis;
 	QValueAxis * mYAxis;
 	qreal mXmin, mXmax, mYmin, mYmax;
+	double mTime{ 0 };
 
 	QWidget* chooseScale();
 
@@ -35,17 +36,17 @@ private:
 	QRadioButton * mScaleTwoYears;
 	QRadioButton * mScaleFiveYears;
 	QRadioButton * mScaleTenYears;
-	QRadioButton * mScaleUndredYears;
+	QRadioButton * mScaleHundredYears;
 
-	long int mMaxNbData;
-	long int mNbTicInOneHour;
-	long int mNbTicInOneDay;
-	long int mNbTicInOneWeek;
-	long int mNbTicInOneMonth;
-	long int mNbTicInOneYear;
+	int mMaxNbData;
+	int mNbDataVisible;
+	int mTimeScaler;
+	int mNbAdvanceInOneDay;
+	int mNbAdvanceInOneWeek;
+	int mNbAdvanceInOneMonth;
+	int mNbAdvanceInOneYear;
 
 private slots:
-	void setScaleOneHour();
 	void setScaleOneWeek();
 	void setScaleOneMonth();
 	void setScaleFiveMonths();
@@ -53,7 +54,7 @@ private slots:
 	void setScaleTwoYears();
 	void setScaleFiveYears();
 	void setScaleTenYears();
-	void setScaleUndredYears();
+	void setScaleHundredYears();
 
 };
 
