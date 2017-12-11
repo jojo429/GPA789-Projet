@@ -5,13 +5,13 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 {
 	//Définition des options cycliques
 	mLuminosity = new QCyclicOptions("Luminosity", ":/GPA789Projet/iconLuminosity",
-		"Average", "Variation", "Cycle", 0, 100, 0, 100, 0, 100);
+		"Average", "Variation", "Cycle", 0, 0, 0, 100, 6, 6);
 	mWind = new QCyclicOptions("Wind", ":/GPA789Projet/iconWind",
-		"Average", "Variation", "Cycle", 0, 100, 0, 100, 0, 100);
+		"Average", "Variation", "Cycle", 0, 100, 0, 100, 6, 2190);
 	mPrecipitation = new QCyclicOptions("Precipitation", ":/GPA789Projet/iconRain",
-		"Middle Value", "Variation", "Cycle", 0, 100, 0, 100, 0, 1);
+		"Average", "Variation", "Cycle", 0, 6, 0, 20, 6, 2190);
 	mTemperature = new QCyclicOptions("Temperature", ":/GPA789Projet/iconTemperature",
-		"Average", "Variation", "Cycle", 0, 100, 0, 100, 0, 100);
+		"Average", "Variation", "Cycle", -30, 30, 0, 40, 2190, 2190);
 
 	//Définition de l'icône de l'éclar
 	mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");

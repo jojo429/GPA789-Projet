@@ -1,7 +1,7 @@
 #include "QPrecipitation.h"
 
-QPrecipitation::QPrecipitation()
-	: QCyclic()
+QPrecipitation::QPrecipitation(int cycle, int average, int variation)
+	: QCyclic(cycle, average, variation, true)
 {
 
 
@@ -9,34 +9,28 @@ QPrecipitation::QPrecipitation()
 
 }
 
-void QPrecipitation::initialize(int cycle, int average, int variation)
-{
-	QCyclic::initialize(cycle, average, variation, true);
-
-
-}
 
 QPrecipitation::~QPrecipitation()
 {
 
 }
 
-float QPrecipitation::germinate()
+float QPrecipitation::germinate(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QPrecipitation::grow()
+float QPrecipitation::grow(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QPrecipitation::adjustDryness()
+float QPrecipitation::adjustDryness(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-std::array<double, 3> QPrecipitation::airDisplacement()
+std::array<double, 3> QPrecipitation::airDisplacement(int time)
 {
 	std::array<double, 3> tmp;
 

@@ -87,25 +87,11 @@ QCyclicOptions::~QCyclicOptions()
 
 void QCyclicOptions::updateValues()
 {
-	if (mCaption == "Precipitation")
-	{
-		//Define sliders values labels
-		mAverageValue->setText(QString::number(mAverageSlider->value()));;
-		mVariationValue->setText(QString::number(mVariationSlider->value()));
-		if (QString::number(mVariationSlider->value()) == 0)
-		{
-			mCycleValue->setText("Day");
-		}
-		else {
-			mCycleValue->setText("Year");
-		}
-	}
-	else {
-		//Define sliders values labels
+
 		mAverageValue->setText(QString::number(mAverageSlider->value()));;
 		mVariationValue->setText(QString::number(mVariationSlider->value()));
 		mCycleValue->setText(QString::number(mCycleSlider->value()));
-	}
+	
 }
 
 

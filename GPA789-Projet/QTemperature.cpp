@@ -1,6 +1,7 @@
 #include "QTemperature.h"
 
-QTemperature::QTemperature()
+QTemperature::QTemperature(int cycle, int average, int variation)
+	:QCyclic(cycle, average, variation)
 {
 	
 
@@ -8,12 +9,7 @@ QTemperature::QTemperature()
 }
 
 
-void QTemperature::initialize(int cycle, int average, int variation)
-{
-	QCyclic::initialize(cycle, average, variation);
 
-
-}
 
 
 QTemperature::~QTemperature()
@@ -21,17 +17,17 @@ QTemperature::~QTemperature()
 
 }
 
-float QTemperature::germinate()
+float QTemperature::germinate(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QTemperature::grow()
+float QTemperature::grow(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QTemperature::adjustDryness()
+float QTemperature::adjustDryness(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }

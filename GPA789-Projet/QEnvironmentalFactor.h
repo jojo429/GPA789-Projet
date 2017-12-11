@@ -14,6 +14,10 @@ public:
 	float grow();
 	float adjustDryness();
 	std::array<double,3> airDisplacement();
+	float germinate(int time);
+	float grow(int time);
+	float adjustDryness(int time);
+	std::array<double, 3> airDisplacement(int time);
 };
 
 #endif //Q_ENVIRONMENTAL_FACTOR_H

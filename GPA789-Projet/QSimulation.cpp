@@ -47,6 +47,7 @@ void QSimulation::play()
 {
 	
 	mSimulationMenu->getParameters(&mSimulationParameters);
+	mEnvironment.setParameters(mSimulationParameters);
 
 	mTimer.start(30);
 

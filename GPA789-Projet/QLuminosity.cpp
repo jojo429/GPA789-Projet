@@ -1,29 +1,27 @@
 #include "QLuminosity.h"
+#include "DoubleSinusTable.h"
 
-QLuminosity::QLuminosity()
-	: QCyclic()
+QLuminosity::QLuminosity(int cycle, int average, int variation, int baseVariation)
+	: QCyclic(cycle, average, variation)
 {
-
+	/*int year = 2190;
+	static_cast<DoubleSinusTable> (QLuminosity::mSinusTable);
+	mSinusTable.initialize(cycle, average, variation, baseVariation);*/
 }
 
-void QLuminosity::initialize(int cycle, int average, int variation)
-{
-	QCyclic::initialize(cycle, average, variation, true);
 
-
-}
 
 QLuminosity::~QLuminosity()
 {
 
 }
 
-float QLuminosity::germinate()
+float QLuminosity::germinate(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QLuminosity::grow()
+float QLuminosity::grow(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
