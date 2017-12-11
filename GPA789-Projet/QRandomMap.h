@@ -18,8 +18,7 @@ public:
 	void drawMap();
 
 private:
-	int mMap[2049][2049];
-	qreal mMapScaled[2049][2049];
+	qreal mMap[513][513]; //mMap[2049][2049];
 	int mMin;
 	int mMax;
 	

@@ -22,7 +22,7 @@ QRandomMap::~QRandomMap()
 void QRandomMap::setMap()
 {
 	int id, x, y, average, sum, shift, n;
-	int h{ 2049 };
+	int h{ 513 };
 	int step{ h - 1 };
 
 	RandomUniform randNumberValue = RandomUniform();
@@ -98,9 +98,9 @@ void QRandomMap::scaleMap()
 {
 	int i, j;
 
-	for (i = 0; i < 2049; ++i) {
-		for (j = 0; j < 2049; ++j) {
-			mMapScaled[i][j] = (((100 - 0)*(mMap[i][j] - mMin)) / (mMax - mMin)) - 0;
+	for (i = 0; i < 513; ++i) {
+		for (j = 0; j < 513; ++j) {
+			mMap[i][j] = (((100 - 0)*(mMap[i][j] - mMin)) / (mMax - mMin)) - 0;
 		}
 	}
 
@@ -116,8 +116,8 @@ void QRandomMap::findMinMax()
 	mMin = mMap[0][0];
 	mMax = mMap[0][0];
 
-	for (i = 0; i < 2049; ++i) {
-		for (j = 0; j < 2049; ++j) {
+	for (i = 0; i < 513; ++i) {
+		for (j = 0; j < 513; ++j) {
 			if (mMap[i][j] < mMin) {
 				mMin = mMap[i][j];
 			}
@@ -136,7 +136,7 @@ void QRandomMap::drawMap()
 	int i, j;
 	qreal shade;
 	
-	mPixelsMap = QPixmap(2049, 2049);
+	mPixelsMap = QPixmap(513, 513);
 
 	QColor mapColor;
 
@@ -144,10 +144,10 @@ void QRandomMap::drawMap()
 	//painter.setPen(Qt::red);
 	//painter.drawPoint(10, 10);
 
-	for (i = 0; i < 2049; ++i) {
-		for (j = 0; j < 2049; ++j) {
-			shade = mMapScaled[i][j] / 75.0;
-			mapColor.setRgb(139*shade, 69*shade, 19*shade);
+	for (i = 0; i < 513; ++i) {
+		for (j = 0; j < 513; ++j) {
+			shade = mMap[i][j] / 150.0;
+			mapColor.setRgb(244*shade, 164*shade, 96*shade);
 			painter.setPen(mapColor);
 			painter.drawPoint(i, j);
 		}
