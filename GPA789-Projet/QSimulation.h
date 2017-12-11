@@ -17,7 +17,7 @@ public:
 	~QSimulation();
 
 signals:
-	void timerTimeout();
+	void timeAdvance();
 
 public slots:
 	void play();
