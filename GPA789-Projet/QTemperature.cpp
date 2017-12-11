@@ -17,17 +17,17 @@ QTemperature::~QTemperature()
 
 }
 
-float QTemperature::germinate()
+float QTemperature::germinate(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QTemperature::grow()
+float QTemperature::grow(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QTemperature::adjustDryness()
+float QTemperature::adjustDryness(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }

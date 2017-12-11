@@ -10,9 +10,9 @@ public:
 	QTemperature(int cycle, int average, int variation);
 
 	~QTemperature();
-	float germinate();
-	float grow();
-	float adjustDryness();
+	float germinate(int time);
+	float grow(int time);
+	float adjustDryness(int time);
 
 
 };

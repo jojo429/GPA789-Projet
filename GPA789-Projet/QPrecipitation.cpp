@@ -15,22 +15,22 @@ QPrecipitation::~QPrecipitation()
 
 }
 
-float QPrecipitation::germinate()
+float QPrecipitation::germinate(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QPrecipitation::grow()
+float QPrecipitation::grow(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-float QPrecipitation::adjustDryness()
+float QPrecipitation::adjustDryness(int time)
 {
-	return 0;
+	return mSinusTable.getValue(time);
 }
 
-std::array<double, 3> QPrecipitation::airDisplacement()
+std::array<double, 3> QPrecipitation::airDisplacement(int time)
 {
 	std::array<double, 3> tmp;
 

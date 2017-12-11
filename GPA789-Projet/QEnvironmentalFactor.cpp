@@ -31,3 +31,23 @@ std::array<double, 3> QEnvironmentalFactor::airDisplacement()
 	
 	return tmp;
 }
+
+float QEnvironmentalFactor::germinate(int time)
+{
+	return QEnvironmentalFactor::germinate();
+}
+
+float QEnvironmentalFactor::grow(int time)
+{
+	return QEnvironmentalFactor::grow();
+}
+
+float QEnvironmentalFactor::adjustDryness(int time)
+{
+	return QEnvironmentalFactor::adjustDryness();
+}
+
+std::array<double, 3> QEnvironmentalFactor::airDisplacement(int time)
+{
+	return QEnvironmentalFactor::airDisplacement();
+}

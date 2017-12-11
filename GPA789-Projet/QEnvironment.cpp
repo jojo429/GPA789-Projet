@@ -23,53 +23,59 @@ QEnvironment::~QEnvironment()
 
 }
 
-void QEnvironment::germinateFactors()
+void QEnvironment::germinateFactors(int time)
+{
+	for (int i(0); i < mEnvironmentalFactor.size(); i++)
+	{
+		mGerminateFactors[i] = mEnvironmentalFactor[i].germinate(time);
+
+	}
+	
+}
+
+
+void QEnvironment::growFactors(int time)
+{
+	for (int i(0); i < mEnvironmentalFactor.size(); i++)
+	{
+		mGrowFactors[i] = mEnvironmentalFactor[i].germinate(time);
+
+	}
+}
+
+void QEnvironment::adjustDrynessFactors(int time)
 {
 
 }
 
-
-void QEnvironment::growFactors()
+void QEnvironment::airDisplacementFactors(int time)
 {
 
 }
 
-void QEnvironment::adjustDrynessFactors()
+std::vector<float> QEnvironment::getGerminate() const
 {
 
+	return mGerminateFactors;
 }
 
-void QEnvironment::airDisplacementFactors()
-{
-
-}
-
-std::list<float> QEnvironment::getGerminate() const
+std::vector<float> QEnvironment::getGrow() const
 {
 	std::list<float> tmp;
 
-	return tmp;
+	return mGrowFactors;
 }
 
-std::list<float> QEnvironment::getGrow() const
+std::vector<float> QEnvironment::getAdjustDryness() const
 {
-	std::list<float> tmp;
 
-	return tmp;
-}
-
-std::list<float> QEnvironment::getAdjustDryness() const
-{
-	std::list<float> tmp;
-
-	return tmp;
+	return mAdjustDrynessFactors;
 }
 
 std::array<double, 2> QEnvironment::getAirDisplacement() const
 {
-	std::array<double, 2> tmp;
 
-	return tmp;
+	return mAirDisplacementFactors;
 }
 
 

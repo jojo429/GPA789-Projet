@@ -33,11 +33,11 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
 
-	QRandomMap *mMap= new QRandomMap;
+	/*QRandomMap *mMap= new QRandomMap;
 	mMap->setMap();
 	mMap->findMinMax();
 	mMap->scaleMap();
-	mMap->drawMap();
+	mMap->drawMap();*/
 	
 	connect(mSimulation, &QSimulation::timerTimeout, mStatistic, &QStatistic::updateData);
 /*
