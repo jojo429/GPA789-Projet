@@ -3,6 +3,7 @@
 #include <QPainter>
 #include <QColor>
 
+
 QOak::QOak(QEnvironment const & environment)
 	: QTrees{ environment }
 {

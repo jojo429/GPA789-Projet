@@ -1,5 +1,7 @@
 #include "QSquirrel.h"
 #include <QPainter>
+#include "QTrees.h"
+#include <QtMath>
 
 QSquirrel::QSquirrel(QEnvironment const & environment)
 	: QAnimals{ environment }
@@ -17,6 +19,45 @@ QSquirrel::~QSquirrel()
 void QSquirrel::move()
 {
 
+	
+
+}
+
+QGraphicsItem * QSquirrel::getTarget()
+{
+	 QList<QGraphicsItem *> inRangeItems  = collidingItems();
+	
+	if (inRangeItems.empty()) 
+	{
+		return Q_NULLPTR;
+	}
+	else 
+	{
+
+		for (QGraphicsItem * item : inRangeItems) {
+
+			//If there a tree in the vision radius
+			QTrees * currentItem = dynamic_cast<QTrees *>(item);
+			if (currentItem) {
+
+
+
+				mTargetType = Trees;
+				return item;
+
+
+			}
+
+
+
+		}
+		
+
+	}
+
+
+
+	return nullptr;
 }
 
 void QSquirrel::reproduce(int age)
@@ -41,6 +82,21 @@ void QSquirrel::pickSeed()
 
 void QSquirrel::striked()
 {
+
+}
+
+void QSquirrel::setRotationAdjustment()
+{
+	qreal x1, x2, y1, y2, teta1, teta2;
+	x1 = pos().x();
+	y1 = pos().y();
+	x2 = mTargetPos.x();
+	y2 = mTargetPos.y();
+	teta1 = rotation();
+
+	teta2 = qAtan2(y1 - y2, x1 - x2) * (180 / 3.14);
+
+	setRotation(teta1 - teta2);
 
 }
 
@@ -79,5 +135,23 @@ void QSquirrel::paint(QPainter * painter, const QStyleOptionGraphicsItem * optio
 }
 void QSquirrel::advance(int phase)
 {
+	//Mouvement aléatoire
+	if (mActionCounter == 0)
+	{
+		mTarget = getTarget();
+		if (mTargetType != NoTarget) {
+			mTargetPos = mTarget->pos();
+			setRotationAdjustment();
+		}
+		
+
+
+		mActionCounter++;
+	}
+	setPos(mapToParent(0, -3));
+
+
+
+
 
 }

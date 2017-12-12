@@ -19,11 +19,11 @@
 #include <QSlider>
 
 GPA789Projet::GPA789Projet(QWidget *parent)
-	: QMainWindow(parent)
+	: QMainWindow(parent), mForestScene(mEnvironment)
 {
 	ui.setupUi(this);
 
-	mForestScene.initialize(mEnvironment);
+
 
 	QSimulation *mSimulation = new QSimulation(mForestScene, mEnvironment);
 	QStatistic *mStatistic = new QStatistic;

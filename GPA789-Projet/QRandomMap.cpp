@@ -153,6 +153,6 @@ void QRandomMap::drawMap()
 		}
 	}
 
-	QImage image = mPixelsMap.toImage();
-	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
+	//QImage image = mPixelsMap.toImage();
+	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
 }

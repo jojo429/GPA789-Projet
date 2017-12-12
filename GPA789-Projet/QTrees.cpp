@@ -6,9 +6,10 @@ QTrees::QTrees(QEnvironment const & environment)
 	: QStatic(environment)
 {
 
+	
 	mLeafRadius = 1;
 	mTrunkRadius = 0.1 * mLeafRadius;
-	
+	mMasterTree = this;
 
 }
 

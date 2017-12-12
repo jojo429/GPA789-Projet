@@ -14,8 +14,9 @@ public:
 	GPA789Projet(QWidget *parent = Q_NULLPTR);
 
 private:
-	QForestScene mForestScene;
+	
 	QEnvironment mEnvironment;
+	QForestScene mForestScene;
 
 
 private:
