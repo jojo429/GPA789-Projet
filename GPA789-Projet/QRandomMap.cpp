@@ -1,5 +1,6 @@
 #include "QRandomMap.h"
 #include "RandomUniform.h"
+#include <math.h>
 
 #include <array>
 #include <QDebug>
@@ -9,12 +10,9 @@
 QRandomMap::QRandomMap(QWidget *parent)
 	: QWidget(parent)
 {
-	/*
-	qDebug() << QString::number(mMap[2000][1000]);
-	qDebug() << QString::number(mMap[1000][1000]);
-	qDebug() << QString::number(mMap[500][1000]);
-	qDebug() << QString::number(mMap[200][1000]);
-	qDebug() << QString::number(randNumberValue.random(-50,50));*/
+	mPixelsMap = QPixmap(513, 513);
+	mPainterMap = new QPainter(&mPixelsMap);
+
 }
 
 QRandomMap::~QRandomMap()
@@ -90,7 +88,7 @@ void QRandomMap::setMap()
 	}
 }
 
-void QRandomMap::scaleMap(double minScaleValue, double maxScaleValue)
+void QRandomMap::scaleValuesRangeMap(double minScaleValue, double maxScaleValue)
 {
 	int i, j;
 
@@ -131,32 +129,101 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 		for (j = 0; j < 513; ++j) {
 			shade = mMap[i][j] / 150.0;
 			mapColor.setRgb(rColor*shade, gColor*shade, bColor*shade);
-			mPainterMap.setPen(mapColor);
-			mPainterMap.drawPoint(i, j);
+			mPainterMap->setPen(mapColor);
+			mPainterMap->drawPoint(i, j);
 		}
 	}
 
-	//QImage image = mPixelsMap.toImage();
-	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
+	QImage image = mPixelsMap.toImage();
+	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
 }
 
+// À changer!
 void QRandomMap::updateDrawMap(int x, int y, int rColor, int gColor, int bColor)
 {
+	/*
 	qreal shade;
 	QColor mapColor;
-	
+
+	double floatingX, fractionalX, integerX;
+	double floatingY, fractionalY, integerY;
+	int x, y;
+
+	fractionalX = modf(floatingX, &integerX);
+	fractionalY = modf(floatingY, &integerY);
+
+	x = (int)integerX;
+	y = (int)integerY;
+
 	shade = mMap[x][y] / 150.0;
 	mapColor.setRgb(rColor * shade, gColor * shade, bColor * shade);
 	mPainterMap.setPen(mapColor);
-	mPainterMap.drawPoint(x, y); 
+	mPainterMap.drawPoint(x, y); */
 }
 
 double QRandomMap::getMapValue(int x, int y)
 {
-	return mMap[x][y];
+	return mMapResize[x][y];
 }
 
 void QRandomMap::setMapValue(int x, int y, double value)
 {
-	mMap[x][y] = mMap[x][y] + value;
+	mMapResize[x][y] = mMapResize[x][y] + value;
+}
+
+void QRandomMap::resizeMap()
+{
+	int i, j;
+	int nextX = 0;
+	int nextY = 0;
+
+	for (i = 0; i < 513; ++i) {
+		for (j = 0; j < 513; ++j) {
+			this->resizeOnePixel(nextX, nextY, i, j);
+			if (nextY <= 2048) {
+				nextY = nextY + 4;
+			}
+		}
+		if (nextX <= 2048) {
+			nextX = nextX + 4;
+			nextY = 0;
+		}
+	}
+
+	
+	qDebug() << QString::number(mMapResize[0][3]);
+	qDebug() << QString::number(mMapResize[2][2]);
+	qDebug() << QString::number(mMapResize[3][2]);
+	qDebug() << QString::number(mMap[0][0]);
+	qDebug() << QString::number(nextX);
+	qDebug() << QString::number(nextY);
+
+	qDebug() << QString::number(mMapResize[4][3]);
+	qDebug() << QString::number(mMapResize[5][3]);
+	qDebug() << QString::number(mMapResize[7][0]);
+	qDebug() << QString::number(mMap[1][0]);
+	qDebug() << QString::number(nextX);
+	qDebug() << QString::number(nextY);
+
+	qDebug() << QString::number(mMapResize[1][4]);
+	qDebug() << QString::number(mMapResize[1][5]);
+	qDebug() << QString::number(mMapResize[2][6]);
+	qDebug() << QString::number(mMap[0][1]);
+	qDebug() << QString::number(nextX);
+	qDebug() << QString::number(nextY);
+
+	qDebug() << QString::number(mMapResize[8][0]);
+	qDebug() << QString::number(mMapResize[1][8]);
+
+}
+
+void QRandomMap::resizeOnePixel(int nextPixelIndexX, int nextPixelIndexY, int pixelIndexX, int pixelIndexY)
+{
+	int i, j;
+
+	for (i = 0; i < 4; ++i) {
+		for (j = 0; j < 4; ++j) {
+			mMapResize[nextPixelIndexX + i][nextPixelIndexY + j] = mMap[pixelIndexX][pixelIndexY];
+		}
+	}
 }

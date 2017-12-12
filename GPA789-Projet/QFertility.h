@@ -15,14 +15,12 @@ public:
 	QFertility();
 	~QFertility();
 	double getFertility(int x, int y);
-	//char getFertility(QPointF pt2D);
 	void setFertility(double minValue, double maxValue);
 	void updateFertility(int x, int y, double fertility);
-	//void setFertility(QPointF pt2D, char fertility);
 	void enableFertility();
 	void disableFertility();
-	float germinate(QPointF pt2D);
-	float grow(QPointF pt2D);
+	float germinate(int x, int y);
+	float grow(int x, int y);
 
 private:
 	QRandomMap *mFertilityMap;
