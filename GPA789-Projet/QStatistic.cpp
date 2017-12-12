@@ -8,9 +8,10 @@ QStatistic::QStatistic(QWidget *parent)
 {
 	QVBoxLayout * mainLayout = new QVBoxLayout;
 	mTestGraph1 = new QEvolutionGraph;
-	mTestGraph2 = new QEvolutionGraph;
+	mRainGraph = new QEvolutionGraph;
+	mRainGraph->initializeGraph("Time","Rain level (mm)","Rain level graphic");
 	mainLayout->addWidget(mTestGraph1);
-	mainLayout->addWidget(mTestGraph2);
+	mainLayout->addWidget(mRainGraph);
 	
 	setLayout(mainLayout);
 
@@ -24,5 +25,5 @@ QStatistic::~QStatistic()
 void QStatistic::updateData() 
 {
 		y++;
-		mTestGraph1->addPoint(y);
+		mRainGraph->addPoint(y);
 }

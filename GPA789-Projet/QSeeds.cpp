@@ -38,11 +38,11 @@ bool QSeeds::isItDead()
 
 void QSeeds::move()
 {
-	std::array<double, 2> movingVector;
+	/*std::array<double, 2> movingVector;
 	movingVector = mEnvironment.getAirDisplacement();
 	moveBy(movingVector[0] * mMovingFactor, movingVector[1] * mMovingFactor);
 	mCountFallDown++;
-	update();
+	update();*/
 }
 
 void QSeeds::piked()

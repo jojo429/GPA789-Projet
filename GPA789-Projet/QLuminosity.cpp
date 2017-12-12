@@ -16,12 +16,12 @@ QLuminosity::~QLuminosity()
 
 }
 
-float QLuminosity::germinate(int time)
-{
-	return mSinusTable.getValue(time);
-}
-
-float QLuminosity::grow(int time)
-{
-	return mSinusTable.getValue(time);
-}
+//float QLuminosity::germinate(int time)
+//{
+//	return mSinusTable.getValue(time);
+//}
+//
+//float QLuminosity::grow(int time)
+//{
+//	return mSinusTable.getValue(time);
+//}

@@ -12,7 +12,7 @@ public:
 	QCyclic(int cycle, int average, int variation, bool noNegative);
 	~QCyclic();
 
-
+	float getFactor(int Time);
 
 protected:
 

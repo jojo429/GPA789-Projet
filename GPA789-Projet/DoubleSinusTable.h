@@ -2,8 +2,7 @@
 #define DOUBLE_SINUS_TABLE_H
 
 #include "SinusTable.h"
-class DoubleSinusTable :
-	public SinusTable
+class DoubleSinusTable : public SinusTable
 {
 public:
 	DoubleSinusTable();

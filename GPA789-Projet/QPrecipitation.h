@@ -10,10 +10,10 @@ class QPrecipitation : public QCyclic
 public:
 	QPrecipitation(int cycle, int average, int variation);
 	~QPrecipitation();
-	float germinate(int time);
-	float grow(int time);
-	float adjustDryness(int time);
-	std::array<double,3> airDisplacement(int time);
+	//float germinate(int time);
+	//float grow(int time);
+	//float adjustDryness(int time);
+	//std::array<double,3> airDisplacement(int time);
 
 };
 

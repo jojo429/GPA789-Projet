@@ -19,4 +19,7 @@ QCyclic::~QCyclic()
 
 }
 
-
+float QCyclic::getFactor(int time)
+{
+	return mSinusTable.getValue(time);
+}
