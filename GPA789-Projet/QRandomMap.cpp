@@ -134,8 +134,8 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 		}
 	}
 
-	//QImage image = mPixelsMap.toImage();
-	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
+	QImage image = mPixelsMap.toImage();
+	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
 }
 
 // À changer!
@@ -190,7 +190,7 @@ void QRandomMap::resizeMap()
 		}
 	}
 
-	/*
+	
 	qDebug() << QString::number(mMapResize[0][3]);
 	qDebug() << QString::number(mMapResize[2][2]);
 	qDebug() << QString::number(mMapResize[3][2]);
@@ -213,7 +213,7 @@ void QRandomMap::resizeMap()
 	qDebug() << QString::number(nextY);
 
 	qDebug() << QString::number(mMapResize[8][0]);
-	qDebug() << QString::number(mMapResize[1][8]);*/
+	qDebug() << QString::number(mMapResize[1][8]);
 
 }
 
