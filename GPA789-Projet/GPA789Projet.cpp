@@ -4,6 +4,7 @@
 #include "QSimulationMenu.h"
 #include "QStatistic.h"
 #include "QRandomMap.h"
+#include "SimulationStatistics.h"
 
 #include <QGraphicsGridLayout>
 #include <QGraphicsView>
@@ -42,7 +43,7 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	mMap->drawMap(244, 164, 96);
 	mMap->resizeMap();
 	
-	//connect(mSimulation, &QSimulation::timeAdvance, mStatistic, &QStatistic::updateData);
+	connect(mSimulation, &QSimulation::sendStatistics, mStatistic, &QStatistic::updateData);
 /*
 
 	QHBoxLayout *firstLvlSettings = new QHBoxLayout;

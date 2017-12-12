@@ -30,12 +30,20 @@ std::vector<float> QEnvironment::getFactors()
 	return mFactors;
 }
 
+void QEnvironment::getStatistics(SimulationStatistics *simulationStatistics)
+{
+	simulationStatistics->mTemperature = mFactors[0];
+	simulationStatistics->mPrecipitation = mFactors[1];
+	simulationStatistics->mLuminosity = mFactors[2];
+	simulationStatistics->mWind = mFactors[3];
+}
+
 void QEnvironment::calculateFactors(int Time)
 {
 	
 	for (int i(0); i < mEnvironmentalFactor.size(); i++)
 	{
-		mFactors[i] = mEnvironmentalFactor[i].getFactor(Time);
+		mFactors[i] = (mEnvironmentalFactor[i])->getFactor(Time);
 	}
 
 	mTime++;
@@ -49,7 +57,10 @@ void QEnvironment::calculateFactors(int Time)
 
 QEnvironment::~QEnvironment()
 {
-
+	for (int i(0); i < mEnvironmentalFactor.size(); i++)
+	{
+		delete mEnvironmentalFactor[i];
+	}
 }
 
 //void QEnvironment::germinateFactors(int time)
@@ -110,10 +121,10 @@ QEnvironment::~QEnvironment()
 
 void QEnvironment::setParameters(SimulationParameters &simulationParameters)
 {
-	mEnvironmentalFactor.emplace_back((QTemperature(simulationParameters.mTemperatureCycle, simulationParameters.mTemperatureAverage, simulationParameters.mTemperatureVariation)));
-	mEnvironmentalFactor.emplace_back((QPrecipitation(simulationParameters.mPrecipitationCycle, simulationParameters.mPrecipitationAverage, simulationParameters.mPrecipitationVariation)));
-	mEnvironmentalFactor.emplace_back((QLuminosity(simulationParameters.mLuminosityCycle, simulationParameters.mLuminosityAverage,100, simulationParameters.mLuminosityVariation)));
-	mEnvironmentalFactor.emplace_back((QWind(simulationParameters.mWindCycle, simulationParameters.mWindAverage, simulationParameters.mWindVariation)));
+	mEnvironmentalFactor.emplace_back((new QTemperature(simulationParameters.mTemperatureCycle, simulationParameters.mTemperatureAverage, simulationParameters.mTemperatureVariation)));
+	mEnvironmentalFactor.emplace_back((new QPrecipitation(simulationParameters.mPrecipitationCycle, simulationParameters.mPrecipitationAverage, simulationParameters.mPrecipitationVariation)));
+	mEnvironmentalFactor.emplace_back((new QLuminosity(simulationParameters.mLuminosityCycle, simulationParameters.mLuminosityAverage,100, simulationParameters.mLuminosityVariation)));
+	mEnvironmentalFactor.emplace_back((new QWind(simulationParameters.mWindCycle, simulationParameters.mWindAverage, simulationParameters.mWindVariation)));
 
 	mFactors.resize((mEnvironmentalFactor.size()));
 

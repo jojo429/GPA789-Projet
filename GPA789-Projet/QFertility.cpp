@@ -38,12 +38,12 @@ void QFertility::disableFertility()
 
 }
 
-float QFertility::germinate(int x, int y)
-{
-	return 0;
-}
-
-float QFertility::grow(int x, int y)
-{
-	return 0;
-}
+//float QFertility::germinate(int x, int y)
+//{
+//	return 0;
+//}
+//
+//float QFertility::grow(int x, int y)
+//{
+//	return 0;
+//}

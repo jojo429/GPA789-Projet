@@ -6,6 +6,7 @@
 #include "QEnvironment.h"
 #include <QTimer>
 #include "SimulationParameters.h"
+#include "SimulationStatistics.h"
 #include "QSimulationMenu.h"
 
 class QSimulation : public QWidget
@@ -17,19 +18,23 @@ public:
 	~QSimulation();
 
 signals:
-	void timeAdvance();
+
+	 void sendStatistics(SimulationStatistics stats);
 
 public slots:
 	void play();
 	void pause();
 	void stop();
 	void step();
+	void getStatistics();
 
 private:
 	QTimer mTimer{ this };
 	QEnvironment  & mEnvironment;
 	SimulationParameters mSimulationParameters;
+	SimulationStatistics mSimulationStatistics;
 	QSimulationMenu *mSimulationMenu;
+	
 	
 };
 #endif //Q_SIMULATION_H

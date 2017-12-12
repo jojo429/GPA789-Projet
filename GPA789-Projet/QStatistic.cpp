@@ -22,8 +22,7 @@ QStatistic::~QStatistic()
 {
 }
 
-void QStatistic::updateData() 
+void QStatistic::updateData(SimulationStatistics stats) 
 {
-		y++;
-		mRainGraph->addPoint(y);
+		mRainGraph->addPoint(stats.mPrecipitation);
 }

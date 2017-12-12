@@ -10,15 +10,12 @@ QEnvironmentalFactor::~QEnvironmentalFactor()
 
 }
 
+
+
 float QEnvironmentalFactor::getFactor(int Time)
 {
 	return 0;
 }
-
-//float QEnvironmentalFactor::germinate()
-//{
-//	return 0;
-//}
 //
 //float QEnvironmentalFactor::grow()
 //{

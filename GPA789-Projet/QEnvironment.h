@@ -6,6 +6,7 @@
 #include <vector>
 #include "QEnvironmentalFactor.h"
 #include "SimulationParameters.h"
+#include "SimulationStatistics.h"
 class QSeeds;
 class QTrees;
 
@@ -27,13 +28,14 @@ public:
 
 	void calculateFactors(int Time);
 	void setParameters(SimulationParameters &simulationParameters);
+	void getStatistics(SimulationStatistics *simulationStatistics);
 	std::vector<float> getFactors();
 
 public slots:
 	void advance();
 
 private:
-	std::vector<QEnvironmentalFactor> mEnvironmentalFactor;
+	std::vector< QEnvironmentalFactor*> mEnvironmentalFactor;
 	std::vector<float> mFactors;
 
 	int mTime = 0;

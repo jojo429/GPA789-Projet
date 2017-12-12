@@ -97,6 +97,7 @@
     <ClCompile Include="QRandomMap.cpp" />
     <ClCompile Include="QEvolutionGraph.cpp" />
     <ClCompile Include="SimulationParameters.cpp" />
+    <ClCompile Include="SimulationStatistics.cpp" />
     <ClCompile Include="SinusTable.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_QCyclicOptions.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -238,6 +239,7 @@
     </CustomBuild>
     <ClInclude Include="DoubleSinusTable.h" />
     <ClInclude Include="SimulationParameters.h" />
+    <ClInclude Include="SimulationStatistics.h" />
     <ClInclude Include="SinusTable.h" />
     <ClInclude Include="RandomGenerator.h" />
     <ClInclude Include="RandomUniform.h" />

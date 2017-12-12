@@ -2,7 +2,7 @@
 #define Q_STATISTIC_H
 
 #include "QEvolutionGraph.h"
-
+#include "SimulationStatistics.h"
 #include <QWidget>
 
 
@@ -15,7 +15,7 @@ public:
 	~QStatistic();
 
 public slots:
-	void updateData();
+	void updateData(SimulationStatistics stats);
 
 private: 
 	QEvolutionGraph * mTestGraph1;
