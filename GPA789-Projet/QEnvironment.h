@@ -3,6 +3,7 @@
 
 #include <list>
 #include <array>
+#include <vector>
 #include "QEnvironmentalFactor.h"
 #include "SimulationParameters.h"
 class QSeeds;
@@ -15,21 +16,27 @@ class QEnvironment : public QObject
 public:
 	QEnvironment();
 	~QEnvironment();
-	void germinate(QSeeds &seeds);
-	void grow(QTrees &trees);
-	void adjustDryness(QTrees &trees);
-	void airDisplacement(QSeeds &seeds);
-	std::list<float> getGerminate() const;
-	std::list<float> getGrow() const;
-	std::list<float> getAdjustDryness() const;
-	std::array<double,2>  getAirDisplacement() const;
+	//void germinateFactors(int time);
+	//void growFactors(int time);
+	//void adjustDrynessFactors(int time);
+	//void airDisplacementFactors(int time);
+	//std::vector<float> getGerminate() const;
+	//std::vector<float> getGrow() const;
+	//std::vector<float> getAdjustDryness() const;
+	//std::array<double,2>  getAirDisplacement() const;
+
+	void calculateFactors(int Time);
 	void setParameters(SimulationParameters &simulationParameters);
+	std::vector<float> getFactors();
 
 public slots:
 	void advance();
 
 private:
-	std::list<QEnvironmentalFactor> mEnvironmentalFactor;
+	std::vector<QEnvironmentalFactor> mEnvironmentalFactor;
+	std::vector<float> mFactors;
+
+	int mTime = 0;
 
 };
 

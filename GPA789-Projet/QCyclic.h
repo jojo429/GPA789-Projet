@@ -8,13 +8,13 @@ class QCyclic : public QEnvironmentalFactor
 {
 
 public:
-	QCyclic();
+	QCyclic(int cycle, int average, int variation);
+	QCyclic(int cycle, int average, int variation, bool noNegative);
 	~QCyclic();
-	void initialize(int cycle, int average, int variation);
-	void initialize(int cycle, int average, int variation, bool noNegative);
 
+	float getFactor(int Time);
 
-private:
+protected:
 
 	SinusTable mSinusTable;
 

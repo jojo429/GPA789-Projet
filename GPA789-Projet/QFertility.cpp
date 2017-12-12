@@ -2,7 +2,7 @@
 
 QFertility::QFertility()
 {
-	
+	mFertilityMap = new QRandomMap;
 }
 
 QFertility::~QFertility()
@@ -10,24 +10,22 @@ QFertility::~QFertility()
 
 }
 
-char QFertility::getFertility(qreal x, qreal y)
+double QFertility::getFertility(int x, int y)
 {
-	return 0;
+	return mFertilityMap->getMapValue(x, y); 
 }
 
-char QFertility::getFertility(QPointF pt2D)
+void QFertility::setFertility(double minValue, double maxValue)
 {
-	return 0;
+	mFertilityMap->setMap();
+	mFertilityMap->scaleValuesRangeMap(minValue, maxValue);
+	mFertilityMap->drawMap(264, 160, 96); 
 }
 
-void QFertility::setFertility(qreal x, qreal y, char fertility)
+void QFertility::updateFertility(int x, int y, double fertility)
 {
-
-}
-
-void QFertility::setFertility(QPointF pt2D, char fertility)
-{
-
+	mFertilityMap->updateDrawMap(x, y, 264, 160, 96);
+	mFertilityMap->setMapValue(x, y, fertility);
 }
 
 void QFertility:: enableFertility()
@@ -40,12 +38,12 @@ void QFertility::disableFertility()
 
 }
 
-float QFertility::germinate(QPointF pt2D)
+float QFertility::germinate(int x, int y)
 {
 	return 0;
 }
 
-float QFertility::grow(QPointF pt2D)
+float QFertility::grow(int x, int y)
 {
 	return 0;
 }

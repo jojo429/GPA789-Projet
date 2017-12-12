@@ -19,7 +19,7 @@ public slots:
 
 private: 
 	QEvolutionGraph * mTestGraph1;
-	QEvolutionGraph * mTestGraph2;
+	QEvolutionGraph * mRainGraph;
 	//TEST/////
 	long int x{ 0 }, y{ 0 };
 	///////////

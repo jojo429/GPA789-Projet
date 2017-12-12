@@ -10,8 +10,8 @@ class QWind : public QCyclic
 public:
 	QWind(int cycle, int average, int variation);
 	~QWind();
-	float adjustDryness();
-	std::array<double, 3> airDisplacement();
+	//float adjustDryness(int time);
+	//std::array<double, 3> airDisplacement(int time);
 
 };
 

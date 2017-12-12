@@ -7,11 +7,11 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 	: QWidget(parent)
 {
 
-	mNbTicInOneHour = 30 * 60;
-	mNbTicInOneDay = mNbTicInOneHour * 24;
-	mNbTicInOneWeek = mNbTicInOneDay * 7;
-	mNbTicInOneMonth = mNbTicInOneWeek * 31;
-	mNbTicInOneYear = mNbTicInOneMonth * 12;
+	mNbAdvanceInOneDay = 6;
+	mNbAdvanceInOneWeek = mNbAdvanceInOneDay * 7;
+	mNbAdvanceInOneMonth = mNbAdvanceInOneDay * 30;
+	mNbAdvanceInOneYear = mNbAdvanceInOneDay * 365;
+	mMaxNbData = mNbAdvanceInOneYear * 100;
 
 	mChart = new QChart;
 	mChart->setTitle("DefaultTitle");
@@ -26,7 +26,7 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 	mYAxis->setTitleText("DefaultY");
 
 	//Introduire les axes X et Y
-	mChart->addAxis(mXAxis, Qt::AlignBottom); 
+	mChart->addAxis(mXAxis, Qt::AlignBottom);
 	mChart->addAxis(mYAxis, Qt::AlignLeft);
 
 	//Déclaration de la série de données
@@ -35,15 +35,13 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 	mDataSerie->attachAxis(mXAxis);
 	mDataSerie->attachAxis(mYAxis);
 
-	
-
 	connect(mDataSerie, &QLineSeries::pointAdded, [this](int index) {
 
 		if (index == 0) {
 			mXmin = mXmax = mDataSerie->at(index).x();
 			mYmin = mYmax = mDataSerie->at(index).y();
-			mXAxis->setRange(mXmin, mXmax);
-			mYAxis->setRange(mYmin, mXmax);
+			mXAxis->setRange(mXmin, mNbDataVisible);
+			mYAxis->setRange(mYmin, mYmax);
 		}
 		else {
 			qreal x = mDataSerie->at(index).x();
@@ -54,7 +52,11 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 			if (x > mXmax) { xChanged = true; mXmax = x; }
 			if (y < mYmin) { yChanged = true; mYmin = y; }
 			if (y > mYmax) { yChanged = true; mYmax = y; }
-			if (xChanged) { mXAxis->setRange(mXmin, mXmax); }
+			if (xChanged)
+			{ 
+				if (mXmax < mNbDataVisible) { mXAxis->setRange(mXmin, mNbDataVisible);}
+				else { mXAxis->setRange(mXmax - mNbDataVisible, mXmax);}
+			}
 			if (yChanged) { mYAxis->setRange(mYmin, mYmax); }
 		}
 
@@ -82,7 +84,6 @@ void QEvolutionGraph::initializeGraph(QString xAxisName, QString yAxisName, QStr
 
 QWidget* QEvolutionGraph::chooseScale() {
 	
-	mScaleOneHour = new QRadioButton("One Hour");
 	mScaleOneWeek = new QRadioButton("One Week");
 	mScaleOneMonth = new QRadioButton("One Month");
 	mScaleFiveMonths = new QRadioButton("Five Month");
@@ -90,13 +91,12 @@ QWidget* QEvolutionGraph::chooseScale() {
 	mScaleTwoYears = new QRadioButton("Two Years");
 	mScaleFiveYears = new QRadioButton("Five Years");
 	mScaleTenYears = new QRadioButton("Ten Years");
-	mScaleUndredYears = new QRadioButton("Undred Years");
+	mScaleHundredYears = new QRadioButton("Hundred Years");
 
 	mScaleOneYear->setChecked(true);
 	setScaleOneYear();
 	
 	QVBoxLayout * layout = new QVBoxLayout;
-	layout->addWidget(mScaleOneHour);
 	layout->addWidget(mScaleOneWeek);
 	layout->addWidget(mScaleOneMonth);
 	layout->addWidget(mScaleFiveMonths);
@@ -104,70 +104,56 @@ QWidget* QEvolutionGraph::chooseScale() {
 	layout->addWidget(mScaleTwoYears);
 	layout->addWidget(mScaleFiveYears);
 	layout->addWidget(mScaleTenYears);
-	layout->addWidget(mScaleUndredYears);
+	layout->addWidget(mScaleHundredYears);
 
-	connect(mScaleOneHour, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleOneHour);
 	connect(mScaleOneWeek, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleOneWeek);
 	connect(mScaleOneMonth, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleOneMonth);
 	connect(mScaleFiveMonths, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleFiveMonths);
-	connect(mScaleOneYear, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleTwoYears);
+	connect(mScaleOneYear, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleOneYear);
 	connect(mScaleTwoYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleTwoYears);
 	connect(mScaleFiveYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleFiveYears);
 	connect(mScaleTenYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleTenYears);
-	connect(mScaleUndredYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleUndredYears);
+	connect(mScaleHundredYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleHundredYears);
 
 	QWidget * widget = new QWidget;
 	widget->setLayout(layout);
 
 	return widget;
 }
-void QEvolutionGraph::addPoint(QPointF pt2D) {
-	*mDataSerie << pt2D;
-}
-
-void QEvolutionGraph::setScaleOneHour()
-{  
-	while (mDataSerie->count() > mNbTicInOneHour) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneHour;
+void QEvolutionGraph::addPoint(double value) {
+	*mDataSerie << QPointF(mTime, value);
+	mTime++;
 }
 
 void QEvolutionGraph::setScaleOneWeek()
 {
-	while (mDataSerie->count() > mNbTicInOneWeek) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneWeek;
+	mNbDataVisible = mNbAdvanceInOneWeek;
 }
 void QEvolutionGraph::setScaleOneMonth()
 {
-	while (mDataSerie->count() > mNbTicInOneMonth) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneMonth;
+	mNbDataVisible = mNbAdvanceInOneMonth;
 }
 void QEvolutionGraph::setScaleFiveMonths()
 {
-	while (mDataSerie->count() > mNbTicInOneMonth*5) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneMonth*5;
+	mNbDataVisible = mNbAdvanceInOneMonth*5;
 }
 void QEvolutionGraph::setScaleOneYear()
 {
-	while (mDataSerie->count() > mNbTicInOneYear) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneYear;
+	mNbDataVisible = mNbAdvanceInOneYear;
 }
 void QEvolutionGraph::setScaleTwoYears()
 {
-	while (mDataSerie->count() > mNbTicInOneYear * 2) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneYear * 2;
+	mNbDataVisible = mNbAdvanceInOneYear * 2;
 }
 void QEvolutionGraph::setScaleFiveYears()
 {
-	while (mDataSerie->count() > mNbTicInOneYear * 5) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneYear * 5;
+	mNbDataVisible = mNbAdvanceInOneYear * 5;
 }
 void QEvolutionGraph::setScaleTenYears()
 {
-	while (mDataSerie->count() > mNbTicInOneYear * 10) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneYear * 10;
+	mNbDataVisible = mNbAdvanceInOneYear * 10;
 }
-void QEvolutionGraph::setScaleUndredYears()
+void QEvolutionGraph::setScaleHundredYears()
 {
-	while (mDataSerie->count() > mNbTicInOneYear * 100) { mDataSerie->remove(0); }
-	mMaxNbData = mNbTicInOneYear * 100;
+	mNbDataVisible = mNbAdvanceInOneYear * 100;
 }

@@ -28,7 +28,7 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 
 	connect(&mTimer, &QTimer::timeout, &environment, &QEnvironment::advance);
 	connect(&mTimer, &QTimer::timeout, &forestScene, &QForestScene::advance);
-	connect(&mTimer, &QTimer::timeout, this, &QSimulation::timerTimeout);
+	connect(&mTimer, &QTimer::timeout, this, &QSimulation::timeAdvance);
 	
 	connect(mSimulationMenu, &QSimulationMenu::play, this, &QSimulation::play);
 	connect(mSimulationMenu, &QSimulationMenu::pause, this, &QSimulation::pause);
@@ -47,6 +47,7 @@ void QSimulation::play()
 {
 	
 	mSimulationMenu->getParameters(&mSimulationParameters);
+	mEnvironment.setParameters(mSimulationParameters);
 
 	mTimer.start(30);
 
