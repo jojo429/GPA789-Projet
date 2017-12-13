@@ -5,6 +5,7 @@
 #include <QBrush>
 #include <QPen>
 #include <QColor>
+#include "GaussianTable.h"
 
 class QTrees : public QStatic
 {
@@ -37,6 +38,9 @@ protected:
 	QTrees *mMasterTree;
 	void advance(int phase);
 	QRectF boundingRect() const;
+
+
+
 };
 
 

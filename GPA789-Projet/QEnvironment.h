@@ -13,6 +13,7 @@ class QTrees;
 #include "QTemperature.h"
 #include "QLuminosity.h"
 #include "QWind.h"
+#include "RandomUniform.h"
 
 class QEnvironment : public QObject
 {
@@ -46,6 +47,7 @@ private:
 	QTemperature mTemperature;
 	QWind mWind;
 	int mTime = 0;
+	RandomUniform mGenerate;
 
 };
 

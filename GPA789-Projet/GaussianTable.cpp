@@ -6,7 +6,7 @@ GaussianTable::GaussianTable(int lenght, int mainValue, int spreadFactor)
 	: FunctionTable(lenght)
 {
 
-
+	GaussianTable::set(mainValue, spreadFactor);
 }
 
 
@@ -23,7 +23,7 @@ void GaussianTable::set(int mainValue, int spreadFactor)
 	for (int x(0); x < mLenght; x++)
 	{
 
-		mTable.push_back(exp(((-(x - mainValue))*(-(x - mainValue))) / spreadFactor));
+		mTable.push_back(exp(-((x - mainValue)*(x - mainValue)) / spreadFactor));
 	}
 
 }

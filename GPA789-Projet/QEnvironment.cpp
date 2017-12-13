@@ -7,7 +7,7 @@
 #include "QWind.h"
 
 QEnvironment::QEnvironment()
-	: mWind(6,0,0), mPrecipitation(6,0,0), mTemperature(6,0,0), mLuminosity(6,0,0)
+	: mWind(6,0,0), mPrecipitation(6,0,0), mTemperature(6,0,0), mLuminosity(6,0,0), mGenerate(-100,100)
 {
 
 	mEnvironmentalFactor.emplace_back(&mTemperature);
@@ -39,10 +39,16 @@ std::vector<float> QEnvironment::getFactors()
 
 void QEnvironment::getStatistics(SimulationStatistics *simulationStatistics)
 {
-	simulationStatistics->mTemperature = mFactors[0];
-	simulationStatistics->mPrecipitation = mFactors[1];
-	simulationStatistics->mLuminosity = mFactors[2];
-	simulationStatistics->mWind = mFactors[3];
+	simulationStatistics->mTemperature = ((0.05 * mGenerate.random() / 100) + 1)*(mFactors[0]);
+	simulationStatistics->mPrecipitation = ((0.05 * mGenerate.random() / 100) + 1)*(mFactors[1]);
+	simulationStatistics->mLuminosity = ((0.05 * mGenerate.random() / 100) + 1)*(mFactors[2]);
+	simulationStatistics->mWind = ((0.05 * mGenerate.random() / 100) + 1)*(mFactors[3]);
+
+	//simulationStatistics->mTemperature = mFactors[0];
+	//simulationStatistics->mPrecipitation = mFactors[1];
+	//simulationStatistics->mLuminosity = mFactors[2];
+	//simulationStatistics->mWind = mFactors[3]; 
+	
 }
 
 void QEnvironment::calculateFactors(int Time)
