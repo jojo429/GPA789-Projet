@@ -9,7 +9,7 @@ class QEnvironmentalFactor
 
 public:
 	QEnvironmentalFactor();
-	~QEnvironmentalFactor();
+	virtual ~QEnvironmentalFactor();
 	
 	virtual float getFactor(int Time);
 	virtual void setTable(int cycle, int average, int variation);
