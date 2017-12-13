@@ -7,7 +7,6 @@ class QOak : public QTrees
 {
 
 public:
-	QOak(const QOak&) = default;
 	QOak(QEnvironment const & environment);
 	~QOak();
 	void grow();
