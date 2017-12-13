@@ -54,6 +54,13 @@ void QTrees::striked()
 
 }
 
+void QTrees::setMasterTree(QTrees * tree)
+{
+	mMasterTree = tree;
+
+
+}
+
 QRectF QTrees::boundingRect() const
 {
 	

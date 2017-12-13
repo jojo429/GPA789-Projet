@@ -19,17 +19,18 @@ public:
 	QForestScene(QEnvironment const & enviromnent, QGraphicsScene * parent = Q_NULLPTR);
 	~QForestScene();
 
-
+protected:
 
 
 private:
+
+	void closestTree(QPointF pt2D);
+	void lightningStrike(QPointF pt2D);
+	QBrush mBackgroundBrush{ QColor(239, 247, 153) };
 	QOak mMasterOak;
 	QBirch mMasterBirch;
 	QHazel mMasterHazel;
 	QFir mMasterFir;
-	void closestTree(QPointF pt2D);
-	void lightningStrike(QPointF pt2D);
-	QBrush mBackgroundBrush{ QColor(239, 247, 153) };
 };
 
 #endif //Q_FOREST_SCENE_H

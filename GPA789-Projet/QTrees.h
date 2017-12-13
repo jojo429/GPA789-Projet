@@ -10,6 +10,7 @@ class QTrees : public QStatic
 {
 
 public:
+	QTrees(const QTrees&) = default;
 	QTrees(QEnvironment const & environment);
 	~QTrees();
 
@@ -20,7 +21,7 @@ public:
 	void adjustDryness();
 	void setOnFire();
 	void striked() override;
-
+	void setMasterTree(QTrees * tree);
 	
 
 

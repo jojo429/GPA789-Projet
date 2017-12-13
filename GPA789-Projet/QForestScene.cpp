@@ -15,14 +15,19 @@ QForestScene::QForestScene(QEnvironment const & enviromnent, QGraphicsScene * pa
 	this->setBackgroundBrush(mBackgroundBrush);
 	int treeCount{ 50 };
 
+	//Setting up the master trees
+	mMasterOak.setMasterTree(&mMasterOak);
+	mMasterHazel.setMasterTree(&mMasterHazel);
+	mMasterBirch.setMasterTree(&mMasterBirch);
+	mMasterFir.setMasterTree(&mMasterFir);
 
 	//for (int i{ 0 }; i < treeCount; ++i) {
 	//	//Add trees
 	//	QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
-	//	QTrees *newTree = new QOak(enviromnent);
+	//	QOak *newTree = new QOak(mMasterOak);
 	//	this->addItem(newTree);
 	//	newTree->setPos(spawnPoint);
-
+	//}
 	//	//Add seeds
 	//	//QSeeds *newSeed = new QSeeds(enviromnent);
 	//	//this->addItem(newSeed);
