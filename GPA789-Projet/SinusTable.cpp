@@ -4,7 +4,7 @@
 
 
 SinusTable::SinusTable(int cycle, int average, int variation,int lenght, bool noNegative)
-	:mLenght{lenght}, mNoNegative{noNegative}
+	:FunctionTable(lenght), mNoNegative{noNegative}
 {
 	if (cycle<=0)
 	{
@@ -60,8 +60,5 @@ void SinusTable::set(int cycle, int average, int variation)
 SinusTable::~SinusTable()
 {
 }
-double SinusTable::getValue(int position)
-{
 
-	return mTable[position];
-}
+

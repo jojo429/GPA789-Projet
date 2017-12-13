@@ -1,4 +1,7 @@
-#pragma once
+#ifndef SIMULATION_STATISTICS_H
+#define SIMULATION_STATISTICS_H
+
+
 class SimulationStatistics
 {
 public:
@@ -11,4 +14,5 @@ public:
 	double mLuminosity;
 
 };
+#endif
 

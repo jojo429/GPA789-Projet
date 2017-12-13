@@ -70,6 +70,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DoubleSinusTable.cpp" />
+    <ClCompile Include="FunctionTable.cpp" />
+    <ClCompile Include="GaussianTable.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -238,6 +240,8 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
     <ClInclude Include="DoubleSinusTable.h" />
+    <ClInclude Include="FunctionTable.h" />
+    <ClInclude Include="GaussianTable.h" />
     <ClInclude Include="SimulationParameters.h" />
     <ClInclude Include="SimulationStatistics.h" />
     <ClInclude Include="SinusTable.h" />
