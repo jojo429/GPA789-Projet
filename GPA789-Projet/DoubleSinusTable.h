@@ -5,11 +5,10 @@
 class DoubleSinusTable : public SinusTable
 {
 public:
-	DoubleSinusTable();
+	DoubleSinusTable(int cycle, int average, int variation, int lenght, bool noNegative, int baseVariation);
 	~DoubleSinusTable();
 
-	void initialize(int cycle, int average, int variation,int baseVariation, int lenght);
-	void initialize(int cycle, int average, int variation,int baseVariation, int lenght, bool noNegative);
+	
 };
 
 #endif

@@ -1,8 +1,8 @@
 #include "QLuminosity.h"
 #include "DoubleSinusTable.h"
 
-QLuminosity::QLuminosity(int cycle, int average, int variation, int baseVariation)
-	: QCyclic(cycle, average, variation)
+QLuminosity::QLuminosity(int cycle, int average, int variation)
+	: QCyclic(cycle, average, variation, false)
 {
 	/*int year = 2190;
 	static_cast<DoubleSinusTable> (QLuminosity::mSinusTable);

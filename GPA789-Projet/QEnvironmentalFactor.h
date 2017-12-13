@@ -11,8 +11,8 @@ public:
 	QEnvironmentalFactor();
 	~QEnvironmentalFactor();
 	
-	float getFactor(int Time);
-
+	virtual float getFactor(int Time);
+	virtual void setTable(int cycle, int average, int variation);
 	/*float germinate();
 	float grow();
 	float adjustDryness();

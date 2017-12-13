@@ -10,7 +10,10 @@ QEnvironmentalFactor::~QEnvironmentalFactor()
 
 }
 
+void QEnvironmentalFactor::setTable(int cycle, int average, int variation) 
+{
 
+}
 
 float QEnvironmentalFactor::getFactor(int Time)
 {

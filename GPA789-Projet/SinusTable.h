@@ -6,10 +6,8 @@
 class SinusTable
 {
 public:
-	SinusTable();
+	SinusTable(int cycle, int average, int variation, int lenght, bool noNegative);
 	~SinusTable();
-	void initialize(int cycle, int average, int variation, int lenght);
-	void initialize(int cycle, int average, int variation, int lenght, bool noNegative);
 	void set(int cycle, int average, int variation);
 	double getValue(int position);
 

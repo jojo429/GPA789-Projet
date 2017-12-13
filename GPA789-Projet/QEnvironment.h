@@ -9,6 +9,10 @@
 #include "SimulationStatistics.h"
 class QSeeds;
 class QTrees;
+#include "QPrecipitation.h"
+#include "QTemperature.h"
+#include "QLuminosity.h"
+#include "QWind.h"
 
 class QEnvironment : public QObject
 {
@@ -37,7 +41,10 @@ public slots:
 private:
 	std::vector< QEnvironmentalFactor*> mEnvironmentalFactor;
 	std::vector<float> mFactors;
-
+	QLuminosity mLuminosity;
+	QPrecipitation mPrecipitation;
+	QTemperature mTemperature;
+	QWind mWind;
 	int mTime = 0;
 
 };

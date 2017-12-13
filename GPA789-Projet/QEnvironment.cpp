@@ -7,7 +7,14 @@
 #include "QWind.h"
 
 QEnvironment::QEnvironment()
+	: mWind(6,0,0), mPrecipitation(6,0,0), mTemperature(6,0,0), mLuminosity(6,0,0)
 {
+
+	mEnvironmentalFactor.emplace_back(&mTemperature);
+	mEnvironmentalFactor.emplace_back(&mPrecipitation);
+	mEnvironmentalFactor.emplace_back(&mLuminosity);
+	mEnvironmentalFactor.emplace_back(&mWind);
+	mFactors.resize((mEnvironmentalFactor.size()));
 
 }
 
@@ -57,10 +64,7 @@ void QEnvironment::calculateFactors(int Time)
 
 QEnvironment::~QEnvironment()
 {
-	for (int i(0); i < mEnvironmentalFactor.size(); i++)
-	{
-		delete mEnvironmentalFactor[i];
-	}
+
 }
 
 //void QEnvironment::germinateFactors(int time)
@@ -121,10 +125,10 @@ QEnvironment::~QEnvironment()
 
 void QEnvironment::setParameters(SimulationParameters &simulationParameters)
 {
-	mEnvironmentalFactor.emplace_back((new QTemperature(simulationParameters.mTemperatureCycle, simulationParameters.mTemperatureAverage, simulationParameters.mTemperatureVariation)));
-	mEnvironmentalFactor.emplace_back((new QPrecipitation(simulationParameters.mPrecipitationCycle, simulationParameters.mPrecipitationAverage, simulationParameters.mPrecipitationVariation)));
-	mEnvironmentalFactor.emplace_back((new QLuminosity(simulationParameters.mLuminosityCycle, simulationParameters.mLuminosityAverage,100, simulationParameters.mLuminosityVariation)));
-	mEnvironmentalFactor.emplace_back((new QWind(simulationParameters.mWindCycle, simulationParameters.mWindAverage, simulationParameters.mWindVariation)));
+	mEnvironmentalFactor[0]->setTable(simulationParameters.mTemperatureCycle, simulationParameters.mTemperatureAverage, simulationParameters.mTemperatureVariation);
+	mEnvironmentalFactor[1]->setTable(simulationParameters.mPrecipitationCycle, simulationParameters.mPrecipitationAverage, simulationParameters.mPrecipitationVariation);
+	mEnvironmentalFactor[2]->setTable(simulationParameters.mLuminosityCycle, simulationParameters.mLuminosityAverage, simulationParameters.mLuminosityVariation);
+	mEnvironmentalFactor[3]->setTable(simulationParameters.mWindCycle, simulationParameters.mWindAverage, simulationParameters.mWindVariation);
 
 	mFactors.resize((mEnvironmentalFactor.size()));
 
