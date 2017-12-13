@@ -7,11 +7,18 @@ QStatistic::QStatistic(QWidget *parent)
 	: QWidget(parent)
 {
 	QVBoxLayout * mainLayout = new QVBoxLayout;
-	mTestGraph1 = new QEvolutionGraph;
-	mRainGraph = new QEvolutionGraph;
-	mRainGraph->initializeGraph("Time","Rain level (mm)","Rain level graphic");
-	mainLayout->addWidget(mTestGraph1);
-	mainLayout->addWidget(mRainGraph);
+	mTemperatureGraph = new QEvolutionGraph;
+	mPrecipitationGraph = new QEvolutionGraph;
+	mLuminosityGraph = new QEvolutionGraph;
+	mWindGraph = new QEvolutionGraph;
+	mTemperatureGraph->initializeGraph("Time", "Temperature (°C)", "Temperature graphic");
+	mPrecipitationGraph->initializeGraph("Time","Rain level (mm)", "Precipitation graphic");
+	mLuminosityGraph->initializeGraph("Time", "Luminosity", "Luminosity graphic");
+	mWindGraph->initializeGraph("Time", "Wind Speed (?)", "Wind graphic");
+	mainLayout->addWidget(mTemperatureGraph);
+	mainLayout->addWidget(mPrecipitationGraph);
+	mainLayout->addWidget(mLuminosityGraph);
+	mainLayout->addWidget(mWindGraph);
 	
 	setLayout(mainLayout);
 
@@ -24,5 +31,8 @@ QStatistic::~QStatistic()
 
 void QStatistic::updateData(SimulationStatistics stats) 
 {
-		mRainGraph->addPoint(stats.mPrecipitation);
+	mTemperatureGraph->addPoint(stats.mTemperature);
+	mPrecipitationGraph->addPoint(stats.mPrecipitation);
+	mLuminosityGraph->addPoint(stats.mLuminosity);
+	mWindGraph->addPoint(stats.mWind);
 }
