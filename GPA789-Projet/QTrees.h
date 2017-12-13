@@ -10,7 +10,7 @@ class QTrees : public QStatic
 {
 
 public:
-	QTrees(const QTrees&) = default;
+
 	QTrees(QEnvironment const & environment);
 	~QTrees();
 
