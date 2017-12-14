@@ -34,6 +34,7 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
 
+	/*
 	// Test Geneviève
 	QRandomMap *mMap= new QRandomMap;
 	mMap->setMap();
@@ -42,7 +43,7 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	mMap->drawMap(244, 164, 96); //244, 164, 96
 	mMap->resizeMap();
 	mMap->setMapValue(1000, 500, 50.0);
-	mMap->updateDrawMap(1000, 500);
+	mMap->updateDrawMap(1000, 500);*/
 	
 	connect(mSimulation, &QSimulation::sendStatistics, mStatistic, &QStatistic::updateData);
 /*

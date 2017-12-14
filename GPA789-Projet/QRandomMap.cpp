@@ -140,8 +140,9 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 		}
 	}
 
+	/*
 	QImage image = mPixelsMap.toImage();
-	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
+	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");*/
 }
 
 void QRandomMap::updateDrawMap(int x, int y)
@@ -161,8 +162,9 @@ void QRandomMap::updateDrawMap(int x, int y)
 	mPainterMap->setPen(mapColor);
 	mPainterMap->drawPoint(realX, realY);
 	
+	/*
 	QImage image = mPixelsMap.toImage();
-	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest2.png");
+	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest2.png");*/
 }
 
 double QRandomMap::getMapValue(int x, int y)
