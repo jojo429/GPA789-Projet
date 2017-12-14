@@ -9,6 +9,7 @@
 #include <QPen>
 #include <QList>
 
+enum treeType { Oak, Fir, Hazel, Birch };
 
 class QEntity : public QGraphicsItem
 {

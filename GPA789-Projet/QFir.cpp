@@ -8,8 +8,8 @@ GaussianTable QFir::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QFir::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QFir::mGrowTable(500, 10, 50000);
 
-QFir::QFir(QEnvironment const & environment)
-	: QTrees{ environment }
+QFir::QFir(QEnvironment const & environment, treeType value)
+	: QTrees{ environment , value}
 {
 	
 	/*mLuminosityGrowFactor.set(40, 10000);

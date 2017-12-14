@@ -7,7 +7,7 @@
 #include <QTimer>
 
 QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent)
-	: QWidget(parent), mEnvironment {environment}
+	: QWidget(parent), mEnvironment { environment }, mForestScene { forestScene }
 {
 
 	
@@ -25,10 +25,10 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	mainLayout->addWidget(mSimulationMenu);
 	
 	setLayout(mainLayout);
-
-	connect(&mTimer, &QTimer::timeout, &environment, &QEnvironment::advance);
-	connect(&mTimer, &QTimer::timeout, &forestScene, &QForestScene::advance);
-	connect(&mTimer, &QTimer::timeout, this, &QSimulation::getStatistics);
+	connect(&mTimer, &QTimer::timeout, this, &QSimulation::generalAdvance);
+	connect(this, &QSimulation::generalAdvance, &environment, &QEnvironment::advance);
+	connect(this, &QSimulation::generalAdvance, &forestScene, &QForestScene::advance);
+	connect(this, &QSimulation::generalAdvance, this, &QSimulation::getStatistics);
 
 	
 	connect(mSimulationMenu, &QSimulationMenu::play, this, &QSimulation::play);
@@ -94,4 +94,13 @@ void QSimulation::step()
 
 
 
+}
+
+void QSimulation::generalAdvance() 
+{
+	for (int i{ 0 }; i < 30; i++) {
+		mEnvironment.advance();
+		mForestScene.advance();
+		getStatistics();
+	}
 }

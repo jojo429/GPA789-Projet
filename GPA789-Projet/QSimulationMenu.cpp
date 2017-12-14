@@ -5,13 +5,17 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 {
 	//Définition des options cycliques
 	mLuminosity = new QCyclicOptions("Luminosity", ":/GPA789Projet/iconLuminosity",
-		"Average", "Variation", "Cycle", 0, 0, 0, 100, 2190, 2190);
+		"Average", "Variation", "Cycle", 0, 0, 0, 100, 2190, 2190, false, true, false,
+		0, 30, 0);
 	mPrecipitation = new QCyclicOptions("Precipitation", ":/GPA789Projet/iconRain",
-		"Average", "Variation", "Cycle", 0, 6, 0, 20, 6, 2190);
+		"Average", "Variation", "Cycle", 0, 6, 0, 20, 6, 2190, true, true, true,
+		2, 2, 365);
 	mTemperature = new QCyclicOptions("Temperature", ":/GPA789Projet/iconTemperature",
-		"Average", "Variation", "Cycle", -30, 30, 0, 40, 2190, 2190);
+		"Average", "Variation", "Cycle", -30, 30, 0, 40, 2190, 2190, true, true, false,
+		20, 20, 0);
 	mWind = new QCyclicOptions("Wind", ":/GPA789Projet/iconWind",
-		"Average", "Variation", "Cycle", 0, 100, 0, 100, 6, 2190);
+		"Average", "Variation", "Cycle", 0, 100, 0, 100, 6, 2190, true, true, true,
+		20, 10, 365);
 
 
 	//Définition de l'icône de l'éclar
@@ -34,13 +38,21 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mStopButton = new QSimulationAdvancementOptions("Stop", ":/GPA789Projet/iconStop");
 	mStepButton = new QSimulationAdvancementOptions("Step", ":/GPA789Projet/iconStep");
 
-
 	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::play);
+	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freeze);
+
 	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::pause);
+	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freeze);
+
 	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::stop);
+	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreeze);
+
 	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::step);
-		//Définition du slider de point de vue
-	mPointOfViewSlider = new QSlider(Qt::Horizontal);
+
+	//Définition du slider de point de vue
+	mTimeScaleSlider = new QSimulationTimeScale("Time Scale", ":/GPA789Projet/iconSquirrel", ":/GPA789Projet/iconForest");
+
+	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freeze);
 
 	//Définition du layout de certains boutons
 	mMenuGridLayout = new QGridLayout;
@@ -57,7 +69,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuLayout->addWidget(mWind);
 	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
-	mMenuLayout->addWidget(mPointOfViewSlider);
+	mMenuLayout->addWidget(mTimeScaleSlider);
 	mMenuLayout->addStretch();
 
 	setLayout(mMenuLayout);
@@ -71,7 +83,6 @@ QSimulationMenu::~QSimulationMenu()
 
 void QSimulationMenu::getParameters(SimulationParameters *simulationParameters)
 {
-
 	simulationParameters->mPrecipitationAverage = mPrecipitation->getAverageValue();
 	simulationParameters->mPrecipitationCycle = mPrecipitation->getCycleValue();
 	simulationParameters->mPrecipitationVariation = mPrecipitation->getVariationValue();
@@ -84,9 +95,22 @@ void QSimulationMenu::getParameters(SimulationParameters *simulationParameters)
 	simulationParameters->mWindAverage = mWind->getAverageValue();
 	simulationParameters->mWindCycle = mWind->getCycleValue();
 	simulationParameters->mWindVariation = mWind->getVariationValue();
+}
 
+void QSimulationMenu::freeze()
+{
+	mLuminosity->setEnabled(false);
+	mPrecipitation->setEnabled(false);
+	mTemperature->setEnabled(false);
+	mWind->setEnabled(false);
+}
 
-
+void QSimulationMenu::unfreeze()
+{
+	mLuminosity->setEnabled(true);
+	mPrecipitation->setEnabled(true);
+	mTemperature->setEnabled(true);
+	mWind->setEnabled(true);
 }
 
 

@@ -11,7 +11,7 @@ class QSimulationAdvancementOptions : public QWidget
 	Q_OBJECT
 
 public:
-	QSimulationAdvancementOptions(QWidget *parent);
+	QSimulationAdvancementOptions(QWidget *parent = Q_NULLPTR );
 	QSimulationAdvancementOptions(QString caption, QString iconName);
 	~QSimulationAdvancementOptions();
 

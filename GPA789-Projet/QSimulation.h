@@ -28,10 +28,13 @@ public slots:
 	void stop();
 	void step();
 	void getStatistics();
+private slots: 
+	void generalAdvance();
 
 private:
 	QTimer mTimer{ this };
 	QEnvironment  & mEnvironment;
+	QForestScene & mForestScene;
 	SimulationParameters mSimulationParameters;
 	SimulationStatistics mSimulationStatistics;
 	QSimulationMenu *mSimulationMenu;

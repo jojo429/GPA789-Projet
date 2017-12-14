@@ -9,5 +9,7 @@
         <file alias="iconPause">Resources/iconPause.png</file>
         <file alias="iconStep">Resources/iconStep.ico</file>
         <file alias="iconThunder">Resources/iconThunder.png</file>
+        <file alias="iconForest">Resources/iconForest.png</file>
+        <file alias="iconSquirrel">Resources/iconSquirrel.png</file>
     </qresource>
 </RCC>
