@@ -178,6 +178,15 @@
     <ClCompile Include="FunctionTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QSimulationTimeScale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QSimulationTimeScale.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QSimulationTimeScale.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -265,6 +274,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QTrees.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSimulationTimeScale.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

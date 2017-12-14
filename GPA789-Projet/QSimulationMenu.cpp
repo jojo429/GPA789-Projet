@@ -39,9 +39,9 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::pause);
 	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::stop);
 	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::step);
-		//Définition du slider de point de vue
-	mPointOfViewSlider = new QSlider(Qt::Horizontal);
-
+	//Définition du slider de point de vue
+	mTimeScaleSlider = new QSimulationTimeScale("Time Scale", ":/GPA789Projet/iconSquirrel", ":/GPA789Projet/iconForest");
+	
 	//Définition du layout de certains boutons
 	mMenuGridLayout = new QGridLayout;
 	mMenuGridLayout->addWidget(mPlayButton, 0, 0);
@@ -57,7 +57,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuLayout->addWidget(mWind);
 	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
-	mMenuLayout->addWidget(mPointOfViewSlider);
+	mMenuLayout->addWidget(mTimeScaleSlider);
 	mMenuLayout->addStretch();
 
 	setLayout(mMenuLayout);
@@ -84,9 +84,6 @@ void QSimulationMenu::getParameters(SimulationParameters *simulationParameters)
 	simulationParameters->mWindAverage = mWind->getAverageValue();
 	simulationParameters->mWindCycle = mWind->getCycleValue();
 	simulationParameters->mWindVariation = mWind->getVariationValue();
-
-
-
 }
 
 

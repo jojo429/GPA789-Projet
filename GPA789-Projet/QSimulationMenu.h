@@ -3,6 +3,7 @@
 
 #include "QCyclicOptions.h"
 #include "QSimulationAdvancementOptions.h"
+#include "QSimulationTimeScale.h"
 #include "SimulationParameters.h"
 #include <QWidget>
 #include <QGridLayout>
@@ -36,12 +37,12 @@ private:
 
 	QPixmap mThunderIcon;
 
-	QSlider *mPointOfViewSlider;
-
 	QSimulationAdvancementOptions *mPlayButton;
 	QSimulationAdvancementOptions *mPauseButton;
 	QSimulationAdvancementOptions *mStopButton;
 	QSimulationAdvancementOptions *mStepButton;
+
+	QSimulationTimeScale *mTimeScaleSlider;
 
 	QCheckBox *mThunderButton;
 
