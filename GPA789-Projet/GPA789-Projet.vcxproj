@@ -70,6 +70,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DoubleSinusTable.cpp" />
+    <ClCompile Include="FunctionTable.cpp" />
+    <ClCompile Include="GaussianTable.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -97,6 +99,7 @@
     <ClCompile Include="QRandomMap.cpp" />
     <ClCompile Include="QEvolutionGraph.cpp" />
     <ClCompile Include="SimulationParameters.cpp" />
+    <ClCompile Include="SimulationStatistics.cpp" />
     <ClCompile Include="SinusTable.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_QCyclicOptions.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -237,7 +240,10 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
     <ClInclude Include="DoubleSinusTable.h" />
+    <ClInclude Include="FunctionTable.h" />
+    <ClInclude Include="GaussianTable.h" />
     <ClInclude Include="SimulationParameters.h" />
+    <ClInclude Include="SimulationStatistics.h" />
     <ClInclude Include="SinusTable.h" />
     <ClInclude Include="RandomGenerator.h" />
     <ClInclude Include="RandomUniform.h" />

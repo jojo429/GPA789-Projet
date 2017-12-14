@@ -6,29 +6,31 @@
 #include "QEnvironment.h"
 #include <QBrush>
 #include <QColor>
-/*class QOak;
-class QBirch;
-class QHazel;
-class QFir;*/
+#include "QOak.h"
+#include "QHazel.h"
+#include "QBirch.h"
+#include "QFir.h"
 
 class QForestScene : public QGraphicsScene
 {
 	Q_OBJECT
 
 public:
-	QForestScene(QGraphicsScene * parent = Q_NULLPTR);
+	QForestScene(QEnvironment const & enviromnent, QGraphicsScene * parent = Q_NULLPTR);
 	~QForestScene();
-	/*QOak const & mMasterOak;
-	QBirch const & mMasterBirch;
-	QHazel const & mMasterHazel;
-	QFir const & mMasterFir;*/
 
-	void initialize(QEnvironment const & enviromnent);
+protected:
+
 
 private:
+
 	void closestTree(QPointF pt2D);
 	void lightningStrike(QPointF pt2D);
 	QBrush mBackgroundBrush{ QColor(239, 247, 153) };
+	QOak mMasterOak;
+	QBirch mMasterBirch;
+	QHazel mMasterHazel;
+	QFir mMasterFir;
 };
 
 #endif //Q_FOREST_SCENE_H

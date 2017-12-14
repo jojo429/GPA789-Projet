@@ -5,11 +5,13 @@
 #include <QBrush>
 #include <QPen>
 #include <QColor>
+#include "GaussianTable.h"
 
 class QTrees : public QStatic
 {
 
 public:
+
 	QTrees(QEnvironment const & environment);
 	~QTrees();
 
@@ -20,7 +22,7 @@ public:
 	void adjustDryness();
 	void setOnFire();
 	void striked() override;
-
+	void setMasterTree(QTrees * tree);
 	
 
 
@@ -36,6 +38,13 @@ protected:
 	QTrees *mMasterTree;
 	void advance(int phase);
 	QRectF boundingRect() const;
+	int mTime{ 0 };
+	static GaussianTable mPrecipitationGrowFactor;
+	static GaussianTable mLuminosityGrowFactor;
+	static GaussianTable mTemperatureGrowFactor;
+	static GaussianTable mGrowTable;
+	
+
 };
 
 

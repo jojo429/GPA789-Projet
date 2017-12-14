@@ -19,8 +19,8 @@ public:
 	void updateFertility(int x, int y, double fertility);
 	void enableFertility();
 	void disableFertility();
-	float germinate(int x, int y);
-	float grow(int x, int y);
+	//float germinate(int x, int y);
+	//float grow(int x, int y);
 
 private:
 	QRandomMap *mFertilityMap;

@@ -3,28 +3,23 @@
 
 
 
-SinusTable::SinusTable()
+SinusTable::SinusTable(int cycle, int average, int variation,int lenght, bool noNegative)
+	:FunctionTable(lenght), mNoNegative{noNegative}
 {
-
-
-}
-
-void SinusTable::initialize(int cycle, int average, int variation, int lenght)
-{
-	SinusTable::initialize(cycle, average, variation, lenght, false);
-
-}
-
-void SinusTable::initialize(int cycle, int average, int variation, int lenght, bool noNegative)
-{
-	mLenght = lenght;
-	mNoNegative = noNegative;
-
-	SinusTable::set(cycle, average, variation);
+	if (cycle<=0)
+	{
+		SinusTable::set(2190, average, variation);
+	}
+	else 
+	{
+		SinusTable::set(cycle, average, variation);
+	}
 	
-	
-
 }
+
+
+
+
 	
 void SinusTable::set(int cycle, int average, int variation)
 {
@@ -65,8 +60,5 @@ void SinusTable::set(int cycle, int average, int variation)
 SinusTable::~SinusTable()
 {
 }
-double SinusTable::getValue(int position)
-{
 
-	return mTable[position];
-}
+

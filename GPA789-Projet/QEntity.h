@@ -7,6 +7,8 @@
 #include <QPointF>
 #include <QBrush>
 #include <QPen>
+#include <QList>
+
 
 class QEntity : public QGraphicsItem
 {
@@ -20,6 +22,7 @@ public:
 	virtual void striked();
 
 protected:
+	//QList<QGraphicsItem> mInRangeItems; !?!?!?!?!?!?!?!?!
 	QPointF mPosition;
 	int mLifeSpan;
 	int mAge{0};

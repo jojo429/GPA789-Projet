@@ -136,8 +136,8 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 		}
 	}
 
-	QImage image = mPixelsMap.toImage();
-	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
+	//QImage image = mPixelsMap.toImage();
+	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
 }
 
 // À changer!

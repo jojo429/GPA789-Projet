@@ -36,12 +36,13 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 	mDataSerie->attachAxis(mYAxis);
 
 	connect(mDataSerie, &QLineSeries::pointAdded, [this](int index) {
-
+		static qreal offsetX{ 1 }; 
+		static qreal offsetY{ 1 };
 		if (index == 0) {
 			mXmin = mXmax = mDataSerie->at(index).x();
 			mYmin = mYmax = mDataSerie->at(index).y();
-			mXAxis->setRange(mXmin, mNbDataVisible);
-			mYAxis->setRange(mYmin, mYmax);
+			mXAxis->setRange(mXmin, mNbDataVisible + offsetX);
+			mYAxis->setRange(mYmin, mYmax + offsetY);
 		}
 		else {
 			qreal x = mDataSerie->at(index).x();
@@ -54,10 +55,10 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 			if (y > mYmax) { yChanged = true; mYmax = y; }
 			if (xChanged)
 			{ 
-				if (mXmax < mNbDataVisible) { mXAxis->setRange(mXmin, mNbDataVisible);}
-				else { mXAxis->setRange(mXmax - mNbDataVisible, mXmax);}
+				if (mXmax < mNbDataVisible) { mXAxis->setRange(mXmin, mNbDataVisible + offsetX);}
+				else { mXAxis->setRange(mXmax - mNbDataVisible, mXmax + offsetX);}
 			}
-			if (yChanged) { mYAxis->setRange(mYmin, mYmax); }
+			if (yChanged) { mYAxis->setRange(mYmin, mYmax + offsetY); }
 		}
 
 		if (mDataSerie->count() > mMaxNbData) {
