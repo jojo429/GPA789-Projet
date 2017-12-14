@@ -8,26 +8,47 @@
 
 
 QForestScene::QForestScene(QEnvironment const & enviromnent, QGraphicsScene * parent)
-	: QGraphicsScene(parent), mMasterOak(enviromnent), mMasterBirch(enviromnent), mMasterFir(enviromnent),
-	mMasterHazel(enviromnent)
+	: QGraphicsScene(parent), mGenerate(0, 3)
 {
 
 	this->setBackgroundBrush(mBackgroundBrush);
-	int treeCount{ 10 };
+	int treeCount{ 15 };
+	int tree;
 
 	//Setting up the master trees
 	//mMasterOak.setMasterTree(&mMasterOak);
 	//mMasterHazel.setMasterTree(&mMasterHazel);
 	//mMasterBirch.setMasterTree(&mMasterBirch);
 	//mMasterFir.setMasterTree(&mMasterFir);
-
+	QTrees *newTree;
 	for (int i{ 0 }; i < treeCount; ++i) {
+
 		//Add trees
-		//QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
-		QTrees *newTree = new QOak(enviromnent);
+		tree = mGenerate.random();
+		QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
+		switch (tree) {
+
+		case 0: 	newTree = new QOak(enviromnent, Oak); 
+					break; 
+
+		case 1: 	newTree = new QFir(enviromnent, Fir);
+					break; 
+
+		case 2: 	newTree = new QHazel(enviromnent, Hazel);
+					break; 
+
+		case 3: 	newTree = new QBirch(enviromnent, Birch);
+					break; 
+
+		default:	newTree = new QOak(enviromnent, Oak);
+					break;
+		}
+
 		this->addItem(newTree);
-		newTree->setPos(QPointF(1000 + 100*i,1000 + 100*i));
+		newTree->setPos(spawnPoint);
+		
 	}
+
 	//	//Add seeds
 	//	//QSeeds *newSeed = new QSeeds(enviromnent);
 	//	//this->addItem(newSeed);

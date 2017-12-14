@@ -7,15 +7,17 @@
 #include <QColor>
 #include "GaussianTable.h"
 
+
+
 class QTrees : public QStatic
 {
 
 public:
 
-	QTrees(QEnvironment const & environment);
+	QTrees(QEnvironment const & environment, treeType value);
 	~QTrees();
 
-	virtual void grow();
+	
 	void reproduce() override;
 	void die() override;
 	int getHeight();
@@ -23,6 +25,7 @@ public:
 	void setOnFire();
 	void striked() override;
 	void setMasterTree(QTrees * tree);
+	treeType mTreeType;
 	
 
 
@@ -43,6 +46,8 @@ protected:
 	static GaussianTable mLuminosityGrowFactor;
 	static GaussianTable mTemperatureGrowFactor;
 	static GaussianTable mGrowTable;
+	static GaussianTable mReproduceTable;
+	RandomUniform mGenerateSeed;
 	
 
 };

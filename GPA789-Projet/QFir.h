@@ -7,7 +7,7 @@ class QFir : public QTrees
 {
 
 public:
-	QFir(QEnvironment const & environment);
+	QFir(QEnvironment const & environment, treeType value);
 	~QFir();
 	void grow();
 

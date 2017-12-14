@@ -7,7 +7,7 @@ class QBirch : public QTrees
 {
 
 public:
-	QBirch(QEnvironment const & environment);
+	QBirch(QEnvironment const & environment, treeType value);
 	~QBirch();
 	void grow();
 
