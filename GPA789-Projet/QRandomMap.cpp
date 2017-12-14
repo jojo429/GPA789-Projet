@@ -122,43 +122,49 @@ void QRandomMap::findMinMax()
 void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 {
 	int i, j;
-	qreal shade;
+	qreal shade, ajustmentRGB;
 	QColor mapColor;
+
+	mRColor = rColor;
+	mGColor = gColor;
+	mBColor = bColor;
+
+	ajustmentRGB = (rColor + gColor + bColor) / 3.0;
 
 	for (i = 0; i < 513; ++i) {
 		for (j = 0; j < 513; ++j) {
-			shade = mMap[i][j] / 150.0;
+			shade = mMap[i][j] / ajustmentRGB;
 			mapColor.setRgb(rColor*shade, gColor*shade, bColor*shade);
 			mPainterMap->setPen(mapColor);
 			mPainterMap->drawPoint(i, j);
 		}
 	}
 
-	//QImage image = mPixelsMap.toImage();
-	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
+	/*
+	QImage image = mPixelsMap.toImage();
+	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");*/
 }
 
-// À changer!
-void QRandomMap::updateDrawMap(int x, int y, int rColor, int gColor, int bColor)
+void QRandomMap::updateDrawMap(int x, int y)
 {
-	/*
-	qreal shade;
+	qreal shade, adjustmentRGB;
 	QColor mapColor;
 
-	double floatingX, fractionalX, integerX;
-	double floatingY, fractionalY, integerY;
-	int x, y;
+	int realX, realY;
 
-	fractionalX = modf(floatingX, &integerX);
-	fractionalY = modf(floatingY, &integerY);
+	realX = (int)floor(x / 4.0);
+	realY = (int)floor(y / 4.0);
 
-	x = (int)integerX;
-	y = (int)integerY;
+	adjustmentRGB = (mRColor + mGColor + mBColor) / 3.0;
 
-	shade = mMap[x][y] / 150.0;
-	mapColor.setRgb(rColor * shade, gColor * shade, bColor * shade);
-	mPainterMap.setPen(mapColor);
-	mPainterMap.drawPoint(x, y); */
+	shade = mMap[realX][realY] / 150.0;
+	mapColor.setRgb(255 * shade, 255 * shade, 255 * shade); //mapColor.setRgb(mRColor * shade, mGColor * shade, mBColor * shade);
+	mPainterMap->setPen(mapColor);
+	mPainterMap->drawPoint(realX, realY);
+	
+	/*
+	QImage image = mPixelsMap.toImage();
+	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest2.png");*/
 }
 
 double QRandomMap::getMapValue(int x, int y)
@@ -168,7 +174,18 @@ double QRandomMap::getMapValue(int x, int y)
 
 void QRandomMap::setMapValue(int x, int y, double value)
 {
-	mMapResize[x][y] = mMapResize[x][y] + value;
+	int realX, realY;
+
+	realX = (int)floor(x / 4.0);
+	realY = (int)floor(y / 4.0);
+
+	mMap[realX][realY] = mMap[realX][realY] + value;
+
+	if (mMap[realX][realY] > 100.0) {
+		mMap[realX][realY] = 100.0;
+	}
+
+	this->resizeMap();
 }
 
 void QRandomMap::resizeMap()
@@ -190,7 +207,10 @@ void QRandomMap::resizeMap()
 		}
 	}
 
-	
+	qDebug() << QString::number(mMapResize[1000][500]);
+	qDebug() << QString::number(mMap[250][125]);
+
+	/*
 	qDebug() << QString::number(mMapResize[0][3]);
 	qDebug() << QString::number(mMapResize[2][2]);
 	qDebug() << QString::number(mMapResize[3][2]);
@@ -213,7 +233,7 @@ void QRandomMap::resizeMap()
 	qDebug() << QString::number(nextY);
 
 	qDebug() << QString::number(mMapResize[8][0]);
-	qDebug() << QString::number(mMapResize[1][8]);
+	qDebug() << QString::number(mMapResize[1][8]);*/
 
 }
 

@@ -23,8 +23,11 @@ public:
 	~QSimulationMenu();
 
 	void getParameters(SimulationParameters *simulationParameters);
-signals:
 
+	void freeze();
+	void unfreeze();
+
+signals:
 	void play();
 	void pause();
 	void stop();

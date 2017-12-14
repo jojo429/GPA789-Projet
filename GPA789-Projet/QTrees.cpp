@@ -6,14 +6,16 @@ GaussianTable QTrees::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QTrees::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QTrees::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QTrees::mGrowTable(500, 10, 50000);
+GaussianTable QTrees::mReproduceTable(500, 10, 50000);
 
-QTrees::QTrees(QEnvironment const & environment)
-	: QStatic(environment)
+QTrees::QTrees(QEnvironment const & environment, treeType value )
+	: QStatic(environment), mGenerateSeed(1, 6), mTreeType{ value }
 {
 	
-	
+	mAge = 0;
 	mLeafRadius = 1;
 	mTrunkRadius = 0.1 * mLeafRadius;
+	mHeight = 2 * mLeafRadius;
 	mMasterTree = this;
 
 }
@@ -23,14 +25,26 @@ QTrees::~QTrees()
 
 }
 
-void QTrees::grow()
-{
-
-}
-
 void QTrees::reproduce()
 {
+	if (mTime == 1000 )
+	{
 
+		
+
+		for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
+
+			
+
+
+			//Add seeds
+			//QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
+			/*QTrees *newTree = new QOak(enviromnent);
+			this->addItem(newTree);
+			newTree->setPos(QPointF(1000 + 100 * i, 1000 + 100 * i));*/
+		}
+
+	}
 }
 
 void QTrees::die()

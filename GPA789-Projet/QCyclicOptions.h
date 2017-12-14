@@ -18,8 +18,12 @@ public:
 	QCyclicOptions(QWidget *parent = Q_NULLPTR);
 	QCyclicOptions(QString caption, QString iconName, QString averageName,
 		QString variationName, QString cycleName, int averageMin, int averageMax,
-		int variationMin, int variationMax, int cycleMin, int cycleMax);
+		int variationMin, int variationMax, int cycleMin, int cycleMax,
+		bool enableAverage, bool enableVariation, bool enableCycle,
+		int averageInitValue, int variationInitValue, int cycleInitValue);
 	~QCyclicOptions();
+
+	void defineSlider(QSlider *slider, int min, int max, int initValue);
 
 	int getAverageValue();
 	int getCycleValue();
