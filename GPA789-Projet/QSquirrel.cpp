@@ -100,6 +100,11 @@ void QSquirrel::setRotationAdjustment()
 
 }
 
+qreal QSquirrel::getTargetDistance()
+{
+	return qSqrt(qPow(mTargetPos.x() - pos().x(),2)+ qPow(mTargetPos.y() - pos().y(), 2));
+}
+
 QRectF QSquirrel::boundingRect() const
 {
 
@@ -135,7 +140,7 @@ void QSquirrel::paint(QPainter * painter, const QStyleOptionGraphicsItem * optio
 }
 void QSquirrel::advance(int phase)
 {
-	//Mouvement aléatoire
+	//Choose a target
 	if (mActionCounter == 0)
 	{
 		mTarget = getTarget();
@@ -143,12 +148,19 @@ void QSquirrel::advance(int phase)
 			mTargetPos = mTarget->pos();
 			setRotationAdjustment();
 		}
-		
-
-
 		mActionCounter++;
 	}
-	setPos(mapToParent(0, -3));
+	else
+	{
+		if ((pos().x() > 0 && pos().x() < 2050) && (pos().y() > 0 && pos().y() < 2050)) {
+
+			setPos(mapToParent(0, -3));
+			mActionCounter++;
+
+		}
+		
+	}
+
 
 
 

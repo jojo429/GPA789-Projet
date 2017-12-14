@@ -16,7 +16,7 @@ public:
 		NoTarget = 0,
 		Trees = 1,
 		Squirrel = 2,
-		Seeds = 3
+		Seed = 3
 	};
 
 private:
@@ -40,6 +40,7 @@ private:
 	void pickSeed();
 	void striked() override;
 	void setRotationAdjustment();
+	qreal getTargetDistance();
 	std::list<QSeeds*> mSeeds;	
 	void advance(int phase);
 	QRectF boundingRect() const;

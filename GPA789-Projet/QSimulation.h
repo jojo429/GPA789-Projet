@@ -8,6 +8,7 @@
 #include "SimulationParameters.h"
 #include "SimulationStatistics.h"
 #include "QSimulationMenu.h"
+#include <QWheelEvent>
 
 class QSimulation : public QWidget
 {
@@ -34,7 +35,8 @@ private:
 	SimulationParameters mSimulationParameters;
 	SimulationStatistics mSimulationStatistics;
 	QSimulationMenu *mSimulationMenu;
-	
-	
+	QGraphicsView *mForestView;
+protected:
+	virtual void wheelEvent(QWheelEvent* event);
 };
 #endif //Q_SIMULATION_H
