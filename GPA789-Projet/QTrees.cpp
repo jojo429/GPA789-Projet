@@ -2,10 +2,15 @@
 #include <QBrush>
 #include <QPainter>
 
+GaussianTable QTrees::mPrecipitationGrowFactor(28, 6, 25);
+GaussianTable QTrees::mLuminosityGrowFactor(200, 50, 10000, -100);
+GaussianTable QTrees::mTemperatureGrowFactor(150, 30, 1000, -75);
+GaussianTable QTrees::mGrowTable(500, 10, 50000);
+
 QTrees::QTrees(QEnvironment const & environment)
 	: QStatic(environment)
 {
-
+	
 	
 	mLeafRadius = 1;
 	mTrunkRadius = 0.1 * mLeafRadius;
@@ -70,6 +75,14 @@ QRectF QTrees::boundingRect() const
 
 void QTrees::advance(int phase)
 {
+
+	mTime++;
+	if (mTime >= 2190)
+	{
+		mAge++;
+		mTime = mTime - 2190;
+	}
+
 	if (mLeafRadius < 50) {
 		mLeafRadius = mLeafRadius + 0.10*(rand() % 2 + 1);
 		mTrunkRadius = 0.20 * mLeafRadius;
