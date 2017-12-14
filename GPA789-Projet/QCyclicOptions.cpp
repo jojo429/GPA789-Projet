@@ -8,7 +8,8 @@ QCyclicOptions::QCyclicOptions(QWidget *parent)
 
 QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averageName,
 	QString variationName, QString cycleName, int averageMin, int averageMax, int variationMin, 
-	int variationMax, int cycleMin, int cycleMax)
+	int variationMax, int cycleMin, int cycleMax, bool enableAverage, bool enableVariation, 
+	bool enableCycle)
 {
 	//Define member caption
 	mCaption = caption;
@@ -54,15 +55,23 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 
 	//Define layout of cyclic options menu
 	mCyclicOptionsGridLayout = new QGridLayout;
-	mCyclicOptionsGridLayout->addWidget(mAverageLabel, 0, 0);
-	mCyclicOptionsGridLayout->addWidget(mAverageSlider, 0, 1);
-	mCyclicOptionsGridLayout->addWidget(mAverageValue, 0, 2);
-	mCyclicOptionsGridLayout->addWidget(mVariationLabel, 1, 0);
-	mCyclicOptionsGridLayout->addWidget(mVariationSlider, 1, 1);
-	mCyclicOptionsGridLayout->addWidget(mVariationValue, 1, 2);
-	mCyclicOptionsGridLayout->addWidget(mCycleLabel, 2, 0);
-	mCyclicOptionsGridLayout->addWidget(mCycleSlider, 2, 1);
-	mCyclicOptionsGridLayout->addWidget(mCycleValue, 2, 2);
+	if (enableAverage == true) {
+		mCyclicOptionsGridLayout->addWidget(mAverageLabel, 0, 0);
+		mCyclicOptionsGridLayout->addWidget(mAverageSlider, 0, 1);
+		mCyclicOptionsGridLayout->addWidget(mAverageValue, 0, 2);
+	}
+
+	if (enableVariation == true) {
+		mCyclicOptionsGridLayout->addWidget(mVariationLabel, 1, 0);
+		mCyclicOptionsGridLayout->addWidget(mVariationSlider, 1, 1);
+		mCyclicOptionsGridLayout->addWidget(mVariationValue, 1, 2);
+	}
+	
+	if (enableCycle == true) {
+		mCyclicOptionsGridLayout->addWidget(mCycleLabel, 2, 0);
+		mCyclicOptionsGridLayout->addWidget(mCycleSlider, 2, 1);
+		mCyclicOptionsGridLayout->addWidget(mCycleValue, 2, 2);
+	}
 
 	mCyclicOptionsGroupBox = new QGroupBox(caption);
 	mCyclicOptionsGroupBox->setLayout(mCyclicOptionsGridLayout);
@@ -72,10 +81,18 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 	mLayout->addWidget(mCyclicOptionsGroupBox);
 
 	//Define sliders connections
-	connect(mAverageSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
-	connect(mVariationSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
-	connect(mCycleSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
+	if (enableAverage == true) {
+		connect(mAverageSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
+	}
 
+	if (enableVariation == true) {
+		connect(mVariationSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
+	}
+
+	if (enableCycle == true) {
+		connect(mCycleSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
+	}
+	
 	//Show layout
 	setLayout(mLayout);
 }
