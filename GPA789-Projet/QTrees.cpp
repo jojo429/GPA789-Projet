@@ -83,14 +83,23 @@ void QTrees::advance(int phase)
 		mTime = mTime - 2190;
 	}
 
-	if (mLeafRadius < 50) {
-		mLeafRadius = mLeafRadius + 0.10*(rand() % 2 + 1);
+	if (mAge < 500) {
+		mLeafRadius = mLeafRadius + 0.05*(mGrowTable.getValue(mAge))*((mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0])+mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1])+ mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2]))/3);
 		mTrunkRadius = 0.20 * mLeafRadius;
 		update(boundingRect());
 	}
 	else {
 		update();
 	}
+
+	/*if (mLeafRadius < 50) {
+		mLeafRadius = mLeafRadius + 0.10*(rand() % 2 + 1);
+		mTrunkRadius = 0.20 * mLeafRadius;
+		update(boundingRect());
+	}
+	else {
+		update();
+	}*/
 
 }
 
