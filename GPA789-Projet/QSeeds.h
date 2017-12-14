@@ -10,7 +10,7 @@ class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds(QEnvironment const & environment, QTrees const & masterTree);
+	QSeeds(QEnvironment const & environment, treeType value);
 	~QSeeds();
 	void germinate();
 	void die() override;
@@ -31,7 +31,7 @@ private:
 	QRectF QSeeds::boundingRect() const;
 	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR);
 	void QSeeds::advance(int phase);
-	QTrees const & mMasterTree;
+	treeType mTreeType;
 };
 
 

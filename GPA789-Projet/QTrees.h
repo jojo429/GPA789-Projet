@@ -26,7 +26,9 @@ public:
 	void striked() override;
 	void setMasterTree(QTrees * tree);
 	treeType mTreeType;
-	
+
+//signals:
+//	void dropSeed(int parent);
 
 
 protected:
