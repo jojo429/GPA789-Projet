@@ -122,12 +122,14 @@ void QRandomMap::findMinMax()
 void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 {
 	int i, j;
-	qreal shade;
+	qreal shade, ajustmentRGB;
 	QColor mapColor;
+
+	ajustmentRGB = (rColor + gColor + bColor) / 3.0;
 
 	for (i = 0; i < 513; ++i) {
 		for (j = 0; j < 513; ++j) {
-			shade = mMap[i][j] / 150.0;
+			shade = mMap[i][j] / ajustmentRGB;
 			mapColor.setRgb(rColor*shade, gColor*shade, bColor*shade);
 			mPainterMap->setPen(mapColor);
 			mPainterMap->drawPoint(i, j);
@@ -158,7 +160,10 @@ void QRandomMap::updateDrawMap(int x, int y, int rColor, int gColor, int bColor)
 	shade = mMap[x][y] / 150.0;
 	mapColor.setRgb(rColor * shade, gColor * shade, bColor * shade);
 	mPainterMap.setPen(mapColor);
-	mPainterMap.drawPoint(x, y); */
+	mPainterMap.drawPoint(x, y);
+	
+	QImage image = mPixelsMap.toImage();
+	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png"); */
 }
 
 double QRandomMap::getMapValue(int x, int y)
@@ -190,7 +195,7 @@ void QRandomMap::resizeMap()
 		}
 	}
 
-	
+	/*
 	qDebug() << QString::number(mMapResize[0][3]);
 	qDebug() << QString::number(mMapResize[2][2]);
 	qDebug() << QString::number(mMapResize[3][2]);
@@ -213,7 +218,7 @@ void QRandomMap::resizeMap()
 	qDebug() << QString::number(nextY);
 
 	qDebug() << QString::number(mMapResize[8][0]);
-	qDebug() << QString::number(mMapResize[1][8]);
+	qDebug() << QString::number(mMapResize[1][8]);*/
 
 }
 
