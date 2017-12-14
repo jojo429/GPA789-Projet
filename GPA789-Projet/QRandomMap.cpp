@@ -181,6 +181,10 @@ void QRandomMap::setMapValue(int x, int y, double value)
 
 	mMap[realX][realY] = mMap[realX][realY] + value;
 
+	if (mMap[realX][realY] > 100.0) {
+		mMap[realX][realY] = 100.0;
+	}
+
 	this->resizeMap();
 }
 
