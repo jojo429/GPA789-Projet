@@ -3,8 +3,9 @@
 #include "QTrees.h"
 #include <QtMath>
 
+
 QSquirrel::QSquirrel(QEnvironment const & environment)
-	: QAnimals{ environment }
+	: QAnimals{ environment }, mGenerateAngle(-180,180)
 {
 
 
@@ -26,38 +27,41 @@ void QSquirrel::move()
 QGraphicsItem * QSquirrel::getTarget()
 {
 	 QList<QGraphicsItem *> inRangeItems  = collidingItems();
-	
+	 inRangeItems = compareTargetList(inRangeItems);
+
 	if (inRangeItems.empty()) 
 	{
 		return Q_NULLPTR;
 	}
 	else 
 	{
-
 		for (QGraphicsItem * item : inRangeItems) {
-
-			//If there a tree in the vision radius
+			//If there's a tree in the vision radius
 			QTrees * currentItem = dynamic_cast<QTrees *>(item);
 			if (currentItem) {
-
-
-
 				mTargetType = Trees;
 				return item;
-
-
 			}
-
-
-
 		}
-		
-
 	}
-
-
-
 	return nullptr;
+}
+
+QList<QGraphicsItem*> QSquirrel::compareTargetList(QList<QGraphicsItem*> &newTarget)
+{
+	if(!mPastTarget.isEmpty())
+	{
+		for (QGraphicsItem * item : newTarget)
+		{
+			for (QGraphicsItem * pastTarget : mPastTarget)
+			{
+				if (item == pastTarget) {
+					newTarget.removeOne(item);
+				}
+			}
+		}		
+	}
+	return newTarget;
 }
 
 void QSquirrel::reproduce(int age)
@@ -87,16 +91,22 @@ void QSquirrel::striked()
 
 void QSquirrel::setRotationAdjustment()
 {
-	qreal x1, x2, y1, y2, teta1, teta2;
-	x1 = pos().x();
-	y1 = pos().y();
-	x2 = mTargetPos.x();
-	y2 = mTargetPos.y();
-	teta1 = rotation();
+	if (mTargetType != NoTarget) {
+		qreal x1, x2, y1, y2, teta1, teta2;
+		x1 = pos().x();
+		y1 = pos().y();
+		x2 = mTargetPos.x();
+		y2 = mTargetPos.y();
+		teta1 = rotation();
 
-	teta2 = qAtan2(y1 - y2, x1 - x2) * (180 / 3.14);
+		teta2 = qAtan2(y1 - y2, x1 - x2) * (180 / 3.14);
 
-	setRotation(teta1 - teta2);
+		setRotation(teta1 - teta2);
+	}
+	else
+	{
+		setRotation(static_cast<qreal>(mGenerateAngle.random()));
+	}
 
 }
 
@@ -140,30 +150,50 @@ void QSquirrel::paint(QPainter * painter, const QStyleOptionGraphicsItem * optio
 }
 void QSquirrel::advance(int phase)
 {
-	//Choose a target
+	//Choose a target or a random direction
 	if (mActionCounter == 0)
 	{
 		mTarget = getTarget();
+		if (mPastTarget.size() >= 6) {
+			mPastTarget.removeFirst();
+			mPastTarget.append(mTarget);
+		}
 		if (mTargetType != NoTarget) {
 			mTargetPos = mTarget->pos();
 			setRotationAdjustment();
 		}
+		else
+		{
+			setRotationAdjustment();
+			setPos(mapToParent(0, -3));		
+		}
 		mActionCounter++;
+	}
+	else if(mActionCounter <= 80)
+	{
+		if ((pos().x() > 0 && pos().x() < 2050) && (pos().y() > 0 && pos().y() < 2050)) 
+		{
+			if (getTargetDistance() >= 5)
+			{
+				setPos(mapToParent(0, -3));
+				mActionCounter++;
+			}
+			else
+			{
+				mTargetType = NoTarget;
+				mActionCounter = 0;
+			}
+		}
+		else 
+		{
+			mTargetType = NoTarget;
+			mActionCounter = 0;
+
+		}	
 	}
 	else
 	{
-		if ((pos().x() > 0 && pos().x() < 2050) && (pos().y() > 0 && pos().y() < 2050)) {
-
-			setPos(mapToParent(0, -3));
-			mActionCounter++;
-
-		}
-		
+		mTargetType = NoTarget;
+		mActionCounter = 0;
 	}
-
-
-
-
-
-
 }

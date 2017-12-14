@@ -11,6 +11,13 @@ QForestScene::QForestScene(QEnvironment const & enviromnent, QGraphicsScene * pa
 	: QGraphicsScene(parent), mMasterOak(enviromnent), mMasterBirch(enviromnent), mMasterFir(enviromnent),
 	mMasterHazel(enviromnent)
 {
+	//Delimitation de la zone de simulation
+	this->addLine(0, 0, 2050, 0);
+	this->addLine(0, 0, 0, 2050);
+	this->addLine(2050, 0, 2050, 2050);
+	this->addLine(0, 2050, 2050, 2050);
+
+
 
 	this->setBackgroundBrush(mBackgroundBrush);
 	int treeCount{ 10 };
