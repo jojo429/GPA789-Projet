@@ -38,8 +38,7 @@ protected:
 	QTrees *mMasterTree;
 	void advance(int phase);
 	QRectF boundingRect() const;
-
-
+	
 
 };
 

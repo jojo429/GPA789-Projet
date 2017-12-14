@@ -41,13 +41,10 @@ void QEnvironment::getStatistics(SimulationStatistics *simulationStatistics)
 {
 	simulationStatistics->mTemperature = ((0.05 * mGenerate.random() / 100) + 1)*(mFactors[0]);
 	simulationStatistics->mPrecipitation = ((0.05 * mGenerate.random() / 100) + 1)*(mFactors[1]);
-	simulationStatistics->mLuminosity = ((0.05 * mGenerate.random() / 100) + 1)*(mFactors[2]);
+	simulationStatistics->mLuminosity = mFactors[2];
 	simulationStatistics->mWind = ((0.05 * mGenerate.random() / 100) + 1)*(mFactors[3]);
 
-	//simulationStatistics->mTemperature = mFactors[0];
-	//simulationStatistics->mPrecipitation = mFactors[1];
-	//simulationStatistics->mLuminosity = mFactors[2];
-	//simulationStatistics->mWind = mFactors[3]; 
+ 
 	
 }
 

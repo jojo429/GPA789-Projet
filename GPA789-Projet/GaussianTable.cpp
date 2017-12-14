@@ -2,8 +2,8 @@
 #include "math.h"
 
 
-GaussianTable::GaussianTable(int lenght, int mainValue, int spreadFactor)
-	: FunctionTable(lenght)
+GaussianTable::GaussianTable(int lenght, int mainValue, int spreadFactor, int shiftFactor)
+	: FunctionTable(lenght), mShiftFactor{shiftFactor}
 {
 
 	GaussianTable::set(mainValue, spreadFactor);
@@ -20,10 +20,17 @@ void GaussianTable::set(int mainValue, int spreadFactor)
 
 	double temporary = 0;
 
-	for (int x(0); x < mLenght; x++)
+	for (int x(mShiftFactor); x < (mLenght + mShiftFactor); x++)
 	{
 
 		mTable.push_back(exp(-((x - mainValue)*(x - mainValue)) / spreadFactor));
 	}
+
+}
+
+
+double GaussianTable::getValue(int position)
+{
+	return FunctionTable::getValue(position - mShiftFactor);
 
 }

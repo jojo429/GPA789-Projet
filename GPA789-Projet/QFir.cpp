@@ -6,6 +6,9 @@
 QFir::QFir(QEnvironment const & environment)
 	: QTrees{ environment }
 {
+	
+	/*mLuminosityGrowFactor.set(40, 10000);
+	mTemperatureGrowFactor.set(20, 900);*/
 	mLeafColor.setRgb(31, 86, 33);
 	mTrunkColor.setRgb(38, 43, 3);
 	mPen.setColor(Qt::black);

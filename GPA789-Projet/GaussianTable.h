@@ -6,11 +6,13 @@
 class GaussianTable : public FunctionTable
 {
 public:
-	GaussianTable(int lenght, int mainValue, int spreadFactor);
+	GaussianTable(int lenght, int mainValue, int spreadFactor, int shiftFactor=0);
 	~GaussianTable();
 
 	void set(int mainValue, int spreadFactor);
-
+	double getValue(int position);
+protected:
+	int mShiftFactor;
 };
 
 
