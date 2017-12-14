@@ -31,11 +31,11 @@ void QEnvironment::advance()
 
 }
 
-std::vector<float> QEnvironment::getFactors()
-{
-
-	return mFactors;
-}
+//std::vector<float> const QEnvironment::getFactors()
+//{
+//
+//	return mFactors;
+//}
 
 void QEnvironment::getStatistics(SimulationStatistics *simulationStatistics)
 {

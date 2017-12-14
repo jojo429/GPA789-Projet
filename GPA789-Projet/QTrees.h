@@ -38,6 +38,11 @@ protected:
 	QTrees *mMasterTree;
 	void advance(int phase);
 	QRectF boundingRect() const;
+	int mTime{ 0 };
+	static GaussianTable mPrecipitationGrowFactor;
+	static GaussianTable mLuminosityGrowFactor;
+	static GaussianTable mTemperatureGrowFactor;
+	static GaussianTable mGrowTable;
 	
 
 };

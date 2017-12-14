@@ -3,6 +3,11 @@
 #include <QPainter>
 #include <QColor>
 
+GaussianTable QBirch::mPrecipitationGrowFactor(28, 6, 25);
+GaussianTable QBirch::mLuminosityGrowFactor(200, 50, 10000, -100);
+GaussianTable QBirch::mTemperatureGrowFactor(150, 30, 1000, -75);
+GaussianTable QBirch::mGrowTable(500, 10, 50000);
+
 QBirch::QBirch(QEnvironment const & environment)
 	: QTrees{ environment }
 {

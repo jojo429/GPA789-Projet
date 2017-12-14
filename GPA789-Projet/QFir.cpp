@@ -3,6 +3,11 @@
 #include <QPainter>
 #include <QColor>
 
+GaussianTable QFir::mPrecipitationGrowFactor(28, 6, 25);
+GaussianTable QFir::mLuminosityGrowFactor(200, 50, 10000, -100);
+GaussianTable QFir::mTemperatureGrowFactor(150, 30, 1000, -75);
+GaussianTable QFir::mGrowTable(500, 10, 50000);
+
 QFir::QFir(QEnvironment const & environment)
 	: QTrees{ environment }
 {

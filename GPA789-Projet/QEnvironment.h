@@ -34,19 +34,20 @@ public:
 	void calculateFactors(int Time);
 	void setParameters(SimulationParameters &simulationParameters);
 	void getStatistics(SimulationStatistics *simulationStatistics);
-	std::vector<float> getFactors();
+	std::vector<float> mFactors;
+	/*std::vector<float> const getFactors();*/
 
 public slots:
 	void advance();
 
 private:
 	std::vector< QEnvironmentalFactor*> mEnvironmentalFactor;
-	std::vector<float> mFactors;
+	
 	QLuminosity mLuminosity;
 	QPrecipitation mPrecipitation;
 	QTemperature mTemperature;
 	QWind mWind;
-	int mTime = 0;
+	int mTime{ 0 };
 	RandomUniform mGenerate;
 
 };
