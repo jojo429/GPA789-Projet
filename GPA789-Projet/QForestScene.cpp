@@ -7,8 +7,8 @@
 #include "QSquirrel.h"
 
 
-QForestScene::QForestScene(QEnvironment const & enviromnent, QGraphicsScene * parent)
-	: QGraphicsScene(parent), mGenerate(0, 3)
+QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
+	: QGraphicsScene(parent), mGenerate(0, 3), mEnvironment{environment}
 {
 
 	this->setBackgroundBrush(mBackgroundBrush);
@@ -28,19 +28,19 @@ QForestScene::QForestScene(QEnvironment const & enviromnent, QGraphicsScene * pa
 		QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
 		switch (tree) {
 
-		case 0: 	newTree = new QOak(enviromnent, Oak); 
+		case 0: 	newTree = new QOak(environment, Oak);
 					break; 
 
-		case 1: 	newTree = new QFir(enviromnent, Fir);
+		case 1: 	newTree = new QFir(environment, Fir);
 					break; 
 
-		case 2: 	newTree = new QHazel(enviromnent, Hazel);
+		case 2: 	newTree = new QHazel(environment, Hazel);
 					break; 
 
-		case 3: 	newTree = new QBirch(enviromnent, Birch);
+		case 3: 	newTree = new QBirch(environment, Birch);
 					break; 
 
-		default:	newTree = new QOak(enviromnent, Oak);
+		default:	newTree = new QOak(environment, Oak);
 					break;
 		}
 
@@ -81,10 +81,10 @@ QForestScene::QForestScene(QEnvironment const & enviromnent, QGraphicsScene * pa
 	//this->addItem(newTree);
 	//newTree->setPos(spawnPoint);
 
-	QSquirrel *squirrel = new QSquirrel(enviromnent);
+	QSquirrel *squirrel = new QSquirrel(environment);
 	this->addItem(squirrel);
 	squirrel->setPos(QPointF(1000, 1000));
-
+	
 
 }
 
@@ -95,7 +95,13 @@ QForestScene::~QForestScene()
 
 }
 
+void QForestScene::createSeed(QTrees* parent)
+{
+	QSeeds *newSeed = new QSeeds(mEnvironment, parent->mTreeType);
+	this->addItem(newSeed);
+	newSeed->setPos(QPointF(1000, 1000));
 
+}
 
 
 void QForestScene::closestTree(QPointF pt2D)

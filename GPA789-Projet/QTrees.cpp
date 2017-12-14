@@ -35,13 +35,8 @@ void QTrees::reproduce()
 		for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
 
 			
+			/*emit dropSeed(this);*/
 
-
-			//Add seeds
-			//QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
-			/*QTrees *newTree = new QOak(enviromnent);
-			this->addItem(newTree);
-			newTree->setPos(QPointF(1000 + 100 * i, 1000 + 100 * i));*/
 		}
 
 	}

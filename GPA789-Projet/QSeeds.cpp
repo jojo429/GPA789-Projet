@@ -10,9 +10,11 @@
 #include <QPainter>
 #include <array>
 
-QSeeds::QSeeds(QEnvironment const & environment, QTrees const & masterTree)
-	: QDynamic{ environment }, mMasterTree{ masterTree }
+QSeeds::QSeeds(QEnvironment const & environment, treeType value)
+	: QDynamic{ environment }, mTreeType{value}
 {
+
+
 }
 
 QSeeds::~QSeeds()
