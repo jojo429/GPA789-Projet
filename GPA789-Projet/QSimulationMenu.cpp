@@ -113,4 +113,7 @@ void QSimulationMenu::unfreeze()
 	mWind->setEnabled(true);
 }
 
+int QSimulationMenu::getTimeScaleValue() {
+	return mTimeScaleSlider->getValue();
+}
 
