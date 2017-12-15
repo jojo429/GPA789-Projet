@@ -12,7 +12,7 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 {
 
 	
-
+	mForestScene.setStatistic(& mSimulationStatistics);
 	mSimulationMenu = new QSimulationMenu;
 	QHBoxLayout * mainLayout = new QHBoxLayout;
 

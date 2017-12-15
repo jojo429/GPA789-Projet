@@ -4,8 +4,8 @@
 class SimulationParameters
 {
 public:
-	SimulationParameters();
-	~SimulationParameters();
+	SimulationParameters()=default;
+	~SimulationParameters()=default;
 
 	int mPrecipitationCycle;
 	int mPrecipitationAverage;
