@@ -27,10 +27,10 @@ public:
 	void grow();
 	void striked() override;
 	treeType mTreeType;
-	virtual GaussianTable growTable()=0;
-	virtual GaussianTable precipirationGrowFactorTable()=0;
-	virtual GaussianTable luminosityGrowFactorTable()=0;
-	virtual GaussianTable temperatureGrowFactorTable()=0;
+	virtual GaussianTable & growTable()=0;
+	virtual GaussianTable & precipirationGrowFactorTable()=0;
+	virtual GaussianTable & luminosityGrowFactorTable()=0;
+	virtual GaussianTable & temperatureGrowFactorTable()=0;
 
 
 

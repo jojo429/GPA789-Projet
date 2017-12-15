@@ -42,19 +42,19 @@ void QHazel::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 
 }
 
-GaussianTable QHazel::growTable()
+GaussianTable & QHazel::growTable()
 {
 	return mGrowTable;
 }
-GaussianTable QHazel::precipirationGrowFactorTable()
+GaussianTable & QHazel::precipirationGrowFactorTable()
 {
 	return mPrecipitationGrowFactor;
 }
-GaussianTable QHazel::luminosityGrowFactorTable()
+GaussianTable & QHazel::luminosityGrowFactorTable()
 {
 	return mLuminosityGrowFactor;
 }
-GaussianTable QHazel::temperatureGrowFactorTable()
+GaussianTable & QHazel::temperatureGrowFactorTable()
 {
 	return mTemperatureGrowFactor;
 }

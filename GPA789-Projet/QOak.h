@@ -10,10 +10,10 @@ public:
 	QOak(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QOak();
 
-	GaussianTable growTable();
-	GaussianTable precipirationGrowFactorTable();
-	GaussianTable luminosityGrowFactorTable();
-	GaussianTable temperatureGrowFactorTable();
+	GaussianTable & growTable();
+	GaussianTable & precipirationGrowFactorTable();
+	GaussianTable & luminosityGrowFactorTable();
+	GaussianTable & temperatureGrowFactorTable();
 	
 
 

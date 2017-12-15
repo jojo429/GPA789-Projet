@@ -20,6 +20,7 @@ public:
 	QForestScene(QEnvironment const & enviromnent, QGraphicsScene * parent = Q_NULLPTR);
 	~QForestScene();
 	void createSeed(QTrees* parent);
+	void createTree(QSeeds* parent);
 	void setParameters(SimulationParameters &simulationParameters);
 
 protected:
