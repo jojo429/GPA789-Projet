@@ -47,7 +47,7 @@ void QSeeds::move()
 	update();*/
 }
 
-void QSeeds::piked()
+void QSeeds::picked()
 {
 	setVisible(false);
 }
@@ -79,9 +79,12 @@ void QSeeds::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 
 void QSeeds::advance(int phase)
 {
-	if (mCountFallDown < 50) {
-		mMovingFactor = 1.3;
-		move();
+	if (phase == 1) {
+		if (mCountFallDown < 50) {
+			mMovingFactor = 1.3;
+			move();
+		}
 	}
+
 }
 

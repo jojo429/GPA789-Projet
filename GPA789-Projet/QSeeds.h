@@ -18,7 +18,7 @@ public:
 	void germinate();
 	void die() override;
 	bool isItDead() override;
-	void piked();
+	void picked();
 	void droped( QPointF coordinate );
 
 private:

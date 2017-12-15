@@ -8,7 +8,7 @@
 
 
 QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
-	: QGraphicsScene(parent), mGenerate(0, 3), mEnvironment{environment}
+	: QGraphicsScene(parent), mGenerate(-100, 100), mEnvironment{environment}
 {
 	//Delimitation de la zone de simulation
 	this->addLine(0, 0, 2050, 0);
@@ -19,8 +19,9 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 
 
 	this->setBackgroundBrush(mBackgroundBrush);
-	int treeCount{ 20 };
-	int tree;
+
+	int treeCount{ 15 };
+	int tree =2;
 
 	//Setting up the master trees
 	//mMasterOak.setMasterTree(&mMasterOak);
@@ -31,7 +32,6 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 	for (int i{ 0 }; i < treeCount; ++i) {
 
 		//Add trees
-		tree = mGenerate.random();
 		QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
 		switch (tree) {
 
@@ -107,7 +107,7 @@ void QForestScene::createSeed(QTrees* parent)
 	QSeeds *newSeed = new QSeeds(mEnvironment, *this , parent->mTreeType);
 	newSeed->mHeight = parent->getHeight();
 	addItem(newSeed);
-	newSeed->setPos(QPointF((parent->pos().x() + parent->getRadius()/2),( parent->pos().y()+parent->getRadius() / 2)));
+	newSeed->setPos(QPointF((parent->pos().x() + (parent->getRadius()*mGenerate.random()/200)),( parent->pos().y()+(parent->getRadius() *mGenerate.random() / 200))));
 
 }
 

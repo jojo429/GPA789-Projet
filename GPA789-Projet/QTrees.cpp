@@ -17,7 +17,7 @@ QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, tre
 	mLeafRadius = 1;
 	mTrunkRadius = 0.1 * mLeafRadius;
 	mHeight = 2 * mLeafRadius;
-	mMasterTree = this;
+
 
 
 }
@@ -72,12 +72,6 @@ void QTrees::striked()
 
 }
 
-void QTrees::setMasterTree(QTrees * tree)
-{
-	mMasterTree = tree;
-
-
-}
 
 QRectF QTrees::boundingRect() const
 {
@@ -89,27 +83,30 @@ QRectF QTrees::boundingRect() const
 void QTrees::advance(int phase)
 {
 
-	mTime++;
-	if (mTime >= 2190)
-	{
-		mAge++;
-		mTime = mTime - 2190;
-	}
+	if (phase == 1)
+		{
+		mTime++;
+		if (mTime >= 2190)
+		{
+			mAge++;
+			mTime = mTime - 2190;
+		}
 
-	if (mAge < 2) {
-		mLeafRadius = mLeafRadius + 0.02*(mGrowTable.getValue(mAge))*((mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0])+mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1])+ mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2]))/3);
-		mTrunkRadius = 0.20 * mLeafRadius;
-		update(boundingRect());
-	}
-	else {
-		update();
-	}
+		if (mAge < 2) {
+			mLeafRadius = mLeafRadius + 0.02*(mGrowTable.getValue(mAge))*((mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0]) + mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1]) + mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2])) / 3);
+			mTrunkRadius = 0.20 * mLeafRadius;
+			update(boundingRect());
+		}
+		else {
+			update();
+		}
 
-	if (mTime == 1000)
-	{
-		reproduce();
+		if (mTime == 1000)
+		{
+			reproduce();
+		}
 	}
-
+	
 	/*if (mLeafRadius < 50) {
 		mLeafRadius = mLeafRadius + 0.10*(rand() % 2 + 1);
 		mTrunkRadius = 0.20 * mLeafRadius;
