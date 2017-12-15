@@ -142,9 +142,6 @@
     <ClCompile Include="QRandomMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SimulationParameters.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="QEvolutionGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

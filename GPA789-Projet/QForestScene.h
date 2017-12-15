@@ -22,6 +22,9 @@ public:
 	void createSeed(QTrees* parent);
 	void createTree(QSeeds* parent);
 	void setParameters(SimulationParameters &simulationParameters);
+	void setStatistic(SimulationStatistics *simulationStatistics);
+	void windAngle(int windAngle);
+	int mWindAngle{ 0 };
 
 protected:
 
@@ -34,10 +37,10 @@ private:
 	RandomUniform mGenerate;
 	RandomUniform mGenerateCoordinate;
 	QEnvironment const & mEnvironment;
-	/*QOak mMasterOak;
-	QBirch mMasterBirch;
-	QHazel mMasterHazel;
-	QFir mMasterFir;*/
+	SimulationStatistics * mSimulationStatistics;
+	
+
+
 };
 
 #endif //Q_FOREST_SCENE_H

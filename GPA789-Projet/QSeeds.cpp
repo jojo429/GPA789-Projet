@@ -11,13 +11,14 @@
 #include <QPainter>
 #include <array>
 #include "QForestScene.h"
+#include <math.h>
 
 GaussianTable QSeeds::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QSeeds::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QSeeds::mTemperatureGrowFactor(150, 30, 1000, -75);
 
 QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
-	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}, mGenerateTree(0,1000)
+	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}, mGenerateTree(0,1000), mGenerateAngle(-45,45)
 {
 
 
@@ -31,8 +32,8 @@ QSeeds::~QSeeds()
 void QSeeds::germinate()
 {
 	double chance = (this->mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0]) + this->mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1]) + this->mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2])) / 3;
-	double chiffre = mGenerateTree.random();
-	chance = chance*(chiffre/1000.0);
+	chance = chance*(mGenerateTree.random() /1000.0);
+
 	if (chance > 0.90)
 	{
 		mForestScene.createTree(this);
@@ -40,8 +41,7 @@ void QSeeds::germinate()
 		this->setVisible(false);
 	}
 	
-	//Comment le faire?	
-	//QTrees * newTree = new QTrees(mMasterTree);
+
 }
 
 void QSeeds::die()
@@ -56,11 +56,11 @@ bool QSeeds::isItDead()
 
 void QSeeds::move()
 {
-	/*std::array<double, 2> movingVector;
-	movingVector = mEnvironment.getAirDisplacement();
-	moveBy(movingVector[0] * mMovingFactor, movingVector[1] * mMovingFactor);
-	mCountFallDown++;
-	update();*/
+	mHeight = mHeight--;
+	double x = cos(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360)*mEnvironment.mFactors[3] / 20.0;
+	double y = sin(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360)*mEnvironment.mFactors[3] / 20.0;
+	this->setPos(QPointF(this->pos().x()+x , this->pos().y()+ y));
+	
 }
 
 void QSeeds::picked()
@@ -103,15 +103,16 @@ void QSeeds::advance(int phase)
 
 		advanceTime();
 
-		if (mAge < 2 && !mGerminated)
+		if (mHeight > 0)
+		{
+			move();
+
+		}
+		else if (mAge < 2 && !mGerminated)
 		{
 			germinate();
 
 		}
-		/*if (mCountFallDown < 50) {
-		mMovingFactor = 1.3;
-		move();
-		}*/
 
 
 	}

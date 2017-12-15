@@ -132,7 +132,6 @@
     <ClCompile Include="QSimulationTimeScale.cpp" />
     <ClCompile Include="QStatisticAdvanceMenu.cpp" />
     <ClCompile Include="QTreeOptions.cpp" />
-    <ClCompile Include="SimulationParameters.cpp" />
     <ClCompile Include="SinusTable.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_QCyclicOptions.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
