@@ -32,6 +32,7 @@ QGraphicsItem * QSquirrel::getTarget()
 
 	if (inRangeItems.empty()) 
 	{
+		
 		return Q_NULLPTR;
 	}
 	else 
@@ -100,13 +101,13 @@ void QSquirrel::setRotationAdjustment()
 		y2 = mTargetPos.y();
 		teta1 = rotation();
 
-		teta2 = qAtan2(y1 - y2, x1 - x2) * (180 / 3.14);
+		teta2 = qRadiansToDegrees(qAtan2(y2 - y1, x2 - x1));
 
-		setRotation(teta1 - teta2);
+		setRotation(teta2);
 	}
 	else
 	{
-		setRotation(static_cast<qreal>(mGenerateAngle.random()));
+		setRotation(mGenerateAngle.random());
 	}
 
 }
@@ -140,10 +141,10 @@ void QSquirrel::paint(QPainter * painter, const QStyleOptionGraphicsItem * optio
 	painter->setPen(mPen);
 	painter->drawConvexPolygon(mTriangle, 3);
 	mBrush.setColor(mTailColor);
-	painter->drawEllipse(QPointF(0, 12), 4, 12);
+	painter->drawEllipse(QPointF(-12, 0), -12, -4);
 	mPen.setColor(Qt::black);
 	painter->setPen(mPen);
-	painter->drawLine(0, -15, 0, -30);
+	painter->drawLine(15, 0, 30, 0);
 	
 
 
@@ -155,55 +156,60 @@ void QSquirrel::advance(int phase)
 	//qDebug() << "test";
 
 	//Choose a target or a random direction
-	if (mActionCounter == 0)
-	{
-		mTarget = getTarget();
-		if (mTarget != Q_NULLPTR) {
-			if (mPastTarget.size() < 6) {
-				mPastTarget.append(mTarget);
+	if (phase = 1) {
+		if (mActionCounter == 0)
+		{
+			mTarget = getTarget();
+			if (mTarget != Q_NULLPTR) {
+				if (mPastTarget.size() < 6) {
+					mPastTarget.append(mTarget);
+				}
+				else
+				{
+					mPastTarget.removeFirst();
+					mPastTarget.append(mTarget);
+				}
+			}
+			if (mTargetType != NoTarget) {
+				mTargetPos = mTarget->pos();
+				setRotationAdjustment();
 			}
 			else
 			{
-				mPastTarget.removeFirst();
-				mPastTarget.append(mTarget);
+				setRotationAdjustment();
 			}
+			mActionCounter++;
 		}
-		if (mTargetType != NoTarget) {
-			mTargetPos = mTarget->pos();
-			setRotationAdjustment();
+		else if (mActionCounter <= 80)
+		{
+			if ((pos().x() > 0 && pos().x() < 2050) && (pos().y() > 0 && pos().y() < 2050))
+			{
+				if (mTarget == Q_NULLPTR || getTargetDistance() >= 5)
+				{
+					setPos(mapToParent(3, 0));
+					mActionCounter++;
+				}
+				else
+				{
+					mTargetType = NoTarget;
+					mActionCounter = 0;
+				}
+			}
+			else
+			{
+				setPos(mapToParent(0, 15));
+				mTargetType = NoTarget;
+				mActionCounter = 0;
+
+			}
 		}
 		else
 		{
-			setRotationAdjustment();		
-		}
-		mActionCounter++;
-	}
-	else if(mActionCounter <= 80)
-	{
-		if ((pos().x() > 0 && pos().x() < 2050) && (pos().y() > 0 && pos().y() < 2050)) 
-		{
-			if (getTargetDistance() >= 5)
-			{
-				setPos(mapToParent(0, -3));
-				mActionCounter++;
-			}
-			else
-			{
-				mTargetType = NoTarget;
-				mActionCounter = 0;
-			}
-		}
-		else 
-		{
-			setPos(mapToParent(0, 15));
 			mTargetType = NoTarget;
 			mActionCounter = 0;
+		}
 
-		}	
+
 	}
-	else
-	{
-		mTargetType = NoTarget;
-		mActionCounter = 0;
-	}
+	
 }
