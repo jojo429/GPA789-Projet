@@ -11,13 +11,14 @@
 #include <QPainter>
 #include <array>
 #include "QForestScene.h"
+#include <math.h>
 
 GaussianTable QSeeds::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QSeeds::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QSeeds::mTemperatureGrowFactor(150, 30, 1000, -75);
 
 QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
-	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}, mGenerateTree(0,1000)
+	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}, mGenerateTree(0,1000), mGenerateAngle(-45,45)
 {
 
 
@@ -56,7 +57,9 @@ bool QSeeds::isItDead()
 void QSeeds::move()
 {
 	mHeight = mHeight--;
-	this->setPos(this->pos().x() + 2, this->pos().y() + 2);
+	double x = cos(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360)*mEnvironment.mFactors[3] / 20.0;
+	double y = sin(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360)*mEnvironment.mFactors[3] / 20.0;
+	this->setPos(QPointF(this->pos().x()+x , this->pos().y()+ y));
 	
 }
 

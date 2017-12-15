@@ -41,6 +41,7 @@ private:
 	static GaussianTable mLuminosityGrowFactor;
 	static GaussianTable mTemperatureGrowFactor;
 	RandomUniform mGenerateTree;
+	RandomUniform mGenerateAngle;
 };
 
 

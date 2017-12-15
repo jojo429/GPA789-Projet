@@ -147,3 +147,8 @@ void QForestScene::setStatistic(SimulationStatistics *simulationStatistics)
 {
 	mSimulationStatistics = simulationStatistics;
 }
+
+void QForestScene::windAngle(int windAngle)
+{
+	mWindAngle = windAngle;
+}

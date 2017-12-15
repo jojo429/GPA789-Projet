@@ -34,7 +34,7 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	connect(mSimulationMenu, &QSimulationMenu::stop, this, &QSimulation::stop);
 	connect(mSimulationMenu, &QSimulationMenu::step, this, &QSimulation::step);
 	connect(this, &QSimulation::updateAdvanceCount, mSimulationMenu, &QSimulationMenu::setAdvanceCounter);
-
+	connect(mSimulationMenu, &QSimulationMenu::windAngle, &mForestScene, &QForestScene::windAngle);
 }
 
 QSimulation::~QSimulation()

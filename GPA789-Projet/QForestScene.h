@@ -23,6 +23,8 @@ public:
 	void createTree(QSeeds* parent);
 	void setParameters(SimulationParameters &simulationParameters);
 	void setStatistic(SimulationStatistics *simulationStatistics);
+	void windAngle(int windAngle);
+	int mWindAngle{ 0 };
 
 protected:
 
@@ -36,6 +38,7 @@ private:
 	RandomUniform mGenerateCoordinate;
 	QEnvironment const & mEnvironment;
 	SimulationStatistics * mSimulationStatistics;
+	
 
 
 };
