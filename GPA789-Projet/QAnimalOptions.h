@@ -14,7 +14,7 @@ public:
 	QAnimalOptions(QWidget *parent = Q_NULLPTR);
 	QAnimalOptions(QString animalName, int minNumbAnimals, int maxNumbAnimals, int numbAnimalsInit);
 	~QAnimalOptions();
-
+	int getValue();
 private:
 	QSlider *mAnimalSlider;
 

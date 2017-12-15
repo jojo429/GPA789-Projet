@@ -35,3 +35,9 @@ void QAnimalOptions::updateValues()
 {
 	mAnimalValue->setText(QString::number(mAnimalSlider->value()));
 }
+
+
+int QAnimalOptions::getValue()
+{
+	return mAnimalSlider->value();
+}

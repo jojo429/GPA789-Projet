@@ -22,10 +22,10 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 		20, 10, 365);
 
 	//Définition des sliders d'arbres
-	mOak = new QTreeOptions("Oak", 0, 25, 0);
-	mBirch = new QTreeOptions("Birch", 0, 25, 0);
-	mHazel = new QTreeOptions("Hazel", 0, 25, 0);
-	mFir = new QTreeOptions("Fir", 0, 25, 0);
+	mOak = new QTreeOptions("Oak", 0, 25, 10);
+	mBirch = new QTreeOptions("Birch", 0, 25, 10);
+	mHazel = new QTreeOptions("Hazel", 0, 25, 10);
+	mFir = new QTreeOptions("Fir", 0, 25, 10);
 
 	QPixmap treeIcon = QPixmap(":/GPA789Projet/iconForest");
 	QPixmap tmpPixmap = treeIcon.scaled(QSize(50, 50), Qt::KeepAspectRatio);
@@ -53,7 +53,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	QLabel *animalIconLabel = new QLabel;
 	animalIconLabel->setPixmap(tmpPixmap2);
 
-	mSquirrel = new QAnimalOptions("Squirrel", 0, 25, 0);
+	mSquirrel = new QAnimalOptions("Squirrel", 0, 25, 3);
 
 	mAnimalsVBoxLayout = new QVBoxLayout;
 	mAnimalsVBoxLayout->addWidget(mSquirrel);

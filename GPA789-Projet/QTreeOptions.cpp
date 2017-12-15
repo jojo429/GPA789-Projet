@@ -35,3 +35,8 @@ void QTreeOptions::updateValues()
 {
 	mTreeValue->setText(QString::number(mTreeSlider->value()));
 }
+
+int QTreeOptions::getValue()
+{
+	return mTreeSlider->value();
+}
