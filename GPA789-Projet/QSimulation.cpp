@@ -110,7 +110,7 @@ void QSimulation::generalAdvance()
 	static bool working{ false };
 	if (!working) {
 		working = true;
-		for (int i{ 0 }; i < 1; i++) {
+		for (int i{ 0 }; i < mSimulationMenu->getTimeScaleValue(); i++) {
 			mEnvironment.advance();
 			mForestScene.advance();
 			getStatistics();
