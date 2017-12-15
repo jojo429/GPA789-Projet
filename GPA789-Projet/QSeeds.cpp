@@ -10,8 +10,8 @@
 #include <QPainter>
 #include <array>
 
-QSeeds::QSeeds(QEnvironment const & environment, treeType value)
-	: QDynamic{ environment }, mTreeType{value}
+QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
+	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}
 {
 
 
@@ -47,7 +47,7 @@ void QSeeds::move()
 	update();*/
 }
 
-void QSeeds::piked()
+void QSeeds::picked()
 {
 	setVisible(false);
 }
@@ -77,11 +77,24 @@ void QSeeds::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 	painter->drawEllipse(center, mSeedRadius, mSeedRadius - mSeedRadius * 0.5);
 }
 
+
+
 void QSeeds::advance(int phase)
 {
-	if (mCountFallDown < 50) {
+
+
+	if (phase == 1) {
+
+		advanceTime();
+
+
+		/*if (mCountFallDown < 50) {
 		mMovingFactor = 1.3;
 		move();
+		}*/
+
+
 	}
+
 }
 

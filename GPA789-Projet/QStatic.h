@@ -7,10 +7,9 @@ class QStatic : public QEntity
 {
 
 public:
-	QStatic(QEnvironment const & environment);
+	QStatic(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan);
 	~QStatic();
 
 };
-
 #endif //Q_STATIC_H
 

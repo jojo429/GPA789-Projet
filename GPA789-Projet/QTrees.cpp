@@ -1,22 +1,20 @@
 #include "QTrees.h"
 #include <QBrush>
 #include <QPainter>
+#include "QForestScene.h"
 
-GaussianTable QTrees::mPrecipitationGrowFactor(28, 6, 25);
-GaussianTable QTrees::mLuminosityGrowFactor(200, 50, 10000, -100);
-GaussianTable QTrees::mTemperatureGrowFactor(150, 30, 1000, -75);
-GaussianTable QTrees::mGrowTable(500, 10, 50000);
-GaussianTable QTrees::mReproduceTable(500, 10, 50000);
 
-QTrees::QTrees(QEnvironment const & environment, treeType value )
-	: QStatic(environment), mGenerateSeed(1, 6), mTreeType{ value }
+
+QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan )
+	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(1, 6), mTreeType{ value }, mEmpty(0,0,0)
 {
 	
 	mAge = 0;
 	mLeafRadius = 1;
-	mTrunkRadius = 0.1 * mLeafRadius;
-	mHeight = 2 * mLeafRadius;
-	mMasterTree = this;
+	mTrunkRadius = 0.2 * mLeafRadius;
+	mHeight = 4 * mLeafRadius;
+
+
 
 }
 
@@ -27,19 +25,16 @@ QTrees::~QTrees()
 
 void QTrees::reproduce()
 {
-	if (mTime == 1000 )
-	{
-
+	
 		
 
-		for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
+	for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
 
 			
-			/*emit dropSeed(this);*/
-
-		}
+		mForestScene.createSeed(this);
 
 	}
+
 }
 
 void QTrees::die()
@@ -49,7 +44,12 @@ void QTrees::die()
 
 int QTrees::getHeight()
 {
-	return 0;
+	return mHeight;
+}
+
+int QTrees::getRadius()
+{
+	return mLeafRadius;
 }
 
 void QTrees::adjustDryness()
@@ -68,12 +68,6 @@ void QTrees::striked()
 
 }
 
-void QTrees::setMasterTree(QTrees * tree)
-{
-	mMasterTree = tree;
-
-
-}
 
 QRectF QTrees::boundingRect() const
 {
@@ -85,22 +79,25 @@ QRectF QTrees::boundingRect() const
 void QTrees::advance(int phase)
 {
 
-	mTime++;
-	if (mTime >= 2190)
-	{
-		mAge++;
-		mTime = mTime - 2190;
-	}
+	if (phase == 1)
+		{
+		advanceTime();
 
-	if (mAge < 2) {
-		mLeafRadius = mLeafRadius + 0.02*(mGrowTable.getValue(mAge))*((mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0])+mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1])+ mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2]))/3);
-		mTrunkRadius = 0.20 * mLeafRadius;
-		update(boundingRect());
-	}
-	else {
-		update();
-	}
+		if (mAge < 2) {
+			grow();
+			update(boundingRect());
 
+		}
+		else {
+			update();
+		}
+
+		if (mTime == 1000)
+		{
+			reproduce();
+		}
+	}
+	
 	/*if (mLeafRadius < 50) {
 		mLeafRadius = mLeafRadius + 0.10*(rand() % 2 + 1);
 		mTrunkRadius = 0.20 * mLeafRadius;
@@ -112,3 +109,26 @@ void QTrees::advance(int phase)
 
 }
 
+GaussianTable QTrees::growTable()
+{
+	return mEmpty;
+}
+GaussianTable QTrees::precipirationGrowFactorTable()
+{
+	return mEmpty;
+}
+GaussianTable QTrees::luminosityGrowFactorTable()
+{
+	return mEmpty;
+}
+GaussianTable QTrees::temperatureGrowFactorTable()
+{
+	return mEmpty;
+}
+
+void QTrees::grow()
+{
+	mLeafRadius = mLeafRadius + 0.04*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
+	mTrunkRadius = 0.20 * mLeafRadius;
+	mHeight = 4 * mLeafRadius;
+}

@@ -7,9 +7,13 @@ class QHazel : public QTrees
 {
 
 public:
-	QHazel(QEnvironment const & environment, treeType value);
+	QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QHazel();
-	void grow();
+
+	GaussianTable growTable();
+	GaussianTable precipirationGrowFactorTable();
+	GaussianTable luminosityGrowFactorTable();
+	GaussianTable temperatureGrowFactorTable();
 
 private:
 	QColor mLeafColor;

@@ -11,24 +11,27 @@
 
 class QTrees : public QStatic
 {
-
+	
 public:
 
-	QTrees(QEnvironment const & environment, treeType value);
+	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QTrees();
 
 	
 	void reproduce() override;
 	void die() override;
 	int getHeight();
+	int getRadius();
 	void adjustDryness();
 	void setOnFire();
+	void grow();
 	void striked() override;
-	void setMasterTree(QTrees * tree);
 	treeType mTreeType;
+	virtual GaussianTable growTable()=0;
+	virtual GaussianTable precipirationGrowFactorTable()=0;
+	virtual GaussianTable luminosityGrowFactorTable()=0;
+	virtual GaussianTable temperatureGrowFactorTable()=0;
 
-//signals:
-//	void dropSeed(int parent);
 
 
 protected:
@@ -40,14 +43,11 @@ protected:
 	int mDryness;
 	enum mState {isAlive, isDead, isOnFire};
 	bool mGotHit;
-	QTrees *mMasterTree;
 	void advance(int phase);
 	QRectF boundingRect() const;
-	int mTime{ 0 };
-	static GaussianTable mPrecipitationGrowFactor;
-	static GaussianTable mLuminosityGrowFactor;
-	static GaussianTable mTemperatureGrowFactor;
-	static GaussianTable mGrowTable;
+	
+	GaussianTable mEmpty;
+
 	static GaussianTable mReproduceTable;
 	RandomUniform mGenerateSeed;
 	

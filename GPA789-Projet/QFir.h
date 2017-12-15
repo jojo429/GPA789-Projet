@@ -7,10 +7,13 @@ class QFir : public QTrees
 {
 
 public:
-	QFir(QEnvironment const & environment, treeType value);
+	QFir(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QFir();
-	void grow();
 
+	GaussianTable growTable();
+	GaussianTable precipirationGrowFactorTable();
+	GaussianTable luminosityGrowFactorTable();
+	GaussianTable temperatureGrowFactorTable();
 
 
 private:

@@ -49,6 +49,7 @@ private:
 	QWind mWind;
 	int mTime{ 0 };
 	RandomUniform mGenerate;
+	
 
 };
 

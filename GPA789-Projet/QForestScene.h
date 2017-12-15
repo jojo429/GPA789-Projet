@@ -19,6 +19,8 @@ class QForestScene : public QGraphicsScene
 public:
 	QForestScene(QEnvironment const & enviromnent, QGraphicsScene * parent = Q_NULLPTR);
 	~QForestScene();
+	void createSeed(QTrees* parent);
+	void setParameters(SimulationParameters &simulationParameters);
 
 protected:
 
@@ -29,7 +31,7 @@ private:
 	void lightningStrike(QPointF pt2D);
 	QBrush mBackgroundBrush{ QColor(239, 247, 153) };
 	RandomUniform mGenerate;
-	void createSeed(QTrees* parent);
+	RandomUniform mGenerateCoordinate;
 	QEnvironment const & mEnvironment;
 	/*QOak mMasterOak;
 	QBirch mMasterBirch;

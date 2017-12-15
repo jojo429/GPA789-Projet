@@ -5,6 +5,7 @@
 #include <QHBoxLayout>
 #include <QGraphicsRectItem>
 #include <QTimer>
+#include <QDebug>
 
 QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent)
 	: QWidget(parent), mEnvironment { environment }, mForestScene { forestScene }
@@ -25,13 +26,14 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	mainLayout->addWidget(mSimulationMenu);
 	
 	setLayout(mainLayout);
-	connect(&mTimer, &QTimer::timeout, this, &QSimulation::generalAdvance);
+
+	connect(&mTimer, &QTimer::timeout, this, &QSimulation::genAdvance);
 	
 	connect(mSimulationMenu, &QSimulationMenu::play, this, &QSimulation::play);
 	connect(mSimulationMenu, &QSimulationMenu::pause, this, &QSimulation::pause);
 	connect(mSimulationMenu, &QSimulationMenu::stop, this, &QSimulation::stop);
 	connect(mSimulationMenu, &QSimulationMenu::step, this, &QSimulation::step);
-
+	connect(this, &QSimulation::updateAdvanceCount, mSimulationMenu, &QSimulationMenu::setAdvanceCounter);
 
 }
 
@@ -43,6 +45,7 @@ QSimulation::~QSimulation()
 void QSimulation::getStatistics()
 {
 	mEnvironment.getStatistics(&mSimulationStatistics);
+
 	emit sendStatistics(mSimulationStatistics);
 }
 
@@ -65,9 +68,14 @@ void QSimulation::wheelEvent(QWheelEvent* event)
 
 void QSimulation::play()
 {
+	if (!mStarted)
+	{
+		mSimulationMenu->getParameters(&mSimulationParameters);
+		mEnvironment.setParameters(mSimulationParameters);
+		mForestScene.setParameters(mSimulationParameters);
+		mStarted = true;
+	}
 	
-	mSimulationMenu->getParameters(&mSimulationParameters);
-	mEnvironment.setParameters(mSimulationParameters);
 
 	mTimer.start(30);
 }
@@ -82,21 +90,51 @@ void QSimulation::stop()
 {
 
 	mTimer.stop();
+	mAdvanceCounter = 0;
+	emit updateAdvanceCount(mAdvanceCounter);
+	mStarted = false;
+	mForestScene.clear();
 }
 
 void QSimulation::step()
 {
 
-
+	this->generalAdvance(true);
 
 }
 
-void QSimulation::generalAdvance() 
+void QSimulation::generalAdvance(bool oneStep) 
 {
-	for (int i{ 0 }; i < mSimulationMenu->getTimeScaleValue(); i++) {
-		mEnvironment.advance();
-		mForestScene.advance();
-		getStatistics();
+
+	static bool working{ false };
+	if (!working) {
+		working = true;
+
+		int stepCount = 0;
+		
+		if (oneStep)
+		{
+			stepCount = 1;
+		}
+		else
+		{
+			stepCount = mSimulationMenu->getTimeScaleValue();
+		}
+
+		for (int i{ 0 }; i < stepCount; i++) {
+			mEnvironment.advance();
+			mForestScene.advance();
+			getStatistics();
+			mAdvanceCounter++;
+			emit updateAdvanceCount(mAdvanceCounter);
+		}
+		working = false;
+
 	}
 	advanceDone();
+}
+
+void QSimulation::genAdvance()
+{
+	this->generalAdvance(false);
 }

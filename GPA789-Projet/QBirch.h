@@ -7,9 +7,13 @@ class QBirch : public QTrees
 {
 
 public:
-	QBirch(QEnvironment const & environment, treeType value);
+	QBirch(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QBirch();
-	void grow();
+
+	GaussianTable growTable();
+	GaussianTable precipirationGrowFactorTable();
+	GaussianTable luminosityGrowFactorTable();
+	GaussianTable temperatureGrowFactorTable();
 
 private:
 	QColor mLeafColor;

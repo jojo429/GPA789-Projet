@@ -8,8 +8,8 @@ GaussianTable QOak::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QOak::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QOak::mGrowTable(500, 10, 50000);
 
-QOak::QOak(QEnvironment const & environment, treeType value)
-	: QTrees{ environment, value }
+QOak::QOak(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
+	: QTrees{ environment, forestscene, value , lifeSpan}
 {
 	mLeafColor.setRgb(100, 186, 63);
 	mTrunkColor.setRgb(68, 49, 3);
@@ -24,10 +24,7 @@ QOak::~QOak()
 
 }
 
-void QOak::grow()
-{
 
-}
 
 void QOak::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {
@@ -47,6 +44,19 @@ void QOak::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QW
 	painter->drawEllipse(mCenter, mLeafRadius, mLeafRadius);
 }
 
-//void QOak::advance(int phase)
-//{
-//}
+GaussianTable QOak::growTable()
+{
+	return mGrowTable;
+}
+GaussianTable QOak::precipirationGrowFactorTable()
+{
+	return mPrecipitationGrowFactor;
+}
+GaussianTable QOak::luminosityGrowFactorTable()
+{
+	return mLuminosityGrowFactor;
+}
+GaussianTable QOak::temperatureGrowFactorTable()
+{
+	return mTemperatureGrowFactor;
+}

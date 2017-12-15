@@ -9,7 +9,7 @@ class QSquirrel : public QAnimals
 {
 
 public:
-	QSquirrel(QEnvironment const & environment);
+	QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan);
 	~QSquirrel();
 	enum TargetType {
 		NoTarget = 0,
@@ -25,10 +25,10 @@ private:
 	QGraphicsItem * mLastTarget{ Q_NULLPTR };
 	int mActionCounter{0};
 	QPointF mTargetPos;
-	QPointF mTriangle[3] = { QPointF(0, -15), QPointF(7, 0), QPointF(-7, 0) };
+	QPointF mTriangle[3] = { QPointF(15, 0), QPointF(0, 7), QPointF(0, -7) };
 	QColor mFurColor{204, 144, 24};
 	QColor mTailColor{ 232, 157, 6 };
-	double mVisionRadius{100};
+	double mVisionRadius{250};
 	int mHunger{100};
 	int actionCounter{0};
 	QList<QGraphicsItem*> mPastTarget;
@@ -45,7 +45,7 @@ private:
 	void striked() override;
 	void setRotationAdjustment();
 	qreal getTargetDistance();
-	void advance(int phase);
+	void advance(int phase) override;
 	QRectF boundingRect() const;
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = Q_NULLPTR);
 

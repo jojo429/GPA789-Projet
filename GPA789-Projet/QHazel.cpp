@@ -8,8 +8,8 @@ GaussianTable QHazel::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QHazel::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QHazel::mGrowTable(500, 10, 50000);
 
-QHazel::QHazel(QEnvironment const & environment, treeType value)
-	: QTrees{ environment, value }
+QHazel::QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
+	: QTrees{ environment , forestscene , value , lifeSpan }
 {
 	mLeafColor.setRgb(74, 125, 50);
 	mTrunkColor.setRgb(107, 75, 3);
@@ -23,10 +23,7 @@ QHazel::~QHazel()
 
 }
 
-void QHazel::grow()
-{
 
-}
 
 void QHazel::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {
@@ -45,6 +42,19 @@ void QHazel::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 
 }
 
-//void QHazel::advance(int phase)
-//{
-//}
+GaussianTable QHazel::growTable()
+{
+	return mGrowTable;
+}
+GaussianTable QHazel::precipirationGrowFactorTable()
+{
+	return mPrecipitationGrowFactor;
+}
+GaussianTable QHazel::luminosityGrowFactorTable()
+{
+	return mLuminosityGrowFactor;
+}
+GaussianTable QHazel::temperatureGrowFactorTable()
+{
+	return mTemperatureGrowFactor;
+}

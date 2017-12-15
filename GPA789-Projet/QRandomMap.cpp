@@ -158,7 +158,7 @@ void QRandomMap::updateDrawMap(int x, int y)
 	adjustmentRGB = (mRColor + mGColor + mBColor) / 3.0;
 
 	shade = mMap[realX][realY] / 150.0;
-	mapColor.setRgb(255 * shade, 255 * shade, 255 * shade); //mapColor.setRgb(mRColor * shade, mGColor * shade, mBColor * shade);
+	mapColor.setRgb(mRColor * shade, mGColor * shade, mBColor * shade);
 	mPainterMap->setPen(mapColor);
 	mPainterMap->drawPoint(realX, realY);
 	
@@ -207,33 +207,13 @@ void QRandomMap::resizeMap()
 		}
 	}
 
-	qDebug() << QString::number(mMapResize[1000][500]);
-	qDebug() << QString::number(mMap[250][125]);
-
 	/*
 	qDebug() << QString::number(mMapResize[0][3]);
 	qDebug() << QString::number(mMapResize[2][2]);
 	qDebug() << QString::number(mMapResize[3][2]);
 	qDebug() << QString::number(mMap[0][0]);
 	qDebug() << QString::number(nextX);
-	qDebug() << QString::number(nextY);
-
-	qDebug() << QString::number(mMapResize[4][3]);
-	qDebug() << QString::number(mMapResize[5][3]);
-	qDebug() << QString::number(mMapResize[7][0]);
-	qDebug() << QString::number(mMap[1][0]);
-	qDebug() << QString::number(nextX);
-	qDebug() << QString::number(nextY);
-
-	qDebug() << QString::number(mMapResize[1][4]);
-	qDebug() << QString::number(mMapResize[1][5]);
-	qDebug() << QString::number(mMapResize[2][6]);
-	qDebug() << QString::number(mMap[0][1]);
-	qDebug() << QString::number(nextX);
-	qDebug() << QString::number(nextY);
-
-	qDebug() << QString::number(mMapResize[8][0]);
-	qDebug() << QString::number(mMapResize[1][8]);*/
+	qDebug() << QString::number(nextY);*/
 
 }
 

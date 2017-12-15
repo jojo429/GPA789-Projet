@@ -17,10 +17,12 @@ class QSimulation : public QWidget
 public:
 	QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent = Q_NULLPTR);
 	~QSimulation();
+	//ICI advance counter //int getAdvanceCounter();
 
 signals:
 	 void sendStatistics(SimulationStatistics stats);
 	 void advanceDone();
+	 void updateAdvanceCount(int advanceCount);
 
 public slots:
 	void play();
@@ -30,7 +32,8 @@ public slots:
 	void getStatistics();
 
 private slots: 
-	void generalAdvance();
+	void genAdvance();	
+	void generalAdvance(bool oneStep);
 
 private:
 	QTimer mTimer{ this };
@@ -40,6 +43,10 @@ private:
 	SimulationStatistics mSimulationStatistics;
 	QSimulationMenu *mSimulationMenu;
 	QGraphicsView *mForestView;
+
+	int mAdvanceCounter=0;
+	bool mStarted = false;
+
 protected:
 	virtual void wheelEvent(QWheelEvent* event);
 };

@@ -2,6 +2,8 @@
 #define	Q_SIMULATION_MENU_H
 
 #include "QCyclicOptions.h"
+#include "QTreeOptions.h"
+#include "QAnimalOptions.h"
 #include "QSimulationAdvancementOptions.h"
 #include "QSimulationTimeScale.h"
 #include "SimulationParameters.h"
@@ -13,6 +15,8 @@
 #include <QCheckBox>
 #include <QRadioButton>
 #include <QPixmap>
+#include <QGroupBox>
+#include <QDial>
 
 class QSimulationMenu : public QWidget
 {
@@ -27,6 +31,8 @@ public:
 	void freeze();
 	void unfreeze();
 	int getTimeScaleValue();
+	int getAngleDialValue();
+	void setAdvanceCounter(int advanceCounter);
 
 signals:
 	void play();
@@ -34,9 +40,20 @@ signals:
 	void stop();
 	void step();
 
+
+	
+
 private:
+	
+
 	QVBoxLayout *mMenuLayout;
+	QVBoxLayout *mOptionsLayout;
+	QVBoxLayout *mTreesVBoxLayout;
+	QVBoxLayout *mAnimalsVBoxLayout;
 	QHBoxLayout *mThunderLayout;
+	QHBoxLayout *mTreesHBoxLayout;
+	QHBoxLayout *mAnimalsHBoxLayout;
+	QHBoxLayout *mAngleDialLayout;
 	QGridLayout *mMenuGridLayout;
 
 	QPixmap mThunderIcon;
@@ -47,6 +64,7 @@ private:
 	QSimulationAdvancementOptions *mStepButton;
 
 	QSimulationTimeScale *mTimeScaleSlider;
+	QLabel *mAdvanceCounterLabel;
 
 	QCheckBox *mThunderButton;
 
@@ -54,6 +72,18 @@ private:
 	QCyclicOptions *mWind;
 	QCyclicOptions *mPrecipitation;
 	QCyclicOptions *mTemperature;
+
+	QTreeOptions *mOak;
+	QTreeOptions *mBirch;
+	QTreeOptions *mHazel;
+	QTreeOptions *mFir;
+
+	QAnimalOptions *mSquirrel;
+
+	QGroupBox *mTreesGroupBox;
+	QGroupBox *mAnimalsGroupBox;
+
+	QDial *mAngleDial;
 };
 
 #endif //Q_SIMULATION_MENU_H

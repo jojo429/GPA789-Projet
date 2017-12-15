@@ -6,16 +6,19 @@
 #include <vector>
 #include <QPointF>
 
+
 class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds(QEnvironment const & environment, treeType value);
+	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QSeeds();
+
+	friend QForestScene;
 	void germinate();
 	void die() override;
 	bool isItDead() override;
-	void piked();
+	void picked();
 	void droped( QPointF coordinate );
 
 private:
@@ -28,10 +31,12 @@ private:
 	double mSeedRadius { 5.0 };
 	QPointF mCenter = QPointF(0, 0);
 	void move() override;
-	QRectF QSeeds::boundingRect() const;
+	QRectF boundingRect() const;
 	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR);
-	void QSeeds::advance(int phase);
+	void advance(int phase) override;
 	treeType mTreeType;
+	
+
 };
 
 

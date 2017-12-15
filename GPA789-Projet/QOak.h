@@ -7,11 +7,14 @@ class QOak : public QTrees
 {
 
 public:
-	QOak(QEnvironment const & environment, treeType value);
+	QOak(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QOak();
-	void grow();
 
-
+	GaussianTable growTable();
+	GaussianTable precipirationGrowFactorTable();
+	GaussianTable luminosityGrowFactorTable();
+	GaussianTable temperatureGrowFactorTable();
+	
 
 
 private:
