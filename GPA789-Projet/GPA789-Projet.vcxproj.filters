@@ -202,6 +202,15 @@
     <ClCompile Include="QAnimalOptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QStatisticAdvanceMenu.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QStatisticAdvanceMenu.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QStatisticAdvanceMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -298,6 +307,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QAnimalOptions.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QStatisticAdvanceMenu.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -46,19 +46,19 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 
 	//Define layout of cyclic options menu
 	mCyclicOptionsGridLayout = new QGridLayout;
-	if (enableAverage == true) {
+	if (enableAverage) {
 		mCyclicOptionsGridLayout->addWidget(mAverageLabel, 0, 0);
 		mCyclicOptionsGridLayout->addWidget(mAverageSlider, 0, 1);
 		mCyclicOptionsGridLayout->addWidget(mAverageValue, 0, 2);
 	}
 
-	if (enableVariation == true) {
+	if (enableVariation) {
 		mCyclicOptionsGridLayout->addWidget(mVariationLabel, 1, 0);
 		mCyclicOptionsGridLayout->addWidget(mVariationSlider, 1, 1);
 		mCyclicOptionsGridLayout->addWidget(mVariationValue, 1, 2);
 	}
 	
-	if (enableCycle == true) {
+	if (enableCycle) {
 		mCyclicOptionsGridLayout->addWidget(mCycleLabel, 2, 0);
 		mCyclicOptionsGridLayout->addWidget(mCycleSlider, 2, 1);
 		mCyclicOptionsGridLayout->addWidget(mCycleValue, 2, 2);
@@ -72,15 +72,15 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 	mLayout->addWidget(mCyclicOptionsGroupBox);
 
 	//Define sliders connections
-	if (enableAverage == true) {
+	if (enableAverage) {
 		connect(mAverageSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
 	}
 
-	if (enableVariation == true) {
+	if (enableVariation) {
 		connect(mVariationSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
 	}
 
-	if (enableCycle == true) {
+	if (enableCycle) {
 		connect(mCycleSlider, &QSlider::valueChanged, this, &QCyclicOptions::cycleValueStep);
 		connect(mCycleSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
 	}
@@ -104,7 +104,7 @@ void QCyclicOptions::defineSlider(QSlider *slider, int min, int max, int initVal
 
 void QCyclicOptions::updateValues()
 {
-	mAverageValue->setText(QString::number(mAverageSlider->value()));;
+	mAverageValue->setText(QString::number(mAverageSlider->value()));
 	mVariationValue->setText(QString::number(mVariationSlider->value()));
 	mCycleValue->setText(QString::number(mCycleSlider->value()));
 }

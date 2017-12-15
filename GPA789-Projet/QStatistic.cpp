@@ -1,5 +1,7 @@
 #include "QStatistic.h"
 
+#include "QStatisticAdvanceMenu.h"
+
 
 #include <QVBoxLayout>
 
@@ -13,10 +15,6 @@ QStatistic::QStatistic(QWidget *parent)
 	
 	QVBoxLayout * graphLayout = new QVBoxLayout;
 	graphLayout->addWidget(mMainGraph);
-	//graphLayout->addWidget(mTemperatureGraph);
-	//graphLayout->addWidget(mPrecipitationGraph);
-	//graphLayout->addWidget(mLuminosityGraph);
-	//graphLayout->addWidget(mWindGraph);
 	graphLayout->addStretch();
 
 	QLabel *mTestLabel = new QLabel;
@@ -24,9 +22,12 @@ QStatistic::QStatistic(QWidget *parent)
 	mTemperatureVisibility = new QCheckBox;
 	mTemperatureVisibility->setText("Set Visible");
 
+	QStatisticAdvanceMenu * TestStat = new QStatisticAdvanceMenu(true, true, true);
+
 	QVBoxLayout * valueLayout = new QVBoxLayout;
 	valueLayout->addWidget(mTestLabel);
 	valueLayout->addWidget(mTemperatureVisibility);
+	valueLayout->addWidget(TestStat);
 	valueLayout->addStretch();
 
 	QHBoxLayout * mainLayout = new QHBoxLayout;
