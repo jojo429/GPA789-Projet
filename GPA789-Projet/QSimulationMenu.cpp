@@ -130,7 +130,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addWidget(mTimeScaleSlider);
-	mMenuLayout->addStretch();
+	//mMenuLayout->addStretch();
 
 	setLayout(mMenuLayout);
 }
