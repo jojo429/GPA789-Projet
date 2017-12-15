@@ -47,7 +47,19 @@ void QFir::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QW
 	painter->drawEllipse(mCenter, mLeafRadius, mLeafRadius);
 }
 
-//void QFir::advance(int phase)
-//{
-//
-//}
+GaussianTable QFir::growTable()
+{
+	return mGrowTable;
+}
+GaussianTable QFir::precipirationGrowFactorTable()
+{
+	return mPrecipitationGrowFactor;
+}
+GaussianTable QFir::luminosityGrowFactorTable()
+{
+	return mLuminosityGrowFactor;
+}
+GaussianTable QFir::temperatureGrowFactorTable()
+{
+	return mTemperatureGrowFactor;
+}

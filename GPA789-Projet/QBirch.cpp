@@ -8,6 +8,7 @@ GaussianTable QBirch::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QBirch::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QBirch::mGrowTable(500, 10, 50000);
 
+
 QBirch::QBirch(QEnvironment const & environment,  QForestScene & forestscene, treeType value)
 	: QTrees{ environment ,forestscene, value}
 {
@@ -47,7 +48,20 @@ void QBirch::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 
 }
 
-//void QBirch::advance(int phase)
-//{
-//}
+GaussianTable QBirch::growTable()
+{
+	return mGrowTable;
+}
+GaussianTable QBirch::precipirationGrowFactorTable()
+{
+	return mPrecipitationGrowFactor;
+}
+GaussianTable QBirch::luminosityGrowFactorTable()
+{
+	return mLuminosityGrowFactor;
+}
+GaussianTable QBirch::temperatureGrowFactorTable()
+{
+	return mTemperatureGrowFactor;
+}
 

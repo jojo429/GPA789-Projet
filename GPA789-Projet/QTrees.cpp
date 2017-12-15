@@ -3,14 +3,10 @@
 #include <QPainter>
 #include "QForestScene.h"
 
-GaussianTable QTrees::mPrecipitationGrowFactor(28, 6, 25);
-GaussianTable QTrees::mLuminosityGrowFactor(200, 50, 10000, -100);
-GaussianTable QTrees::mTemperatureGrowFactor(150, 30, 1000, -75);
-GaussianTable QTrees::mGrowTable(500, 10, 50000);
-GaussianTable QTrees::mReproduceTable(500, 10, 50000);
+
 
 QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value )
-	: QStatic(environment, forestscene), mGenerateSeed(1, 6), mTreeType{ value }
+	: QStatic(environment, forestscene), mGenerateSeed(1, 6), mTreeType{ value }, mEmpty(0,0,0)
 {
 	
 	mAge = 0;
@@ -93,7 +89,7 @@ void QTrees::advance(int phase)
 		}
 
 		if (mAge < 2) {
-			mLeafRadius = mLeafRadius + 0.02*(mGrowTable.getValue(mAge))*((mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0]) + mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1]) + mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2])) / 3);
+			mLeafRadius = mLeafRadius + 0.02*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
 			mTrunkRadius = 0.20 * mLeafRadius;
 			update(boundingRect());
 		}
@@ -118,3 +114,19 @@ void QTrees::advance(int phase)
 
 }
 
+GaussianTable QTrees::growTable()
+{
+	return mEmpty;
+}
+GaussianTable QTrees::precipirationGrowFactorTable()
+{
+	return mEmpty;
+}
+GaussianTable QTrees::luminosityGrowFactorTable()
+{
+	return mEmpty;
+}
+GaussianTable QTrees::temperatureGrowFactorTable()
+{
+	return mEmpty;
+}

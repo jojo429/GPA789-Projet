@@ -26,6 +26,10 @@ public:
 	void setOnFire();
 	void striked() override;
 	treeType mTreeType;
+	virtual GaussianTable growTable()=0;
+	virtual GaussianTable precipirationGrowFactorTable()=0;
+	virtual GaussianTable luminosityGrowFactorTable()=0;
+	virtual GaussianTable temperatureGrowFactorTable()=0;
 
 
 
@@ -41,10 +45,8 @@ protected:
 	void advance(int phase);
 	QRectF boundingRect() const;
 	int mTime{ 0 };
-	static GaussianTable mPrecipitationGrowFactor;
-	static GaussianTable mLuminosityGrowFactor;
-	static GaussianTable mTemperatureGrowFactor;
-	static GaussianTable mGrowTable;
+	GaussianTable mEmpty;
+
 	static GaussianTable mReproduceTable;
 	RandomUniform mGenerateSeed;
 	
