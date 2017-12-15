@@ -5,7 +5,6 @@
 #include <list>
 #include <QColor>
 
-
 class QSquirrel : public QAnimals
 {
 
@@ -32,8 +31,13 @@ private:
 	double mVisionRadius{100};
 	int mHunger{100};
 	int actionCounter{0};
+	QList<QGraphicsItem*> mPastTarget;
+	RandomUniform mGenerateAngle;
+	std::list<QSeeds*> mSeeds;
+
 	void move() override;
 	QGraphicsItem* getTarget();
+	QList<QGraphicsItem*> compareTargetList(QList<QGraphicsItem*> &newTarget);
 	void reproduce(int age);
 	void die(int age);
 	void eat();
@@ -41,7 +45,6 @@ private:
 	void striked() override;
 	void setRotationAdjustment();
 	qreal getTargetDistance();
-	std::list<QSeeds*> mSeeds;	
 	void advance(int phase);
 	QRectF boundingRect() const;
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = Q_NULLPTR);

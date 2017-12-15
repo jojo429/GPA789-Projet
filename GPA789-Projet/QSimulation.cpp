@@ -99,7 +99,7 @@ void QSimulation::step()
 
 void QSimulation::generalAdvance() 
 {
-	for (int i{ 0 }; i < 30; i++) {
+	for (int i{ 0 }; i < mSimulationMenu->getTimeScaleValue(); i++) {
 		mEnvironment.advance();
 		mForestScene.advance();
 		getStatistics();

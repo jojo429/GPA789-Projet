@@ -10,6 +10,13 @@
 QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
 	: QGraphicsScene(parent), mGenerate(0, 3), mEnvironment{environment}
 {
+	//Delimitation de la zone de simulation
+	this->addLine(0, 0, 2050, 0);
+	this->addLine(0, 0, 0, 2050);
+	this->addLine(2050, 0, 2050, 2050);
+	this->addLine(0, 2050, 2050, 2050);
+
+
 
 	this->setBackgroundBrush(mBackgroundBrush);
 	int treeCount{ 15 };

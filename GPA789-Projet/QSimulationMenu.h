@@ -26,6 +26,7 @@ public:
 
 	void freeze();
 	void unfreeze();
+	int getTimeScaleValue();
 
 signals:
 	void play();
