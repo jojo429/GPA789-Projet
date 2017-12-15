@@ -52,8 +52,12 @@ private:
 
 	QGroupBox *mCyclicOptionsGroupBox;
 
+signals:
+	void sliderReleased();
+
 protected slots:
 	void updateValues();
+	void cycleValueStep();
 };
 
 #endif //Q_CYCLIC_OPTIONS_H
