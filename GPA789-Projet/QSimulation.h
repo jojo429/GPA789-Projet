@@ -19,8 +19,8 @@ public:
 	~QSimulation();
 
 signals:
-
 	 void sendStatistics(SimulationStatistics stats);
+	 void advanceDone();
 
 public slots:
 	void play();
@@ -28,6 +28,7 @@ public slots:
 	void stop();
 	void step();
 	void getStatistics();
+
 private slots: 
 	void generalAdvance();
 

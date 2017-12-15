@@ -2,10 +2,26 @@
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <stdexcept>
 
-QEvolutionGraph::QEvolutionGraph(QWidget *parent)
-	: QWidget(parent)
+using namespace std;
+
+QEvolutionGraph::QEvolutionGraph(size_t nSeries, QWidget *parent)
+	: QWidget(parent), mNSeries{ nSeries }
 {
+	//Trow une erreur si on indique qu'on a 0 série de données au graphique. 
+	if (nSeries == 0) {
+		throw invalid_argument("invalid argument at QEvolutionGraph::QEvolutionGraph : nSeries > 0");
+	}
+
+	//Déclaration des séries de données
+	mDataSeries.resize(nSeries);
+	for (auto & serie : mDataSeries) {
+		serie = new QLineSeries;
+	}
+	//Déclaration des min max correxpondant à chaque courbe
+	mYMaxEachSeries.resize(nSeries);
+	mYMinEachSeries.resize(nSeries);
 
 	mNbAdvanceInOneDay = 6;
 	mNbAdvanceInOneWeek = mNbAdvanceInOneDay * 7;
@@ -30,45 +46,47 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 	mChart->addAxis(mYAxis, Qt::AlignLeft);
 
 	//Déclaration de la série de données
-	mDataSerie = new QLineSeries;
-	mChart->addSeries(mDataSerie);
-	mDataSerie->attachAxis(mXAxis);
-	mDataSerie->attachAxis(mYAxis);
+	for (auto const & serie : mDataSeries) {
+		mChart->addSeries(serie);
+		serie->attachAxis(mXAxis);
+		serie->attachAxis(mYAxis);
+	}
 
-	connect(mDataSerie, &QLineSeries::pointAdded, [this](int index) {
-		static qreal offsetX{ 1 }; 
-		static qreal offsetY{ 1 };
-		if (index == 0) {
-			mXmin = mXmax = mDataSerie->at(index).x();
-			mYmin = mYmax = mDataSerie->at(index).y();
-			mXAxis->setRange(mXmin, mNbDataVisible + offsetX);
-			mYAxis->setRange(mYmin, mYmax + offsetY);
-		}
-		else {
-			qreal x = mDataSerie->at(index).x();
-			qreal y = mDataSerie->at(index).y();
-			bool xChanged{ false };
-			bool yChanged{ false };
-			if (x < mXmin) { xChanged = true; mXmin = x; }
-			if (x > mXmax) { xChanged = true; mXmax = x; }
-			if (y < mYmin) { yChanged = true; mYmin = y; }
-			if (y > mYmax) { yChanged = true; mYmax = y; }
-			if (xChanged)
-			{ 
-				if (mXmax < mNbDataVisible) { mXAxis->setRange(mXmin, mNbDataVisible + offsetX);}
-				else { mXAxis->setRange(mXmax - mNbDataVisible, mXmax + offsetX);}
-			}
-			if (yChanged) { mYAxis->setRange(mYmin, mYmax + offsetY); }
-		}
+	mXAxis->setRange(mXmin, mXmax);
+	mYAxis->setRange(mYmin, mYmax);
 
-		if (mDataSerie->count() > mMaxNbData) {
-			mDataSerie->remove(0);
-		}
-	});
+	//connect(mDataSerie, &QLineSeries::pointAdded, [this](int index) {
+	//	static qreal offsetX{ 1 }; 
+	//	static qreal offsetY{ 1 };
+	//	if (index == 0) {
+	//		mXmin = mXmax = mDataSerie->at(index).x();
+	//		mYmin = mYmax = mDataSerie->at(index).y();
+	//		mXAxis->setRange(mXmin, mNbDataVisible + offsetX);
+	//		mYAxis->setRange(mYmin, mYmax + offsetY);
+	//	}
+	//	else {
+	//		qreal x = mDataSerie->at(index).x();
+	//		qreal y = mDataSerie->at(index).y();
+	//		bool xChanged{ false };
+	//		bool yChanged{ false };
+	//		if (x < mXmin) { xChanged = true; mXmin = x; }
+	//		if (x > mXmax) { xChanged = true; mXmax = x; }
+	//		if (y < mYmin) { yChanged = true; mYmin = y; }
+	//		if (y > mYmax) { yChanged = true; mYmax = y; }
+	//		if (xChanged){ if (mXmax < mNbDataVisible) { mXAxis->setRange(mXmin, mNbDataVisible + offsetX);}
+	//					   else { mXAxis->setRange(mXmax - mNbDataVisible, mXmax + offsetX);}
+	//					 }
+	//		if (yChanged) { mYAxis->setRange(mYmin, mYmax + offsetY); }
+	//	}
+
+	//	if (mDataSerie->count() > mMaxNbData) {
+	//		mDataSerie->remove(0);
+	//	}
+	//});
 
 	QHBoxLayout * mainLayout = new QHBoxLayout;
 	mainLayout->addWidget(mChartView);
-	mainLayout->addWidget(chooseScale());
+	mainLayout->addWidget(initializeChooseScale());
 
 	setLayout(mainLayout);
 }
@@ -83,7 +101,7 @@ void QEvolutionGraph::initializeGraph(QString xAxisName, QString yAxisName, QStr
 	mYAxis->setTitleText(yAxisName);
 }
 
-QWidget* QEvolutionGraph::chooseScale() {
+QWidget* QEvolutionGraph::initializeChooseScale() {
 	
 	mScaleOneWeek = new QRadioButton("One Week");
 	mScaleOneMonth = new QRadioButton("One Month");
@@ -121,9 +139,63 @@ QWidget* QEvolutionGraph::chooseScale() {
 
 	return widget;
 }
-void QEvolutionGraph::addPoint(double value) {
-	*mDataSerie << QPointF(mTime, value);
-	mTime++;
+
+void QEvolutionGraph::addPoint(size_t index, qreal t, qreal value) {
+
+	if (index >= mDataSeries.size() ) {
+		throw invalid_argument("invalid argument at QEvolutionGraph::QEvolutionGraph : index > nSeries");
+	}
+
+	*(mDataSeries[index]) << QPointF(t, value);
+
+	//Mise à jour du minimum et du maximum pour la série de data spécifique 
+	updateMinMaxValues(index, mDataSeries[index]->count()-1);
+
+	if (mDataSeries[index]->count() > mMaxNbData) {
+			mDataSeries[index]->remove(0);
+	}
+}
+
+void QEvolutionGraph::updateMinMaxValues(size_t index, int count) {
+
+	qreal y = mDataSeries[index]->at(count).y();
+
+	if (y < mYMinEachSeries[index]) { mYMinEachSeries[index] = y; }
+	if (y > mYMaxEachSeries[index]) { mYMaxEachSeries[index] = y; }
+}
+
+void QEvolutionGraph::updateAxis() {
+
+	mXmax = mDataSeries[0]->at(mDataSeries[0]->count() - 1).x();
+
+	//Mise à jour de l'axe X
+	if (mXmax < mNbDataVisible) { mXAxis->setRange( mXmin			      , mNbDataVisible ); }
+	else						{ mXAxis->setRange( mXmax - mNbDataVisible, mXmax          ); }
+
+	//Mise à jour de l'axe Y
+	qreal mYHiest;
+	qreal mYLowest;
+	bool initVariables = true;
+	for (int i{ 0 }; i < mNSeries; i++) {
+		if (mDataSeries[i]->isVisible()) {
+			if (initVariables) { 
+				initVariables = false; 
+				mYLowest = mYMinEachSeries.at(i);
+				mYHiest = mYMaxEachSeries.at(i);
+			}
+			else {
+				if (mYLowest < mYMinEachSeries.at(i)) { mYLowest = mYMinEachSeries.at(i); }
+				if (mYHiest > mYMaxEachSeries.at(i)) { mYHiest = mYMaxEachSeries.at(i); }
+			}
+		}
+	}
+
+	bool yChanged{ false };
+	if (mYmin != mYLowest) { yChanged = true; mYmin = mYLowest; }
+	if (mYmax != mYHiest) { yChanged = true; mYmax = mYHiest; }
+	if (yChanged) { mYAxis->setRange(mYmin, mYmax); }
+		//serie->show();
+		//serie->hide();
 }
 
 void QEvolutionGraph::setScaleOneWeek()
