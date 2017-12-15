@@ -39,6 +39,7 @@ private:
 	SimulationStatistics mSimulationStatistics;
 	QSimulationMenu *mSimulationMenu;
 	QGraphicsView *mForestView;
+	bool mStarted = false;
 protected:
 	virtual void wheelEvent(QWheelEvent* event);
 };

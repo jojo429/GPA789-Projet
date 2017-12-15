@@ -20,41 +20,41 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 
 	this->setBackgroundBrush(mBackgroundBrush);
 
-	int treeCount{ 15 };
-	int tree =2;
+	/*int treeCount{ 15 };
+	int tree =2;*/
 
 	//Setting up the master trees
 	//mMasterOak.setMasterTree(&mMasterOak);
 	//mMasterHazel.setMasterTree(&mMasterHazel);
 	//mMasterBirch.setMasterTree(&mMasterBirch);
 	//mMasterFir.setMasterTree(&mMasterFir);
-	QTrees *newTree;
-	for (int i{ 0 }; i < treeCount; ++i) {
+	//QTrees *newTree;
+	//for (int i{ 0 }; i < treeCount; ++i) {
 
-		//Add trees
-		QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
-		switch (tree) {
+	//	//Add trees
+	//	QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
+	//	switch (tree) {
 
-		case 0: 	newTree = new QOak(environment,*this, Oak);
-					break; 
+	//	case 0: 	newTree = new QOak(environment,*this, Oak);
+	//				break; 
 
-		case 1: 	newTree = new QFir(environment,*this, Fir);
-					break; 
+	//	case 1: 	newTree = new QFir(environment,*this, Fir);
+	//				break; 
 
-		case 2: 	newTree = new QHazel(environment,*this, Hazel);
-					break; 
+	//	case 2: 	newTree = new QHazel(environment,*this, Hazel);
+	//				break; 
 
-		case 3: 	newTree = new QBirch(environment,*this, Birch);
-					break; 
+	//	case 3: 	newTree = new QBirch(environment,*this, Birch);
+	//				break; 
 
-		default:	newTree = new QOak(environment, *this,Oak);
-					break;
-		}
+	//	default:	newTree = new QOak(environment, *this,Oak);
+	//				break;
+	//	}
 
-		this->addItem(newTree);
-		newTree->setPos(spawnPoint);
-		
-	}
+	//	this->addItem(newTree);
+	//	newTree->setPos(spawnPoint);
+	//	
+	//}
 
 	//	//Add seeds
 	//	//QSeeds *newSeed = new QSeeds(enviromnent);
@@ -88,9 +88,9 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 	//this->addItem(newTree);
 	//newTree->setPos(spawnPoint);
 
-	QSquirrel *squirrel = new QSquirrel(environment, *this);
-	this->addItem(squirrel);
-	squirrel->setPos(QPointF(1000, 1000));
+	//QSquirrel *squirrel = new QSquirrel(environment, *this);
+	//this->addItem(squirrel);
+	//squirrel->setPos(QPointF(1000, 1000));
 	
 
 }
@@ -119,5 +119,49 @@ void QForestScene::closestTree(QPointF pt2D)
 
 void QForestScene::lightningStrike(QPointF pt2D)
 {
+
+}
+
+void QForestScene::setParameters(SimulationParameters &simulationParameters)
+{
+	QTrees *newTree;
+	QSquirrel *newSquirrel;
+	QPointF spawnPoint;
+
+	for (int i{ 0 }; i < simulationParameters.mNumberBirch; ++i) 
+	{
+		spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
+		newTree = new QBirch(mEnvironment,*this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(spawnPoint);	
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberOak; ++i)
+	{
+		spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
+		newTree = new QOak(mEnvironment, *this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(spawnPoint);
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberHazel; ++i)
+	{
+		spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
+		newTree = new QHazel(mEnvironment, *this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(spawnPoint);
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberFir; ++i)
+	{
+		spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
+		newTree = new QFir(mEnvironment, *this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(spawnPoint);
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberSquirrel; ++i)
+	{
+		spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
+		newSquirrel = new QSquirrel(mEnvironment, *this);
+		this->addItem(newSquirrel);
+		newSquirrel->setPos(spawnPoint);
+	}
 
 }
