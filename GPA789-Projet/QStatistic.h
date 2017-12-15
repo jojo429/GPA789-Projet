@@ -4,6 +4,7 @@
 #include "QEvolutionGraph.h"
 #include "SimulationStatistics.h"
 #include <QWidget>
+#include <QCheckBox>
 
 
 class QStatistic : public QWidget
@@ -19,13 +20,17 @@ public slots:
 	void addPoints(SimulationStatistics stats);
 	
 private: 
-	QEvolutionGraph * mTemperatureGraph;
-	QEvolutionGraph * mPrecipitationGraph;
-	QEvolutionGraph * mLuminosityGraph;
-	QEvolutionGraph * mWindGraph;
+	//QEvolutionGraph * mTemperatureGraph;
+	//QEvolutionGraph * mPrecipitationGraph;
+	//QEvolutionGraph * mLuminosityGraph;
+	//QEvolutionGraph * mWindGraph;
 	QEvolutionGraph * mMainGraph;
+	QCheckBox * mTemperatureVisibility;
 
-	int mTime{0};
+	int mTime{ 0 };
+
+private slots: 
+	void setTemperatureVisible(bool isVisible);
 
 };
 #endif //Q_STATISTIC_H

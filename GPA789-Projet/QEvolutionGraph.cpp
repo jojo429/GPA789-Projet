@@ -55,35 +55,6 @@ QEvolutionGraph::QEvolutionGraph(size_t nSeries, QWidget *parent)
 	mXAxis->setRange(mXmin, mXmax);
 	mYAxis->setRange(mYmin, mYmax);
 
-	//connect(mDataSerie, &QLineSeries::pointAdded, [this](int index) {
-	//	static qreal offsetX{ 1 }; 
-	//	static qreal offsetY{ 1 };
-	//	if (index == 0) {
-	//		mXmin = mXmax = mDataSerie->at(index).x();
-	//		mYmin = mYmax = mDataSerie->at(index).y();
-	//		mXAxis->setRange(mXmin, mNbDataVisible + offsetX);
-	//		mYAxis->setRange(mYmin, mYmax + offsetY);
-	//	}
-	//	else {
-	//		qreal x = mDataSerie->at(index).x();
-	//		qreal y = mDataSerie->at(index).y();
-	//		bool xChanged{ false };
-	//		bool yChanged{ false };
-	//		if (x < mXmin) { xChanged = true; mXmin = x; }
-	//		if (x > mXmax) { xChanged = true; mXmax = x; }
-	//		if (y < mYmin) { yChanged = true; mYmin = y; }
-	//		if (y > mYmax) { yChanged = true; mYmax = y; }
-	//		if (xChanged){ if (mXmax < mNbDataVisible) { mXAxis->setRange(mXmin, mNbDataVisible + offsetX);}
-	//					   else { mXAxis->setRange(mXmax - mNbDataVisible, mXmax + offsetX);}
-	//					 }
-	//		if (yChanged) { mYAxis->setRange(mYmin, mYmax + offsetY); }
-	//	}
-
-	//	if (mDataSerie->count() > mMaxNbData) {
-	//		mDataSerie->remove(0);
-	//	}
-	//});
-
 	QHBoxLayout * mainLayout = new QHBoxLayout;
 	mainLayout->addWidget(mChartView);
 	mainLayout->addWidget(initializeChooseScale());
@@ -180,12 +151,12 @@ void QEvolutionGraph::updateAxis() {
 		if (mDataSeries[i]->isVisible()) {
 			if (initVariables) { 
 				initVariables = false; 
-				mYLowest = mYMinEachSeries.at(i);
-				mYHiest = mYMaxEachSeries.at(i);
+				mYLowest = mYMinEachSeries[i];
+				mYHiest = mYMaxEachSeries[i];
 			}
 			else {
-				if (mYLowest < mYMinEachSeries.at(i)) { mYLowest = mYMinEachSeries.at(i); }
-				if (mYHiest > mYMaxEachSeries.at(i)) { mYHiest = mYMaxEachSeries.at(i); }
+				if (mYMinEachSeries[i] < mYLowest) { mYLowest = mYMinEachSeries[i]; }
+				if (mYMaxEachSeries[i] > mYHiest) { mYHiest = mYMaxEachSeries[i]; }
 			}
 		}
 	}
@@ -196,6 +167,10 @@ void QEvolutionGraph::updateAxis() {
 	if (yChanged) { mYAxis->setRange(mYmin, mYmax); }
 		//serie->show();
 		//serie->hide();
+}
+
+void QEvolutionGraph::setDataSerieVisibility(int index, bool setVisible) {
+	mDataSeries[index]->setVisible(setVisible);
 }
 
 void QEvolutionGraph::setScaleOneWeek()

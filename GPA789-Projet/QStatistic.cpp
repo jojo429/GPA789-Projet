@@ -9,15 +9,7 @@ QStatistic::QStatistic(QWidget *parent)
 	
 	//Générer les graphiques
 	mMainGraph = new QEvolutionGraph(4);
-	//mTemperatureGraph = new QEvolutionGraph;
-	//mPrecipitationGraph = new QEvolutionGraph;
-	//mLuminosityGraph = new QEvolutionGraph;
-	//mWindGraph = new QEvolutionGraph;
-	mMainGraph->initializeGraph("Time", "Unit", "Main Graph");
-	//mTemperatureGraph->initializeGraph("Time", "Temperature (°C)", "Temperature graphic");
-	//mPrecipitationGraph->initializeGraph("Time","Rain level (mm)", "Precipitation graphic");
-	//mLuminosityGraph->initializeGraph("Time", "Luminosity", "Luminosity graphic");
-	//mWindGraph->initializeGraph("Time", "Wind Speed (?)", "Wind graphic");
+	mMainGraph->initializeGraph("Time", "General units", "Main Graph");
 	
 	QVBoxLayout * graphLayout = new QVBoxLayout;
 	graphLayout->addWidget(mMainGraph);
@@ -29,8 +21,12 @@ QStatistic::QStatistic(QWidget *parent)
 
 	QLabel *mTestLabel = new QLabel;
 	mTestLabel->setText("TEST TEST TEST ");
+	mTemperatureVisibility = new QCheckBox;
+	mTemperatureVisibility->setText("Set Visible");
+
 	QVBoxLayout * valueLayout = new QVBoxLayout;
 	valueLayout->addWidget(mTestLabel);
+	valueLayout->addWidget(mTemperatureVisibility);
 	valueLayout->addStretch();
 
 	QHBoxLayout * mainLayout = new QHBoxLayout;
@@ -39,6 +35,7 @@ QStatistic::QStatistic(QWidget *parent)
 
 	setLayout(mainLayout);
 
+	connect(mTemperatureVisibility, &QCheckBox::toggled, this, &QStatistic::setTemperatureVisible);
 
 }
 
@@ -58,4 +55,8 @@ void QStatistic::addPoints(SimulationStatistics stats)
 void QStatistic::updateData()
 {
 	mMainGraph->updateAxis();
+}
+
+void QStatistic::setTemperatureVisible(bool isVisible) {
+	mMainGraph->setDataSerieVisibility(0, isVisible);
 }

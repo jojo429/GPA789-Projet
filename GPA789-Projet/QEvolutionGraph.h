@@ -17,8 +17,8 @@ public:
 
 	void addPoint(size_t index, qreal t, qreal value);
 	void initializeGraph(QString xAxisName, QString yAxisName, QString graphTitle);
-	void updateMinMaxValues(size_t index, int count);
 	void updateAxis();
+	void setDataSerieVisibility(int index, bool setVisible);
 
 private:
 
@@ -29,12 +29,12 @@ private:
 	QValueAxis * mYAxis;
 	qreal mXmin{ 0 }, mYmin{ 0 };
 	qreal mXmax{ 1 }, mYmax{ 1 };
-	qreal mX, mY;
 	QVector<qreal> mYMaxEachSeries;
 	QVector<qreal> mYMinEachSeries;
 	size_t mNSeries;
 
 	QWidget* initializeChooseScale();
+	void updateMinMaxValues(size_t index, int count);
 
 	QRadioButton * mScaleOneHour;
 	QRadioButton * mScaleOneWeek;
