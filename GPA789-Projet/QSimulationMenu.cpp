@@ -1,5 +1,6 @@
 #include "QSimulationMenu.h"
 
+#include "QSimulation.h"
 #include <QLabel>
 #include <QScrollArea>
 #include <QGroupBox>
@@ -123,6 +124,9 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuGridLayout->addWidget(mPauseButton, 0, 2);
 	mMenuGridLayout->addWidget(mStopButton, 0, 3);
 
+	//Définition du advance counter
+	//ICI advance counter //QLabel *mAdvanceCounterLabel = new QLabel(QString::number(mAdvanceCounter));
+
 	//Assemblage final
 	mOptionsLayout = new QVBoxLayout;
 	mOptionsLayout->addLayout(mAngleDialLayout);
@@ -146,6 +150,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addWidget(mTimeScaleSlider);
+	//ICI advance counter //mMenuLayout->addWidget(mAdvanceCounterLabel);
 
 	setLayout(mMenuLayout);
 }
@@ -206,4 +211,11 @@ int QSimulationMenu::getAngleDialValue()
 {
 	return mAngleDial->value();
 }
+
+//ICI advance counter
+/*
+void QSimulationMenu::setAdvanceCounter(int advanceCounter)
+{
+	mAdvanceCounter = advanceCounter;
+}*/
 

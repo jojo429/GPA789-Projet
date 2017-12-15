@@ -14,6 +14,7 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	
 
 	mSimulationMenu = new QSimulationMenu;
+	//ICI advance counter //mSimulationMenu->setAdvanceCounter(this->getAdvanceCounter());
 	QHBoxLayout * mainLayout = new QHBoxLayout;
 
 
@@ -88,6 +89,7 @@ void QSimulation::stop()
 {
 
 	mTimer.stop();
+	//ICI advance counter //mAdvanceCounter = 0;
 }
 
 void QSimulation::step()
@@ -107,9 +109,16 @@ void QSimulation::generalAdvance()
 			mEnvironment.advance();
 			mForestScene.advance();
 			getStatistics();
+			//ICI advance counter //mAdvanceCounter = mAdvanceCounter + 1;
 		}
 		working = false;
 
 	}
 
 }
+//ICI advance counter
+/*
+int QSimulation::getAdvanceCounter()
+{
+	return mAdvanceCounter;
+}*/
