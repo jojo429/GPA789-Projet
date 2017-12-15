@@ -15,6 +15,7 @@ QEnvironment::QEnvironment()
 	mEnvironmentalFactor.emplace_back(&mLuminosity);
 	mEnvironmentalFactor.emplace_back(&mWind);
 	mFactors.resize((mEnvironmentalFactor.size()));
+	
 
 }
 

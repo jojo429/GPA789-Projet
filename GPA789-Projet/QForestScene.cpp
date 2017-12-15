@@ -19,7 +19,7 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 
 
 	this->setBackgroundBrush(mBackgroundBrush);
-	int treeCount{ 15 };
+	int treeCount{ 20 };
 	int tree;
 
 	//Setting up the master trees
@@ -35,19 +35,19 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 		QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
 		switch (tree) {
 
-		case 0: 	newTree = new QOak(environment, Oak);
+		case 0: 	newTree = new QOak(environment,*this, Oak);
 					break; 
 
-		case 1: 	newTree = new QFir(environment, Fir);
+		case 1: 	newTree = new QFir(environment,*this, Fir);
 					break; 
 
-		case 2: 	newTree = new QHazel(environment, Hazel);
+		case 2: 	newTree = new QHazel(environment,*this, Hazel);
 					break; 
 
-		case 3: 	newTree = new QBirch(environment, Birch);
+		case 3: 	newTree = new QBirch(environment,*this, Birch);
 					break; 
 
-		default:	newTree = new QOak(environment, Oak);
+		default:	newTree = new QOak(environment, *this,Oak);
 					break;
 		}
 
@@ -88,7 +88,7 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 	//this->addItem(newTree);
 	//newTree->setPos(spawnPoint);
 
-	QSquirrel *squirrel = new QSquirrel(environment);
+	QSquirrel *squirrel = new QSquirrel(environment, *this);
 	this->addItem(squirrel);
 	squirrel->setPos(QPointF(1000, 1000));
 	
@@ -104,9 +104,10 @@ QForestScene::~QForestScene()
 
 void QForestScene::createSeed(QTrees* parent)
 {
-	QSeeds *newSeed = new QSeeds(mEnvironment, parent->mTreeType);
-	this->addItem(newSeed);
-	newSeed->setPos(QPointF(1000, 1000));
+	QSeeds *newSeed = new QSeeds(mEnvironment, *this , parent->mTreeType);
+	newSeed->mHeight = parent->getHeight();
+	addItem(newSeed);
+	newSeed->setPos(QPointF((parent->pos().x() + parent->getRadius()/2),( parent->pos().y()+parent->getRadius() / 2)));
 
 }
 

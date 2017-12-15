@@ -2,10 +2,11 @@
 #include <QPainter>
 #include "QTrees.h"
 #include <QtMath>
+#include <QDebug>
 
 
-QSquirrel::QSquirrel(QEnvironment const & environment)
-	: QAnimals{ environment }, mGenerateAngle(-180,180)
+QSquirrel::QSquirrel(QEnvironment const & environment, QForestScene & forestscene)
+	: QAnimals{ environment, forestscene }, mGenerateAngle(-180,180)
 {
 
 
@@ -150,13 +151,22 @@ void QSquirrel::paint(QPainter * painter, const QStyleOptionGraphicsItem * optio
 }
 void QSquirrel::advance(int phase)
 {
+
+	//qDebug() << "test";
+
 	//Choose a target or a random direction
 	if (mActionCounter == 0)
 	{
 		mTarget = getTarget();
-		if (mPastTarget.size() >= 6) {
-			mPastTarget.removeFirst();
-			mPastTarget.append(mTarget);
+		if (mTarget != Q_NULLPTR) {
+			if (mPastTarget.size() < 6) {
+				mPastTarget.append(mTarget);
+			}
+			else
+			{
+				mPastTarget.removeFirst();
+				mPastTarget.append(mTarget);
+			}
 		}
 		if (mTargetType != NoTarget) {
 			mTargetPos = mTarget->pos();
@@ -164,8 +174,7 @@ void QSquirrel::advance(int phase)
 		}
 		else
 		{
-			setRotationAdjustment();
-			setPos(mapToParent(0, -3));		
+			setRotationAdjustment();		
 		}
 		mActionCounter++;
 	}
@@ -186,6 +195,7 @@ void QSquirrel::advance(int phase)
 		}
 		else 
 		{
+			setPos(mapToParent(0, 15));
 			mTargetType = NoTarget;
 			mActionCounter = 0;
 

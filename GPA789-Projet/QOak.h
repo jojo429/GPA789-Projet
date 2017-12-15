@@ -7,11 +7,11 @@ class QOak : public QTrees
 {
 
 public:
-	QOak(QEnvironment const & environment, treeType value);
+	QOak(QEnvironment const & environment, QForestScene & forestscene, treeType value);
 	~QOak();
 	void grow();
 
-
+	
 
 
 private:

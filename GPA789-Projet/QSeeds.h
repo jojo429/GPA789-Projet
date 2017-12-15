@@ -6,12 +6,15 @@
 #include <vector>
 #include <QPointF>
 
+
 class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds(QEnvironment const & environment, treeType value);
+	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value);
 	~QSeeds();
+
+	friend QForestScene;
 	void germinate();
 	void die() override;
 	bool isItDead() override;
@@ -32,6 +35,8 @@ private:
 	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR);
 	void QSeeds::advance(int phase);
 	treeType mTreeType;
+
+
 };
 
 

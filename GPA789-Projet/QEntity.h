@@ -8,6 +8,7 @@
 #include <QBrush>
 #include <QPen>
 #include <QList>
+class QForestScene;
 
 enum treeType { Oak, Fir, Hazel, Birch };
 
@@ -15,7 +16,7 @@ class QEntity : public QGraphicsItem
 {
 
 public:
-	QEntity(QEnvironment const &environment);
+	QEntity(QEnvironment const &environment, QForestScene &forestscene);
 	~QEntity();
 	virtual void reproduce();
 	virtual void die();
@@ -29,6 +30,7 @@ protected:
 	int mAge{0};
 	bool mGotHit;
 	QEnvironment const & mEnvironment;
+	QForestScene & mForestScene;
 	QPointF mCenter = QPointF(0, 0);
 	QBrush mBrush;
 	QPen mPen;

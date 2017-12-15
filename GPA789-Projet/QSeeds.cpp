@@ -10,8 +10,8 @@
 #include <QPainter>
 #include <array>
 
-QSeeds::QSeeds(QEnvironment const & environment, treeType value)
-	: QDynamic{ environment }, mTreeType{value}
+QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value)
+	: QDynamic{ environment,forestscene }, mTreeType{value}
 {
 
 

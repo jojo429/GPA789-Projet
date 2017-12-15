@@ -11,24 +11,23 @@
 
 class QTrees : public QStatic
 {
-
+	
 public:
 
-	QTrees(QEnvironment const & environment, treeType value);
+	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value);
 	~QTrees();
 
 	
 	void reproduce() override;
 	void die() override;
 	int getHeight();
+	int getRadius();
 	void adjustDryness();
 	void setOnFire();
 	void striked() override;
 	void setMasterTree(QTrees * tree);
 	treeType mTreeType;
 
-//signals:
-//	void dropSeed(int parent);
 
 
 protected:
