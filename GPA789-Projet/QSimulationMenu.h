@@ -32,7 +32,7 @@ public:
 	void unfreeze();
 	int getTimeScaleValue();
 	int getAngleDialValue();
-	//ICI advance counter //void setAdvanceCounter(int advanceCounter);
+	void setAdvanceCounter(int advanceCounter);
 
 signals:
 	void play();
@@ -40,8 +40,11 @@ signals:
 	void stop();
 	void step();
 
+
+	
+
 private:
-	//ICI advance counter //int mAdvanceCounter;
+	
 
 	QVBoxLayout *mMenuLayout;
 	QVBoxLayout *mOptionsLayout;
@@ -61,6 +64,7 @@ private:
 	QSimulationAdvancementOptions *mStepButton;
 
 	QSimulationTimeScale *mTimeScaleSlider;
+	QLabel *mAdvanceCounterLabel;
 
 	QCheckBox *mThunderButton;
 

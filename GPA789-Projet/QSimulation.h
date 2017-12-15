@@ -22,6 +22,7 @@ public:
 signals:
 
 	 void sendStatistics(SimulationStatistics stats);
+	 void updateAdvanceCount(int advanceCount);
 
 public slots:
 	void play();
@@ -30,7 +31,8 @@ public slots:
 	void step();
 	void getStatistics();
 private slots: 
-	void generalAdvance();
+	void genAdvance();	
+	void generalAdvance(bool oneStep);
 
 private:
 	QTimer mTimer{ this };
@@ -41,7 +43,7 @@ private:
 	QSimulationMenu *mSimulationMenu;
 	QGraphicsView *mForestView;
 
-	//ICI advance counter //int mAdvanceCounter;
+	int mAdvanceCounter=0;
 	bool mStarted = false;
 
 protected:

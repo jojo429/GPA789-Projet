@@ -14,7 +14,6 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	
 
 	mSimulationMenu = new QSimulationMenu;
-	//ICI advance counter //mSimulationMenu->setAdvanceCounter(this->getAdvanceCounter());
 	QHBoxLayout * mainLayout = new QHBoxLayout;
 
 
@@ -27,17 +26,14 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	mainLayout->addWidget(mSimulationMenu);
 	
 	setLayout(mainLayout);
-	connect(&mTimer, &QTimer::timeout, this, &QSimulation::generalAdvance);
-	connect(this, &QSimulation::generalAdvance, &environment, &QEnvironment::advance);
-	connect(this, &QSimulation::generalAdvance, &forestScene, &QForestScene::advance);
-	connect(this, &QSimulation::generalAdvance, this, &QSimulation::getStatistics);
+	connect(&mTimer, &QTimer::timeout, this, &QSimulation::genAdvance);
 
 	
 	connect(mSimulationMenu, &QSimulationMenu::play, this, &QSimulation::play);
 	connect(mSimulationMenu, &QSimulationMenu::pause, this, &QSimulation::pause);
 	connect(mSimulationMenu, &QSimulationMenu::stop, this, &QSimulation::stop);
 	connect(mSimulationMenu, &QSimulationMenu::step, this, &QSimulation::step);
-
+	connect(this, &QSimulation::updateAdvanceCount, mSimulationMenu, &QSimulationMenu::setAdvanceCounter);
 
 }
 
@@ -94,7 +90,7 @@ void QSimulation::stop()
 {
 
 	mTimer.stop();
-	//ICI advance counter //mAdvanceCounter = 0;
+	mAdvanceCounter = 0;
 	mStarted = false;
 	mForestScene.clear();
 }
@@ -102,30 +98,45 @@ void QSimulation::stop()
 void QSimulation::step()
 {
 
-
+	this->generalAdvance(true);
 
 }
 
-void QSimulation::generalAdvance() 
+void QSimulation::generalAdvance(bool oneStep) 
 {
 
 	static bool working{ false };
 	if (!working) {
 		working = true;
-		for (int i{ 0 }; i < mSimulationMenu->getTimeScaleValue(); i++) {
+
+		int stepCount = 0;
+		
+		if (oneStep)
+		{
+			stepCount = 1;
+		}
+		else
+		{
+			stepCount = mSimulationMenu->getTimeScaleValue();
+		}
+
+		for (int i{ 0 }; i < stepCount; i++) {
 			mEnvironment.advance();
 			mForestScene.advance();
 			getStatistics();
-			//ICI advance counter //mAdvanceCounter = mAdvanceCounter + 1;
+			mAdvanceCounter++;
+			emit updateAdvanceCount(mAdvanceCounter);
 		}
 		working = false;
 
 	}
 
 }
-//ICI advance counter
-/*
-int QSimulation::getAdvanceCounter()
+
+
+void QSimulation::genAdvance()
 {
-	return mAdvanceCounter;
-}*/
+
+	this->generalAdvance(false);
+
+}

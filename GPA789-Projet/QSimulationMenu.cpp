@@ -124,8 +124,8 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuGridLayout->addWidget(mPauseButton, 0, 2);
 	mMenuGridLayout->addWidget(mStopButton, 0, 3);
 
-	//Définition du advance counter
-	//ICI advance counter //QLabel *mAdvanceCounterLabel = new QLabel(QString::number(mAdvanceCounter));
+	//Definition du advance counter
+	mAdvanceCounterLabel = new QLabel(QString::number(0));
 
 	//Assemblage final
 	mOptionsLayout = new QVBoxLayout;
@@ -150,7 +150,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addWidget(mTimeScaleSlider);
-	//ICI advance counter //mMenuLayout->addWidget(mAdvanceCounterLabel);
+	mMenuLayout->addWidget(mAdvanceCounterLabel);
 
 	setLayout(mMenuLayout);
 }
@@ -217,10 +217,9 @@ int QSimulationMenu::getAngleDialValue()
 	return mAngleDial->value();
 }
 
-//ICI advance counter
-/*
+
 void QSimulationMenu::setAdvanceCounter(int advanceCounter)
 {
-	mAdvanceCounter = advanceCounter;
-}*/
+	mAdvanceCounterLabel->setText(QString::number(advanceCounter));
+}
 
