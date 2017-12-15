@@ -13,6 +13,7 @@ QAnimalOptions::QAnimalOptions(QString animalName, int minNumbAnimals, int maxNu
 	mAnimalSlider = new QSlider(Qt::Horizontal);
 	mAnimalSlider->setMinimum(minNumbAnimals);
 	mAnimalSlider->setMaximum(maxNumbAnimals);
+	mAnimalSlider->setSliderPosition(numbAnimalsInit);
 
 	mAnimalValue = new QLabel(QString::number(numbAnimalsInit));
 

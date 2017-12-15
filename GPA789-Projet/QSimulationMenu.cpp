@@ -64,6 +64,21 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mAnimalsHBoxLayout = new QHBoxLayout;
 	mAnimalsHBoxLayout->addWidget(animalIconLabel);
 	mAnimalsHBoxLayout->addWidget(mAnimalsGroupBox);
+
+	//Définition du slider d'angle du vent
+	mAngleDial = new QDial;
+	mAngleDial->setMinimum(0);
+	mAngleDial->setMaximum(359);
+	mAngleDial->setFixedHeight(100);
+	mAngleDial->setFixedWidth(100);
+
+	QLabel *dialLabel = new QLabel("Wind Angle");
+
+	mAngleDialLayout = new QHBoxLayout;
+	mAngleDialLayout->addStretch();
+	mAngleDialLayout->addWidget(dialLabel);
+	mAngleDialLayout->addWidget(mAngleDial);
+	mAngleDialLayout->addStretch();
 	
 	//Définition de l'icône de l'éclar
 	mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
@@ -116,6 +131,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mOptionsLayout->addWidget(mWind);
 	mOptionsLayout->addLayout(mTreesHBoxLayout);
 	mOptionsLayout->addLayout(mAnimalsHBoxLayout);
+	mOptionsLayout->addLayout(mAngleDialLayout);
 
 	QGroupBox *mMenuGroupBox = new QGroupBox;
 	mMenuGroupBox->setLayout(mOptionsLayout);
@@ -130,7 +146,6 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addWidget(mTimeScaleSlider);
-	//mMenuLayout->addStretch();
 
 	setLayout(mMenuLayout);
 }
@@ -168,6 +183,11 @@ void QSimulationMenu::freeze()
 	mPrecipitation->setEnabled(false);
 	mTemperature->setEnabled(false);
 	mWind->setEnabled(false);
+	mOak->setEnabled(false);
+	mBirch->setEnabled(false);
+	mHazel->setEnabled(false);
+	mFir->setEnabled(false);
+	mSquirrel->setEnabled(false);
 }
 
 void QSimulationMenu::unfreeze()
@@ -176,9 +196,19 @@ void QSimulationMenu::unfreeze()
 	mPrecipitation->setEnabled(true);
 	mTemperature->setEnabled(true);
 	mWind->setEnabled(true);
+	mOak->setEnabled(true);
+	mBirch->setEnabled(true);
+	mHazel->setEnabled(true);
+	mFir->setEnabled(true);
+	mSquirrel->setEnabled(true);
 }
 
 int QSimulationMenu::getTimeScaleValue() {
 	return mTimeScaleSlider->getValue();
+}
+
+int QSimulationMenu::getAngleDialValue()
+{
+	return mAngleDial->value();
 }
 

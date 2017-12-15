@@ -16,6 +16,7 @@
 #include <QRadioButton>
 #include <QPixmap>
 #include <QGroupBox>
+#include <QDial>
 
 class QSimulationMenu : public QWidget
 {
@@ -30,6 +31,7 @@ public:
 	void freeze();
 	void unfreeze();
 	int getTimeScaleValue();
+	int getAngleDialValue();
 
 signals:
 	void play();
@@ -45,6 +47,7 @@ private:
 	QHBoxLayout *mThunderLayout;
 	QHBoxLayout *mTreesHBoxLayout;
 	QHBoxLayout *mAnimalsHBoxLayout;
+	QHBoxLayout *mAngleDialLayout;
 	QGridLayout *mMenuGridLayout;
 
 	QPixmap mThunderIcon;
@@ -72,6 +75,8 @@ private:
 
 	QGroupBox *mTreesGroupBox;
 	QGroupBox *mAnimalsGroupBox;
+
+	QDial *mAngleDial;
 };
 
 #endif //Q_SIMULATION_MENU_H

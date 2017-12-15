@@ -13,6 +13,7 @@ QTreeOptions::QTreeOptions(QString treeName, int minNumbTrees, int maxNumbTrees,
 	mTreeSlider = new QSlider(Qt::Horizontal);
 	mTreeSlider->setMinimum(minNumbTrees);
 	mTreeSlider->setMaximum(maxNumbTrees);
+	mTreeSlider->setSliderPosition(numbTreesInit);
 
 	mTreeValue = new QLabel(QString::number(numbTreesInit));
 
