@@ -46,8 +46,25 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mTreesHBoxLayout = new QHBoxLayout;
 	mTreesHBoxLayout->addWidget(treeIconLabel);
 	mTreesHBoxLayout->addWidget(mTreesGroupBox);
-	
 
+	//Définition du slider d'écureuils
+	QPixmap squirrelIcon = QPixmap(":/GPA789Projet/iconSquirrel");
+	QPixmap tmpPixmap2 = squirrelIcon.scaled(QSize(50, 50), Qt::KeepAspectRatio);
+	QLabel *animalIconLabel = new QLabel;
+	animalIconLabel->setPixmap(tmpPixmap2);
+
+	mSquirrel = new QAnimalOptions("Squirrel", 0, 25, 0);
+
+	mAnimalsVBoxLayout = new QVBoxLayout;
+	mAnimalsVBoxLayout->addWidget(mSquirrel);
+
+	mAnimalsGroupBox = new QGroupBox("Animals");
+	mAnimalsGroupBox->setLayout(mAnimalsVBoxLayout);
+
+	mAnimalsHBoxLayout = new QHBoxLayout;
+	mAnimalsHBoxLayout->addWidget(animalIconLabel);
+	mAnimalsHBoxLayout->addWidget(mAnimalsGroupBox);
+	
 	//Définition de l'icône de l'éclar
 	mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
 
@@ -98,6 +115,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mOptionsLayout->addWidget(mLuminosity);
 	mOptionsLayout->addWidget(mWind);
 	mOptionsLayout->addLayout(mTreesHBoxLayout);
+	mOptionsLayout->addLayout(mAnimalsHBoxLayout);
 
 	QGroupBox *mMenuGroupBox = new QGroupBox;
 	mMenuGroupBox->setLayout(mOptionsLayout);

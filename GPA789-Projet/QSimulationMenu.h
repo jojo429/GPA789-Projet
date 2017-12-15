@@ -3,6 +3,7 @@
 
 #include "QCyclicOptions.h"
 #include "QTreeOptions.h"
+#include "QAnimalOptions.h"
 #include "QSimulationAdvancementOptions.h"
 #include "QSimulationTimeScale.h"
 #include "SimulationParameters.h"
@@ -40,8 +41,10 @@ private:
 	QVBoxLayout *mMenuLayout;
 	QVBoxLayout *mOptionsLayout;
 	QVBoxLayout *mTreesVBoxLayout;
+	QVBoxLayout *mAnimalsVBoxLayout;
 	QHBoxLayout *mThunderLayout;
 	QHBoxLayout *mTreesHBoxLayout;
+	QHBoxLayout *mAnimalsHBoxLayout;
 	QGridLayout *mMenuGridLayout;
 
 	QPixmap mThunderIcon;
@@ -64,6 +67,8 @@ private:
 	QTreeOptions *mBirch;
 	QTreeOptions *mHazel;
 	QTreeOptions *mFir;
+
+	QAnimalOptions *mSquirrel;
 
 	QGroupBox *mTreesGroupBox;
 	QGroupBox *mAnimalsGroupBox;
