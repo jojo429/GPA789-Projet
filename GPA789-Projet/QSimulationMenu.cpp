@@ -125,13 +125,13 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 
 	//Assemblage final
 	mOptionsLayout = new QVBoxLayout;
+	mOptionsLayout->addLayout(mAngleDialLayout);
 	mOptionsLayout->addWidget(mTemperature);
 	mOptionsLayout->addWidget(mPrecipitation);
 	mOptionsLayout->addWidget(mLuminosity);
 	mOptionsLayout->addWidget(mWind);
 	mOptionsLayout->addLayout(mTreesHBoxLayout);
 	mOptionsLayout->addLayout(mAnimalsHBoxLayout);
-	mOptionsLayout->addLayout(mAngleDialLayout);
 
 	QGroupBox *mMenuGroupBox = new QGroupBox;
 	mMenuGroupBox->setLayout(mOptionsLayout);
