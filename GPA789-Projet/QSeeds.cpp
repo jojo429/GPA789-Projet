@@ -31,8 +31,8 @@ QSeeds::~QSeeds()
 void QSeeds::germinate()
 {
 	double chance = (this->mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0]) + this->mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1]) + this->mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2])) / 3;
-	double chiffre = mGenerateTree.random();
-	chance = chance*(chiffre/1000.0);
+	chance = chance*(mGenerateTree.random() /1000.0);
+
 	if (chance > 0.90)
 	{
 		mForestScene.createTree(this);
@@ -40,8 +40,7 @@ void QSeeds::germinate()
 		this->setVisible(false);
 	}
 	
-	//Comment le faire?	
-	//QTrees * newTree = new QTrees(mMasterTree);
+
 }
 
 void QSeeds::die()
@@ -56,11 +55,9 @@ bool QSeeds::isItDead()
 
 void QSeeds::move()
 {
-	/*std::array<double, 2> movingVector;
-	movingVector = mEnvironment.getAirDisplacement();
-	moveBy(movingVector[0] * mMovingFactor, movingVector[1] * mMovingFactor);
-	mCountFallDown++;
-	update();*/
+	mHeight = mHeight--;
+	this->setPos(this->pos().x() + 2, this->pos().y() + 2);
+	
 }
 
 void QSeeds::picked()
@@ -103,15 +100,16 @@ void QSeeds::advance(int phase)
 
 		advanceTime();
 
-		if (mAge < 2 && !mGerminated)
+		if (mHeight > 0)
+		{
+			move();
+
+		}
+		else if (mAge < 2 && !mGerminated)
 		{
 			germinate();
 
 		}
-		/*if (mCountFallDown < 50) {
-		mMovingFactor = 1.3;
-		move();
-		}*/
 
 
 	}
