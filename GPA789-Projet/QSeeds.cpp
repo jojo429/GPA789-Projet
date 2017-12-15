@@ -1,5 +1,6 @@
 #include "QSeeds.h"
 #include "QTrees.h"
+
 //////
 #include "QOak.h"
 #include "QFir.h"
@@ -9,6 +10,7 @@
 #include <QBrush>
 #include <QPainter>
 #include <array>
+#include "QForestScene.h"
 
 GaussianTable QSeeds::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QSeeds::mLuminosityGrowFactor(200, 50, 10000, -100);
@@ -33,7 +35,7 @@ void QSeeds::germinate()
 	chance = chance*(chiffre/1000.0);
 	if (chance > 0.90)
 	{
-		
+		mForestScene.createTree(this);
 		mGerminated = true;
 		this->setVisible(false);
 	}

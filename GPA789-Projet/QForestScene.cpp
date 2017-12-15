@@ -37,6 +37,44 @@ void QForestScene::createSeed(QTrees* parent)
 
 }
 
+void QForestScene::createTree(QSeeds* parent)
+{
+	QTrees *newTree;
+	switch (parent->mTreeType) {
+
+	case Hazel:
+		newTree = new QHazel(mEnvironment, *this, Hazel, 20);
+		this->addItem(newTree);
+		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
+		break;
+
+	case Birch:
+		newTree = new QBirch(mEnvironment, *this, Birch, 30);
+		this->addItem(newTree);
+		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
+		break;
+
+	case Fir:
+		newTree = new QFir(mEnvironment, *this, Fir, 500);
+		this->addItem(newTree);
+		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
+		break;
+
+	case Oak:
+		newTree = new QOak(mEnvironment, *this, Oak, 200);
+		this->addItem(newTree);
+		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
+		break;
+
+	default:
+		this->addItem(newTree);
+		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
+
+	}
+	
+
+}
+
 
 void QForestScene::closestTree(QPointF pt2D)
 {
