@@ -26,8 +26,8 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	mainLayout->addWidget(mSimulationMenu);
 	
 	setLayout(mainLayout);
-	connect(&mTimer, &QTimer::timeout, this, &QSimulation::genAdvance);
 
+	connect(&mTimer, &QTimer::timeout, this, &QSimulation::genAdvance);
 	
 	connect(mSimulationMenu, &QSimulationMenu::play, this, &QSimulation::play);
 	connect(mSimulationMenu, &QSimulationMenu::pause, this, &QSimulation::pause);
@@ -131,13 +131,10 @@ void QSimulation::generalAdvance(bool oneStep)
 		working = false;
 
 	}
-
+	advanceDone();
 }
-
 
 void QSimulation::genAdvance()
 {
-
 	this->generalAdvance(false);
-
 }

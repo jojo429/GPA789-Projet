@@ -5,8 +5,8 @@
 class SimulationStatistics
 {
 public:
-	SimulationStatistics();
-	~SimulationStatistics();
+	SimulationStatistics() = default;
+	~SimulationStatistics() = default;
 
 	double mPrecipitation;
 	double mWind;

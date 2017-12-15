@@ -5,28 +5,36 @@
 #include <QtCharts>
 using namespace QtCharts;
 
+#include <QVector>
+
 class QEvolutionGraph : public QWidget
 {
 	Q_OBJECT
 
 public:
-	QEvolutionGraph(QWidget *parent = Q_NULLPTR);
+	QEvolutionGraph(size_t nSeries = 1, QWidget *parent = Q_NULLPTR);
 	~QEvolutionGraph();
 
-	void addPoint(double value);
+	void addPoint(size_t index, qreal t, qreal value);
 	void initializeGraph(QString xAxisName, QString yAxisName, QString graphTitle);
+	void updateMinMaxValues(size_t index, int count);
+	void updateAxis();
 
 private:
 
 	QChart * mChart;
 	QChartView * mChartView;
-	QLineSeries *mDataSerie;
+	QVector<QLineSeries*> mDataSeries;
 	QValueAxis * mXAxis;
 	QValueAxis * mYAxis;
-	qreal mXmin, mXmax, mYmin, mYmax;
-	double mTime{ 0 };
+	qreal mXmin{ 0 }, mYmin{ 0 };
+	qreal mXmax{ 1 }, mYmax{ 1 };
+	qreal mX, mY;
+	QVector<qreal> mYMaxEachSeries;
+	QVector<qreal> mYMinEachSeries;
+	size_t mNSeries;
 
-	QWidget* chooseScale();
+	QWidget* initializeChooseScale();
 
 	QRadioButton * mScaleOneHour;
 	QRadioButton * mScaleOneWeek;

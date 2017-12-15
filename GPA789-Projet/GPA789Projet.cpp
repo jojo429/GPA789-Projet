@@ -45,8 +45,8 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	mMap->setMapValue(1000, 500, 50.0);
 	mMap->updateDrawMap(1000, 500);*/
 	
-	connect(mSimulation, &QSimulation::sendStatistics, mStatistic, &QStatistic::updateData);
-	
+	connect(mSimulation, &QSimulation::advanceDone, mStatistic, &QStatistic::updateData);
+	connect(mSimulation, &QSimulation::sendStatistics, mStatistic, &QStatistic::addPoints);
 /*
 
 	QHBoxLayout *firstLvlSettings = new QHBoxLayout;

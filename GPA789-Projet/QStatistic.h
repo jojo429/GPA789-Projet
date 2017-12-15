@@ -15,17 +15,17 @@ public:
 	~QStatistic();
 
 public slots:
-	void updateData(SimulationStatistics stats);
-
+	void updateData();
+	void addPoints(SimulationStatistics stats);
+	
 private: 
 	QEvolutionGraph * mTemperatureGraph;
 	QEvolutionGraph * mPrecipitationGraph;
 	QEvolutionGraph * mLuminosityGraph;
 	QEvolutionGraph * mWindGraph;
+	QEvolutionGraph * mMainGraph;
 
+	int mTime{0};
 
-	//TEST/////
-	long int x{ 0 }, y{ 0 };
-	///////////
 };
 #endif //Q_STATISTIC_H

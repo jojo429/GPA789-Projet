@@ -20,8 +20,8 @@ public:
 	//ICI advance counter //int getAdvanceCounter();
 
 signals:
-
 	 void sendStatistics(SimulationStatistics stats);
+	 void advanceDone();
 	 void updateAdvanceCount(int advanceCount);
 
 public slots:
@@ -30,6 +30,7 @@ public slots:
 	void stop();
 	void step();
 	void getStatistics();
+
 private slots: 
 	void genAdvance();	
 	void generalAdvance(bool oneStep);
