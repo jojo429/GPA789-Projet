@@ -10,10 +10,10 @@ public:
 	QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QHazel();
 
-	GaussianTable growTable();
-	GaussianTable precipirationGrowFactorTable();
-	GaussianTable luminosityGrowFactorTable();
-	GaussianTable temperatureGrowFactorTable();
+	GaussianTable & growTable();
+	GaussianTable & precipirationGrowFactorTable();
+	GaussianTable & luminosityGrowFactorTable();
+	GaussianTable & temperatureGrowFactorTable();
 
 private:
 	QColor mLeafColor;

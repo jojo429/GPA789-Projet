@@ -10,8 +10,12 @@
 #include <QPainter>
 #include <array>
 
+GaussianTable QSeeds::mPrecipitationGrowFactor(28, 6, 25);
+GaussianTable QSeeds::mLuminosityGrowFactor(200, 50, 10000, -100);
+GaussianTable QSeeds::mTemperatureGrowFactor(150, 30, 1000, -75);
+
 QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
-	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}
+	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}, mGenerateTree(0,1000)
 {
 
 
@@ -24,6 +28,16 @@ QSeeds::~QSeeds()
 
 void QSeeds::germinate()
 {
+	double chance = (this->mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0]) + this->mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1]) + this->mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2])) / 3;
+	double chiffre = mGenerateTree.random();
+	chance = chance*(chiffre/1000.0);
+	if (chance > 0.90)
+	{
+		
+		mGerminated = true;
+		this->setVisible(false);
+	}
+	
 	//Comment le faire?	
 	//QTrees * newTree = new QTrees(mMasterTree);
 }
@@ -87,7 +101,11 @@ void QSeeds::advance(int phase)
 
 		advanceTime();
 
+		if (mAge < 2 && !mGerminated)
+		{
+			germinate();
 
+		}
 		/*if (mCountFallDown < 50) {
 		mMovingFactor = 1.3;
 		move();

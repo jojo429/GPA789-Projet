@@ -44,19 +44,19 @@ void QOak::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QW
 	painter->drawEllipse(mCenter, mLeafRadius, mLeafRadius);
 }
 
-GaussianTable QOak::growTable()
+GaussianTable & QOak::growTable()
 {
 	return mGrowTable;
 }
-GaussianTable QOak::precipirationGrowFactorTable()
+GaussianTable & QOak::precipirationGrowFactorTable()
 {
 	return mPrecipitationGrowFactor;
 }
-GaussianTable QOak::luminosityGrowFactorTable()
+GaussianTable & QOak::luminosityGrowFactorTable()
 {
 	return mLuminosityGrowFactor;
 }
-GaussianTable QOak::temperatureGrowFactorTable()
+GaussianTable & QOak::temperatureGrowFactorTable()
 {
 	return mTemperatureGrowFactor;
 }

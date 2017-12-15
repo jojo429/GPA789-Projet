@@ -45,19 +45,19 @@ void QBirch::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 
 }
 
-GaussianTable QBirch::growTable()
+GaussianTable & QBirch::growTable()
 {
 	return mGrowTable;
 }
-GaussianTable QBirch::precipirationGrowFactorTable()
+GaussianTable & QBirch::precipirationGrowFactorTable()
 {
 	return mPrecipitationGrowFactor;
 }
-GaussianTable QBirch::luminosityGrowFactorTable()
+GaussianTable & QBirch::luminosityGrowFactorTable()
 {
 	return mLuminosityGrowFactor;
 }
-GaussianTable QBirch::temperatureGrowFactorTable()
+GaussianTable & QBirch::temperatureGrowFactorTable()
 {
 	return mTemperatureGrowFactor;
 }

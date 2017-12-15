@@ -10,10 +10,10 @@ public:
 	QBirch(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QBirch();
 
-	GaussianTable growTable();
-	GaussianTable precipirationGrowFactorTable();
-	GaussianTable luminosityGrowFactorTable();
-	GaussianTable temperatureGrowFactorTable();
+	GaussianTable & growTable();
+	GaussianTable & precipirationGrowFactorTable();
+	GaussianTable & luminosityGrowFactorTable();
+	GaussianTable & temperatureGrowFactorTable();
 
 private:
 	QColor mLeafColor;

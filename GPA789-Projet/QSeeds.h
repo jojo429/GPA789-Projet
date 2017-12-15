@@ -7,6 +7,8 @@
 #include <QPointF>
 
 
+
+
 class QSeeds : public QDynamic
 {
 
@@ -25,7 +27,6 @@ private:
 	int mHeight;
 	int mWeight;
 	std::array<std::vector<double>, 5> mWeightingGerminate;
-
 	double mMovingFactor;
 	int mCountFallDown{ 0 };
 	double mSeedRadius { 5.0 };
@@ -35,8 +36,11 @@ private:
 	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR);
 	void advance(int phase) override;
 	treeType mTreeType;
-	
-
+	int mGerminated = false;
+	static GaussianTable mPrecipitationGrowFactor;
+	static GaussianTable mLuminosityGrowFactor;
+	static GaussianTable mTemperatureGrowFactor;
+	RandomUniform mGenerateTree;
 };
 
 

@@ -43,19 +43,19 @@ void QFir::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QW
 	painter->drawEllipse(mCenter, mLeafRadius, mLeafRadius);
 }
 
-GaussianTable QFir::growTable()
+GaussianTable & QFir::growTable()
 {
 	return mGrowTable;
 }
-GaussianTable QFir::precipirationGrowFactorTable()
+GaussianTable & QFir::precipirationGrowFactorTable()
 {
 	return mPrecipitationGrowFactor;
 }
-GaussianTable QFir::luminosityGrowFactorTable()
+GaussianTable & QFir::luminosityGrowFactorTable()
 {
 	return mLuminosityGrowFactor;
 }
-GaussianTable QFir::temperatureGrowFactorTable()
+GaussianTable & QFir::temperatureGrowFactorTable()
 {
 	return mTemperatureGrowFactor;
 }

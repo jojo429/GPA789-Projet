@@ -109,19 +109,19 @@ void QTrees::advance(int phase)
 
 }
 
-GaussianTable QTrees::growTable()
+GaussianTable & QTrees::growTable()
 {
 	return mEmpty;
 }
-GaussianTable QTrees::precipirationGrowFactorTable()
+GaussianTable & QTrees::precipirationGrowFactorTable()
 {
 	return mEmpty;
 }
-GaussianTable QTrees::luminosityGrowFactorTable()
+GaussianTable & QTrees::luminosityGrowFactorTable()
 {
 	return mEmpty;
 }
-GaussianTable QTrees::temperatureGrowFactorTable()
+GaussianTable & QTrees::temperatureGrowFactorTable()
 {
 	return mEmpty;
 }
