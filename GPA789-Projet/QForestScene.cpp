@@ -19,7 +19,7 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 
 
 	this->setBackgroundBrush(mBackgroundBrush);
-	int treeCount{ 15 };
+	int treeCount{ 20 };
 	int tree;
 
 	//Setting up the master trees

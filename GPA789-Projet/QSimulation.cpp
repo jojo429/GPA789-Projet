@@ -5,6 +5,7 @@
 #include <QHBoxLayout>
 #include <QGraphicsRectItem>
 #include <QTimer>
+#include <QDebug>
 
 QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent)
 	: QWidget(parent), mEnvironment { environment }, mForestScene { forestScene }
@@ -74,7 +75,6 @@ void QSimulation::play()
 	mEnvironment.setParameters(mSimulationParameters);
 
 	mTimer.start(30);
-
 }
 
 void QSimulation::pause()
@@ -98,9 +98,15 @@ void QSimulation::step()
 
 void QSimulation::generalAdvance() 
 {
-	for (int i{ 0 }; i < 30; i++) {
-		mEnvironment.advance();
-		mForestScene.advance();
-		getStatistics();
+	static bool working{ false };
+	if (!working) {
+		working = true;
+		for (int i{ 0 }; i < 1; i++) {
+			mEnvironment.advance();
+			mForestScene.advance();
+			getStatistics();
+		}
+		working = false;
 	}
+
 }
