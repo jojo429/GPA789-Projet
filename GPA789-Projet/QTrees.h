@@ -25,7 +25,6 @@ public:
 	void adjustDryness();
 	void setOnFire();
 	void striked() override;
-	void setMasterTree(QTrees * tree);
 	treeType mTreeType;
 
 
@@ -39,7 +38,6 @@ protected:
 	int mDryness;
 	enum mState {isAlive, isDead, isOnFire};
 	bool mGotHit;
-	QTrees *mMasterTree;
 	void advance(int phase);
 	QRectF boundingRect() const;
 	int mTime{ 0 };

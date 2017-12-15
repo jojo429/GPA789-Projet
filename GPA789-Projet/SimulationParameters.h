@@ -19,6 +19,11 @@ public:
 	int mWindCycle;
 	int mWindAverage;
 	int mWindVariation;
+	int mNumberOak;
+	int mNumberFir;
+	int mNumberHazel;
+	int mNumberBirch;
+	int mNumberSquirrel;
 
 };
 
