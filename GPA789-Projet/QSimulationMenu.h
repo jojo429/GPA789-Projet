@@ -2,6 +2,8 @@
 #define	Q_SIMULATION_MENU_H
 
 #include "QCyclicOptions.h"
+#include "QTreeOptions.h"
+#include "QAnimalOptions.h"
 #include "QSimulationAdvancementOptions.h"
 #include "QSimulationTimeScale.h"
 #include "SimulationParameters.h"
@@ -13,6 +15,7 @@
 #include <QCheckBox>
 #include <QRadioButton>
 #include <QPixmap>
+#include <QGroupBox>
 
 class QSimulationMenu : public QWidget
 {
@@ -36,7 +39,12 @@ signals:
 
 private:
 	QVBoxLayout *mMenuLayout;
+	QVBoxLayout *mOptionsLayout;
+	QVBoxLayout *mTreesVBoxLayout;
+	QVBoxLayout *mAnimalsVBoxLayout;
 	QHBoxLayout *mThunderLayout;
+	QHBoxLayout *mTreesHBoxLayout;
+	QHBoxLayout *mAnimalsHBoxLayout;
 	QGridLayout *mMenuGridLayout;
 
 	QPixmap mThunderIcon;
@@ -54,6 +62,16 @@ private:
 	QCyclicOptions *mWind;
 	QCyclicOptions *mPrecipitation;
 	QCyclicOptions *mTemperature;
+
+	QTreeOptions *mOak;
+	QTreeOptions *mBirch;
+	QTreeOptions *mHazel;
+	QTreeOptions *mFir;
+
+	QAnimalOptions *mSquirrel;
+
+	QGroupBox *mTreesGroupBox;
+	QGroupBox *mAnimalsGroupBox;
 };
 
 #endif //Q_SIMULATION_MENU_H
