@@ -72,9 +72,14 @@ void QSimulation::wheelEvent(QWheelEvent* event)
 
 void QSimulation::play()
 {
+	if (!mStarted)
+	{
+		mSimulationMenu->getParameters(&mSimulationParameters);
+		mEnvironment.setParameters(mSimulationParameters);
+		mForestScene.setParameters(mSimulationParameters);
+		mStarted = true;
+	}
 	
-	mSimulationMenu->getParameters(&mSimulationParameters);
-	mEnvironment.setParameters(mSimulationParameters);
 
 	mTimer.start(30);
 }
@@ -90,6 +95,8 @@ void QSimulation::stop()
 
 	mTimer.stop();
 	//ICI advance counter //mAdvanceCounter = 0;
+	mStarted = false;
+	mForestScene.clear();
 }
 
 void QSimulation::step()

@@ -42,6 +42,7 @@ private:
 	QGraphicsView *mForestView;
 
 	//ICI advance counter //int mAdvanceCounter;
+	bool mStarted = false;
 
 protected:
 	virtual void wheelEvent(QWheelEvent* event);

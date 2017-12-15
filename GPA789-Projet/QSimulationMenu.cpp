@@ -175,6 +175,11 @@ void QSimulationMenu::getParameters(SimulationParameters *simulationParameters)
 	simulationParameters->mWindAverage = mWind->getAverageValue();
 	simulationParameters->mWindCycle = mWind->getCycleValue();
 	simulationParameters->mWindVariation = mWind->getVariationValue();
+	simulationParameters->mNumberBirch = mBirch->getValue();
+	simulationParameters->mNumberOak = mOak->getValue();
+	simulationParameters->mNumberFir = mFir->getValue();
+	simulationParameters->mNumberHazel = mHazel->getValue();
+	simulationParameters->mNumberSquirrel = mSquirrel->getValue();
 }
 
 void QSimulationMenu::freeze()

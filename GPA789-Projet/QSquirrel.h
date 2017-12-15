@@ -25,10 +25,10 @@ private:
 	QGraphicsItem * mLastTarget{ Q_NULLPTR };
 	int mActionCounter{0};
 	QPointF mTargetPos;
-	QPointF mTriangle[3] = { QPointF(0, -15), QPointF(7, 0), QPointF(-7, 0) };
+	QPointF mTriangle[3] = { QPointF(15, 0), QPointF(0, 7), QPointF(0, -7) };
 	QColor mFurColor{204, 144, 24};
 	QColor mTailColor{ 232, 157, 6 };
-	double mVisionRadius{150};
+	double mVisionRadius{250};
 	int mHunger{100};
 	int actionCounter{0};
 	QList<QGraphicsItem*> mPastTarget;

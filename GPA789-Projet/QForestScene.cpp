@@ -8,89 +8,15 @@
 
 
 QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
-	: QGraphicsScene(parent), mGenerate(-100, 100), mEnvironment{environment}
+	: QGraphicsScene(parent), mGenerate(-100, 100), mEnvironment{environment}, mGenerateCoordinate(0,2052)
 {
 	//Delimitation de la zone de simulation
-	this->addLine(0, 0, 2050, 0);
-	this->addLine(0, 0, 0, 2050);
-	this->addLine(2050, 0, 2050, 2050);
-	this->addLine(0, 2050, 2050, 2050);
+	
 
 
 
 	this->setBackgroundBrush(mBackgroundBrush);
 
-	int treeCount{ 15 };
-	int tree =2;
-
-	//Setting up the master trees
-	//mMasterOak.setMasterTree(&mMasterOak);
-	//mMasterHazel.setMasterTree(&mMasterHazel);
-	//mMasterBirch.setMasterTree(&mMasterBirch);
-	//mMasterFir.setMasterTree(&mMasterFir);
-	QTrees *newTree;
-	for (int i{ 0 }; i < treeCount; ++i) {
-
-		//Add trees
-		QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
-		switch (tree) {
-
-		case 0: 	newTree = new QOak(environment,*this, Oak);
-					break; 
-
-		case 1: 	newTree = new QFir(environment,*this, Fir);
-					break; 
-
-		case 2: 	newTree = new QHazel(environment,*this, Hazel);
-					break; 
-
-		case 3: 	newTree = new QBirch(environment,*this, Birch);
-					break; 
-
-		default:	newTree = new QOak(environment, *this,Oak);
-					break;
-		}
-
-		this->addItem(newTree);
-		newTree->setPos(spawnPoint);
-		
-	}
-
-	//	//Add seeds
-	//	//QSeeds *newSeed = new QSeeds(enviromnent);
-	//	//this->addItem(newSeed);
-	//	//newSeed->setPos(spawnPoint);
-	//}
-	//for (int i{ 0 }; i < treeCount; ++i) {
-	//	//Add trees
-	//	QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
-	//	QTrees *newTree = new QHazel(enviromnent);
-	//	this->addItem(newTree);
-	//	newTree->setPos(spawnPoint);
-	//}
-	//for (int i{ 0 }; i < treeCount; ++i) {
-	//	//Add trees
-	//	QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
-	//	QTrees *newTree = new QBirch(enviromnent);
-	//	this->addItem(newTree);
-	//	newTree->setPos(spawnPoint);
-	//}
-	//for (int i{ 0 }; i < treeCount; ++i) {
-	//	//Add trees
-	//	QPointF spawnPoint = QPointF(rand() % 2049 + 100, rand() % 2049 + 100);
-	//	QTrees *newTree = new QFir(enviromnent);
-	//	this->addItem(newTree);
-	//	newTree->setPos(spawnPoint);
-	//}
-
-	//QPointF spawnPoint = QPointF(1050,1050);
-	//QTrees *newTree = new QOak(enviromnent);
-	//this->addItem(newTree);
-	//newTree->setPos(spawnPoint);
-
-	QSquirrel *squirrel = new QSquirrel(environment, *this);
-	this->addItem(squirrel);
-	squirrel->setPos(QPointF(1000, 1000));
 	
 
 }
@@ -119,5 +45,49 @@ void QForestScene::closestTree(QPointF pt2D)
 
 void QForestScene::lightningStrike(QPointF pt2D)
 {
+
+}
+
+void QForestScene::setParameters(SimulationParameters &simulationParameters)
+{
+	this->addLine(0, 0, 2050, 0);
+	this->addLine(0, 0, 0, 2050);
+	this->addLine(2050, 0, 2050, 2050);
+	this->addLine(0, 2050, 2050, 2050);
+	
+	QTrees *newTree;
+	QSquirrel *newSquirrel;
+
+
+	for (int i{ 0 }; i < simulationParameters.mNumberBirch; ++i) 
+	{
+		newTree = new QBirch(mEnvironment,*this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberOak; ++i)
+	{
+		newTree = new QOak(mEnvironment, *this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberHazel; ++i)
+	{
+		newTree = new QHazel(mEnvironment, *this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberFir; ++i)
+	{
+		newTree = new QFir(mEnvironment, *this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberSquirrel; ++i)
+	{
+		newSquirrel = new QSquirrel(mEnvironment, *this);
+		this->addItem(newSquirrel);
+		newSquirrel->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
+	}
 
 }
