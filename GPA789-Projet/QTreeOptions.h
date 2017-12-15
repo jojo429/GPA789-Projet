@@ -14,6 +14,7 @@ public:
 	QTreeOptions(QWidget *parent = Q_NULLPTR);
 	QTreeOptions(QString treeName, int minNumbTrees, int maxNumbTrees, int numbTreesInit);
 	~QTreeOptions();
+	int getValue();
 
 private:
 	QSlider *mTreeSlider;
