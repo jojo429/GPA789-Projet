@@ -11,7 +11,7 @@ class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value);
+	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QSeeds();
 
 	friend QForestScene;

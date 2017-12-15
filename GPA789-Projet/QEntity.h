@@ -16,7 +16,7 @@ class QEntity : public QGraphicsItem
 {
 
 public:
-	QEntity(QEnvironment const &environment, QForestScene &forestscene);
+	QEntity(QEnvironment const &environment, QForestScene &forestscene, int lifeSpan);
 	~QEntity();
 	virtual void reproduce();
 	virtual void die();

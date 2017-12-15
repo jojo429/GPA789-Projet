@@ -9,7 +9,7 @@ class QSquirrel : public QAnimals
 {
 
 public:
-	QSquirrel(QEnvironment const & environment, QForestScene & forestscene);
+	QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan);
 	~QSquirrel();
 	enum TargetType {
 		NoTarget = 0,

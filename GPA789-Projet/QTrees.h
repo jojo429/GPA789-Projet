@@ -14,7 +14,7 @@ class QTrees : public QStatic
 	
 public:
 
-	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value);
+	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QTrees();
 
 	

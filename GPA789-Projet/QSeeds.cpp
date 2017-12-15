@@ -10,8 +10,8 @@
 #include <QPainter>
 #include <array>
 
-QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value)
-	: QDynamic{ environment,forestscene }, mTreeType{value}
+QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
+	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}
 {
 
 
@@ -86,6 +86,7 @@ void QSeeds::advance(int phase)
 	if (phase == 1) {
 
 		advanceTime();
+
 
 		/*if (mCountFallDown < 50) {
 		mMovingFactor = 1.3;

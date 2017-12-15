@@ -8,8 +8,8 @@ GaussianTable QOak::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QOak::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QOak::mGrowTable(500, 10, 50000);
 
-QOak::QOak(QEnvironment const & environment, QForestScene & forestscene, treeType value)
-	: QTrees{ environment, forestscene,value }
+QOak::QOak(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
+	: QTrees{ environment, forestscene, value , lifeSpan}
 {
 	mLeafColor.setRgb(100, 186, 63);
 	mTrunkColor.setRgb(68, 49, 3);
