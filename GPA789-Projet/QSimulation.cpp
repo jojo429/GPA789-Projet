@@ -48,6 +48,7 @@ QSimulation::~QSimulation()
 void QSimulation::getStatistics()
 {
 	mEnvironment.getStatistics(&mSimulationStatistics);
+
 	emit sendStatistics(mSimulationStatistics);
 }
 
@@ -98,6 +99,7 @@ void QSimulation::step()
 
 void QSimulation::generalAdvance() 
 {
+
 	static bool working{ false };
 	if (!working) {
 		working = true;
@@ -107,6 +109,7 @@ void QSimulation::generalAdvance()
 			getStatistics();
 		}
 		working = false;
+
 	}
 
 }

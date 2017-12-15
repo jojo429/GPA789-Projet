@@ -6,15 +6,15 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	//Définition des options cycliques
 	mLuminosity = new QCyclicOptions("Luminosity", ":/GPA789Projet/iconLuminosity",
 		"Average", "Variation", "Cycle", 0, 0, 0, 100, 2190, 2190, false, true, false,
-		0, 30, 0);
+		0, 30, 2190);
 	mPrecipitation = new QCyclicOptions("Precipitation", ":/GPA789Projet/iconRain",
-		"Average", "Variation", "Cycle", 0, 6, 0, 20, 6, 2190, true, true, true,
+		"Average", "Variation", "Cycle", 0, 6, 0, 20, 30, 2190, true, true, true,
 		2, 2, 365);
 	mTemperature = new QCyclicOptions("Temperature", ":/GPA789Projet/iconTemperature",
 		"Average", "Variation", "Cycle", -30, 30, 0, 40, 2190, 2190, true, true, false,
-		20, 20, 0);
+		20, 20, 2190);
 	mWind = new QCyclicOptions("Wind", ":/GPA789Projet/iconWind",
-		"Average", "Variation", "Cycle", 0, 100, 0, 100, 6, 2190, true, true, true,
+		"Average", "Variation", "Cycle", 0, 100, 0, 100, 30, 2190, true, true, true,
 		20, 10, 365);
 
 
@@ -113,4 +113,7 @@ void QSimulationMenu::unfreeze()
 	mWind->setEnabled(true);
 }
 
+int QSimulationMenu::getTimeScaleValue() {
+	return mTimeScaleSlider->getValue();
+}
 

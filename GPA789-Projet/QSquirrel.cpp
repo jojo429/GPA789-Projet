@@ -5,8 +5,8 @@
 #include <QDebug>
 
 
-QSquirrel::QSquirrel(QEnvironment const & environment)
-	: QAnimals{ environment }, mGenerateAngle(-180,180)
+QSquirrel::QSquirrel(QEnvironment const & environment, QForestScene & forestscene)
+	: QAnimals{ environment, forestscene }, mGenerateAngle(-180,180)
 {
 
 

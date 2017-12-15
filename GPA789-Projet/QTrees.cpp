@@ -1,6 +1,7 @@
 #include "QTrees.h"
 #include <QBrush>
 #include <QPainter>
+#include "QForestScene.h"
 
 GaussianTable QTrees::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QTrees::mLuminosityGrowFactor(200, 50, 10000, -100);
@@ -8,8 +9,8 @@ GaussianTable QTrees::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QTrees::mGrowTable(500, 10, 50000);
 GaussianTable QTrees::mReproduceTable(500, 10, 50000);
 
-QTrees::QTrees(QEnvironment const & environment, treeType value )
-	: QStatic(environment), mGenerateSeed(1, 6), mTreeType{ value }
+QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value )
+	: QStatic(environment, forestscene), mGenerateSeed(1, 6), mTreeType{ value }
 {
 	
 	mAge = 0;
@@ -17,6 +18,7 @@ QTrees::QTrees(QEnvironment const & environment, treeType value )
 	mTrunkRadius = 0.1 * mLeafRadius;
 	mHeight = 2 * mLeafRadius;
 	mMasterTree = this;
+
 
 }
 
@@ -27,19 +29,16 @@ QTrees::~QTrees()
 
 void QTrees::reproduce()
 {
-	if (mTime == 1000 )
-	{
-
+	
 		
 
-		for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
+	for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
 
 			
-			/*emit dropSeed(this);*/
-
-		}
+		mForestScene.createSeed(this);
 
 	}
+
 }
 
 void QTrees::die()
@@ -49,7 +48,12 @@ void QTrees::die()
 
 int QTrees::getHeight()
 {
-	return 0;
+	return mHeight;
+}
+
+int QTrees::getRadius()
+{
+	return mLeafRadius;
 }
 
 void QTrees::adjustDryness()
@@ -99,6 +103,11 @@ void QTrees::advance(int phase)
 	}
 	else {
 		update();
+	}
+
+	if (mTime == 1000)
+	{
+		reproduce();
 	}
 
 	/*if (mLeafRadius < 50) {

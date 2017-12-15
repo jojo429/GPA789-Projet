@@ -81,6 +81,7 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 	}
 
 	if (enableCycle == true) {
+		connect(mCycleSlider, &QSlider::sliderReleased, this, &QCyclicOptions::cycleValueStep);
 		connect(mCycleSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
 	}
 	
@@ -105,6 +106,28 @@ void QCyclicOptions::updateValues()
 	mAverageValue->setText(QString::number(mAverageSlider->value()));;
 	mVariationValue->setText(QString::number(mVariationSlider->value()));
 	mCycleValue->setText(QString::number(mCycleSlider->value()));
+}
+
+void QCyclicOptions::cycleValueStep()
+{
+	if (mCycleSlider->value() >= 0 && mCycleSlider->value() <= 30) {
+		mCycleSlider->setSliderPosition(30);
+	}
+	else if (mCycleSlider->value() > 30 && mCycleSlider->value() <= 73) {
+		mCycleSlider->setSliderPosition(73);
+	}
+	else if (mCycleSlider->value() > 73 && mCycleSlider->value() <= 365) {
+		mCycleSlider->setSliderPosition(365);
+	}
+	else if (mCycleSlider->value() > 365 && mCycleSlider->value() <= 730) {
+		mCycleSlider->setSliderPosition(730);
+	}
+	else if (mCycleSlider->value() > 730 && mCycleSlider->value() <= 1095) {
+		mCycleSlider->setSliderPosition(1095);
+	}
+	else {
+		mCycleSlider->setSliderPosition(2190);
+	}
 }
 
 int QCyclicOptions::getAverageValue()

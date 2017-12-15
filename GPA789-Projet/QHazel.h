@@ -7,7 +7,7 @@ class QHazel : public QTrees
 {
 
 public:
-	QHazel(QEnvironment const & environment, treeType value);
+	QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType value);
 	~QHazel();
 	void grow();
 
