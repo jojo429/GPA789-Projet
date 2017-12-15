@@ -81,7 +81,7 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 	}
 
 	if (enableCycle == true) {
-		connect(mCycleSlider, &QSlider::sliderReleased, this, &QCyclicOptions::cycleValueStep);
+		connect(mCycleSlider, &QSlider::valueChanged, this, &QCyclicOptions::cycleValueStep);
 		connect(mCycleSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
 	}
 	

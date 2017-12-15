@@ -162,6 +162,11 @@ void QSimulationMenu::freeze()
 	mPrecipitation->setEnabled(false);
 	mTemperature->setEnabled(false);
 	mWind->setEnabled(false);
+	mOak->setEnabled(false);
+	mBirch->setEnabled(false);
+	mHazel->setEnabled(false);
+	mFir->setEnabled(false);
+	mSquirrel->setEnabled(false);
 }
 
 void QSimulationMenu::unfreeze()
@@ -170,6 +175,11 @@ void QSimulationMenu::unfreeze()
 	mPrecipitation->setEnabled(true);
 	mTemperature->setEnabled(true);
 	mWind->setEnabled(true);
+	mOak->setEnabled(true);
+	mBirch->setEnabled(true);
+	mHazel->setEnabled(true);
+	mFir->setEnabled(true);
+	mSquirrel->setEnabled(true);
 }
 
 int QSimulationMenu::getTimeScaleValue() {
