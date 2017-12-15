@@ -24,10 +24,7 @@ QOak::~QOak()
 
 }
 
-void QOak::grow()
-{
 
-}
 
 void QOak::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {

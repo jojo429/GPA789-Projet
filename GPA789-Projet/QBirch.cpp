@@ -25,10 +25,7 @@ QBirch::~QBirch()
 
 }
 
-void QBirch::grow()
-{
 
-}
 
 void QBirch::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {

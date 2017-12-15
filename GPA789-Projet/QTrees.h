@@ -24,6 +24,7 @@ public:
 	int getRadius();
 	void adjustDryness();
 	void setOnFire();
+	void grow();
 	void striked() override;
 	treeType mTreeType;
 	virtual GaussianTable growTable()=0;

@@ -9,7 +9,7 @@ class QHazel : public QTrees
 public:
 	QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType value);
 	~QHazel();
-	void grow();
+
 	GaussianTable growTable();
 	GaussianTable precipirationGrowFactorTable();
 	GaussianTable luminosityGrowFactorTable();

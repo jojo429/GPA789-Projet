@@ -23,10 +23,7 @@ QHazel::~QHazel()
 
 }
 
-void QHazel::grow()
-{
 
-}
 
 void QHazel::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {

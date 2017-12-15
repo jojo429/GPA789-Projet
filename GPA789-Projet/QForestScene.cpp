@@ -58,7 +58,18 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 	QTrees *newTree;
 	QSquirrel *newSquirrel;
 
-
+	for (int i{ 0 }; i < simulationParameters.mNumberSquirrel; ++i)
+	{
+		newSquirrel = new QSquirrel(mEnvironment, *this);
+		this->addItem(newSquirrel);
+		newSquirrel->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
+	}
+	for (int i{ 0 }; i < simulationParameters.mNumberHazel; ++i)
+	{
+		newTree = new QHazel(mEnvironment, *this, Oak);
+		this->addItem(newTree);
+		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
+	}
 	for (int i{ 0 }; i < simulationParameters.mNumberBirch; ++i) 
 	{
 		newTree = new QBirch(mEnvironment,*this, Oak);
@@ -71,23 +82,12 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 	}
-	for (int i{ 0 }; i < simulationParameters.mNumberHazel; ++i)
-	{
-		newTree = new QHazel(mEnvironment, *this, Oak);
-		this->addItem(newTree);
-		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
-	}
 	for (int i{ 0 }; i < simulationParameters.mNumberFir; ++i)
 	{
 		newTree = new QFir(mEnvironment, *this, Oak);
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 	}
-	for (int i{ 0 }; i < simulationParameters.mNumberSquirrel; ++i)
-	{
-		newSquirrel = new QSquirrel(mEnvironment, *this);
-		this->addItem(newSquirrel);
-		newSquirrel->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
-	}
+
 
 }

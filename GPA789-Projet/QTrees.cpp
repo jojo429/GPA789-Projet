@@ -11,8 +11,8 @@ QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, tre
 	
 	mAge = 0;
 	mLeafRadius = 1;
-	mTrunkRadius = 0.1 * mLeafRadius;
-	mHeight = 2 * mLeafRadius;
+	mTrunkRadius = 0.2 * mLeafRadius;
+	mHeight = 4 * mLeafRadius;
 
 
 
@@ -89,9 +89,9 @@ void QTrees::advance(int phase)
 		}
 
 		if (mAge < 2) {
-			mLeafRadius = mLeafRadius + 0.02*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
-			mTrunkRadius = 0.20 * mLeafRadius;
+			grow();
 			update(boundingRect());
+
 		}
 		else {
 			update();
@@ -129,4 +129,11 @@ GaussianTable QTrees::luminosityGrowFactorTable()
 GaussianTable QTrees::temperatureGrowFactorTable()
 {
 	return mEmpty;
+}
+
+void QTrees::grow()
+{
+	mLeafRadius = mLeafRadius + 0.04*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
+	mTrunkRadius = 0.20 * mLeafRadius;
+	mHeight = 4 * mLeafRadius;
 }
