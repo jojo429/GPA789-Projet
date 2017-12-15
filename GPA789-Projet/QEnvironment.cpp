@@ -57,12 +57,6 @@ void QEnvironment::calculateFactors(int Time)
 		mFactors[i] = (mEnvironmentalFactor[i])->getFactor(Time);
 	}
 
-	mTime++;
-	if (mTime >= 2190)
-	{
-		mTime = mTime - 2190;
-	}
-
 
 }
 
@@ -135,6 +129,6 @@ void QEnvironment::setParameters(SimulationParameters &simulationParameters)
 	mEnvironmentalFactor[3]->setTable(simulationParameters.mWindCycle, simulationParameters.mWindAverage, simulationParameters.mWindVariation);
 
 	mFactors.resize((mEnvironmentalFactor.size()));
-
+	mTime = 0;
 
 }

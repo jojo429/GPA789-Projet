@@ -91,6 +91,7 @@ void QSimulation::stop()
 
 	mTimer.stop();
 	mAdvanceCounter = 0;
+	emit updateAdvanceCount(mAdvanceCounter);
 	mStarted = false;
 	mForestScene.clear();
 }

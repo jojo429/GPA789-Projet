@@ -99,6 +99,7 @@ void QCyclicOptions::defineSlider(QSlider *slider, int min, int max, int initVal
 	slider->setMinimum(min);
 	slider->setMaximum(max);
 	slider->setSliderPosition(initValue);
+	slider->setValue(initValue);
 }
 
 void QCyclicOptions::updateValues()
@@ -110,23 +111,29 @@ void QCyclicOptions::updateValues()
 
 void QCyclicOptions::cycleValueStep()
 {
-	if (mCycleSlider->value() >= 0 && mCycleSlider->value() <= 30) {
+	if (mCycleSlider->value() >= 0 && mCycleSlider->value() <= 50) {
 		mCycleSlider->setSliderPosition(30);
+		mCycleSlider->setValue(30);
 	}
-	else if (mCycleSlider->value() > 30 && mCycleSlider->value() <= 73) {
+	else if (mCycleSlider->value() > 50 && mCycleSlider->value() <= 200) {
 		mCycleSlider->setSliderPosition(73);
+		mCycleSlider->setValue(73);
 	}
-	else if (mCycleSlider->value() > 73 && mCycleSlider->value() <= 365) {
+	else if (mCycleSlider->value() > 200 && mCycleSlider->value() <= 500) {
 		mCycleSlider->setSliderPosition(365);
+		mCycleSlider->setValue(365);
 	}
-	else if (mCycleSlider->value() > 365 && mCycleSlider->value() <= 730) {
+	else if (mCycleSlider->value() > 500 && mCycleSlider->value() <= 900) {
 		mCycleSlider->setSliderPosition(730);
+		mCycleSlider->setValue(730);
 	}
-	else if (mCycleSlider->value() > 730 && mCycleSlider->value() <= 1095) {
+	else if (mCycleSlider->value() > 900 && mCycleSlider->value() <= 1500) {
 		mCycleSlider->setSliderPosition(1095);
+		mCycleSlider->setValue(1095);
 	}
 	else {
 		mCycleSlider->setSliderPosition(2190);
+		mCycleSlider->setValue(2190);
 	}
 }
 
@@ -137,24 +144,7 @@ int QCyclicOptions::getAverageValue()
 
 int QCyclicOptions::getCycleValue()
 {
-	if (mCycleSlider->value() >= 0 && mCycleSlider->value() <= 30) {
-		return 30;
-	}
-	else if (mCycleSlider->value() > 30 && mCycleSlider->value() <= 73) {
-		return 73;
-	}
-	else if (mCycleSlider->value() > 73 && mCycleSlider->value() <= 365) {
-		return 365;
-	}
-	else if (mCycleSlider->value() > 365 && mCycleSlider->value() <= 730) {
-		return 730;
-	}
-	else if (mCycleSlider->value() > 730 && mCycleSlider->value() <= 1095) {
-		return 1095;
-	}
-	else {
-		return 2190;
-	}
+	return mCycleSlider->value();
 }
 
 int QCyclicOptions::getVariationValue()
