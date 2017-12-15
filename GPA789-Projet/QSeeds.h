@@ -31,11 +31,11 @@ private:
 	double mSeedRadius { 5.0 };
 	QPointF mCenter = QPointF(0, 0);
 	void move() override;
-	QRectF QSeeds::boundingRect() const;
+	QRectF boundingRect() const;
 	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR);
-	void QSeeds::advance(int phase);
+	void advance(int phase) override;
 	treeType mTreeType;
-
+	
 
 };
 

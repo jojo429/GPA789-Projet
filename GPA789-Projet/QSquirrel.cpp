@@ -157,6 +157,7 @@ void QSquirrel::advance(int phase)
 
 	//Choose a target or a random direction
 	if (phase = 1) {
+		advanceTime();
 		if (mActionCounter == 0)
 		{
 			mTarget = getTarget();

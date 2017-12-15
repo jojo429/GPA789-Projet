@@ -45,7 +45,7 @@ protected:
 	bool mGotHit;
 	void advance(int phase);
 	QRectF boundingRect() const;
-	int mTime{ 0 };
+	
 	GaussianTable mEmpty;
 
 	static GaussianTable mReproduceTable;

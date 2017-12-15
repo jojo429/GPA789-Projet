@@ -81,12 +81,7 @@ void QTrees::advance(int phase)
 
 	if (phase == 1)
 		{
-		mTime++;
-		if (mTime >= 2190)
-		{
-			mAge++;
-			mTime = mTime - 2190;
-		}
+		advanceTime();
 
 		if (mAge < 2) {
 			grow();

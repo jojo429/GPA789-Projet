@@ -77,13 +77,22 @@ void QSeeds::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, 
 	painter->drawEllipse(center, mSeedRadius, mSeedRadius - mSeedRadius * 0.5);
 }
 
+
+
 void QSeeds::advance(int phase)
 {
+
+
 	if (phase == 1) {
-		if (mCountFallDown < 50) {
-			mMovingFactor = 1.3;
-			move();
-		}
+
+		advanceTime();
+
+		/*if (mCountFallDown < 50) {
+		mMovingFactor = 1.3;
+		move();
+		}*/
+
+
 	}
 
 }

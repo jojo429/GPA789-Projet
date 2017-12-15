@@ -33,3 +33,13 @@ void QEntity::striked()
 
 }
 
+void QEntity::advanceTime()
+{
+	mTime++;
+	if (mTime >= 2190)
+	{
+		mAge++;
+		mTime = mTime - 2190;
+	}
+}
+

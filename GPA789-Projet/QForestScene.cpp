@@ -33,7 +33,7 @@ void QForestScene::createSeed(QTrees* parent)
 	QSeeds *newSeed = new QSeeds(mEnvironment, *this , parent->mTreeType);
 	newSeed->mHeight = parent->getHeight();
 	addItem(newSeed);
-	newSeed->setPos(QPointF((parent->pos().x() + (parent->getRadius()*mGenerate.random()/200)),( parent->pos().y()+(parent->getRadius() *mGenerate.random() / 200))));
+	newSeed->setPos(QPointF((parent->pos().x() + (parent->getRadius()*mGenerate.random()/100)),( parent->pos().y()+(parent->getRadius() *mGenerate.random() / 100))));
 
 }
 
