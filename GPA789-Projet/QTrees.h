@@ -11,10 +11,10 @@
 
 class QTrees : public QStatic
 {
-
+	
 public:
 
-	QTrees(QEnvironment const & environment, treeType value);
+	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value);
 	~QTrees();
 
 	
@@ -27,8 +27,6 @@ public:
 	void setMasterTree(QTrees * tree);
 	treeType mTreeType;
 
-//signals:
-//	void dropSeed(int parent);
 
 
 protected:

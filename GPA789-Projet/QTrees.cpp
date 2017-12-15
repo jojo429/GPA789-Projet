@@ -1,6 +1,7 @@
 #include "QTrees.h"
 #include <QBrush>
 #include <QPainter>
+#include "QForestScene.h"
 
 GaussianTable QTrees::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QTrees::mLuminosityGrowFactor(200, 50, 10000, -100);
@@ -8,8 +9,8 @@ GaussianTable QTrees::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QTrees::mGrowTable(500, 10, 50000);
 GaussianTable QTrees::mReproduceTable(500, 10, 50000);
 
-QTrees::QTrees(QEnvironment const & environment, treeType value )
-	: QStatic(environment), mGenerateSeed(1, 6), mTreeType{ value }
+QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value )
+	: QStatic(environment, forestscene), mGenerateSeed(1, 6), mTreeType{ value }
 {
 	
 	mAge = 0;
@@ -35,7 +36,7 @@ void QTrees::reproduce()
 		for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
 
 			
-			/*emit dropSeed(this);*/
+			mForestScene.createSeed(this);
 
 		}
 

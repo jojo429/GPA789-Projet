@@ -1,7 +1,8 @@
 #include "QEntity.h"
+#include "QForestScene.h"
 
-QEntity::QEntity(QEnvironment const & environment)
-	: mEnvironment{ environment }
+QEntity::QEntity(QEnvironment const & environment, QForestScene & forestscene)
+	: mEnvironment{ environment }, mForestScene{forestscene}
 {
 
 }

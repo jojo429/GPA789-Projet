@@ -47,6 +47,7 @@ QSimulation::~QSimulation()
 void QSimulation::getStatistics()
 {
 	mEnvironment.getStatistics(&mSimulationStatistics);
+
 	emit sendStatistics(mSimulationStatistics);
 }
 

@@ -3,8 +3,8 @@
 #include "QTrees.h"
 #include <QtMath>
 
-QSquirrel::QSquirrel(QEnvironment const & environment)
-	: QAnimals{ environment }
+QSquirrel::QSquirrel(QEnvironment const & environment, QForestScene & forestscene)
+	: QAnimals{ environment, forestscene }
 {
 
 

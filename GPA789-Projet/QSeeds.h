@@ -10,7 +10,7 @@ class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds(QEnvironment const & environment, treeType value);
+	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value);
 	~QSeeds();
 	void germinate();
 	void die() override;
