@@ -21,6 +21,7 @@ public:
 	void reproduce() override;
 	void die() override;
 	int getHeight();
+	int getRadius();
 	void adjustDryness();
 	void setOnFire();
 	void striked() override;

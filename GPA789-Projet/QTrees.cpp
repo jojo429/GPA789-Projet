@@ -19,6 +19,7 @@ QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, tre
 	mHeight = 2 * mLeafRadius;
 	mMasterTree = this;
 
+
 }
 
 QTrees::~QTrees()
@@ -28,19 +29,16 @@ QTrees::~QTrees()
 
 void QTrees::reproduce()
 {
-	if (mTime == 1000 )
-	{
-
+	
 		
 
-		for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
+	for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
 
 			
-			mForestScene.createSeed(this);
-
-		}
+		mForestScene.createSeed(this);
 
 	}
+
 }
 
 void QTrees::die()
@@ -50,7 +48,12 @@ void QTrees::die()
 
 int QTrees::getHeight()
 {
-	return 0;
+	return mHeight;
+}
+
+int QTrees::getRadius()
+{
+	return mLeafRadius;
 }
 
 void QTrees::adjustDryness()
@@ -100,6 +103,11 @@ void QTrees::advance(int phase)
 	}
 	else {
 		update();
+	}
+
+	if (mTime == 1000)
+	{
+		reproduce();
 	}
 
 	/*if (mLeafRadius < 50) {
