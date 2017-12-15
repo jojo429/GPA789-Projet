@@ -137,7 +137,24 @@ int QCyclicOptions::getAverageValue()
 
 int QCyclicOptions::getCycleValue()
 {
-	return mCycleSlider->value();
+	if (mCycleSlider->value() >= 0 && mCycleSlider->value() <= 30) {
+		return 30;
+	}
+	else if (mCycleSlider->value() > 30 && mCycleSlider->value() <= 73) {
+		return 73;
+	}
+	else if (mCycleSlider->value() > 73 && mCycleSlider->value() <= 365) {
+		return 365;
+	}
+	else if (mCycleSlider->value() > 365 && mCycleSlider->value() <= 730) {
+		return 730;
+	}
+	else if (mCycleSlider->value() > 730 && mCycleSlider->value() <= 1095) {
+		return 1095;
+	}
+	else {
+		return 2190;
+	}
 }
 
 int QCyclicOptions::getVariationValue()
