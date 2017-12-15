@@ -1,5 +1,9 @@
 #include "QSimulationMenu.h"
 
+#include <QLabel>
+#include <QScrollArea>
+#include <QGroupBox>
+
 QSimulationMenu::QSimulationMenu(QWidget *parent)
 	: QWidget(parent)
 {
@@ -17,6 +21,32 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 		"Average", "Variation", "Cycle", 0, 100, 0, 100, 6, 2190, true, true, true,
 		20, 10, 365);
 
+	//Définition des sliders d'arbres
+	mOak = new QTreeOptions("Oak", 0, 25, 0);
+	mBirch = new QTreeOptions("Birch", 0, 25, 0);
+	mHazel = new QTreeOptions("Hazel", 0, 25, 0);
+	mFir = new QTreeOptions("Fir", 0, 25, 0);
+
+	QPixmap treeIcon = QPixmap(":/GPA789Projet/iconForest");
+	QPixmap tmpPixmap = treeIcon.scaled(QSize(50, 50), Qt::KeepAspectRatio);
+	QLabel *treeIconLabel = new QLabel;
+	treeIconLabel->setPixmap(tmpPixmap);
+
+	mTreesVBoxLayout = new QVBoxLayout;
+	mTreesVBoxLayout->addStretch();
+	mTreesVBoxLayout->addWidget(mOak);
+	mTreesVBoxLayout->addWidget(mBirch);
+	mTreesVBoxLayout->addWidget(mHazel);
+	mTreesVBoxLayout->addWidget(mFir);
+	mTreesVBoxLayout->addStretch();
+
+	mTreesGroupBox = new QGroupBox("Trees");
+	mTreesGroupBox->setLayout(mTreesVBoxLayout);
+
+	mTreesHBoxLayout = new QHBoxLayout;
+	mTreesHBoxLayout->addWidget(treeIconLabel);
+	mTreesHBoxLayout->addWidget(mTreesGroupBox);
+	
 
 	//Définition de l'icône de l'éclar
 	mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
@@ -62,11 +92,23 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mMenuGridLayout->addWidget(mStopButton, 0, 3);
 
 	//Assemblage final
+	mOptionsLayout = new QVBoxLayout;
+	mOptionsLayout->addWidget(mTemperature);
+	mOptionsLayout->addWidget(mPrecipitation);
+	mOptionsLayout->addWidget(mLuminosity);
+	mOptionsLayout->addWidget(mWind);
+	mOptionsLayout->addLayout(mTreesHBoxLayout);
+
+	QGroupBox *mMenuGroupBox = new QGroupBox;
+	mMenuGroupBox->setLayout(mOptionsLayout);
+
+	QScrollArea *optionsArea = new QScrollArea;
+	optionsArea->setWidget(mMenuGroupBox);
+	optionsArea->setWidgetResizable(true);
+	optionsArea->setBackgroundRole(QPalette::Light);
+
 	mMenuLayout = new QVBoxLayout;
-	mMenuLayout->addWidget(mTemperature);
-	mMenuLayout->addWidget(mPrecipitation);
-	mMenuLayout->addWidget(mLuminosity);
-	mMenuLayout->addWidget(mWind);
+	mMenuLayout->addWidget(optionsArea);
 	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addWidget(mTimeScaleSlider);
