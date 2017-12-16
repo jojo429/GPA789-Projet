@@ -7,7 +7,7 @@
 
 
 QSquirrel::QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan)
-	: QAnimals{ environment, forestscene , lifeSpan}, mGenerateAngle(-180,180)
+	: QAnimals{ environment, forestscene , lifeSpan}, mGenerateAngle(-180,180), mRandomSeedDrop(0, 500)
 {
 
 
@@ -29,6 +29,7 @@ void QSquirrel::move()
 
 QGraphicsItem * QSquirrel::getTarget()
 {
+	QGraphicsItem * tree{Q_NULLPTR};
 	 QList<QGraphicsItem *> inRangeItems  = collidingItems();
 	 inRangeItems = compareTargetList(inRangeItems);
 
@@ -39,13 +40,21 @@ QGraphicsItem * QSquirrel::getTarget()
 	}
 	else 
 	{
-		for (QGraphicsItem * item : inRangeItems) {
+		for (QGraphicsItem * item : inRangeItems) 
+		{
 			//If there's a tree in the vision radius
-			QTrees * currentItem = dynamic_cast<QTrees *>(item);
-			if (currentItem) {
-				mTargetType = Trees;
-				return item;
-			}
+			if (mSeeds.size() < mSeedsLimit) 
+			{
+				QSeeds * currentItem = dynamic_cast<QSeeds *>(item);
+				if(currentItem)
+				{
+					if (currentItem->getHeight() == 0) 
+					{
+						mTargetType = Seed;
+						return item;
+					}
+				}
+			}	
 		}
 	}
 	return nullptr;
@@ -67,6 +76,15 @@ QList<QGraphicsItem*> QSquirrel::compareTargetList(QList<QGraphicsItem*> &newTar
 		}		
 	}
 	return newTarget;
+}
+
+void QSquirrel::randomDropSeed()
+{
+	if (mRandomSeedDrop.random() <= 2) 
+	{
+		dropSeed();
+	}
+
 }
 
 
@@ -95,7 +113,7 @@ void QSquirrel::dropSeed()
 	
 	if (!mSeeds.isEmpty())
 	{
-		mSeeds.first()->setPos(mapToParent(pos()));
+		mSeeds.first()->setPos(pos());
 		mSeeds.first()->setVisible(true);
 		mSeeds.first()->setCarried(false);
 		addPastTarget(mSeeds.first());
@@ -160,8 +178,8 @@ void QSquirrel::paint(QPainter * painter, const QStyleOptionGraphicsItem * optio
 	mPen.setColor(Qt::black);
 	painter->setPen(mPen);
 	painter->setOpacity(1);
-	mPen.setWidthF(0.5);
-	painter->drawEllipse(mCenter, mVisionRadius, mVisionRadius);
+	//mPen.setWidthF(0.5);
+	//painter->drawEllipse(mCenter, mVisionRadius, mVisionRadius);
 	mBrush.setColor(mFurColor);
 	mBrush.setStyle(Qt::SolidPattern);
 	mPen.setColor(mFurColor);
@@ -212,6 +230,10 @@ void QSquirrel::advance(int phase)
 				{
 					move();
 					mActionCounter++;
+					if (mSeeds.size() > 0)
+					{
+						randomDropSeed();
+					}
 				}
 				else
 				{

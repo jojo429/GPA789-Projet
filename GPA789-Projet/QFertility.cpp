@@ -38,6 +38,11 @@ void QFertility::disableFertility()
 
 }
 
+QPixmap QFertility::getFertilityPixmap()
+{
+	return mFertilityMap->getPixmap();
+}
+
 //float QFertility::germinate(int x, int y)
 //{
 //	return 0;

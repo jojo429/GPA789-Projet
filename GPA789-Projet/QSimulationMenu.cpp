@@ -75,26 +75,26 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mAngleDial->setFixedWidth(100);
 
 	QLabel *dialLabel = new QLabel("Wind Direction");
-
+	
 	mAngleDialLayout = new QHBoxLayout;
 	mAngleDialLayout->addStretch();
 	mAngleDialLayout->addWidget(dialLabel);
 	mAngleDialLayout->addWidget(mAngleDial);
 	mAngleDialLayout->addStretch();
 	
-	//Définition de l'icône de l'éclair
-	mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
+	////Définition de l'icône de l'éclair
+	//mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
 
-	//Définition du bouton générant un éclair
-	mThunderButton = new QCheckBox;
-	mThunderButton->setText("Act of God");
-	mThunderButton->setIcon(mThunderIcon);
+	////Définition du bouton générant un éclair
+	//mThunderButton = new QCheckBox;
+	//mThunderButton->setText("Act of God");
+	//mThunderButton->setIcon(mThunderIcon);
 
-	//Définition du layout du bouton générant un éclair
-	mThunderLayout = new QHBoxLayout;
-	mThunderLayout->addStretch();
-	mThunderLayout->addWidget(mThunderButton);
-	mThunderLayout->addStretch();
+	////Définition du layout du bouton générant un éclair
+	//mThunderLayout = new QHBoxLayout;
+	//mThunderLayout->addStretch();
+	//mThunderLayout->addWidget(mThunderButton);
+	//mThunderLayout->addStretch();
 
 	//Définition des boutons d'avancement
 	mPlayButton = new QSimulationAdvancementOptions("Play", ":/GPA789Projet/iconPlay");
@@ -102,16 +102,37 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mStopButton = new QSimulationAdvancementOptions("Stop", ":/GPA789Projet/iconStop");
 	mStepButton = new QSimulationAdvancementOptions("Step", ":/GPA789Projet/iconStep");
 
+	//Initialiser l'état des boutons: play, step, pause et stop
+	this->initAdvancementButtons();
+
+	//Comportement du bouton play
 	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::play);
 	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freeze);
+	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freezePlayButton);
+	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freezeStepButton);
+	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezePauseButton);
+	connect(mPlayButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezeStopButton);
 
+	//Comportement du bouton pause
 	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::pause);
 	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freeze);
+	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezePlayButton);
+	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezeStepButton);
+	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freezePauseButton);
+	connect(mPauseButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezeStopButton);
 
+	//Comportement du bouton stop
 	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::stop);
 	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreeze);
+	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezePlayButton);
+	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezeStepButton);
+	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freezePauseButton);
+	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::freezeStopButton);
 
+	//Comportement du bouton step
 	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::step);
+
+	//Comportement du bouton d'angle du vent
 	connect(mAngleDial, &QDial::valueChanged, this, &QSimulationMenu::windAngle);
 
 	//Définition du slider de point de vue
@@ -153,7 +174,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 
 	mMenuLayout = new QVBoxLayout;
 	mMenuLayout->addWidget(optionsArea);
-	mMenuLayout->addLayout(mThunderLayout);
+	//mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addLayout(mBottomMenuLayout);
 	mMenuLayout->addWidget(mAdvanceCounterLabel);
@@ -212,6 +233,54 @@ void QSimulationMenu::unfreeze()
 	mHazel->setEnabled(true);
 	mFir->setEnabled(true);
 	mSquirrel->setEnabled(true);
+}
+
+void QSimulationMenu::freezePlayButton()
+{
+	mPlayButton->setEnabled(false);
+}
+
+void QSimulationMenu::freezeStepButton()
+{
+	mStepButton->setEnabled(false);
+}
+
+void QSimulationMenu::freezePauseButton()
+{
+	mPauseButton->setEnabled(false);
+}
+
+void QSimulationMenu::freezeStopButton()
+{
+	mStopButton->setEnabled(false);
+}
+
+void QSimulationMenu::unfreezePlayButton()
+{
+	mPlayButton->setEnabled(true);
+}
+
+void QSimulationMenu::unfreezeStepButton()
+{
+	mStepButton->setEnabled(true);
+}
+
+void QSimulationMenu::unfreezePauseButton()
+{
+	mPauseButton->setEnabled(true);
+}
+
+void QSimulationMenu::unfreezeStopButton()
+{
+	mStopButton->setEnabled(true);
+}
+
+void QSimulationMenu::initAdvancementButtons()
+{
+	mPlayButton->setEnabled(true);
+	mStepButton->setEnabled(true);
+	mPauseButton->setEnabled(false);
+	mStopButton->setEnabled(false);
 }
 
 int QSimulationMenu::getTimeScaleValue() {

@@ -13,9 +13,7 @@ public:
 	~QSquirrel();
 	enum TargetType {
 		NoTarget = 0,
-		Trees = 1,
-		Squirrel = 2,
-		Seed = 3
+		Seed = 1
 	};
 
 private:
@@ -27,18 +25,20 @@ private:
 	QPointF mTriangle[3] = { QPointF(15, 0), QPointF(0, 7), QPointF(0, -7) };
 	QColor mFurColor{204, 144, 24};
 	QColor mTailColor{ 232, 157, 6 };
-	double mVisionRadius{200};
+	double mVisionRadius{150};
 	int mHunger{100};
 	int actionCounter{0};
 	QList<QGraphicsItem*> mPastTarget;
 	RandomUniform mGenerateAngle;
+	RandomUniform mRandomSeedDrop;
 	QList<QSeeds*> mSeeds;
 	const int mSeedsLimit{ 4 };
-	const int mPastTargetLimit{ 10 };
+	const int mPastTargetLimit{ 30 };
 
 
 	QGraphicsItem* getTarget();
 	QList<QGraphicsItem*> compareTargetList(QList<QGraphicsItem*> &newTarget);
+	void randomDropSeed();
 	void pickSeed();
 	void dropSeed();
 	void move() override;

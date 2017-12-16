@@ -6,14 +6,14 @@
 
 
 QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan )
-	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(1, 6), mTreeType{ value }, mEmpty(0,0,0)
+	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(0, 3), mTreeType{ value }, mEmpty(0,0,0), mGenerateTime(700,1500)
 {
 	
 	mAge = 0;
 	mLeafRadius = 1;
 	mTrunkRadius = 0.2 * mLeafRadius;
 	mHeight = 4 * mLeafRadius;
-
+	mReproductiveTime = mGenerateTime.random();
 
 
 }
@@ -26,29 +26,42 @@ QTrees::~QTrees()
 void QTrees::reproduce()
 {
 	
-		
-
-	for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
-
-			
+	for (int i{ 0 }; i < mGenerateSeed.random(); ++i) 
+	{	
 		mForestScene.createSeed(this);
-
 	}
 
 }
 
+double QTrees::getShadowGrowFactor()
+{
+	double factor{ 1 };
 
+	mShadowList = collidingItems();
+
+	for (QGraphicsItem * currentItem : mShadowList)
+	{
+		QTrees * tree = dynamic_cast<QTrees *>(currentItem);
+		if (tree)
+		{
+			if (tree->mHeight >= this->mHeight)
+			{
+				factor = factor / 2;
+
+			}
+
+		}
+
+	}
+
+	return factor;
+}
 
 
 int QTrees::getRadius()
 {
 	return mLeafRadius;
 }
-
-
-
-
-
 
 
 QRectF QTrees::boundingRect() const
@@ -70,11 +83,8 @@ void QTrees::advance(int phase)
 			update(boundingRect());
 
 		}
-		else {
-			update();
-		}
-
-		if (mTime == 1000)
+	
+		if (mTime == mReproductiveTime && !mIsDead)
 		{
 			reproduce();
 		}
@@ -103,7 +113,9 @@ GaussianTable & QTrees::temperatureGrowFactorTable()
 
 void QTrees::grow()
 {
-	mLeafRadius = mLeafRadius + 0.04*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
+
+	mShadowFactor = getShadowGrowFactor();
+	mLeafRadius = mLeafRadius + 0.05*mShadowFactor*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
 	mTrunkRadius = 0.20 * mLeafRadius;
 	mHeight = 4 * mLeafRadius;
 

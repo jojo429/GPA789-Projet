@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QDebug>
 #include <QPointF>
+#include <QSizePolicy>
 
 
 QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent)
@@ -26,7 +27,17 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	mForestView->setDragMode(QGraphicsView::ScrollHandDrag);
 	mForestView->setScene(&forestScene);
 
+	//Définir une taille minimale pour mForestView
+	mForestView->setMinimumWidth(800);
 
+	//Ajuster la proportion de la fenêtre de simulation
+	QSizePolicy spLeft(QSizePolicy::Preferred, QSizePolicy::Preferred);
+	spLeft.setHorizontalStretch(3);
+	mForestView->setSizePolicy(spLeft);
+	QSizePolicy spRight(QSizePolicy::Preferred, QSizePolicy::Preferred);
+	spRight.setHorizontalStretch(1);
+	mSimulationMenu->setSizePolicy(spRight);
+	
 	mainLayout->addWidget(mForestView);
 	mainLayout->addWidget(mSimulationMenu);
 	
@@ -130,7 +141,7 @@ void QSimulation::generalAdvance(bool oneStep)
 		QElapsedTimer timer;
 		timer.start();
 		for (int i{ 0 }; i < stepCount; i++) {
-			if(i == stepCount-1){ mForestView->setViewportUpdateMode(QGraphicsView::MinimalViewportUpdate); }
+			
 			mEnvironment.advance();
 			mForestScene.advance();
 			getStatistics();
@@ -138,6 +149,7 @@ void QSimulation::generalAdvance(bool oneStep)
 			emit updateAdvanceCount(mAdvanceCounter);
 		}
 		ticTime(timer.elapsed());
+		mForestView->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 		advanceDone();
 		working = false;
 

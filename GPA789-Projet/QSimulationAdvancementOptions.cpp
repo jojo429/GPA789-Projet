@@ -27,4 +27,3 @@ QSimulationAdvancementOptions::~QSimulationAdvancementOptions()
 
 
 
-
