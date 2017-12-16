@@ -15,7 +15,7 @@ class QFertility : public QPonctual
 public:
 	QFertility();
 	~QFertility();
-	double getFertility(int x, int y);
+	double getFertility(int x, int y) const;
 	void setFertility(double minValue, double maxValue);
 	void updateFertility(int x, int y, double fertility);
 	void enableFertility();

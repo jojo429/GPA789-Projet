@@ -9,7 +9,7 @@
 QEnvironment::QEnvironment()
 	: mWind(6,0,0), mPrecipitation(6,0,0), mTemperature(6,0,0), mLuminosity(6,0,0), mGenerate(-100,100)
 {
-
+	mFertility.setFertility(0.0, 100.0);
 	mEnvironmentalFactor.emplace_back(&mTemperature);
 	mEnvironmentalFactor.emplace_back(&mPrecipitation);
 	mEnvironmentalFactor.emplace_back(&mLuminosity);

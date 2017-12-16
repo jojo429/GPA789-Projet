@@ -10,7 +10,7 @@ QFertility::~QFertility()
 
 }
 
-double QFertility::getFertility(int x, int y)
+double QFertility::getFertility(int x, int y) const
 {
 	return mFertilityMap->getMapValue(x, y); 
 }
@@ -43,12 +43,3 @@ QPixmap QFertility::getFertilityPixmap()
 	return mFertilityMap->getPixmap();
 }
 
-//float QFertility::germinate(int x, int y)
-//{
-//	return 0;
-//}
-//
-//float QFertility::grow(int x, int y)
-//{
-//	return 0;
-//}

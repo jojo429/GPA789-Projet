@@ -12,6 +12,7 @@ class QTrees;
 #include "QPrecipitation.h"
 #include "QTemperature.h"
 #include "QLuminosity.h"
+#include "QFertility.h"
 #include "QWind.h"
 #include "RandomUniform.h"
 
@@ -35,6 +36,7 @@ public:
 	void setParameters(SimulationParameters &simulationParameters);
 	void getStatistics(SimulationStatistics *simulationStatistics);
 	std::vector<float> mFactors;
+	QFertility mFertility;
 	/*std::vector<float> const getFactors();*/
 
 public slots:
@@ -45,6 +47,8 @@ private:
 	QLuminosity mLuminosity;
 	QPrecipitation mPrecipitation;
 	QTemperature mTemperature;
+	
+
 	QWind mWind;
 	int mTime{ 0 };
 	RandomUniform mGenerate;

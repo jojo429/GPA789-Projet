@@ -116,6 +116,7 @@ void QTrees::grow()
 {
 
 	mShadowFactor = getShadowGrowFactor();
+	double fertility = mEnvironment.mFertility.getFertility(this->pos().x(), this->pos().y())/100.0;
 	mLeafRadius = mLeafRadius + 0.05*mShadowFactor*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
 	mTrunkRadius = 0.20 * mLeafRadius;
 	mHeight = 4 * mLeafRadius;

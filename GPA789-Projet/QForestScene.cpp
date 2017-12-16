@@ -13,14 +13,14 @@
 #include <QDebug>
 
 
-QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
+QForestScene::QForestScene(QEnvironment & environment, QGraphicsScene * parent)
 	: QGraphicsScene(parent), mGenerate(-100, 100), mEnvironment{environment}, mGenerateCoordinate(5,2045), mGenerateShortLifespan(0,1), mGenerateLongLifespan(1,2)
 {
 	//Delimitation de la zone de simulation
-	QFertility *fertilityMap = new QFertility;
-	fertilityMap->setFertility(0.0, 100.0);
 
-	QPixmap fertilityPixmap = fertilityMap->getFertilityPixmap();
+
+
+	QPixmap fertilityPixmap = (mEnvironment.mFertility).getFertilityPixmap();
 
 	this->setSceneRect(0, 0, 2052, 2052);
 	this->setBackgroundBrush(QBrush(fertilityPixmap.scaled(2052, 2052, Qt::KeepAspectRatio)));
