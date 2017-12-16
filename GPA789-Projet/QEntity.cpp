@@ -2,7 +2,7 @@
 #include "QForestScene.h"
 
 QEntity::QEntity(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan)
-	: mEnvironment{ environment }, mForestScene{ forestscene }, mLifeSpan{ lifeSpan }, mDied(1,100)
+	: mEnvironment{ environment }, mForestScene{ forestscene }, mLifeSpan{ lifeSpan }, mDied(1,500)
 {
 
 }
@@ -38,6 +38,11 @@ bool QEntity::isItDead()
 int QEntity::getHeight()
 {
 	return mHeight;
+}
+
+bool QEntity::isDead()
+{
+	return mIsDead;
 }
 
 void QEntity::advanceTime()

@@ -11,18 +11,19 @@
 class QForestScene;
 
 enum treeType { Oak, Fir, Hazel, Birch };
+enum generalType { Squirrel, Tree, Seed };
 
 class QEntity : public QGraphicsItem
 {
 
 public:
 	QEntity(QEnvironment const &environment, QForestScene &forestscene, int lifeSpan);
-	~QEntity();
+	virtual ~QEntity();
 	virtual void reproduce();
 	virtual void die();
 	virtual bool isItDead();
 	int getHeight();
-	
+	bool isDead();
 
 
 protected:

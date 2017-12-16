@@ -13,7 +13,7 @@ class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
+	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type);
 	~QSeeds();
 
 
@@ -23,6 +23,8 @@ public:
 	void setCarried(bool status);
 
 	friend class QForestScene;
+	treeType mTreeType;
+	generalType mGeneralType;
 
 
 private:
@@ -37,7 +39,7 @@ private:
 	QRectF boundingRect() const;
 	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR)override;
 	void advance(int phase) override;
-	treeType mTreeType;
+	
 	int mGerminated{ false };
 	static GaussianTable mPrecipitationGrowFactor;
 	static GaussianTable mLuminosityGrowFactor;

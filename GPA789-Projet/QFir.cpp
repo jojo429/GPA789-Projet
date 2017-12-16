@@ -8,8 +8,8 @@ GaussianTable QFir::mLuminosityGrowFactor(200, 30, 10000, -100);
 GaussianTable QFir::mTemperatureGrowFactor(150, 15, 900, -75);
 GaussianTable QFir::mGrowTable(500, 0, 50000);
 
-QFir::QFir(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
-	: QTrees{ environment ,forestscene, value, lifeSpan }
+QFir::QFir(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type)
+	: QTrees{ environment ,forestscene, tree, lifeSpan, type }
 {
 
 	mLeafColor.setRgb(31, 86, 33);

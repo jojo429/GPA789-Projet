@@ -5,8 +5,8 @@
 
 
 
-QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan )
-	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(0, 3), mTreeType{ value }, mEmpty(0,0,0), mGenerateTime(700,1500)
+QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan, generalType type)
+	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(0, 3), mTreeType{ value }, mEmpty(0, 0, 0), mGenerateTime(700, 1500), mGeneralType{type}
 {
 	
 	mAge = 0;
@@ -58,9 +58,10 @@ QRectF QTrees::boundingRect() const
 
 void QTrees::advance(int phase)
 {
-	die();
+	
 	if (phase == 1 && !mIsDead)
 		{
+		die();
 		advanceTime();
 
 		if (mAge < 2) {

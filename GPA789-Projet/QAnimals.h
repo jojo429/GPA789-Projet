@@ -8,7 +8,7 @@ class QAnimals : public QDynamic
 
 public:
 	QAnimals(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan);
-	~QAnimals();
+	virtual ~QAnimals();
 
 };
 

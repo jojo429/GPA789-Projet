@@ -17,8 +17,8 @@ GaussianTable QSeeds::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QSeeds::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QSeeds::mTemperatureGrowFactor(150, 30, 1000, -75);
 
-QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
-	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{value}, mGenerateTree(0,1000), mGenerateAngle(-45,45)
+QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type)
+	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{tree}, mGenerateTree(0,1000), mGenerateAngle(-45,45), mGeneralType(type)
 {
 
 
@@ -114,23 +114,28 @@ void QSeeds::advance(int phase)
 
 
 	if (phase == 1) {
-
+		
 		advanceTime();
 
-		if (mHeight > 0)
+		if (mCarriedBySquirrel == false)
 		{
-			move();
+			
+			die();
 
-
-		}
-		else if (mAge < 2 && !mIsDead)
-		{
-			if (mCarriedBySquirrel == false)
+			if (mHeight > 0)
 			{
-				germinate();
-			}
+				move();
 
+
+			}
+			else if (!mIsDead)
+			{
+					germinate();
+
+			}
 		}
+
+		
 
 	}
 

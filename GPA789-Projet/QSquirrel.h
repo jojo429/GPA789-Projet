@@ -9,7 +9,7 @@ class QSquirrel : public QAnimals
 {
 
 public:
-	QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan);
+	QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, generalType type);
 	~QSquirrel();
 	enum TargetType {
 		NoTarget = 0,
@@ -17,6 +17,7 @@ public:
 		Squirrel = 2,
 		Seed = 3
 	};
+	generalType mGeneralType;
 
 private:
 

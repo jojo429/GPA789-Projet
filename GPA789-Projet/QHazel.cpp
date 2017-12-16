@@ -8,8 +8,8 @@ GaussianTable QHazel::mLuminosityGrowFactor(200, 40, 20000, -100);
 GaussianTable QHazel::mTemperatureGrowFactor(150, 30, 800, -75);
 GaussianTable QHazel::mGrowTable(500, 0, 2000);
 
-QHazel::QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
-	: QTrees{ environment , forestscene , value , lifeSpan }
+QHazel::QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type)
+	: QTrees{ environment , forestscene , tree , lifeSpan ,type }
 {
 	mLeafColor.setRgb(74, 125, 50);
 	mTrunkColor.setRgb(107, 75, 3);

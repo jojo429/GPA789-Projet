@@ -144,6 +144,7 @@ void QSimulation::generalAdvance(bool oneStep)
 			emit updateAdvanceCount(mAdvanceCounter);
 		}
 		ticTime(timer.elapsed());
+		mForestScene.destroyDeadEntities();
 		mForestView->setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 		advanceDone();
 		working = false;
