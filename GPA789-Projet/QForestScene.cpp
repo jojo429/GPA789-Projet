@@ -9,7 +9,7 @@
 
 
 QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
-	: QGraphicsScene(parent), mGenerate(-100, 100), mEnvironment{environment}, mGenerateCoordinate(0,2052)
+	: QGraphicsScene(parent), mGenerate(-100, 100), mEnvironment{environment}, mGenerateCoordinate(5,2045)
 {
 	//Delimitation de la zone de simulation
 	

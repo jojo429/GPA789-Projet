@@ -39,7 +39,7 @@ void QSeeds::germinate()
 		if (chance > 0.85)
 		{
 			mForestScene.createTree(this);
-			mGerminated = true;
+			mIsDead = true;
 			this->setVisible(false);
 		}
 	}
@@ -57,7 +57,18 @@ void QSeeds::move()
 	mHeight = mHeight--;
 	double x = cos(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360)*mEnvironment.mFactors[3] / 20.0;
 	double y = sin(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360)*mEnvironment.mFactors[3] / 20.0;
-	this->setPos(QPointF(this->pos().x()+x , this->pos().y()+ y));
+
+	if ((((this->pos().x() + x)>2045) || ((this->pos().x() + x)<5))||((this->pos().y() + x)>2045 || (this->pos().y() + x)<5))
+	{
+		setVisible(false);
+		mIsDead = true;
+	}
+	else
+	{
+		this->setPos(QPointF(this->pos().x() + x, this->pos().y() + y));
+	}
+	
+	
 	
 }
 
@@ -112,7 +123,7 @@ void QSeeds::advance(int phase)
 
 
 		}
-		else if (mAge < 2 && !mGerminated)
+		else if (mAge < 2 && !mIsDead)
 		{
 			if (mCarriedBySquirrel == false)
 			{
