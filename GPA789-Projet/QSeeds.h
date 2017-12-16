@@ -30,7 +30,6 @@ private:
 	bool mCarriedBySquirrel{false};
 	std::array<std::vector<double>, 5> mWeightingGerminate;
 	double mMovingFactor;
-	int mCountFallDown{ 0 };
 
 	double mSeedRadius { 5.0 };
 	QPointF mCenter = QPointF(0, 0);
