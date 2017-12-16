@@ -20,7 +20,7 @@ QSquirrel::~QSquirrel()
 
 void QSquirrel::move()
 {
-
+	setPos(mapToParent(3, 0));
 	
 
 }
@@ -61,6 +61,7 @@ QList<QGraphicsItem*> QSquirrel::compareTargetList(QList<QGraphicsItem*> &newTar
 					newTarget.removeOne(item);
 				}
 			}
+			
 		}		
 	}
 	return newTarget;
@@ -83,7 +84,20 @@ void QSquirrel::eat()
 
 void QSquirrel::pickSeed()
 {
+	if (mSeeds.size() <= mSeedsLimit)
+	{
+		mTarget->setVisible(false);
+		mSeeds.append(mTarget);
 
+	}
+
+
+
+
+}
+
+void QSquirrel::dropSeed()
+{
 }
 
 void QSquirrel::striked()
@@ -161,7 +175,7 @@ void QSquirrel::advance(int phase)
 		{
 			mTarget = getTarget();
 			if (mTarget != Q_NULLPTR) {
-				if (mPastTarget.size() < 6) {
+				if (mPastTarget.size() < mPastTargetLimit) {
 					mPastTarget.append(mTarget);
 				}
 				else
@@ -184,20 +198,24 @@ void QSquirrel::advance(int phase)
 		{
 			if ((pos().x() > 0 && pos().x() < 2050) && (pos().y() > 0 && pos().y() < 2050))
 			{
-				if (mTarget == Q_NULLPTR || getTargetDistance() >= 5)
+				if (mTarget == Q_NULLPTR || getTargetDistance() >= 3)
 				{
-					setPos(mapToParent(3, 0));
+					move();
 					mActionCounter++;
 				}
 				else
 				{
+					if (mTargetType == Seed)
+					{
+						pickSeed();
+					}
 					mTargetType = NoTarget;
 					mActionCounter = 0;
 				}
 			}
 			else
 			{
-				setPos(mapToParent(0, 15));
+				setPos(mapToParent(-15, 0));
 				mTargetType = NoTarget;
 				mActionCounter = 0;
 

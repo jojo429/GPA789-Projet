@@ -22,18 +22,19 @@ private:
 
 	TargetType mTargetType{NoTarget};
 	QGraphicsItem * mTarget{ Q_NULLPTR };
-	QGraphicsItem * mLastTarget{ Q_NULLPTR };
 	int mActionCounter{0};
 	QPointF mTargetPos;
 	QPointF mTriangle[3] = { QPointF(15, 0), QPointF(0, 7), QPointF(0, -7) };
 	QColor mFurColor{204, 144, 24};
 	QColor mTailColor{ 232, 157, 6 };
-	double mVisionRadius{250};
+	double mVisionRadius{200};
 	int mHunger{100};
 	int actionCounter{0};
 	QList<QGraphicsItem*> mPastTarget;
 	RandomUniform mGenerateAngle;
-	std::list<QSeeds*> mSeeds;
+	QList<QGraphicsItem*> mSeeds;
+	const int mSeedsLimit{ 4 };
+	const int mPastTargetLimit{ 10 };
 
 	void move() override;
 	QGraphicsItem* getTarget();
@@ -42,6 +43,7 @@ private:
 	void die(int age);
 	void eat();
 	void pickSeed();
+	void dropSeed();
 	void striked() override;
 	void setRotationAdjustment();
 	qreal getTargetDistance();
