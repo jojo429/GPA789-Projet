@@ -18,8 +18,6 @@ public:
 	double getFertility(int x, int y) const;
 	void setFertility(double minValue, double maxValue);
 	void updateFertility(int x, int y, double fertility);
-	void enableFertility();
-	void disableFertility();
 	QPixmap getFertilityPixmap();
 
 

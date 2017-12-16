@@ -7,7 +7,7 @@ QFertility::QFertility()
 
 QFertility::~QFertility()
 {
-
+	delete mFertilityMap;
 }
 
 double QFertility::getFertility(int x, int y) const
@@ -28,15 +28,6 @@ void QFertility::updateFertility(int x, int y, double fertility)
 	mFertilityMap->setMapValue(x, y, fertility);
 }
 
-void QFertility:: enableFertility()
-{
-
-}
-
-void QFertility::disableFertility()
-{
-
-}
 
 QPixmap QFertility::getFertilityPixmap()
 {
