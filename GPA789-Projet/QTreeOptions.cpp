@@ -18,6 +18,7 @@ QTreeOptions::QTreeOptions(QString treeName, int minNumbTrees, int maxNumbTrees,
 	mTreeValue = new QLabel(QString::number(numbTreesInit));
 
 	mTreeOptionsGridLayout = new QGridLayout;
+	mTreeOptionsGridLayout->setContentsMargins(QMargins(0, 0, 0, 0));
 	mTreeOptionsGridLayout->addWidget(mTreeLabel, 0, 0);
 	mTreeOptionsGridLayout->addWidget(mTreeSlider, 0, 1);
 	mTreeOptionsGridLayout->addWidget(mTreeValue, 0, 2);

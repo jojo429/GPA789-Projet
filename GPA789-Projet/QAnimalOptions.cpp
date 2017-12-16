@@ -18,6 +18,7 @@ QAnimalOptions::QAnimalOptions(QString animalName, int minNumbAnimals, int maxNu
 	mAnimalValue = new QLabel(QString::number(numbAnimalsInit));
 
 	mAnimalOptionsGridLayout = new QGridLayout;
+	mAnimalOptionsGridLayout->setContentsMargins(QMargins(0, 0, 0, 0));
 	mAnimalOptionsGridLayout->addWidget(mAnimalLabel, 0, 0);
 	mAnimalOptionsGridLayout->addWidget(mAnimalSlider, 0, 1);
 	mAnimalOptionsGridLayout->addWidget(mAnimalValue, 0, 2);
