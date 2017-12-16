@@ -20,12 +20,16 @@
 #include <QVBoxLayout>
 #include <QSlider>
 
+#include "QFertility.h"
+
 GPA789Projet::GPA789Projet(QWidget *parent)
 	: QMainWindow(parent), mForestScene(mEnvironment)
 {
 	ui.setupUi(this);
 
-
+	//Icône et titre de la fenêtre du programme
+	setWindowIcon(QIcon(":/GPA789Projet/iconForestSimulation"));
+	setWindowTitle("Forest Simulation");
 
 	QSimulation *mSimulation = new QSimulation(mForestScene, mEnvironment);
 	QStatistic *mStatistic = new QStatistic;

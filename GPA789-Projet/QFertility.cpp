@@ -20,6 +20,7 @@ void QFertility::setFertility(double minValue, double maxValue)
 	mFertilityMap->setMap();
 	mFertilityMap->scaleValuesRangeMap(minValue, maxValue);
 	mFertilityMap->drawMap(210, 105, 30);
+	mFertilityMap->resizeMap();
 }
 
 void QFertility::updateFertility(int x, int y, double fertility)
