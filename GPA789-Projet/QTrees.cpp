@@ -6,7 +6,7 @@
 
 
 QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan )
-	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(0, 2), mTreeType{ value }, mEmpty(0,0,0), mGenerateTime(700,1500)
+	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(0, 3), mTreeType{ value }, mEmpty(0,0,0), mGenerateTime(700,1500)
 {
 	
 	mAge = 0;
@@ -68,10 +68,7 @@ void QTrees::advance(int phase)
 			update(boundingRect());
 
 		}
-		else {
-			update();
-		}
-
+	
 		if (mTime == mReproductiveTime && !mIsDead)
 		{
 			reproduce();

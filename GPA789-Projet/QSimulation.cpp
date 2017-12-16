@@ -130,7 +130,7 @@ void QSimulation::generalAdvance(bool oneStep)
 		QElapsedTimer timer;
 		timer.start();
 		for (int i{ 0 }; i < stepCount; i++) {
-			if(i == stepCount-1){ mForestView->setViewportUpdateMode(QGraphicsView::MinimalViewportUpdate); }
+			
 			mEnvironment.advance();
 			mForestScene.advance();
 			getStatistics();
@@ -138,6 +138,7 @@ void QSimulation::generalAdvance(bool oneStep)
 			emit updateAdvanceCount(mAdvanceCounter);
 		}
 		ticTime(timer.elapsed());
+		mForestView->setViewportUpdateMode(QGraphicsView::MinimalViewportUpdate);
 		advanceDone();
 		working = false;
 
