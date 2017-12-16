@@ -7,6 +7,7 @@
 #include <list>
 #include <QImage>
 #include <QPointF>
+#include <QPainter>
 
 class QFertility : public QPonctual
 {
@@ -19,6 +20,7 @@ public:
 	void updateFertility(int x, int y, double fertility);
 	void enableFertility();
 	void disableFertility();
+	QPixmap getFertilityPixmap();
 
 
 private:

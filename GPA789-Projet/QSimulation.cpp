@@ -38,7 +38,6 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	spRight.setHorizontalStretch(1);
 	mSimulationMenu->setSizePolicy(spRight);
 	
-
 	mainLayout->addWidget(mForestView);
 	mainLayout->addWidget(mSimulationMenu);
 	

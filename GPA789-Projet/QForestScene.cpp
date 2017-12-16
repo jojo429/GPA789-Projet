@@ -6,20 +6,23 @@
 #include "QFir.h"
 #include "QSquirrel.h"
 #include "SimulationStatistics.h"
+#include "QFertility.h"
+#include <QGraphicsPixmapItem>
+#include <QPainter>
+#include <QRectF>
 
 
 QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
 	: QGraphicsScene(parent), mGenerate(-100, 100), mEnvironment{environment}, mGenerateCoordinate(5,2045)
 {
 	//Delimitation de la zone de simulation
-	
+	QFertility *fertilityMap = new QFertility;
+	fertilityMap->setFertility(0.0, 100.0);
 
+	QPixmap fertilityPixmap = fertilityMap->getFertilityPixmap();
 
-
-	this->setBackgroundBrush(mBackgroundBrush);
-	
-	
-
+	this->setSceneRect(0, 0, 2052, 2052);
+	this->setBackgroundBrush(QBrush(fertilityPixmap.scaled(2052, 2052, Qt::KeepAspectRatio)));
 }
 
 
