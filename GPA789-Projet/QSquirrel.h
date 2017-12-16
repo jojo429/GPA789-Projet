@@ -32,9 +32,10 @@ private:
 	int actionCounter{0};
 	QList<QGraphicsItem*> mPastTarget;
 	RandomUniform mGenerateAngle;
-	QList<QGraphicsItem*> mSeeds;
+	QList<QSeeds*> mSeeds;
 	const int mSeedsLimit{ 4 };
 	const int mPastTargetLimit{ 10 };
+
 
 	void move() override;
 	QGraphicsItem* getTarget();
@@ -46,6 +47,7 @@ private:
 	void dropSeed();
 	void striked() override;
 	void setRotationAdjustment();
+	void addPastTarget(QGraphicsItem * pastItem);
 	qreal getTargetDistance();
 	void advance(int phase) override;
 	QRectF boundingRect() const;

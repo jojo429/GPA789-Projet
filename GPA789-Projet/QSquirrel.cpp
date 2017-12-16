@@ -3,6 +3,7 @@
 #include "QTrees.h"
 #include <QtMath>
 #include <QDebug>
+#include "QSeeds.h"
 
 
 QSquirrel::QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan)
@@ -84,10 +85,13 @@ void QSquirrel::eat()
 
 void QSquirrel::pickSeed()
 {
-	if (mSeeds.size() <= mSeedsLimit)
+	QSeeds* currentSeed;
+	currentSeed = dynamic_cast<QSeeds*>(mTarget);
+	if (mSeeds.size() <= mSeedsLimit && currentSeed)
 	{
 		mTarget->setVisible(false);
-		mSeeds.append(mTarget);
+		currentSeed->setCarried(true);
+		mSeeds.append(currentSeed);
 
 	}
 
@@ -98,6 +102,18 @@ void QSquirrel::pickSeed()
 
 void QSquirrel::dropSeed()
 {
+	
+	if (!mSeeds.isEmpty())
+	{
+		mSeeds.first()->setPos(mapToParent(pos()));
+		mSeeds.first()->setVisible(true);
+		mSeeds.first()->setCarried(false);
+		addPastTarget(mSeeds.first());
+		mSeeds.removeFirst();
+	}
+
+
+
 }
 
 void QSquirrel::striked()
@@ -124,6 +140,19 @@ void QSquirrel::setRotationAdjustment()
 		setRotation(mGenerateAngle.random());
 	}
 
+}
+
+void QSquirrel::addPastTarget(QGraphicsItem * pastItem)
+{
+
+	if (mPastTarget.size() < mPastTargetLimit) {
+		mPastTarget.append(pastItem);
+	}
+	else
+	{
+		mPastTarget.removeFirst();
+		mPastTarget.append(pastItem);
+	}
 }
 
 qreal QSquirrel::getTargetDistance()
@@ -176,14 +205,7 @@ void QSquirrel::advance(int phase)
 		{
 			mTarget = getTarget();
 			if (mTarget != Q_NULLPTR) {
-				if (mPastTarget.size() < mPastTargetLimit) {
-					mPastTarget.append(mTarget);
-				}
-				else
-				{
-					mPastTarget.removeFirst();
-					mPastTarget.append(mTarget);
-				}
+				addPastTarget(mTarget);
 			}
 			if (mTargetType != NoTarget) {
 				mTargetPos = mTarget->pos();

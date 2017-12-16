@@ -22,10 +22,12 @@ public:
 	bool isItDead() override;
 	void picked();
 	void droped( QPointF coordinate );
+	void setCarried(bool status);
 
 private:
 	int mHeight;
 	int mWeight;
+	bool mCarriedBySquirrel{false};
 	std::array<std::vector<double>, 5> mWeightingGerminate;
 	double mMovingFactor;
 	int mCountFallDown{ 0 };

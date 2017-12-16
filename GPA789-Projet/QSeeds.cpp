@@ -74,6 +74,11 @@ void QSeeds::droped( QPointF coordinate )
 	setVisible(true);
 }
 
+void QSeeds::setCarried(bool status)
+{
+	mCarriedBySquirrel = status;
+}
+
 QRectF QSeeds::boundingRect() const
 {
 	//QRectF(qreal x, qreal y, qreal width, qreal height)
@@ -110,10 +115,12 @@ void QSeeds::advance(int phase)
 		}
 		else if (mAge < 2 && !mGerminated)
 		{
-			germinate();
+			if (mCarriedBySquirrel == false)
+			{
+				//germinate();
+			}
 
 		}
-
 
 	}
 
