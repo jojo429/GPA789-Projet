@@ -36,7 +36,7 @@ void QSeeds::germinate()
 		double chance = (this->mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0]) + this->mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1]) + this->mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2])) / 3;
 		chance = chance * (mGenerateTree.random() / 1000.0);
 
-		if (chance > 0.90)
+		if (chance > 0.85)
 		{
 			mForestScene.createTree(this);
 			mGerminated = true;
