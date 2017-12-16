@@ -3,10 +3,10 @@
 #include <QPainter>
 #include <QColor>
 
-GaussianTable QHazel::mPrecipitationGrowFactor(28, 6, 25);
-GaussianTable QHazel::mLuminosityGrowFactor(200, 50, 10000, -100);
-GaussianTable QHazel::mTemperatureGrowFactor(150, 30, 1000, -75);
-GaussianTable QHazel::mGrowTable(500, 10, 50000);
+GaussianTable QHazel::mPrecipitationGrowFactor(28, 5, 23);
+GaussianTable QHazel::mLuminosityGrowFactor(200, 40, 20000, -100);
+GaussianTable QHazel::mTemperatureGrowFactor(150, 30, 800, -75);
+GaussianTable QHazel::mGrowTable(500, 0, 2000);
 
 QHazel::QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
 	: QTrees{ environment , forestscene , value , lifeSpan }

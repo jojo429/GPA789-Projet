@@ -104,7 +104,13 @@ void QSimulation::stop()
 
 void QSimulation::step()
 {
-
+	if (!mStarted)
+	{
+		mSimulationMenu->getParameters(&mSimulationParameters);
+		mEnvironment.setParameters(mSimulationParameters);
+		mForestScene.setParameters(mSimulationParameters);
+		mStarted = true;
+	}
 	this->generalAdvance(true);
 
 }

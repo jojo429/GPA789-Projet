@@ -117,6 +117,7 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfHazel++;
+		mSimulationStatistics->mNumberOfTrees++;
 	}
 	for (int i{ 0 }; i < simulationParameters.mNumberBirch; ++i) 
 	{
@@ -124,6 +125,7 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfBirch++;
+		mSimulationStatistics->mNumberOfTrees++;
 	}
 	for (int i{ 0 }; i < simulationParameters.mNumberOak; ++i)
 	{
@@ -131,6 +133,7 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfOak++;
+		mSimulationStatistics->mNumberOfTrees++;
 	}
 	for (int i{ 0 }; i < simulationParameters.mNumberFir; ++i)
 	{
@@ -138,6 +141,7 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfFir++;
+		mSimulationStatistics->mNumberOfTrees++;
 	}
 
 

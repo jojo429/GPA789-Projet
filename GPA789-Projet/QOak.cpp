@@ -3,9 +3,9 @@
 #include <QPainter>
 #include <QColor>
 
-GaussianTable QOak::mPrecipitationGrowFactor(28, 6, 25);
-GaussianTable QOak::mLuminosityGrowFactor(200, 50, 10000, -100);
-GaussianTable QOak::mTemperatureGrowFactor(150, 30, 1000, -75);
+GaussianTable QOak::mPrecipitationGrowFactor(28, 7, 70);
+GaussianTable QOak::mLuminosityGrowFactor(200, 60, 11000, -100);
+GaussianTable QOak::mTemperatureGrowFactor(150, 25, 900, -75);
 GaussianTable QOak::mGrowTable(500, 10, 50000);
 
 QOak::QOak(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
