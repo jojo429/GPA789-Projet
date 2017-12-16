@@ -75,7 +75,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mAngleDial->setFixedWidth(100);
 
 	QLabel *dialLabel = new QLabel("Wind Direction");
-
+	
 	mAngleDialLayout = new QHBoxLayout;
 	mAngleDialLayout->addStretch();
 	mAngleDialLayout->addWidget(dialLabel);

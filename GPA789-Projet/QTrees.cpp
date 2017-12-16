@@ -26,8 +26,6 @@ QTrees::~QTrees()
 void QTrees::reproduce()
 {
 	
-		
-
 	for (int i{ 0 }; i < mGenerateSeed.random(); ++i) 
 	{	
 		mForestScene.createSeed(this);
@@ -35,18 +33,35 @@ void QTrees::reproduce()
 
 }
 
+double QTrees::getShadowGrowFactor()
+{
+	double factor{ 1 };
 
+	mShadowList = collidingItems();
+
+	for (QGraphicsItem * currentItem : mShadowList)
+	{
+		QTrees * tree = dynamic_cast<QTrees *>(currentItem);
+		if (tree)
+		{
+			if (tree->mHeight >= this->mHeight)
+			{
+				factor = factor / 2;
+
+			}
+
+		}
+
+	}
+
+	return factor;
+}
 
 
 int QTrees::getRadius()
 {
 	return mLeafRadius;
 }
-
-
-
-
-
 
 
 QRectF QTrees::boundingRect() const
@@ -98,8 +113,9 @@ GaussianTable & QTrees::temperatureGrowFactorTable()
 
 void QTrees::grow()
 {
-	
-	mLeafRadius = mLeafRadius + 0.04*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
+
+	mShadowFactor = getShadowGrowFactor();
+	mLeafRadius = mLeafRadius + 0.05*mShadowFactor*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
 	mTrunkRadius = 0.20 * mLeafRadius;
 	mHeight = 4 * mLeafRadius;
 

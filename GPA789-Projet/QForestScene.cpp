@@ -10,6 +10,7 @@
 #include <QGraphicsPixmapItem>
 #include <QPainter>
 #include <QRectF>
+#include <QDebug>
 
 
 QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
@@ -153,5 +154,7 @@ void QForestScene::setStatistic(SimulationStatistics *simulationStatistics)
 
 void QForestScene::windAngle(int windAngle)
 {
+
 	mWindAngle = windAngle;
+	qDebug() << mWindAngle;
 }
