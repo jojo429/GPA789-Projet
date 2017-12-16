@@ -70,10 +70,11 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mAngleDial = new QDial;
 	mAngleDial->setMinimum(0);
 	mAngleDial->setMaximum(359);
+	mAngleDial->setWrapping(true);
 	mAngleDial->setFixedHeight(100);
 	mAngleDial->setFixedWidth(100);
 
-	QLabel *dialLabel = new QLabel("Wind Angle");
+	QLabel *dialLabel = new QLabel("Wind Direction");
 
 	mAngleDialLayout = new QHBoxLayout;
 	mAngleDialLayout->addStretch();
@@ -81,7 +82,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mAngleDialLayout->addWidget(mAngleDial);
 	mAngleDialLayout->addStretch();
 	
-	//Définition de l'icône de l'éclar
+	//Définition de l'icône de l'éclair
 	mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
 
 	//Définition du bouton générant un éclair
@@ -111,6 +112,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	connect(mStopButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreeze);
 
 	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::step);
+	connect(mAngleDial, &QDial::valueChanged, this, &QSimulationMenu::windAngle);
 
 	//Définition du slider de point de vue
 	mTimeScaleSlider = new QSimulationTimeScale("Time Scale", ":/GPA789Projet/iconSquirrel", ":/GPA789Projet/iconForest");
@@ -129,13 +131,13 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 
 	//Assemblage final
 	mOptionsLayout = new QVBoxLayout;
-	mOptionsLayout->addLayout(mAngleDialLayout);
+	mOptionsLayout->addLayout(mTreesHBoxLayout);
+	mOptionsLayout->addLayout(mAnimalsHBoxLayout);
 	mOptionsLayout->addWidget(mTemperature);
 	mOptionsLayout->addWidget(mPrecipitation);
 	mOptionsLayout->addWidget(mLuminosity);
 	mOptionsLayout->addWidget(mWind);
-	mOptionsLayout->addLayout(mTreesHBoxLayout);
-	mOptionsLayout->addLayout(mAnimalsHBoxLayout);
+	
 
 	QGroupBox *mMenuGroupBox = new QGroupBox;
 	mMenuGroupBox->setLayout(mOptionsLayout);
@@ -145,11 +147,15 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	optionsArea->setWidgetResizable(true);
 	optionsArea->setBackgroundRole(QPalette::Light);
 
+	mBottomMenuLayout = new QHBoxLayout;
+	mBottomMenuLayout->addLayout(mAngleDialLayout);
+	mBottomMenuLayout->addWidget(mTimeScaleSlider);
+
 	mMenuLayout = new QVBoxLayout;
 	mMenuLayout->addWidget(optionsArea);
 	mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
-	mMenuLayout->addWidget(mTimeScaleSlider);
+	mMenuLayout->addLayout(mBottomMenuLayout);
 	mMenuLayout->addWidget(mAdvanceCounterLabel);
 
 	setLayout(mMenuLayout);

@@ -2,9 +2,11 @@
 #define Q_STATISTIC_H
 
 #include "QEvolutionGraph.h"
+#include "QStatisticAdvanceMenu.h"
 #include "SimulationStatistics.h"
 #include <QWidget>
-
+#include <QCheckBox>
+#include <QElapsedTimer>
 
 class QStatistic : public QWidget
 {
@@ -15,17 +17,29 @@ public:
 	~QStatistic();
 
 public slots:
-	void updateData(SimulationStatistics stats);
-
+	void updateData(); 
+	void ticTime(qint64 timePassed);
+	void updateAdvanceCount(int advanceCount);
+	void addPoints(SimulationStatistics stats);
+	
 private: 
-	QEvolutionGraph * mTemperatureGraph;
-	QEvolutionGraph * mPrecipitationGraph;
-	QEvolutionGraph * mLuminosityGraph;
-	QEvolutionGraph * mWindGraph;
+	QEvolutionGraph * mMainGraph;
+	
+	QStatisticAdvanceMenu * mTemperatureStat;
+	QStatisticAdvanceMenu * mPrecipitationStat;
+	QStatisticAdvanceMenu * mLuminosityStat;
+	QStatisticAdvanceMenu * mWindStat;
 
+	QLabel * mTicTimeValue;
+	QLabel * mNbAdvanceCountValue;
 
-	//TEST/////
-	long int x{ 0 }, y{ 0 };
-	///////////
+	int mTime{ 0 };
+
+private slots: 
+	void setTemperatureVisible(bool isVisible);
+	void setPrecipitationVisible(bool isVisible);
+	void setLuminosityVisible(bool isVisible);
+	void setWindVisible(bool isVisible);
+
 };
 #endif //Q_STATISTIC_H

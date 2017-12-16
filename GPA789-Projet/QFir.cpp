@@ -8,8 +8,8 @@ GaussianTable QFir::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QFir::mTemperatureGrowFactor(150, 30, 1000, -75);
 GaussianTable QFir::mGrowTable(500, 10, 50000);
 
-QFir::QFir(QEnvironment const & environment, QForestScene & forestscene, treeType value)
-	: QTrees{ environment ,forestscene, value}
+QFir::QFir(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan)
+	: QTrees{ environment ,forestscene, value, lifeSpan }
 {
 	
 	/*mLuminosityGrowFactor.set(40, 10000);
@@ -43,19 +43,19 @@ void QFir::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QW
 	painter->drawEllipse(mCenter, mLeafRadius, mLeafRadius);
 }
 
-GaussianTable QFir::growTable()
+GaussianTable & QFir::growTable()
 {
 	return mGrowTable;
 }
-GaussianTable QFir::precipirationGrowFactorTable()
+GaussianTable & QFir::precipirationGrowFactorTable()
 {
 	return mPrecipitationGrowFactor;
 }
-GaussianTable QFir::luminosityGrowFactorTable()
+GaussianTable & QFir::luminosityGrowFactorTable()
 {
 	return mLuminosityGrowFactor;
 }
-GaussianTable QFir::temperatureGrowFactorTable()
+GaussianTable & QFir::temperatureGrowFactorTable()
 {
 	return mTemperatureGrowFactor;
 }

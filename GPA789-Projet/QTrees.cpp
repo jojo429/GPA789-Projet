@@ -5,8 +5,8 @@
 
 
 
-QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value )
-	: QStatic(environment, forestscene), mGenerateSeed(1, 6), mTreeType{ value }, mEmpty(0,0,0)
+QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan )
+	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(1, 6), mTreeType{ value }, mEmpty(0,0,0)
 {
 	
 	mAge = 0;
@@ -81,12 +81,7 @@ void QTrees::advance(int phase)
 
 	if (phase == 1)
 		{
-		mTime++;
-		if (mTime >= 2190)
-		{
-			mAge++;
-			mTime = mTime - 2190;
-		}
+		advanceTime();
 
 		if (mAge < 2) {
 			grow();
@@ -103,30 +98,22 @@ void QTrees::advance(int phase)
 		}
 	}
 	
-	/*if (mLeafRadius < 50) {
-		mLeafRadius = mLeafRadius + 0.10*(rand() % 2 + 1);
-		mTrunkRadius = 0.20 * mLeafRadius;
-		update(boundingRect());
-	}
-	else {
-		update();
-	}*/
 
 }
 
-GaussianTable QTrees::growTable()
+GaussianTable & QTrees::growTable()
 {
 	return mEmpty;
 }
-GaussianTable QTrees::precipirationGrowFactorTable()
+GaussianTable & QTrees::precipirationGrowFactorTable()
 {
 	return mEmpty;
 }
-GaussianTable QTrees::luminosityGrowFactorTable()
+GaussianTable & QTrees::luminosityGrowFactorTable()
 {
 	return mEmpty;
 }
-GaussianTable QTrees::temperatureGrowFactorTable()
+GaussianTable & QTrees::temperatureGrowFactorTable()
 {
 	return mEmpty;
 }
@@ -136,4 +123,7 @@ void QTrees::grow()
 	mLeafRadius = mLeafRadius + 0.04*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
 	mTrunkRadius = 0.20 * mLeafRadius;
 	mHeight = 4 * mLeafRadius;
+	/*mHeight = 1000;*/
+
+
 }

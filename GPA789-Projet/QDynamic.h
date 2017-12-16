@@ -8,7 +8,7 @@ class QDynamic : public QEntity
 {
 
 public:
-	QDynamic(QEnvironment const & environment, QForestScene & forestscene);
+	QDynamic(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan);
 	~QDynamic();
 	virtual void move();
 

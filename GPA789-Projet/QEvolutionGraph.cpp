@@ -2,10 +2,27 @@
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QGroupBox>
+#include <stdexcept>
 
-QEvolutionGraph::QEvolutionGraph(QWidget *parent)
-	: QWidget(parent)
+using namespace std;
+
+QEvolutionGraph::QEvolutionGraph(size_t nSeries, QWidget *parent)
+	: QWidget(parent), mNSeries{ nSeries }
 {
+	//Trow une erreur si on indique qu'on a 0 série de données au graphique. 
+	if (nSeries == 0) {
+		throw invalid_argument("invalid argument at QEvolutionGraph::QEvolutionGraph : nSeries > 0");
+	}
+
+	//Déclaration des séries de données
+	mDataSeries.resize(nSeries);
+	for (auto & serie : mDataSeries) {
+		serie = new QLineSeries;
+	}
+	//Déclaration des min max correxpondant à chaque courbe
+	mYMaxEachSeries.resize(nSeries);
+	mYMinEachSeries.resize(nSeries);
 
 	mNbAdvanceInOneDay = 6;
 	mNbAdvanceInOneWeek = mNbAdvanceInOneDay * 7;
@@ -14,7 +31,7 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 	mMaxNbData = mNbAdvanceInOneYear * 100;
 
 	mChart = new QChart;
-	mChart->setTitle("DefaultTitle");
+	//mChart->setTitle("DefaultTitle");
 	mChart->legend()->hide();
 
 	mChartView = new QChartView(mChart);
@@ -30,45 +47,27 @@ QEvolutionGraph::QEvolutionGraph(QWidget *parent)
 	mChart->addAxis(mYAxis, Qt::AlignLeft);
 
 	//Déclaration de la série de données
-	mDataSerie = new QLineSeries;
-	mChart->addSeries(mDataSerie);
-	mDataSerie->attachAxis(mXAxis);
-	mDataSerie->attachAxis(mYAxis);
+	for (auto const & serie : mDataSeries) {
+		mChart->addSeries(serie);
+		serie->attachAxis(mXAxis);
+		serie->attachAxis(mYAxis);
+		serie->hide();
+	}
 
-	connect(mDataSerie, &QLineSeries::pointAdded, [this](int index) {
-		static qreal offsetX{ 1 }; 
-		static qreal offsetY{ 1 };
-		if (index == 0) {
-			mXmin = mXmax = mDataSerie->at(index).x();
-			mYmin = mYmax = mDataSerie->at(index).y();
-			mXAxis->setRange(mXmin, mNbDataVisible + offsetX);
-			mYAxis->setRange(mYmin, mYmax + offsetY);
-		}
-		else {
-			qreal x = mDataSerie->at(index).x();
-			qreal y = mDataSerie->at(index).y();
-			bool xChanged{ false };
-			bool yChanged{ false };
-			if (x < mXmin) { xChanged = true; mXmin = x; }
-			if (x > mXmax) { xChanged = true; mXmax = x; }
-			if (y < mYmin) { yChanged = true; mYmin = y; }
-			if (y > mYmax) { yChanged = true; mYmax = y; }
-			if (xChanged)
-			{ 
-				if (mXmax < mNbDataVisible) { mXAxis->setRange(mXmin, mNbDataVisible + offsetX);}
-				else { mXAxis->setRange(mXmax - mNbDataVisible, mXmax + offsetX);}
-			}
-			if (yChanged) { mYAxis->setRange(mYmin, mYmax + offsetY); }
-		}
+	mXAxis->setRange(mXmin, mXmax);
+	mYAxis->setRange(mYmin, mYmax);
+	
+	QVBoxLayout * chartLayout = new QVBoxLayout;
+	chartLayout->addWidget(mChartView);
 
-		if (mDataSerie->count() > mMaxNbData) {
-			mDataSerie->remove(0);
-		}
-	});
+	QGroupBox * chartGroupBox = new QGroupBox("Evolution chart");
+	chartGroupBox->setLayout(chartLayout);
 
 	QHBoxLayout * mainLayout = new QHBoxLayout;
-	mainLayout->addWidget(mChartView);
-	mainLayout->addWidget(chooseScale());
+	mainLayout->addWidget(chartGroupBox);
+	mainLayout->addWidget(initializeTimeScale());
+
+	mainLayout->setMargin(0);
 
 	setLayout(mainLayout);
 }
@@ -83,7 +82,7 @@ void QEvolutionGraph::initializeGraph(QString xAxisName, QString yAxisName, QStr
 	mYAxis->setTitleText(yAxisName);
 }
 
-QWidget* QEvolutionGraph::chooseScale() {
+QWidget* QEvolutionGraph::initializeTimeScale() {
 	
 	mScaleOneWeek = new QRadioButton("One Week");
 	mScaleOneMonth = new QRadioButton("One Month");
@@ -116,14 +115,66 @@ QWidget* QEvolutionGraph::chooseScale() {
 	connect(mScaleTenYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleTenYears);
 	connect(mScaleHundredYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleHundredYears);
 
-	QWidget * widget = new QWidget;
-	widget->setLayout(layout);
+	QGroupBox * timeScaleGroupBox = new QGroupBox("Graphic time scale");
+	timeScaleGroupBox->setLayout(layout);
 
-	return widget;
+	return timeScaleGroupBox;
 }
-void QEvolutionGraph::addPoint(double value) {
-	*mDataSerie << QPointF(mTime, value);
-	mTime++;
+
+void QEvolutionGraph::addPoint(size_t index, qreal t, qreal value) {
+
+	*(mDataSeries[index]) << QPointF(t, value);
+
+	//Mise à jour du minimum et du maximum pour la série de data spécifique 
+	updateMinMaxValues(index, mDataSeries[index]->count()-1);
+
+	if (mDataSeries[index]->count() > mMaxNbData) {
+			mDataSeries[index]->remove(0);
+	}
+}
+
+void QEvolutionGraph::updateMinMaxValues(size_t index, int count) {
+
+	qreal y = mDataSeries[index]->at(count).y();
+
+	if (y < mYMinEachSeries[index]) { mYMinEachSeries[index] = y; }
+	if (y > mYMaxEachSeries[index]) { mYMaxEachSeries[index] = y; }
+}
+
+void QEvolutionGraph::updateAxis() {
+
+	mXmax = mDataSeries[0]->at(mDataSeries[0]->count() - 1).x();
+
+	//Mise à jour de l'axe X
+	if (mXmax < mNbDataVisible) { mXAxis->setRange( mXmin			      , mNbDataVisible ); }
+	else						{ mXAxis->setRange( mXmax - mNbDataVisible, mXmax          ); }
+
+	//Mise à jour de l'axe Y
+	qreal yHiest{1};
+	qreal yLowest{0};
+	bool initVariables = true;
+	for (int i{ 0 }; i < mNSeries; i++) {
+		if (mDataSeries[i]->isVisible()) {
+			if (initVariables) { 
+				initVariables = false; 
+				yLowest = mYMinEachSeries[i];
+				yHiest = mYMaxEachSeries[i];
+			}
+			else {
+				if (mYMinEachSeries[i] < yLowest) { yLowest = mYMinEachSeries[i]; }
+				if (mYMaxEachSeries[i] > yHiest) { yHiest = mYMaxEachSeries[i]; }
+			}
+		}
+	}
+
+	bool yChanged{ false };
+	if (mYmin != yLowest) { yChanged = true; mYmin = yLowest; }
+	if (mYmax != yHiest) { yChanged = true; mYmax = yHiest; }
+	if (yChanged) { mYAxis->setRange(mYmin, mYmax); }
+}
+
+void QEvolutionGraph::setDataSerieVisibility(int index, bool setVisible) {
+	mDataSeries[index]->setVisible(setVisible);
 }
 
 void QEvolutionGraph::setScaleOneWeek()

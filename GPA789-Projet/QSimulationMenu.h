@@ -39,6 +39,7 @@ signals:
 	void pause();
 	void stop();
 	void step();
+	void windAngle(int angle);
 
 
 	
@@ -47,6 +48,7 @@ private:
 	
 
 	QVBoxLayout *mMenuLayout;
+	QHBoxLayout *mBottomMenuLayout;
 	QVBoxLayout *mOptionsLayout;
 	QVBoxLayout *mTreesVBoxLayout;
 	QVBoxLayout *mAnimalsVBoxLayout;

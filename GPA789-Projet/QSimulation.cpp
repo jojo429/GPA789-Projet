@@ -6,19 +6,24 @@
 #include <QGraphicsRectItem>
 #include <QTimer>
 #include <QDebug>
+#include <QPointF>
+
 
 QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent)
 	: QWidget(parent), mEnvironment { environment }, mForestScene { forestScene }
 {
 
-	
-
+	mForestScene.setStatistic(& mSimulationStatistics);
 	mSimulationMenu = new QSimulationMenu;
 	QHBoxLayout * mainLayout = new QHBoxLayout;
 
 
 	mForestView = new QGraphicsView();
 	mForestView->setRenderHint(QPainter::Antialiasing);
+	//mForestView->setViewportUpdateMode(QGraphicsView::MinimalViewportUpdate);
+	mForestView->setCacheMode(QGraphicsView::CacheBackground);
+	mForestView->setOptimizationFlag(QGraphicsView::DontAdjustForAntialiasing);
+	mForestView->setDragMode(QGraphicsView::ScrollHandDrag);
 	mForestView->setScene(&forestScene);
 
 
@@ -26,15 +31,16 @@ QSimulation::QSimulation(QForestScene & forestScene, QEnvironment & environment,
 	mainLayout->addWidget(mSimulationMenu);
 	
 	setLayout(mainLayout);
-	connect(&mTimer, &QTimer::timeout, this, &QSimulation::genAdvance);
 
+	connect(&mTimer, &QTimer::timeout, this, &QSimulation::genAdvance);
 	
 	connect(mSimulationMenu, &QSimulationMenu::play, this, &QSimulation::play);
 	connect(mSimulationMenu, &QSimulationMenu::pause, this, &QSimulation::pause);
 	connect(mSimulationMenu, &QSimulationMenu::stop, this, &QSimulation::stop);
 	connect(mSimulationMenu, &QSimulationMenu::step, this, &QSimulation::step);
+	
 	connect(this, &QSimulation::updateAdvanceCount, mSimulationMenu, &QSimulationMenu::setAdvanceCounter);
-
+	connect(mSimulationMenu, &QSimulationMenu::windAngle, &mForestScene, &QForestScene::windAngle);
 }
 
 QSimulation::~QSimulation()
@@ -120,24 +126,26 @@ void QSimulation::generalAdvance(bool oneStep)
 		{
 			stepCount = mSimulationMenu->getTimeScaleValue();
 		}
-
+		mForestView->setViewportUpdateMode(QGraphicsView::NoViewportUpdate);
+		QElapsedTimer timer;
+		timer.start();
 		for (int i{ 0 }; i < stepCount; i++) {
+			if(i == stepCount-1){ mForestView->setViewportUpdateMode(QGraphicsView::MinimalViewportUpdate); }
 			mEnvironment.advance();
 			mForestScene.advance();
 			getStatistics();
 			mAdvanceCounter++;
 			emit updateAdvanceCount(mAdvanceCounter);
 		}
+		ticTime(timer.elapsed());
+		advanceDone();
 		working = false;
 
 	}
-
 }
-
 
 void QSimulation::genAdvance()
 {
-
 	this->generalAdvance(false);
-
 }
+

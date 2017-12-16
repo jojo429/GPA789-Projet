@@ -1,8 +1,8 @@
 #include "QEntity.h"
 #include "QForestScene.h"
 
-QEntity::QEntity(QEnvironment const & environment, QForestScene & forestscene)
-	: mEnvironment{ environment }, mForestScene{forestscene}
+QEntity::QEntity(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan)
+	: mEnvironment{ environment }, mForestScene{ forestscene }, mLifeSpan{ lifeSpan }
 {
 
 }
@@ -31,5 +31,15 @@ bool QEntity::isItDead()
 void QEntity::striked()
 {
 
+}
+
+void QEntity::advanceTime()
+{
+	mTime++;
+	if (mTime >= 2190)
+	{
+		mAge++;
+		mTime = mTime - 2190;
+	}
 }
 

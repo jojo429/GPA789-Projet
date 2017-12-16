@@ -16,7 +16,7 @@ class QEntity : public QGraphicsItem
 {
 
 public:
-	QEntity(QEnvironment const &environment, QForestScene &forestscene);
+	QEntity(QEnvironment const &environment, QForestScene &forestscene, int lifeSpan);
 	~QEntity();
 	virtual void reproduce();
 	virtual void die();
@@ -29,12 +29,13 @@ protected:
 	int mLifeSpan;
 	int mAge{0};
 	bool mGotHit;
+	int mTime{ 0 };
 	QEnvironment const & mEnvironment;
 	QForestScene & mForestScene;
 	QPointF mCenter = QPointF(0, 0);
 	QBrush mBrush;
 	QPen mPen;
-
+	void advanceTime();
 };
 
 #endif //Q_ENTITY_H

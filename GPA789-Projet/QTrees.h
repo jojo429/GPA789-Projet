@@ -14,7 +14,7 @@ class QTrees : public QStatic
 	
 public:
 
-	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value);
+	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QTrees();
 
 	
@@ -27,10 +27,10 @@ public:
 	void grow();
 	void striked() override;
 	treeType mTreeType;
-	virtual GaussianTable growTable()=0;
-	virtual GaussianTable precipirationGrowFactorTable()=0;
-	virtual GaussianTable luminosityGrowFactorTable()=0;
-	virtual GaussianTable temperatureGrowFactorTable()=0;
+	virtual GaussianTable & growTable()=0;
+	virtual GaussianTable & precipirationGrowFactorTable()=0;
+	virtual GaussianTable & luminosityGrowFactorTable()=0;
+	virtual GaussianTable & temperatureGrowFactorTable()=0;
 
 
 
@@ -45,7 +45,7 @@ protected:
 	bool mGotHit;
 	void advance(int phase);
 	QRectF boundingRect() const;
-	int mTime{ 0 };
+	
 	GaussianTable mEmpty;
 
 	static GaussianTable mReproduceTable;

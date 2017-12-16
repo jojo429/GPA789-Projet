@@ -7,11 +7,13 @@
 #include <QPointF>
 
 
+
+
 class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value);
+	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QSeeds();
 
 	friend QForestScene;
@@ -25,18 +27,21 @@ private:
 	int mHeight;
 	int mWeight;
 	std::array<std::vector<double>, 5> mWeightingGerminate;
-
 	double mMovingFactor;
 	int mCountFallDown{ 0 };
 	double mSeedRadius { 5.0 };
 	QPointF mCenter = QPointF(0, 0);
 	void move() override;
-	QRectF QSeeds::boundingRect() const;
+	QRectF boundingRect() const;
 	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR);
-	void QSeeds::advance(int phase);
+	void advance(int phase) override;
 	treeType mTreeType;
-
-
+	int mGerminated = false;
+	static GaussianTable mPrecipitationGrowFactor;
+	static GaussianTable mLuminosityGrowFactor;
+	static GaussianTable mTemperatureGrowFactor;
+	RandomUniform mGenerateTree;
+	RandomUniform mGenerateAngle;
 };
 
 

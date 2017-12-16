@@ -9,6 +9,7 @@
 #include "SimulationStatistics.h"
 #include "QSimulationMenu.h"
 #include <QWheelEvent>
+#include <QElapsedTimer>
 
 class QSimulation : public QWidget
 {
@@ -20,9 +21,10 @@ public:
 	//ICI advance counter //int getAdvanceCounter();
 
 signals:
-
 	 void sendStatistics(SimulationStatistics stats);
+	 void advanceDone();
 	 void updateAdvanceCount(int advanceCount);
+	 void ticTime(qint64 timePassed);
 
 public slots:
 	void play();
@@ -30,6 +32,7 @@ public slots:
 	void stop();
 	void step();
 	void getStatistics();
+
 private slots: 
 	void genAdvance();	
 	void generalAdvance(bool oneStep);
