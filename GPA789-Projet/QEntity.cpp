@@ -31,10 +31,7 @@ bool QEntity::isItDead()
 	return false;
 }
 
-void QEntity::striked()
-{
-	mGotHit = true;
-}
+
 
 int QEntity::getHeight()
 {

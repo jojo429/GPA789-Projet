@@ -21,7 +21,6 @@ public:
 	virtual void reproduce();
 	virtual void die();
 	virtual bool isItDead();
-	virtual void striked();
 	int getHeight();
 	
 
@@ -30,7 +29,6 @@ protected:
 	QPointF mPosition;
 	int mLifeSpan;
 	int mAge{0};
-	bool mGotHit{ false };
 	bool mIsDead{ false };
 	int mTime{ 0 };
 	QEnvironment const & mEnvironment;

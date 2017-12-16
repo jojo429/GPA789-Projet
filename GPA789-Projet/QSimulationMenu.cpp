@@ -82,19 +82,19 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mAngleDialLayout->addWidget(mAngleDial);
 	mAngleDialLayout->addStretch();
 	
-	//Définition de l'icône de l'éclair
-	mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
+	////Définition de l'icône de l'éclair
+	//mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
 
-	//Définition du bouton générant un éclair
-	mThunderButton = new QCheckBox;
-	mThunderButton->setText("Act of God");
-	mThunderButton->setIcon(mThunderIcon);
+	////Définition du bouton générant un éclair
+	//mThunderButton = new QCheckBox;
+	//mThunderButton->setText("Act of God");
+	//mThunderButton->setIcon(mThunderIcon);
 
-	//Définition du layout du bouton générant un éclair
-	mThunderLayout = new QHBoxLayout;
-	mThunderLayout->addStretch();
-	mThunderLayout->addWidget(mThunderButton);
-	mThunderLayout->addStretch();
+	////Définition du layout du bouton générant un éclair
+	//mThunderLayout = new QHBoxLayout;
+	//mThunderLayout->addStretch();
+	//mThunderLayout->addWidget(mThunderButton);
+	//mThunderLayout->addStretch();
 
 	//Définition des boutons d'avancement
 	mPlayButton = new QSimulationAdvancementOptions("Play", ":/GPA789Projet/iconPlay");
@@ -153,7 +153,7 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 
 	mMenuLayout = new QVBoxLayout;
 	mMenuLayout->addWidget(optionsArea);
-	mMenuLayout->addLayout(mThunderLayout);
+	//mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addLayout(mBottomMenuLayout);
 	mMenuLayout->addWidget(mAdvanceCounterLabel);

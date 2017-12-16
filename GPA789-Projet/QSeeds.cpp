@@ -31,15 +31,19 @@ QSeeds::~QSeeds()
 
 void QSeeds::germinate()
 {
-	double chance = (this->mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0]) + this->mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1]) + this->mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2])) / 3;
-	chance = chance*(mGenerateTree.random() /1000.0);
-
-	if (chance > 0.90)
+	if((collidingItems().empty()))
 	{
-		mForestScene.createTree(this);
-		mGerminated = true;
-		this->setVisible(false);
+		double chance = (this->mTemperatureGrowFactor.getValue(mEnvironment.mFactors[0]) + this->mPrecipitationGrowFactor.getValue(mEnvironment.mFactors[1]) + this->mLuminosityGrowFactor.getValue(mEnvironment.mFactors[2])) / 3;
+		chance = chance * (mGenerateTree.random() / 1000.0);
+
+		if (chance > 0.90)
+		{
+			mForestScene.createTree(this);
+			mGerminated = true;
+			this->setVisible(false);
+		}
 	}
+	
 	
 
 }
@@ -106,12 +110,13 @@ void QSeeds::advance(int phase)
 		{
 			move();
 
+
 		}
 		else if (mAge < 2 && !mGerminated)
 		{
 			if (mCarriedBySquirrel == false)
 			{
-				//germinate();
+				germinate();
 			}
 
 		}
