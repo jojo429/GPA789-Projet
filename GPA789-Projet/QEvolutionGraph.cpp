@@ -50,6 +50,7 @@ QEvolutionGraph::QEvolutionGraph(size_t nSeries, QWidget *parent)
 		mChart->addSeries(serie);
 		serie->attachAxis(mXAxis);
 		serie->attachAxis(mYAxis);
+		serie->hide();
 	}
 
 	mXAxis->setRange(mXmin, mXmax);
@@ -113,10 +114,6 @@ QWidget* QEvolutionGraph::initializeChooseScale() {
 
 void QEvolutionGraph::addPoint(size_t index, qreal t, qreal value) {
 
-	if (index >= mDataSeries.size() ) {
-		throw invalid_argument("invalid argument at QEvolutionGraph::QEvolutionGraph : index > nSeries");
-	}
-
 	*(mDataSeries[index]) << QPointF(t, value);
 
 	//Mise à jour du minimum et du maximum pour la série de data spécifique 
@@ -144,29 +141,27 @@ void QEvolutionGraph::updateAxis() {
 	else						{ mXAxis->setRange( mXmax - mNbDataVisible, mXmax          ); }
 
 	//Mise à jour de l'axe Y
-	qreal mYHiest;
-	qreal mYLowest;
+	qreal yHiest{1};
+	qreal yLowest{0};
 	bool initVariables = true;
 	for (int i{ 0 }; i < mNSeries; i++) {
 		if (mDataSeries[i]->isVisible()) {
 			if (initVariables) { 
 				initVariables = false; 
-				mYLowest = mYMinEachSeries[i];
-				mYHiest = mYMaxEachSeries[i];
+				yLowest = mYMinEachSeries[i];
+				yHiest = mYMaxEachSeries[i];
 			}
 			else {
-				if (mYMinEachSeries[i] < mYLowest) { mYLowest = mYMinEachSeries[i]; }
-				if (mYMaxEachSeries[i] > mYHiest) { mYHiest = mYMaxEachSeries[i]; }
+				if (mYMinEachSeries[i] < yLowest) { yLowest = mYMinEachSeries[i]; }
+				if (mYMaxEachSeries[i] > yHiest) { yHiest = mYMaxEachSeries[i]; }
 			}
 		}
 	}
 
 	bool yChanged{ false };
-	if (mYmin != mYLowest) { yChanged = true; mYmin = mYLowest; }
-	if (mYmax != mYHiest) { yChanged = true; mYmax = mYHiest; }
+	if (mYmin != yLowest) { yChanged = true; mYmin = yLowest; }
+	if (mYmax != yHiest) { yChanged = true; mYmax = yHiest; }
 	if (yChanged) { mYAxis->setRange(mYmin, mYmax); }
-		//serie->show();
-		//serie->hide();
 }
 
 void QEvolutionGraph::setDataSerieVisibility(int index, bool setVisible) {

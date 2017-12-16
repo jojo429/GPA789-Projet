@@ -2,6 +2,9 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QCheckBox>
+
+
 
 class QStatisticAdvanceMenu : public QWidget
 {
@@ -12,13 +15,12 @@ public:
 	~QStatisticAdvanceMenu();
 
 	void setNewValue(int count, qreal value);
-	qreal getMean();
-	qreal getStandardDeviation();
-	qreal getMaxValues();
+signals: 
+	void showGraphToggled(bool toggled);
 
 private:
 	void calculateStandardDeviation();
-	void cauculateMean();
+	void cauculateMean(int count);
 	void calculateMinMaxValues();
 
 	qreal mActualValue;
@@ -31,6 +33,8 @@ private:
 	bool mStandardDeviationOption; 
 	bool mMinMaxOption;
 
+	bool mInitMinMax{true};
+
 	QLabel * mActualValueLabel;
 	QLabel * mActualValueValue;
 	QLabel * mMeanValueLabel;
@@ -42,4 +46,5 @@ private:
 	QLabel * mMaxValueLabel;
 	QLabel * mMaxValueValue;
 
+	QCheckBox * mVisibilityCheckBox;
 };

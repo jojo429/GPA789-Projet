@@ -2,68 +2,72 @@
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QGroupBox>
 
 QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDeviationOption, bool minMaxOption, QWidget *parent)
 	: QWidget(parent), mMeanOption{ meanOption }, mStandardDeviationOption{ standardDeviationOption }, mMinMaxOption{ minMaxOption }
 {
-
-	QVBoxLayout * mainLayout = new QVBoxLayout;
+	QVBoxLayout * labelLayout = new QVBoxLayout;
+	QVBoxLayout * valueLayout = new QVBoxLayout;
 
 	mActualValueLabel = new QLabel("Actual Value :");
 	mActualValueValue = new QLabel(QString::number(mActualValue));
 	
-	QHBoxLayout * actualValueLayout = new QHBoxLayout;
-	actualValueLayout->addWidget(mActualValueLabel);
-	actualValueLayout->addWidget(mActualValueValue);
-	
-	mainLayout->addLayout(actualValueLayout);
+	labelLayout->addWidget(mActualValueLabel);
+	valueLayout->addWidget(mActualValueValue);
 
 	if (meanOption) {
 		mMeanValueLabel = new QLabel("Mean :");
 		mMeanValueValue = new QLabel(QString::number(mMean));
 		
-		QHBoxLayout * meanValueLayout = new QHBoxLayout;
-		meanValueLayout->addWidget(mMeanValueLabel);
-		meanValueLayout->addWidget(mMeanValueValue);
-		
-		mainLayout->addLayout(meanValueLayout);
+		labelLayout->addWidget(mMeanValueLabel);
+		valueLayout->addWidget(mMeanValueValue);
 	}
 
 	if (standardDeviationOption) {
 		mStandardDeviationValueLabel = new QLabel("Standard deviation :");
 		mStandardDeviationValueValue = new QLabel(QString::number(mStandardDeviation));
 
-		QHBoxLayout * standardDeviationValueLayout = new QHBoxLayout;
-		standardDeviationValueLayout->addWidget(mStandardDeviationValueLabel);
-		standardDeviationValueLayout->addWidget(mStandardDeviationValueValue);
-
-		mainLayout->addLayout(standardDeviationValueLayout);
+		labelLayout->addWidget(mStandardDeviationValueLabel);
+		valueLayout->addWidget(mStandardDeviationValueValue);
 	}
 
 	if (minMaxOption) {
 		mMinValueLabel = new QLabel("Minimum reached value :");
 		mMinValueValue = new QLabel(QString::number(mMinValue));
 
-		QHBoxLayout * minValueLayout = new QHBoxLayout;
-		minValueLayout->addWidget(mMinValueLabel);
-		minValueLayout->addWidget(mMinValueValue);
+		labelLayout->addWidget(mMinValueLabel);
+		valueLayout->addWidget(mMinValueValue);
 
-		mainLayout->addLayout(minValueLayout);
-
-		mMaxValueLabel = new QLabel("Minimum reached value :");
+		mMaxValueLabel = new QLabel("Maximum reached value :");
 		mMaxValueValue = new QLabel(QString::number(mMaxValue));
 
-		QHBoxLayout * maxValueLayout = new QHBoxLayout;
-		maxValueLayout->addWidget(mMinValueLabel);
-		maxValueLayout->addWidget(mMinValueValue);
-
-		mainLayout->addLayout(maxValueLayout);
+		labelLayout->addWidget(mMaxValueLabel);
+		valueLayout->addWidget(mMaxValueValue);
 	}
 
-	
-	mainLayout->addStretch();
+	QHBoxLayout * dataLayout = new QHBoxLayout;
+	dataLayout->addLayout(labelLayout);
+	dataLayout->addLayout(valueLayout);
+
+	mVisibilityCheckBox = new QCheckBox("Show values on graph");
+
+	QHBoxLayout * showDataLayout = new QHBoxLayout;
+	showDataLayout->addWidget(mVisibilityCheckBox);
+
+	QVBoxLayout * prepLayout = new QVBoxLayout;
+	prepLayout->addLayout(dataLayout);
+	prepLayout->addLayout(showDataLayout);
+
+	QGroupBox * statisticGroupBox = new QGroupBox("Default Name");
+	statisticGroupBox->setLayout(prepLayout);
+
+	QVBoxLayout * mainLayout = new QVBoxLayout;
+	mainLayout->addWidget(statisticGroupBox);
 
 	setLayout(mainLayout);
+
+	connect(mVisibilityCheckBox, &QCheckBox::toggled, this, &QStatisticAdvanceMenu::showGraphToggled);
 }
 
 QStatisticAdvanceMenu::~QStatisticAdvanceMenu()
@@ -72,10 +76,11 @@ QStatisticAdvanceMenu::~QStatisticAdvanceMenu()
 
 void QStatisticAdvanceMenu::setNewValue(int count, qreal value) {
 	
+	mActualValue = value;
 	mActualValueValue->setText(QString::number(mActualValue));
 	
 	if (mMeanOption) {
-		cauculateMean();
+		cauculateMean(count);
 		mMeanValueValue->setText(QString::number(mMean));
 	}
 	if (mStandardDeviationOption) {
@@ -89,26 +94,26 @@ void QStatisticAdvanceMenu::setNewValue(int count, qreal value) {
 	}
 }
 
-void QStatisticAdvanceMenu::cauculateMean() {
-
-}
-
-qreal QStatisticAdvanceMenu::getMean() {
-	return 0.0;
+void QStatisticAdvanceMenu::cauculateMean(int count) {	
+	if (count > 1) {
+		mMean = (mMean * (count - 1) + mActualValue) / count;
+	}
+	else {
+		mMean = mActualValue;
+	}
 }
 
 void QStatisticAdvanceMenu::calculateStandardDeviation() {
 
 }
 
-qreal QStatisticAdvanceMenu::getStandardDeviation() {
-	return 0.0;
-}
-
 void QStatisticAdvanceMenu::calculateMinMaxValues() {
-
-}
-
-qreal QStatisticAdvanceMenu::getMaxValues() {
-	return 0.0;
+	if (mInitMinMax) {
+		mInitMinMax = false;
+		mMinValue = mMaxValue = mActualValue;
+	}
+	else {
+		if (mActualValue < mMinValue) { mMinValue = mActualValue; };
+		if (mActualValue > mMaxValue) { mMaxValue = mActualValue; };
+	}
 }
