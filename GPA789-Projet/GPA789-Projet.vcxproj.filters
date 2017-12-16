@@ -205,6 +205,15 @@
     <ClCompile Include="QStatisticAdvanceMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QSupplement.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QSupplement.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QSupplement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -304,6 +313,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QStatisticAdvanceMenu.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSupplement.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
