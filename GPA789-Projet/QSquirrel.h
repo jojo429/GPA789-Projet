@@ -13,9 +13,7 @@ public:
 	~QSquirrel();
 	enum TargetType {
 		NoTarget = 0,
-		Trees = 1,
-		Squirrel = 2,
-		Seed = 3
+		Seed = 1
 	};
 
 private:

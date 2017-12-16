@@ -6,6 +6,7 @@
 #include "QFir.h"
 #include "QSquirrel.h"
 #include "SimulationStatistics.h"
+#include <QDebug>
 
 
 QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * parent)
@@ -150,5 +151,7 @@ void QForestScene::setStatistic(SimulationStatistics *simulationStatistics)
 
 void QForestScene::windAngle(int windAngle)
 {
+
 	mWindAngle = windAngle;
+	qDebug() << mWindAngle;
 }
