@@ -1,5 +1,6 @@
 #include "QStatistic.h"
 #include <QVBoxLayout>
+#include <QGroupBox>
 
 QStatistic::QStatistic(QWidget *parent)
 	: QWidget(parent)
@@ -8,28 +9,47 @@ QStatistic::QStatistic(QWidget *parent)
 	//Générer les graphiques
 	mMainGraph = new QEvolutionGraph(4);
 	mMainGraph->initializeGraph("Time", "General units", "Main Graph");
-	
-	QVBoxLayout * graphLayout = new QVBoxLayout;
-	graphLayout->addWidget(mMainGraph);
-	graphLayout->addStretch();
 
-	QLabel *titleLabel = new QLabel("Statistiques diverses");
-	mTemperatureStat = new QStatisticAdvanceMenu(true, false, true);
-	mPrecipitationStat = new QStatisticAdvanceMenu(true, false, true);
-	mLuminosityStat = new QStatisticAdvanceMenu(true, false, true);
-	mWindStat = new QStatisticAdvanceMenu(true, false, true);
+	QLabel *ticTimeLabel = new QLabel("Refresh time (ms) :");
+	mTicTimeValue = new QLabel("0");
+
+	QLabel *mNbAdvanceCountLabel = new QLabel("Advance executed :");
+	mNbAdvanceCountValue = new QLabel("0");
+
+	mTemperatureStat = new QStatisticAdvanceMenu(true, false, true, "Temperature");
+	mPrecipitationStat = new QStatisticAdvanceMenu(true, false, true, "Precipitation");
+	mLuminosityStat = new QStatisticAdvanceMenu(true, false, true, "Luminosity");
+	mWindStat = new QStatisticAdvanceMenu(true, false, true, "Wind");
+	
+	QVBoxLayout * generalStatRightLayout = new QVBoxLayout;
+	generalStatRightLayout->addWidget(ticTimeLabel);
+	generalStatRightLayout->addWidget(mNbAdvanceCountLabel);
+
+	QVBoxLayout * generalStatLeftLayout = new QVBoxLayout;
+	generalStatLeftLayout->addWidget(mTicTimeValue);
+	generalStatLeftLayout->addWidget(mNbAdvanceCountValue);
+
+	QHBoxLayout * generalStatLayout = new QHBoxLayout;
+	generalStatLayout->addLayout(generalStatRightLayout);
+	generalStatLayout->addLayout(generalStatLeftLayout);
+
+	QGroupBox * generalStatGroupBox = new QGroupBox("Runtime");
+	generalStatGroupBox->setLayout(generalStatLayout);
 
 	QVBoxLayout * valueLayout = new QVBoxLayout;
-	valueLayout->addWidget(titleLabel);
+	valueLayout->addWidget(generalStatGroupBox);
 	valueLayout->addWidget(mTemperatureStat);
 	valueLayout->addWidget(mPrecipitationStat);
 	valueLayout->addWidget(mLuminosityStat);
 	valueLayout->addWidget(mWindStat);
 	valueLayout->addStretch();
 
+	QGroupBox * valueLayoutGroupBox = new QGroupBox("Statistics");
+	valueLayoutGroupBox->setLayout(valueLayout);
+
 	QHBoxLayout * mainLayout = new QHBoxLayout;
-	mainLayout->addLayout(graphLayout);
-	mainLayout->addLayout(valueLayout);
+	mainLayout->addWidget(mMainGraph);
+	mainLayout->addWidget(valueLayoutGroupBox);
 
 	setLayout(mainLayout);
 
@@ -61,6 +81,13 @@ void QStatistic::addPoints(SimulationStatistics stats)
 void QStatistic::updateData()
 {
 	mMainGraph->updateAxis();
+}
+
+void QStatistic::ticTime(qint64 timePassed) {
+	mTicTimeValue->setText(QString::number(timePassed));
+}
+void QStatistic::updateAdvanceCount(int advanceCount) {
+	mNbAdvanceCountValue->setText(QString::number(advanceCount));
 }
 
 void QStatistic::setTemperatureVisible(bool isVisible) {

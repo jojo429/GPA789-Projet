@@ -2,6 +2,7 @@
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QGroupBox>
 #include <stdexcept>
 
 using namespace std;
@@ -30,7 +31,7 @@ QEvolutionGraph::QEvolutionGraph(size_t nSeries, QWidget *parent)
 	mMaxNbData = mNbAdvanceInOneYear * 100;
 
 	mChart = new QChart;
-	mChart->setTitle("DefaultTitle");
+	//mChart->setTitle("DefaultTitle");
 	mChart->legend()->hide();
 
 	mChartView = new QChartView(mChart);
@@ -55,10 +56,18 @@ QEvolutionGraph::QEvolutionGraph(size_t nSeries, QWidget *parent)
 
 	mXAxis->setRange(mXmin, mXmax);
 	mYAxis->setRange(mYmin, mYmax);
+	
+	QVBoxLayout * chartLayout = new QVBoxLayout;
+	chartLayout->addWidget(mChartView);
+
+	QGroupBox * chartGroupBox = new QGroupBox("Evolution chart");
+	chartGroupBox->setLayout(chartLayout);
 
 	QHBoxLayout * mainLayout = new QHBoxLayout;
-	mainLayout->addWidget(mChartView);
-	mainLayout->addWidget(initializeChooseScale());
+	mainLayout->addWidget(chartGroupBox);
+	mainLayout->addWidget(initializeTimeScale());
+
+	mainLayout->setMargin(0);
 
 	setLayout(mainLayout);
 }
@@ -73,7 +82,7 @@ void QEvolutionGraph::initializeGraph(QString xAxisName, QString yAxisName, QStr
 	mYAxis->setTitleText(yAxisName);
 }
 
-QWidget* QEvolutionGraph::initializeChooseScale() {
+QWidget* QEvolutionGraph::initializeTimeScale() {
 	
 	mScaleOneWeek = new QRadioButton("One Week");
 	mScaleOneMonth = new QRadioButton("One Month");
@@ -106,10 +115,10 @@ QWidget* QEvolutionGraph::initializeChooseScale() {
 	connect(mScaleTenYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleTenYears);
 	connect(mScaleHundredYears, &QRadioButton::clicked, this, &QEvolutionGraph::setScaleHundredYears);
 
-	QWidget * widget = new QWidget;
-	widget->setLayout(layout);
+	QGroupBox * timeScaleGroupBox = new QGroupBox("Graphic time scale");
+	timeScaleGroupBox->setLayout(layout);
 
-	return widget;
+	return timeScaleGroupBox;
 }
 
 void QEvolutionGraph::addPoint(size_t index, qreal t, qreal value) {

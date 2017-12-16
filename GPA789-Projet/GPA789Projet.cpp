@@ -46,6 +46,8 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	mMap->updateDrawMap(1000, 500);*/
 	
 	connect(mSimulation, &QSimulation::advanceDone, mStatistic, &QStatistic::updateData);
+	connect(mSimulation, &QSimulation::ticTime, mStatistic, &QStatistic::ticTime);
+	connect(mSimulation, &QSimulation::updateAdvanceCount, mStatistic, &QStatistic::updateAdvanceCount);
 	connect(mSimulation, &QSimulation::sendStatistics, mStatistic, &QStatistic::addPoints);
 /*
 

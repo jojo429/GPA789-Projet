@@ -21,7 +21,7 @@ QEnvironment::QEnvironment()
 
 void QEnvironment::advance()
 {
-	QEnvironment::calculateFactors(mTime);
+	calculateFactors(mTime);
 
 	mTime++;
 	if (mTime >= 2190)

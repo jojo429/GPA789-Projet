@@ -6,7 +6,7 @@
 #include "SimulationStatistics.h"
 #include <QWidget>
 #include <QCheckBox>
-
+#include <QElapsedTimer>
 
 class QStatistic : public QWidget
 {
@@ -17,7 +17,9 @@ public:
 	~QStatistic();
 
 public slots:
-	void updateData();
+	void updateData(); 
+	void ticTime(qint64 timePassed);
+	void updateAdvanceCount(int advanceCount);
 	void addPoints(SimulationStatistics stats);
 	
 private: 
@@ -27,6 +29,9 @@ private:
 	QStatisticAdvanceMenu * mPrecipitationStat;
 	QStatisticAdvanceMenu * mLuminosityStat;
 	QStatisticAdvanceMenu * mWindStat;
+
+	QLabel * mTicTimeValue;
+	QLabel * mNbAdvanceCountValue;
 
 	int mTime{ 0 };
 

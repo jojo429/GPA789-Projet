@@ -4,7 +4,7 @@
 #include <QVBoxLayout>
 #include <QGroupBox>
 
-QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDeviationOption, bool minMaxOption, QWidget *parent)
+QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDeviationOption, bool minMaxOption, QString groupBoxName, QWidget *parent)
 	: QWidget(parent), mMeanOption{ meanOption }, mStandardDeviationOption{ standardDeviationOption }, mMinMaxOption{ minMaxOption }
 {
 	QVBoxLayout * labelLayout = new QVBoxLayout;
@@ -59,11 +59,12 @@ QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDevia
 	prepLayout->addLayout(dataLayout);
 	prepLayout->addLayout(showDataLayout);
 
-	QGroupBox * statisticGroupBox = new QGroupBox("Default Name");
+	QGroupBox * statisticGroupBox = new QGroupBox(groupBoxName);
 	statisticGroupBox->setLayout(prepLayout);
 
 	QVBoxLayout * mainLayout = new QVBoxLayout;
 	mainLayout->addWidget(statisticGroupBox);
+	mainLayout->setMargin(0);
 
 	setLayout(mainLayout);
 

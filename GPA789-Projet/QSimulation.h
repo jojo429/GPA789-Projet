@@ -9,6 +9,7 @@
 #include "SimulationStatistics.h"
 #include "QSimulationMenu.h"
 #include <QWheelEvent>
+#include <QElapsedTimer>
 
 class QSimulation : public QWidget
 {
@@ -23,6 +24,7 @@ signals:
 	 void sendStatistics(SimulationStatistics stats);
 	 void advanceDone();
 	 void updateAdvanceCount(int advanceCount);
+	 void ticTime(qint64 timePassed);
 
 public slots:
 	void play();

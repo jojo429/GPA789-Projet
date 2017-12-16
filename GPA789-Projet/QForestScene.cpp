@@ -17,7 +17,7 @@ QForestScene::QForestScene(QEnvironment const & environment, QGraphicsScene * pa
 
 
 	this->setBackgroundBrush(mBackgroundBrush);
-
+	
 	
 
 }

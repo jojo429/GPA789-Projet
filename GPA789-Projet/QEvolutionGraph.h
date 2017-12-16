@@ -33,7 +33,7 @@ private:
 	QVector<qreal> mYMinEachSeries;
 	size_t mNSeries;
 
-	QWidget* initializeChooseScale();
+	QWidget* initializeTimeScale();
 	void updateMinMaxValues(size_t index, int count);
 
 	QRadioButton * mScaleOneHour;
