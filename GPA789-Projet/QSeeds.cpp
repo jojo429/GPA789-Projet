@@ -44,15 +44,9 @@ void QSeeds::germinate()
 
 }
 
-void QSeeds::die()
-{
-	
-}
 
-bool QSeeds::isItDead()
-{
-	return false;
-}
+
+
 
 void QSeeds::move()
 {

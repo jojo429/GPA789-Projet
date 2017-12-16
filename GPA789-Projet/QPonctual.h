@@ -9,7 +9,7 @@ class QPonctual : public QEnvironmentalFactor
 public:
 	QPonctual();
 	virtual ~QPonctual();
-	float getFactor(int Time);
+
 
 };
 

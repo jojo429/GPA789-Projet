@@ -11,10 +11,7 @@ public:
 	~SinusTable();
 	void set(int cycle, int average, int variation);
 
-
 protected:
-
-
 	bool mNoNegative;
 };
 

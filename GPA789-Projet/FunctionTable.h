@@ -10,7 +10,7 @@ public:
 	~FunctionTable();
 
 	virtual void set();
-	double getValue(int position);
+	virtual double getValue(int position);
 
 protected:
 	std::vector <double> mTable;

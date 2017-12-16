@@ -42,7 +42,6 @@ public slots:
 
 private:
 	std::vector< QEnvironmentalFactor*> mEnvironmentalFactor;
-	
 	QLuminosity mLuminosity;
 	QPrecipitation mPrecipitation;
 	QTemperature mTemperature;

@@ -19,12 +19,13 @@ QSquirrel::~QSquirrel()
 
 }
 
+
 void QSquirrel::move()
 {
 	setPos(mapToParent(3, 0));
-	
 
 }
+
 
 QGraphicsItem * QSquirrel::getTarget()
 {
@@ -68,20 +69,9 @@ QList<QGraphicsItem*> QSquirrel::compareTargetList(QList<QGraphicsItem*> &newTar
 	return newTarget;
 }
 
-void QSquirrel::reproduce(int age)
-{
 
-}
 
-void QSquirrel::die(int age)
-{
 
-}
-
-void QSquirrel::eat()
-{
-
-}
 
 void QSquirrel::pickSeed()
 {
@@ -116,10 +106,7 @@ void QSquirrel::dropSeed()
 
 }
 
-void QSquirrel::striked()
-{
 
-}
 
 void QSquirrel::setRotationAdjustment()
 {

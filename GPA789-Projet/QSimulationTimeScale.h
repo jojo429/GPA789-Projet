@@ -2,8 +2,6 @@
 #define Q_SIMULATION_TIME_SCALE_H
 
 #include <QWidget>
-//#include <QString>
-//#include <QPixmap>
 #include <QSlider>
 #include <QHBoxLayout>
 #include <QGroupBox>

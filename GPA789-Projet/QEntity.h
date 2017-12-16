@@ -22,19 +22,23 @@ public:
 	virtual void die();
 	virtual bool isItDead();
 	virtual void striked();
+	int getHeight();
+	
+
 
 protected:
-	//QList<QGraphicsItem> mInRangeItems; !?!?!?!?!?!?!?!?!
 	QPointF mPosition;
 	int mLifeSpan;
 	int mAge{0};
-	bool mGotHit;
+	bool mGotHit{ false };
+	bool mIsDead{ false };
 	int mTime{ 0 };
 	QEnvironment const & mEnvironment;
 	QForestScene & mForestScene;
 	QPointF mCenter = QPointF(0, 0);
 	QBrush mBrush;
 	QPen mPen;
+	int mHeight;
 	void advanceTime();
 };
 

@@ -18,7 +18,6 @@ class QSimulation : public QWidget
 public:
 	QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent = Q_NULLPTR);
 	~QSimulation();
-	//ICI advance counter //int getAdvanceCounter();
 
 signals:
 	 void sendStatistics(SimulationStatistics stats);
@@ -46,8 +45,8 @@ private:
 	QSimulationMenu *mSimulationMenu;
 	QGraphicsView *mForestView;
 
-	int mAdvanceCounter=0;
-	bool mStarted = false;
+	int mAdvanceCounter{ 0 };
+	bool mStarted{ false };
 
 protected:
 	virtual void wheelEvent(QWheelEvent* event);
