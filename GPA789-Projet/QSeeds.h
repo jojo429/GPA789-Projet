@@ -16,27 +16,22 @@ public:
 	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
 	~QSeeds();
 
-	friend QForestScene;
+
 	void germinate();
-	void die() override;
-	bool isItDead() override;
 	void picked();
 	void droped( QPointF coordinate );
+	friend class QForestScene;
 
 private:
-	int mHeight;
 	int mWeight;
-	std::array<std::vector<double>, 5> mWeightingGerminate;
-	double mMovingFactor;
-	int mCountFallDown{ 0 };
 	double mSeedRadius { 5.0 };
 	QPointF mCenter = QPointF(0, 0);
 	void move() override;
 	QRectF boundingRect() const;
-	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR);
+	void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = Q_NULLPTR)override;
 	void advance(int phase) override;
 	treeType mTreeType;
-	int mGerminated = false;
+	int mGerminated{ false };
 	static GaussianTable mPrecipitationGrowFactor;
 	static GaussianTable mLuminosityGrowFactor;
 	static GaussianTable mTemperatureGrowFactor;

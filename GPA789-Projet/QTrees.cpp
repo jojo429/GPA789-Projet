@@ -37,36 +37,18 @@ void QTrees::reproduce()
 
 }
 
-void QTrees::die()
-{
 
-}
 
-int QTrees::getHeight()
-{
-	return mHeight;
-}
 
 int QTrees::getRadius()
 {
 	return mLeafRadius;
 }
 
-void QTrees::adjustDryness()
-{
-
-}
-
-void QTrees::setOnFire()
-{
-
-}
 
 
-void QTrees::striked()
-{
 
-}
+
 
 
 QRectF QTrees::boundingRect() const
@@ -78,8 +60,8 @@ QRectF QTrees::boundingRect() const
 
 void QTrees::advance(int phase)
 {
-
-	if (phase == 1)
+	die();
+	if (phase == 1 && !mIsDead)
 		{
 		advanceTime();
 
@@ -96,6 +78,7 @@ void QTrees::advance(int phase)
 		{
 			reproduce();
 		}
+		
 	}
 	
 
@@ -123,7 +106,7 @@ void QTrees::grow()
 	mLeafRadius = mLeafRadius + 0.04*(this->growTable().getValue(mAge))*((this->temperatureGrowFactorTable().getValue(mEnvironment.mFactors[0]) + this->precipirationGrowFactorTable().getValue(mEnvironment.mFactors[1]) + this->luminosityGrowFactorTable().getValue(mEnvironment.mFactors[2])) / 3);
 	mTrunkRadius = 0.20 * mLeafRadius;
 	mHeight = 4 * mLeafRadius;
-	/*mHeight = 1000;*/
+
 
 
 }

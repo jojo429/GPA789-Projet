@@ -157,9 +157,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QEvolutionGraph.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="DoubleSinusTable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GaussianTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -360,9 +357,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SinusTable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DoubleSinusTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SimulationStatistics.h">

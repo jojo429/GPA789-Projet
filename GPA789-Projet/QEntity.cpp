@@ -20,7 +20,10 @@ void QEntity::reproduce()
 
 void QEntity::die()
 {
-
+	if (mAge > mLifeSpan)
+	{
+		mIsDead = true;
+	}
 }
 
 bool QEntity::isItDead()
@@ -30,7 +33,12 @@ bool QEntity::isItDead()
 
 void QEntity::striked()
 {
+	mGotHit = true;
+}
 
+int QEntity::getHeight()
+{
+	return mHeight;
 }
 
 void QEntity::advanceTime()

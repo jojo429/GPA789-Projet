@@ -69,7 +69,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DoubleSinusTable.cpp" />
     <ClCompile Include="FunctionTable.cpp" />
     <ClCompile Include="GaussianTable.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
@@ -265,7 +264,6 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
-    <ClInclude Include="DoubleSinusTable.h" />
     <ClInclude Include="FunctionTable.h" />
     <ClInclude Include="GaussianTable.h" />
     <CustomBuild Include="QSimulationTimeScale.h">

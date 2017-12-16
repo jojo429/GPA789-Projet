@@ -25,14 +25,14 @@ void SinusTable::set(int cycle, int average, int variation)
 {
 	mTable.clear();
 
-	double temporary = 0;
+	double temporary = 0.0;
 
 	if (mNoNegative)
 	{
 
 		for (int i(0); i < mLenght; i++)
 		{
-			temporary = average - variation*cos(((2 * 3.14159265 / cycle)*i));
+			temporary = average - variation*cos(((2 * 3.14159265 / static_cast<double>(cycle))*i));
 
 			if (temporary<0)
 				mTable.push_back(0);
@@ -46,7 +46,7 @@ void SinusTable::set(int cycle, int average, int variation)
 	{
 		for (int i(0); i < mLenght; i++)
 		{
-			mTable.push_back(average - variation*cos((2 * 3.14159265 / cycle)*i));
+			mTable.push_back(average - variation*cos((2 * 3.14159265 / static_cast<double>(cycle))*i));
 
 		}
 

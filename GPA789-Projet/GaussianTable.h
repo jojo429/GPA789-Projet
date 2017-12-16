@@ -10,7 +10,7 @@ public:
 	~GaussianTable();
 
 	void set(int mainValue, int spreadFactor);
-	double getValue(int position);
+	double getValue(int position) override;
 protected:
 	int mShiftFactor;
 };

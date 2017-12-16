@@ -35,19 +35,14 @@ private:
 	RandomUniform mGenerateAngle;
 	std::list<QSeeds*> mSeeds;
 
-	void move() override;
 	QGraphicsItem* getTarget();
 	QList<QGraphicsItem*> compareTargetList(QList<QGraphicsItem*> &newTarget);
-	void reproduce(int age);
-	void die(int age);
-	void eat();
 	void pickSeed();
-	void striked() override;
 	void setRotationAdjustment();
 	qreal getTargetDistance();
 	void advance(int phase) override;
 	QRectF boundingRect() const;
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = Q_NULLPTR);
+	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = Q_NULLPTR)override;
 
 };
 

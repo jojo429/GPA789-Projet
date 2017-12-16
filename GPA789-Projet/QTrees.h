@@ -19,13 +19,10 @@ public:
 
 	
 	void reproduce() override;
-	void die() override;
-	int getHeight();
+
 	int getRadius();
-	void adjustDryness();
-	void setOnFire();
 	void grow();
-	void striked() override;
+
 	treeType mTreeType;
 	virtual GaussianTable & growTable()=0;
 	virtual GaussianTable & precipirationGrowFactorTable()=0;
@@ -37,18 +34,14 @@ public:
 protected:
 	QColor mLeafColor;
 	QColor mTrunkColor;
-	double mHeight;
+
 	double mTrunkRadius;
 	double mLeafRadius;
-	int mDryness;
-	enum mState {isAlive, isDead, isOnFire};
-	bool mGotHit;
-	void advance(int phase);
+
+	void advance(int phase) override;
 	QRectF boundingRect() const;
 	
 	GaussianTable mEmpty;
-
-	static GaussianTable mReproduceTable;
 	RandomUniform mGenerateSeed;
 	
 

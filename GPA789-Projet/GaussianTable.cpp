@@ -23,7 +23,7 @@ void GaussianTable::set(int mainValue, int spreadFactor)
 	for (int x(mShiftFactor); x < (mLenght + mShiftFactor); x++)
 	{
 
-		mTable.push_back(exp(-((x - mainValue)*(x - mainValue)) / spreadFactor));
+		mTable.push_back(exp(-((x - mainValue)*(x - mainValue)) / static_cast<double>(spreadFactor)));
 	}
 
 }
