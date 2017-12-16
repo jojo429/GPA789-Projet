@@ -7,7 +7,7 @@ class QHazel : public QTrees
 {
 
 public:
-	QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
+	QHazel(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type);
 	~QHazel();
 
 	GaussianTable & growTable() override;

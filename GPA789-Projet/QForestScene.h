@@ -25,6 +25,7 @@ public:
 	void setStatistic(SimulationStatistics *simulationStatistics);
 	void windAngle(int windAngle);
 	int mWindAngle{ 0 };
+	void destroyDeadEntities();
 
 protected:
 
@@ -38,7 +39,9 @@ private:
 	RandomUniform mGenerateCoordinate;
 	QEnvironment const & mEnvironment;
 	SimulationStatistics * mSimulationStatistics;
-	
+	RandomUniform mGenerateLongLifespan;
+	RandomUniform mGenerateShortLifespan;
+	QList <QEntity*> mEntities;
 
 
 };

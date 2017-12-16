@@ -31,8 +31,9 @@ QEvolutionGraph::QEvolutionGraph(size_t nSeries, QWidget *parent)
 	mMaxNbData = mNbAdvanceInOneYear * 100;
 
 	mChart = new QChart;
-	//mChart->setTitle("DefaultTitle");
+	mChart->setTitle("DefaultTitle");
 	mChart->legend()->hide();
+	mChart->setMinimumWidth(700);
 
 	mChartView = new QChartView(mChart);
 	mChartView->setRenderHint(QPainter::Antialiasing);
@@ -143,12 +144,6 @@ void QEvolutionGraph::updateMinMaxValues(size_t index, int count) {
 
 void QEvolutionGraph::updateAxis() {
 
-	mXmax = mDataSeries[0]->at(mDataSeries[0]->count() - 1).x();
-
-	//Mise à jour de l'axe X
-	if (mXmax < mNbDataVisible) { mXAxis->setRange( mXmin			      , mNbDataVisible ); }
-	else						{ mXAxis->setRange( mXmax - mNbDataVisible, mXmax          ); }
-
 	//Mise à jour de l'axe Y
 	qreal yHiest{1};
 	qreal yLowest{0};
@@ -170,7 +165,19 @@ void QEvolutionGraph::updateAxis() {
 	bool yChanged{ false };
 	if (mYmin != yLowest) { yChanged = true; mYmin = yLowest; }
 	if (mYmax != yHiest) { yChanged = true; mYmax = yHiest; }
+	if (mYmin == mYmax) { yChanged = true; mYmax = mYmin + 1; }
 	if (yChanged) { mYAxis->setRange(mYmin, mYmax); }
+
+	mXmax = mDataSeries[0]->at(mDataSeries[0]->count() - 1).x();
+
+	//Mise à jour de l'axe X
+	if (initVariables) {
+		mXAxis->setRange(mXmin, 1);
+	}
+	else {
+		if (mXmax < mNbDataVisible) { mXAxis->setRange(mXmin, mNbDataVisible); }
+		else { mXAxis->setRange(mXmax - mNbDataVisible, mXmax); }
+	}
 }
 
 void QEvolutionGraph::setDataSerieVisibility(int index, bool setVisible) {

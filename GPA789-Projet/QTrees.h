@@ -14,8 +14,8 @@ class QTrees : public QStatic
 	
 public:
 
-	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
-	~QTrees();
+	QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan, generalType type);
+	virtual ~QTrees();
 
 	
 	void reproduce() override;
@@ -24,6 +24,7 @@ public:
 	void grow();
 
 	treeType mTreeType;
+	generalType mGeneralType;
 	virtual GaussianTable & growTable()=0;
 	virtual GaussianTable & precipirationGrowFactorTable()=0;
 	virtual GaussianTable & luminosityGrowFactorTable()=0;

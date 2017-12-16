@@ -7,7 +7,7 @@ class QOak : public QTrees
 {
 
 public:
-	QOak(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan);
+	QOak(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type);
 	~QOak();
 
 	GaussianTable & growTable() override;
