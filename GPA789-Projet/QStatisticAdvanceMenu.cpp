@@ -3,6 +3,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
+#include <QSizePolicy>
 
 QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDeviationOption, bool minMaxOption, QString groupBoxName, QWidget *parent)
 	: QWidget(parent), mMeanOption{ meanOption }, mStandardDeviationOption{ standardDeviationOption }, mMinMaxOption{ minMaxOption }
@@ -61,6 +62,10 @@ QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDevia
 
 	QGroupBox * statisticGroupBox = new QGroupBox(groupBoxName);
 	statisticGroupBox->setLayout(prepLayout);
+	//statisticGroupBox->setFixedWidth(250);
+	//statisticGroupBox->setFixedHeight(statisticGroupBox->sizeHint());
+	statisticGroupBox->setFixedSize(statisticGroupBox->sizeHint());
+	//statisticGroupBox->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
 
 	QVBoxLayout * mainLayout = new QVBoxLayout;
 	mainLayout->addWidget(statisticGroupBox);
