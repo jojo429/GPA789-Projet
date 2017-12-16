@@ -29,6 +29,14 @@ private:
 	QStatisticAdvanceMenu * mPrecipitationStat;
 	QStatisticAdvanceMenu * mLuminosityStat;
 	QStatisticAdvanceMenu * mWindStat;
+	
+	QStatisticAdvanceMenu * mTreesStat;
+	QStatisticAdvanceMenu *	mOakStat;
+	QStatisticAdvanceMenu *	mFirStat;
+	QStatisticAdvanceMenu *	mBirchStat;
+	QStatisticAdvanceMenu *	mHazelStat;
+	QStatisticAdvanceMenu * mSeedsStat;
+	QStatisticAdvanceMenu *	mGerminationStat;
 
 	QLabel * mTicTimeValue;
 	QLabel * mNbAdvanceCountValue;
@@ -40,6 +48,14 @@ private slots:
 	void setPrecipitationVisible(bool isVisible);
 	void setLuminosityVisible(bool isVisible);
 	void setWindVisible(bool isVisible);
+
+	void setTreesVisible(bool isVisible);
+	void setOakVisible(bool isVisible);
+	void setFirVisible(bool isVisible);
+	void setBirchVisible(bool isVisible);
+	void setHazelVisible(bool isVisible);
+	void setSeedsVisible(bool isVisible);
+	void setGerminationVisible(bool isVisible);
 
 };
 #endif //Q_STATISTIC_H
