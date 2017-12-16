@@ -3,7 +3,6 @@
 #include <math.h>
 
 #include <array>
-#include <QDebug>
 #include <QColor>
 #include <QImage>
 

@@ -20,11 +20,12 @@
 #include <QVBoxLayout>
 #include <QSlider>
 
+#include "QFertility.h"
+
 GPA789Projet::GPA789Projet(QWidget *parent)
 	: QMainWindow(parent), mForestScene(mEnvironment)
 {
 	ui.setupUi(this);
-
 
 
 	QSimulation *mSimulation = new QSimulation(mForestScene, mEnvironment);
