@@ -22,6 +22,7 @@ public:
 	void setMapValue(int x, int y, double value); // Mise à jour de la valeur à un point donné de la carte
 	void resizeMap(); // Redimensionner la taille visuelle de la carte et ajuster ses valeurs (Si on veut le rendre plus modulaire -> void resizeMap(int resizeValue)
 	void resizeOnePixel(int nextPixelIndexX, int nextPixelIndexY, int pixelIndexX, int pixelIndexY);
+	QPixmap getPixmap();
 
 private:
 	int mMin;

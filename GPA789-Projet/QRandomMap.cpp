@@ -12,7 +12,6 @@ QRandomMap::QRandomMap(QWidget *parent)
 {
 	mPixelsMap = QPixmap(513, 513);
 	mPainterMap = new QPainter(&mPixelsMap);
-
 }
 
 QRandomMap::~QRandomMap()
@@ -140,9 +139,8 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 		}
 	}
 
-	/*
-	QImage image = mPixelsMap.toImage();
-	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");*/
+	//QImage image = mPixelsMap.toImage();
+	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
 }
 
 void QRandomMap::updateDrawMap(int x, int y)
@@ -226,4 +224,9 @@ void QRandomMap::resizeOnePixel(int nextPixelIndexX, int nextPixelIndexY, int pi
 			mMapResize[nextPixelIndexX + i][nextPixelIndexY + j] = mMap[pixelIndexX][pixelIndexY];
 		}
 	}
+}
+
+QPixmap QRandomMap::getPixmap()
+{
+	return mPixelsMap;
 }

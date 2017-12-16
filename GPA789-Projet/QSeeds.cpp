@@ -55,8 +55,8 @@ void QSeeds::germinate()
 void QSeeds::move()
 {
 	mHeight = mHeight--;
-	double x = cos(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360)*mEnvironment.mFactors[3] / 20.0;
-	double y = sin(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360)*mEnvironment.mFactors[3] / 20.0;
+	double x = -sin(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360.0)*mEnvironment.mFactors[3] / 20.0;
+	double y = cos(2 * 3.1416* (mForestScene.mWindAngle + mGenerateAngle.random())/ 360.0)*mEnvironment.mFactors[3] / 20.0;
 
 	if ((((this->pos().x() + x)>2045) || ((this->pos().x() + x)<5))||((this->pos().y() + x)>2045 || (this->pos().y() + x)<5))
 	{
@@ -92,7 +92,7 @@ QRectF QSeeds::boundingRect() const
 {
 	//QRectF(qreal x, qreal y, qreal width, qreal height)
 	//return QRectF(0.0 - mSeedRadius, 0.0 - mSeedRadius, mSeedRadius * 2.0, mSeedRadius * 2.0);
-	return QRectF(0.0 - mSeedRadius, 0.0 - (mSeedRadius - mSeedRadius * 0.5), mSeedRadius, mSeedRadius - mSeedRadius * 0.5);
+	return QRectF(0.0 - mSeedRadius, 0.0 - (mSeedRadius - mSeedRadius * 0.5), mSeedRadius*5, (mSeedRadius - mSeedRadius * 0.5)*5);
 }
 
 void QSeeds::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)

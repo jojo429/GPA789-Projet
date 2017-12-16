@@ -40,30 +40,21 @@ QGraphicsItem * QSquirrel::getTarget()
 	}
 	else 
 	{
-		for (QGraphicsItem * item : inRangeItems) {
+		for (QGraphicsItem * item : inRangeItems) 
+		{
 			//If there's a tree in the vision radius
 			if (mSeeds.size() < mSeedsLimit) 
 			{
 				QSeeds * currentItem = dynamic_cast<QSeeds *>(item);
 				if(currentItem)
 				{
-					if (currentItem->getHeight() == 0) {
+					if (currentItem->getHeight() == 0) 
+					{
 						mTargetType = Seed;
 						return item;
 					}
-					
 				}
 			}	
-			QTrees * currentItem = dynamic_cast<QTrees *>(item);
-			if (currentItem) 
-			{
-				mTargetType = Trees;
-				tree = item;
-			}
-		}
-		if (tree != Q_NULLPTR)
-		{
-			return tree;
 		}
 	}
 	return nullptr;
