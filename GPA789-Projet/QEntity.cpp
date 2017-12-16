@@ -2,7 +2,7 @@
 #include "QForestScene.h"
 
 QEntity::QEntity(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan)
-	: mEnvironment{ environment }, mForestScene{ forestscene }, mLifeSpan{ lifeSpan }
+	: mEnvironment{ environment }, mForestScene{ forestscene }, mLifeSpan{ lifeSpan }, mDied(1,100)
 {
 
 }
@@ -20,9 +20,11 @@ void QEntity::reproduce()
 
 void QEntity::die()
 {
-	if (mAge > mLifeSpan)
+	if (mAge > mLifeSpan && mDied.random()==1)
 	{
 		mIsDead = true;
+		this->setVisible(false);
+
 	}
 }
 

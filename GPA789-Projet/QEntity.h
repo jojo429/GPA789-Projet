@@ -38,6 +38,7 @@ protected:
 	QPen mPen;
 	int mHeight;
 	void advanceTime();
+	RandomUniform mDied;
 };
 
 #endif //Q_ENTITY_H
