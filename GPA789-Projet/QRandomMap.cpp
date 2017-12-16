@@ -138,9 +138,6 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 			mPainterMap->drawPoint(i, j);
 		}
 	}
-
-	//QImage image = mPixelsMap.toImage();
-	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
 }
 
 void QRandomMap::updateDrawMap(int x, int y)
@@ -159,10 +156,6 @@ void QRandomMap::updateDrawMap(int x, int y)
 	mapColor.setRgb(mRColor * shade, mGColor * shade, mBColor * shade);
 	mPainterMap->setPen(mapColor);
 	mPainterMap->drawPoint(realX, realY);
-	
-	/*
-	QImage image = mPixelsMap.toImage();
-	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest2.png");*/
 }
 
 double QRandomMap::getMapValue(int x, int y)
@@ -204,15 +197,6 @@ void QRandomMap::resizeMap()
 			nextY = 0;
 		}
 	}
-
-	/*
-	qDebug() << QString::number(mMapResize[0][3]);
-	qDebug() << QString::number(mMapResize[2][2]);
-	qDebug() << QString::number(mMapResize[3][2]);
-	qDebug() << QString::number(mMap[0][0]);
-	qDebug() << QString::number(nextX);
-	qDebug() << QString::number(nextY);*/
-
 }
 
 void QRandomMap::resizeOnePixel(int nextPixelIndexX, int nextPixelIndexY, int pixelIndexX, int pixelIndexY)

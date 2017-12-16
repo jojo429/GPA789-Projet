@@ -3,7 +3,6 @@
 QSimulationAdvancementOptions::QSimulationAdvancementOptions(QWidget *parent)
 	: QWidget(parent)
 {
-
 }
 
 QSimulationAdvancementOptions::QSimulationAdvancementOptions(QString caption, QString iconName)

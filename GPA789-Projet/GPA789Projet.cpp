@@ -5,6 +5,7 @@
 #include "QStatistic.h"
 #include "QRandomMap.h"
 #include "SimulationStatistics.h"
+#include "QSupplement.h"
 
 #include <QGraphicsGridLayout>
 #include <QGraphicsView>
@@ -28,11 +29,13 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 
 	QSimulation *mSimulation = new QSimulation(mForestScene, mEnvironment);
 	QStatistic *mStatistic = new QStatistic;
+	QSupplement *mSupplement = new QSupplement;
 
 	QTabWidget *mMainTab = new QTabWidget;
 
 	mMainTab->addTab(mSimulation, "Simulation");
 	mMainTab->addTab(mStatistic, "Statistics");
+	mMainTab->addTab(mSupplement, "Supplement");
 
 	
 	connect(mSimulation, &QSimulation::advanceDone, mStatistic, &QStatistic::updateData);
