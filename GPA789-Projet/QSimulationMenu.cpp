@@ -131,6 +131,8 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 
 	//Comportement du bouton step
 	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::step);
+	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezeStopButton);
+
 
 	//Comportement du bouton d'angle du vent
 	connect(mAngleDial, &QDial::valueChanged, this, &QSimulationMenu::windAngle);
