@@ -6,14 +6,14 @@
 
 
 QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan )
-	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(1, 6), mTreeType{ value }, mEmpty(0,0,0)
+	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(0, 2), mTreeType{ value }, mEmpty(0,0,0), mGenerateTime(700,1500)
 {
 	
 	mAge = 0;
 	mLeafRadius = 1;
 	mTrunkRadius = 0.2 * mLeafRadius;
 	mHeight = 4 * mLeafRadius;
-
+	mReproductiveTime = mGenerateTime.random();
 
 
 }
@@ -28,11 +28,9 @@ void QTrees::reproduce()
 	
 		
 
-	for (int i{ 0 }; i < mGenerateSeed.random(); ++i) {
-
-			
+	for (int i{ 0 }; i < mGenerateSeed.random(); ++i) 
+	{	
 		mForestScene.createSeed(this);
-
 	}
 
 }
@@ -74,7 +72,7 @@ void QTrees::advance(int phase)
 			update();
 		}
 
-		if (mTime == 1000)
+		if (mTime == mReproductiveTime && !mIsDead)
 		{
 			reproduce();
 		}

@@ -43,6 +43,9 @@ protected:
 	
 	GaussianTable mEmpty;
 	RandomUniform mGenerateSeed;
+	RandomUniform mGenerateTime;
+	int mReproductiveTime;
+
 	
 
 };
