@@ -30,6 +30,15 @@ public:
 
 	void freeze();
 	void unfreeze();
+	void freezePlayButton();
+	void freezeStepButton();
+	void freezePauseButton();
+	void freezeStopButton();
+	void unfreezePlayButton();
+	void unfreezeStepButton();
+	void unfreezePauseButton();
+	void unfreezeStopButton();
+	void initAdvancementButtons();
 	int getTimeScaleValue();
 	int getAngleDialValue();
 	void setAdvanceCounter(int advanceCounter);
