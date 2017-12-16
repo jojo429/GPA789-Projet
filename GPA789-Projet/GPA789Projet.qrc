@@ -11,5 +11,6 @@
         <file alias="iconThunder">Resources/iconThunder.png</file>
         <file alias="iconForest">Resources/iconForest.png</file>
         <file alias="iconSquirrel">Resources/iconSquirrel.png</file>
+        <file alias="iconForestSimulation">Resources/iconForestSimulation.png</file>
     </qresource>
 </RCC>
