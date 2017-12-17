@@ -85,7 +85,7 @@ void QTrees::advance(int phase)
 
 		}
 	
-		if (mTime == mReproductiveTime && !mIsDead)
+		if (mTime == mReproductiveTime)
 		{
 			reproduce();
 		}

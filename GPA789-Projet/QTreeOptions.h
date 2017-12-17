@@ -25,7 +25,7 @@ private:
 	QGridLayout *mTreeOptionsGridLayout;
 
 protected slots:
-	void updateValues();
+	void updateValues(); // Mise à jour de la valeur d'affichage
 };
 
 #endif //Q_TREE_OPTIONS_H

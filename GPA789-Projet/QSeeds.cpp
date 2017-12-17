@@ -97,8 +97,8 @@ QRectF QSeeds::boundingRect() const
 
 void QSeeds::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {
-	QBrush brush(Qt::black);
-	QPen pen = QPen(Qt::black, 2);
+	QBrush brush(QColor(219,195,109));
+	QPen pen = QPen(QColor(219, 195, 109), 2);
 	QPointF center = QPointF(0, 0);
 
 	//Dessine les graines

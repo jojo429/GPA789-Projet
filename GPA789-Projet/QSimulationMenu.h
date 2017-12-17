@@ -7,14 +7,12 @@
 #include "QSimulationAdvancementOptions.h"
 #include "QSimulationTimeScale.h"
 #include "SimulationParameters.h"
+
 #include <QWidget>
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QSlider>
-#include <QCheckBox>
-#include <QRadioButton>
-#include <QPixmap>
 #include <QGroupBox>
 #include <QDial>
 
@@ -26,22 +24,21 @@ public:
 	QSimulationMenu(QWidget *parent = Q_NULLPTR);
 	~QSimulationMenu();
 
-	void getParameters(SimulationParameters *simulationParameters);
-
-	void freeze();
-	void unfreeze();
-	void freezePlayButton();
-	void freezeStepButton();
-	void freezePauseButton();
-	void freezeStopButton();
-	void unfreezePlayButton();
-	void unfreezeStepButton();
-	void unfreezePauseButton();
-	void unfreezeStopButton();
-	void initAdvancementButtons();
-	int getTimeScaleValue();
-	int getAngleDialValue();
-	void setAdvanceCounter(int advanceCounter);
+	void getParameters(SimulationParameters *simulationParameters); // Permet de récupérer tous les paramètres de la simulation
+	void freeze(); // Disable les sliders des facteurs suivants: luminosity, precipitation, wind, temperature, oak, birch, hazel, fir, squirrel
+	void unfreeze(); // Enable les sliders des facteurs suivants: luminosity, precipitation, wind, temperature, oak, birch, hazel, fir, squirrel
+	void freezePlayButton(); // Disable le bouton play
+	void freezeStepButton(); // Disable le bouton step
+	void freezePauseButton(); // Disable le bouton pause
+	void freezeStopButton(); // Disable le bouton stop
+	void unfreezePlayButton(); // Enable le bouton play
+	void unfreezeStepButton(); // Enable le bouton step
+	void unfreezePauseButton(); // Enable le bouton pause
+	void unfreezeStopButton(); // Enable le bouton stop
+	void initAdvancementButtons(); // Initialise l'état des boutons suivantes: play, step, pause, stop
+	int getTimeScaleValue(); // Retourner la valeur du time scale
+	int getAngleDialValue(); // Retourner l'angle du vent
+	void setAdvanceCounter(int advanceCounter); // Affichage le compteur d'advance
 
 signals:
 	void play();
@@ -50,12 +47,7 @@ signals:
 	void step();
 	void windAngle(int angle);
 
-
-	
-
 private:
-	
-
 	QVBoxLayout *mMenuLayout;
 	QHBoxLayout *mBottomMenuLayout;
 	QVBoxLayout *mOptionsLayout;
@@ -67,8 +59,6 @@ private:
 	QHBoxLayout *mAngleDialLayout;
 	QGridLayout *mMenuGridLayout;
 
-	QPixmap mThunderIcon;
-
 	QSimulationAdvancementOptions *mPlayButton;
 	QSimulationAdvancementOptions *mPauseButton;
 	QSimulationAdvancementOptions *mStopButton;
@@ -76,8 +66,6 @@ private:
 
 	QSimulationTimeScale *mTimeScaleSlider;
 	QLabel *mAdvanceCounterLabel;
-
-	QCheckBox *mThunderButton;
 
 	QCyclicOptions *mLuminosity;
 	QCyclicOptions *mWind;

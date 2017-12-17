@@ -4,27 +4,19 @@
 #include "QPonctual.h"
 #include "QRandomMap.h"
 
-#include <list>
-#include <QImage>
-#include <QPointF>
-#include <QPainter>
-
 class QFertility : public QPonctual
 {
 
 public:
 	QFertility();
 	~QFertility();
-	double getFertility(int x, int y) const;
-	void setFertility(double minValue, double maxValue);
-	void updateFertility(int x, int y, double fertility);
-	QPixmap getFertilityPixmap();
 
+	double getFertility(int x, int y) const; // Obtenir la fertilité à un point(x,y) donné
+	void setFertility(double minValue, double maxValue);  // Générer la carte de fertilités initiale
+	QPixmap getFertilityPixmap(); // Obtenir le pixmap de la carte de fertilités
 
 private:
 	QRandomMap *mFertilityMap;
-
-
 
 };
 

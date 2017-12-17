@@ -44,6 +44,7 @@ private:
 	SimulationStatistics mSimulationStatistics;
 	QSimulationMenu *mSimulationMenu;
 	QGraphicsView *mForestView;
+	int mZoomLimit{ 0 };
 
 	int mAdvanceCounter{ 0 };
 	bool mStarted{ false };
