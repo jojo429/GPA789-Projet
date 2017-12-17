@@ -22,7 +22,7 @@ class QBirch : public QTrees
 
 public:
 	QBirch(QEnvironment const & environment, QForestScene & forestscene,  int lifeSpan, treeType tree, generalType type);
-	~QBirch();
+	~QBirch()=default;
 
 	GaussianTable & growTable() override;
 	GaussianTable & precipirationGrowFactorTable() override;

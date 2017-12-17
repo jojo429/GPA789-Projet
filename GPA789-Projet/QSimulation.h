@@ -31,7 +31,7 @@ class QSimulation : public QWidget
 
 public:
 	QSimulation(QForestScene & forestScene, QEnvironment & environment, QWidget *parent = Q_NULLPTR);
-	~QSimulation();
+	~QSimulation()=default;
 
 signals:
 	 void sendStatistics(SimulationStatistics stats);

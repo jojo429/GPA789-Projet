@@ -1,7 +1,7 @@
-// QSquirrel.cpp
+// QSquirrel.h
 //
 // Description:
-// Création et comportement d'un écureuil
+// Classe gérant la création et le comportement d'une entité de type écureuil.
 //
 //
 // Auteurs:
@@ -28,11 +28,6 @@ QSquirrel::QSquirrel(QEnvironment const & environment, QForestScene & forestscen
 
 
 		 
-}
-
-QSquirrel::~QSquirrel()
-{
-
 }
 
 

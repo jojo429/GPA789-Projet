@@ -26,7 +26,7 @@ class QEvolutionGraph : public QWidget
 
 public:
 	QEvolutionGraph(size_t nSeries = 1, QWidget *parent = Q_NULLPTR);
-	~QEvolutionGraph();
+	~QEvolutionGraph()=default;
 
 	void addPoint(size_t index, qreal t, qreal value);
 	void initializeGraph(QString xAxisName, QString yAxisName, QString graphTitle);

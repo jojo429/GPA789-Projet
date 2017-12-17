@@ -26,7 +26,7 @@ class QStatisticAdvanceMenu : public QWidget
 
 public:
 	QStatisticAdvanceMenu(bool setMean, bool setStandardDeviation, bool setMinMax, QString groupBoxName = "Default Name", QWidget *parent = Q_NULLPTR);
-	~QStatisticAdvanceMenu();
+	~QStatisticAdvanceMenu()=default;
 
 	void setNewValue(int count, qreal value);
 

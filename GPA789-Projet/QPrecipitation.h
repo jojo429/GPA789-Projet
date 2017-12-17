@@ -23,7 +23,7 @@ class QPrecipitation : public QCyclic
 
 public:
 	QPrecipitation(int cycle, int average, int variation);
-	~QPrecipitation();
+	~QPrecipitation()=default;
 
 };
 

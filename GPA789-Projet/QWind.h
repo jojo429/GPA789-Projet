@@ -23,7 +23,7 @@ class QWind : public QCyclic
 
 public:
 	QWind(int cycle, int average, int variation);
-	~QWind();
+	~QWind()=default;
 
 };
 

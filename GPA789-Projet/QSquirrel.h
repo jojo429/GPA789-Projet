@@ -24,7 +24,7 @@ class QSquirrel : public QAnimals
 
 public:
 	QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, treeType tree, generalType type);
-	~QSquirrel();
+	~QSquirrel()=default;
 
 	enum TargetType {
 		NoTarget = 0,

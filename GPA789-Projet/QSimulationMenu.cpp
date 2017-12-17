@@ -1,5 +1,18 @@
-#include "QSimulationMenu.h"
+// QSimulationMenu.h
+//
+// Description:
+// Widget gérant l'affichage et la connection du menu de la section simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
 
+#include "QSimulationMenu.h"
 #include "QSimulation.h"
 #include <QLabel>
 #include <QScrollArea>
@@ -174,14 +187,9 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	setLayout(mMenuLayout);
 }
 
-QSimulationMenu::~QSimulationMenu()
-{
-
-}
-
-
 void QSimulationMenu::getParameters(SimulationParameters *simulationParameters)
 {
+	// Récupération des paramètres de la simulation selon les choix de l'utilisateur
 	simulationParameters->mPrecipitationAverage = mPrecipitation->getAverageValue();
 	simulationParameters->mPrecipitationCycle = mPrecipitation->getCycleValue();
 	simulationParameters->mPrecipitationVariation = mPrecipitation->getVariationValue();
@@ -203,6 +211,7 @@ void QSimulationMenu::getParameters(SimulationParameters *simulationParameters)
 
 void QSimulationMenu::freeze()
 {
+	// Empêche l'utilisateur de changer les paramètres durant la simulation
 	mLuminosity->setEnabled(false);
 	mPrecipitation->setEnabled(false);
 	mTemperature->setEnabled(false);
@@ -216,6 +225,7 @@ void QSimulationMenu::freeze()
 
 void QSimulationMenu::unfreeze()
 {
+	// Remet les paramètres disponibles
 	mLuminosity->setEnabled(true);
 	mPrecipitation->setEnabled(true);
 	mTemperature->setEnabled(true);
@@ -227,6 +237,7 @@ void QSimulationMenu::unfreeze()
 	mSquirrel->setEnabled(true);
 }
 
+// Les huit fonction suivantes permettent de griser et de dégriser les boutons d'avancement de la simulation
 void QSimulationMenu::freezePlayButton()
 {
 	mPlayButton->setEnabled(false);
@@ -267,6 +278,7 @@ void QSimulationMenu::unfreezeStopButton()
 	mStopButton->setEnabled(true);
 }
 
+// Initialisation des boutons d'avancement de la simulation
 void QSimulationMenu::initAdvancementButtons()
 {
 	mPlayButton->setEnabled(true);
@@ -275,16 +287,18 @@ void QSimulationMenu::initAdvancementButtons()
 	mStopButton->setEnabled(false);
 }
 
+// Retournent le facteur de temps de la simulation
 int QSimulationMenu::getTimeScaleValue() {
 	return mTimeScaleSlider->getValue();
 }
 
+// Retourne l'angle du vent choisis par l'utilisateur
 int QSimulationMenu::getAngleDialValue()
 {
 	return mAngleDial->value();
 }
 
-
+// Affiche le compteur de advance
 void QSimulationMenu::setAdvanceCounter(int advanceCounter)
 {
 	mAdvanceCounterLabel->setText(QString::number(advanceCounter));

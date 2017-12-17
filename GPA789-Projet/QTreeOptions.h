@@ -27,7 +27,7 @@ class QTreeOptions : public QWidget
 public:
 	QTreeOptions(QWidget *parent = Q_NULLPTR);
 	QTreeOptions(QString treeName, int minNumbTrees, int maxNumbTrees, int numbTreesInit);
-	~QTreeOptions();
+	~QTreeOptions()=default;
 	int getValue();
 
 private:

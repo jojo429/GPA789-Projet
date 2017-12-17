@@ -36,7 +36,7 @@ class QSimulationMenu : public QWidget
 
 public:
 	QSimulationMenu(QWidget *parent = Q_NULLPTR);
-	~QSimulationMenu();
+	~QSimulationMenu()=default;
 
 	void getParameters(SimulationParameters *simulationParameters); // Permet de récupérer tous les paramètres de la simulation
 	void freeze(); // Disable les sliders des facteurs suivants: luminosity, precipitation, wind, temperature, oak, birch, hazel, fir, squirrel

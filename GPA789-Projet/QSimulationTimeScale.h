@@ -29,7 +29,7 @@ class QSimulationTimeScale : public QWidget
 public:
 	QSimulationTimeScale(QWidget *parent = Q_NULLPTR);
 	QSimulationTimeScale(QString caption, QString iconNameLow, QString iconNameHigh);
-	~QSimulationTimeScale();
+	~QSimulationTimeScale()=default;
 	int getValue();
 
 private:

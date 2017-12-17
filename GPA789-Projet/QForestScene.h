@@ -32,7 +32,7 @@ class QForestScene : public QGraphicsScene
 
 public:
 	QForestScene(QEnvironment & enviromnent, QGraphicsScene * parent = Q_NULLPTR);
-	~QForestScene();
+	~QForestScene()=default;
 
 	void createSeed(QTrees* parent);
 	void createTree(QSeeds* parent);
@@ -43,8 +43,6 @@ public:
 	void destroyDeadEntities();
 
 private:
-	void closestTree(QPointF pt2D);
-	void lightningStrike(QPointF pt2D);
 	QBrush mBackgroundBrush{ QColor(239, 247, 153) };
 	RandomUniform mGenerate;
 	RandomUniform mGenerateCoordinate;

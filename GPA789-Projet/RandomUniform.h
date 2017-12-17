@@ -22,7 +22,7 @@ class RandomUniform : public RandomGenerator
 
 public:
 	RandomUniform(int min = 0, int max = 100);
-	~RandomUniform();
+	~RandomUniform()=default;
 
 	int random();
 	int random(int min, int max);

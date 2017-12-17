@@ -22,8 +22,7 @@ class QTemperature : public QCyclic
 
 public:
 	QTemperature(int cycle, int average, int variation);
-	~QTemperature();
-
+	~QTemperature()=default;
 };
 
 #endif //Q_TEMPERATURE_H

@@ -1,5 +1,18 @@
-#include "QSupplement.h"
+// QSupplement.h
+//
+// Description:
+// Widget gérant l'affichage du menu à propos de l'application.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
 
+#include "QSupplement.h"
 #include <QApplication>
 
 QSupplement::QSupplement(QWidget * parent)

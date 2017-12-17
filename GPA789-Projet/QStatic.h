@@ -22,7 +22,7 @@ class QStatic : public QEntity
 
 public:
 	QStatic(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, treeType tree, generalType type);
-	virtual ~QStatic();
+	virtual ~QStatic()=default;
 
 };
 #endif //Q_STATIC_H

@@ -29,40 +29,30 @@ class QTrees : public QStatic
 public:
 
 	QTrees(QEnvironment const & environment, QForestScene & forestscene,  int lifeSpan, treeType tree, generalType type);
-	virtual ~QTrees();
-	
+	virtual ~QTrees()=default;
 	
 	void reproduce() override;
 	double getShadowGrowFactor();
 	int getRadius();
 	void grow();
-
 	virtual GaussianTable & growTable()=0;
 	virtual GaussianTable & precipirationGrowFactorTable()=0;
 	virtual GaussianTable & luminosityGrowFactorTable()=0;
 	virtual GaussianTable & temperatureGrowFactorTable()=0;
 
-
-
 protected:
 	QColor mLeafColor;
 	QColor mTrunkColor;
-	
 	double mTrunkRadius;
 	double mLeafRadius;
 	double mShadowFactor{1};
-
 	void advance(int phase) override;
 	QRectF boundingRect() const;
-	
 	QList<QGraphicsItem *> mShadowList;
-
 	GaussianTable mEmpty;
-	RandomUniform mGenerateSeed;
-	RandomUniform mGenerateTime;
-	int mReproductiveTime;
-
-	
+	static RandomUniform mGenerateSeed;
+	static RandomUniform mGenerateTime;
+	int mReproductiveTime;	
 
 };
 

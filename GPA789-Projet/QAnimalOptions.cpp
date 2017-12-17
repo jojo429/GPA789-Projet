@@ -1,3 +1,17 @@
+// QAnimalOptions.h
+//
+// Description:
+// Widget Graphique permettant de choisir le nombre d'animal voulu.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "QAnimalOptions.h"
 
 QAnimalOptions::QAnimalOptions(QWidget *parent)
@@ -33,13 +47,10 @@ QAnimalOptions::QAnimalOptions(QString animalName, int minNumbAnimals, int maxNu
 	setLayout(mAnimalOptionsGridLayout);
 }
 
-QAnimalOptions::~QAnimalOptions()
-{
-
-}
 
 void QAnimalOptions::updateValues()
 {
+	// Met à jour le label du slider
 	mAnimalValue->setText(QString::number(mAnimalSlider->value()));
 }
 

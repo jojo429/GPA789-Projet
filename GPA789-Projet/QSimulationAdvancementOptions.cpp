@@ -1,3 +1,17 @@
+// QSimlationAdvancementOptions.cpp
+//
+// Description:
+// Widget gérant l'affichage d'un bouton de simulation (play, pause, stop, step).
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "QSimulationAdvancementOptions.h"
 
 QSimulationAdvancementOptions::QSimulationAdvancementOptions(QWidget *parent)
@@ -22,10 +36,6 @@ QSimulationAdvancementOptions::QSimulationAdvancementOptions(QString caption, QS
 	connect(mButton, &QPushButton::clicked, this, & QSimulationAdvancementOptions::clicked);
 }
 
-QSimulationAdvancementOptions::~QSimulationAdvancementOptions()
-{
-
-}
 
 
 

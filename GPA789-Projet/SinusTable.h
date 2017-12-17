@@ -21,7 +21,7 @@ class SinusTable : public FunctionTable
 {
 public:
 	SinusTable(int cycle, int average, int variation, int lenght, bool noNegative);
-	~SinusTable();
+	~SinusTable()=default;
 
 	void set(int cycle, int average, int variation);
 

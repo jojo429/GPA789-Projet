@@ -21,10 +21,8 @@ class QPonctual : public QEnvironmentalFactor
 {
 
 public:
-	QPonctual();
-	virtual ~QPonctual();
-
-
+	QPonctual()=default;
+	virtual ~QPonctual()=default;
 };
 
 #endif //Q_PONCTUAL_H

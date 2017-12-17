@@ -1,14 +1,21 @@
+// QRandomUniform.cpp
+//
+// Description:
+// classe permettant de créer une distribution uniforme de nombre aléatoires.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "RandomUniform.h"
-
-
 
 RandomUniform::RandomUniform(int min, int max) 
 	: mDistribution(min, max)
-{
-}
-
-
-RandomUniform::~RandomUniform()
 {
 }
 

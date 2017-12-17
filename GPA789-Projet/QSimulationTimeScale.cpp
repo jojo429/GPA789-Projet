@@ -1,3 +1,17 @@
+// QSimulationTimeScale.cpp
+//
+// Description:
+// Widget gérant l'affichage d'un slider de contrôle du temps.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "QSimulationTimeScale.h"
 
 QSimulationTimeScale::QSimulationTimeScale(QWidget *parent)
@@ -5,7 +19,8 @@ QSimulationTimeScale::QSimulationTimeScale(QWidget *parent)
 {
 }
 
-QSimulationTimeScale::QSimulationTimeScale(QString caption, QString iconNameLow, QString iconNameHigh) {
+QSimulationTimeScale::QSimulationTimeScale(QString caption, QString iconNameLow, QString iconNameHigh) 
+{
 	mIconLow = QPixmap(iconNameLow);
 	mIconHigh = QPixmap(iconNameHigh);
 
@@ -39,9 +54,6 @@ QSimulationTimeScale::QSimulationTimeScale(QString caption, QString iconNameLow,
 
 	//Show layout
 	setLayout(mLayout);
-}
-QSimulationTimeScale::~QSimulationTimeScale()
-{
 }
 
 int QSimulationTimeScale::getValue()

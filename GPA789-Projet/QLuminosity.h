@@ -22,7 +22,7 @@ class QLuminosity : public QCyclic
 
 public:
 	QLuminosity(int cycle, int average, int variation);
-	~QLuminosity();
+	~QLuminosity()=default;
 
 };
 

@@ -1,7 +1,20 @@
+// QRandomMap.h
+//
+// Description:
+// Widget permetant de générer une carte de valeurs aléatoires et de la transformer en image.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "QRandomMap.h"
 #include "RandomUniform.h"
 #include <math.h>
-
 #include <array>
 #include <QColor>
 #include <QImage>
@@ -13,10 +26,6 @@ QRandomMap::QRandomMap(QWidget *parent)
 	mPainterMap = new QPainter(&mPixelsMap);
 }
 
-QRandomMap::~QRandomMap()
-{
-
-}
 
 void QRandomMap::setMap()
 {

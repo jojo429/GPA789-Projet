@@ -27,7 +27,7 @@ class QSimulationAdvancementOptions : public QWidget
 public:
 	QSimulationAdvancementOptions(QWidget *parent = Q_NULLPTR );
 	QSimulationAdvancementOptions(QString caption, QString iconName);
-	~QSimulationAdvancementOptions();
+	~QSimulationAdvancementOptions()=default;
 
 signals:
 	void clicked();

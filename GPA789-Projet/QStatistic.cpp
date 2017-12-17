@@ -1,3 +1,17 @@
+// QStatistic.cpp
+//
+// Description:
+// Widget gérant l'affichage de l'onglet statistique de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "QStatistic.h"
 #include <QVBoxLayout>
 #include <QGroupBox>
@@ -107,9 +121,6 @@ QStatistic::QStatistic(QWidget *parent)
 	connect(mGerminationStat, &QStatisticAdvanceMenu::showGraphToggled, this, &QStatistic::setGerminationVisible);
 }
 
-QStatistic::~QStatistic()
-{
-}
 
 void QStatistic::addPoints(SimulationStatistics stats) 
 {

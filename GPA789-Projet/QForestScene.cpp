@@ -1,3 +1,17 @@
+// QForestScene.cpp
+//
+// Description:
+// Classe principale héritant de QGraphicsScene et contrôlant les entités de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "QForestScene.h"
 #include "QSeeds.h"
 #include "QOak.h"
@@ -16,25 +30,15 @@
 QForestScene::QForestScene(QEnvironment & environment, QGraphicsScene * parent)
 	: QGraphicsScene(parent), mGenerate(-100, 100), mEnvironment{environment}, mGenerateCoordinate(5,2045), mGenerateShortLifespan(0,1), mGenerateLongLifespan(1,2)
 {
-	//Delimitation de la zone de simulation
-
-
-
+	//Delimitation de la zone de simulation et affichage de la fertilité
 	QPixmap fertilityPixmap = (mEnvironment.mFertility).getFertilityPixmap();
-
 	this->setSceneRect(0, 0, 2052, 2052);
 	this->setBackgroundBrush(QBrush(fertilityPixmap.scaled(2052, 2052, Qt::KeepAspectRatio)));
 }
 
-
-QForestScene::~QForestScene()
-{
-	
-
-}
-
 void QForestScene::createSeed(QTrees* parent)
 {
+	// Crée une semence à partir des informations du parent arbre
 	QSeeds *newSeed = new QSeeds(mEnvironment, *this ,  mGenerateShortLifespan.random(), parent->mTreeType, Seed, parent->getHeight());
 	addItem(newSeed);
 	newSeed->setPos(QPointF((parent->pos().x() + (parent->getRadius()*mGenerate.random()/100)),( parent->pos().y()+(parent->getRadius() *mGenerate.random() / 100))));
@@ -43,6 +47,7 @@ void QForestScene::createSeed(QTrees* parent)
 
 void QForestScene::createTree(QSeeds* parent)
 {
+	// Crée un arbre à partir des informations du parent semence
 	QTrees *newTree;
 	mSimulationStatistics->mNumberOfTrees++;
 	mSimulationStatistics->mNumberOfGermination++;
@@ -88,18 +93,9 @@ void QForestScene::createTree(QSeeds* parent)
 }
 
 
-void QForestScene::closestTree(QPointF pt2D)
-{
-
-}
-
-void QForestScene::lightningStrike(QPointF pt2D)
-{
-
-}
-
 void QForestScene::setParameters(SimulationParameters &simulationParameters)
 {
+	// Ajout d'un contour délimitant la zone de simulation
 	this->addLine(0, 0, 2050, 0);
 	this->addLine(0, 0, 0, 2050);
 	this->addLine(2050, 0, 2050, 2050);
@@ -108,6 +104,7 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 	QTrees *newTree;
 	QSquirrel *newSquirrel;
 
+	// Création du nombre d'écureuil voulu par l'utilisateur
 	for (int i{ 0 }; i < simulationParameters.mNumberSquirrel; ++i)
 	{
 		newSquirrel = new QSquirrel(mEnvironment, *this, 5, Na, Squirrel);
@@ -115,6 +112,8 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 		newSquirrel->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfSquirrel++;
 	}
+
+	// Création du nombre d'arbre de chaque sorte voulu par l'utilisateur
 	for (int i{ 0 }; i < simulationParameters.mNumberHazel; ++i)
 	{
 		newTree = new QHazel(mEnvironment, *this,  mGenerateShortLifespan.random(), Hazel, Tree);
@@ -153,77 +152,73 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 
 void QForestScene::setStatistic(SimulationStatistics *simulationStatistics)
 {
+	// Garde en mémoire le fichier référence de statistiques
 	mSimulationStatistics = simulationStatistics;
 }
 
 void QForestScene::windAngle(int windAngle)
 {
-
+	// Garde en mémoire l'angle du vent choisi par l'utilisateur
 	mWindAngle = windAngle;
 }
 
 void QForestScene::destroyDeadEntities()
 {
 	
-	
+	// Supprime les entités ayant le statut mort (mIsDead=True)
 	for (QGraphicsItem * currentItem : items())
 	{
+		// Récupère la liste des items contenus dans la scène
 		mEntities.append(dynamic_cast<QEntity*>(currentItem));
-
 	}
-
 
 	for (QEntity * entity : mEntities)
 	{
+		//Vérifie que l'item est bien une entité
 		if (entity)
 		{
 			if ((entity->isDead()))
 			{
-
 				switch (entity->mGeneralType) 
 				{
-
-				case Seed:
-					mSimulationStatistics->mNumberOfSeeds--;
-					break;
-
-				case Tree:
-
-					mSimulationStatistics->mNumberOfTrees--;
-
-					switch (entity->mTreeType)
-					{
-
-					case Birch:
-						mSimulationStatistics->mNumberOfBirch--;
+					//Supprime le nombre d'entité voulu du fichier statistique en fonction de leur type
+					case Seed:
+						mSimulationStatistics->mNumberOfSeeds--;
 						break;
-
-					case Fir:
-						mSimulationStatistics->mNumberOfFir--;
-						break;
-					case Oak:
-						mSimulationStatistics->mNumberOfOak--;
-						break;
-					case Hazel:
-						mSimulationStatistics->mNumberOfHazel--;
+					case Tree:
+						mSimulationStatistics->mNumberOfTrees--;
+						switch (entity->mTreeType)
+						{
+							case Birch:
+								mSimulationStatistics->mNumberOfBirch--;
+								break;
+							case Fir:
+								mSimulationStatistics->mNumberOfFir--;
+								break;
+							case Oak:
+								mSimulationStatistics->mNumberOfOak--;
+								break;
+							case Hazel:
+								mSimulationStatistics->mNumberOfHazel--;
+								break;
+							default:
+								mSimulationStatistics->mNumberOfOak--;
+								break;
+						}
 						break;
 					default:
-						mSimulationStatistics->mNumberOfOak--;
+						mSimulationStatistics->mNumberOfSeeds--;
 						break;
-					}
-					break;
-				default:
-					mSimulationStatistics->mNumberOfSeeds--;
-					break;
 				}
 
+				// Enlève l'item et le supprime.
 				removeItem(entity);
 				delete entity;
 			}
 		}	
 	}
 
+	// Vide la table temporaire
 	mEntities.clear();
-	
 
 }

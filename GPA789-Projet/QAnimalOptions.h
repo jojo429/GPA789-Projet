@@ -27,7 +27,8 @@ class QAnimalOptions : public QWidget
 public:
 	QAnimalOptions(QWidget *parent = Q_NULLPTR);
 	QAnimalOptions(QString animalName, int minNumbAnimals, int maxNumbAnimals, int numbAnimalsInit);
-	~QAnimalOptions();
+	~QAnimalOptions()=default;
+
 	int getValue();
 
 private:

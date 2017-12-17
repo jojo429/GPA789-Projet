@@ -1,5 +1,18 @@
-#include "QStatisticAdvanceMenu.h"
+// QStatisticAdvanceMenu.h
+//
+// Description:
+// Widget gérant l'affichage des valeurs instantanées d'une statistique.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
 
+#include "QStatisticAdvanceMenu.h"
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
@@ -74,10 +87,6 @@ QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDevia
 	setLayout(mainLayout);
 
 	connect(mVisibilityCheckBox, &QCheckBox::toggled, this, &QStatisticAdvanceMenu::showGraphToggled);
-}
-
-QStatisticAdvanceMenu::~QStatisticAdvanceMenu()
-{
 }
 
 void QStatisticAdvanceMenu::setNewValue(int count, qreal value) {

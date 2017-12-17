@@ -1,28 +1,39 @@
+// QFir.cpp
+//
+// Description:
+// Classe contenant les données particulières à un arbre de type Sapin.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "QFir.h"
 #include <QBrush>
 #include <QPainter>
 #include <QColor>
 
+// Tables de facteurs environmentaux spécifiques à un Sapin
 GaussianTable QFir::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QFir::mLuminosityGrowFactor(200, 30, 10000, -100);
 GaussianTable QFir::mTemperatureGrowFactor(150, 15, 900, -75);
+
+// Tables de croissance spécifique à un Sapin
 GaussianTable QFir::mGrowTable(500, 0, 50000);
 
 QFir::QFir(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, treeType tree, generalType type)
 	: QTrees{ environment ,forestscene, lifeSpan, tree, type }
 {
-
+	// Couleurs et textures spécifiques à un Sapin
 	mLeafColor.setRgb(31, 86, 33);
 	mTrunkColor.setRgb(38, 43, 3);
 	mPen.setColor(Qt::black);
 	mPen.setWidth(0.1);
 }
-
-QFir::~QFir()
-{
-
-}
-
 
 void QFir::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {
@@ -33,6 +44,7 @@ void QFir::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QW
 	painter->setBrush(mBrush);
 	painter->setPen(mPen);
 	painter->drawEllipse(mCenter, mTrunkRadius, mTrunkRadius);
+
 	//Dessine les feuilles
 	mPen.setColor(Qt::white);
 	mBrush.setColor(mLeafColor);
@@ -41,6 +53,7 @@ void QFir::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QW
 	painter->drawEllipse(mCenter, mLeafRadius, mLeafRadius);
 }
 
+// Les quatres fonctions suivantes retournent les tables de facteurs environmentaux et de croissance du sapin
 GaussianTable & QFir::growTable()
 {
 	return mGrowTable;

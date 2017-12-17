@@ -22,7 +22,7 @@ class QFir : public QTrees
 
 public:
 	QFir(QEnvironment const & environment, QForestScene & forestscene,  int lifeSpan, treeType tree, generalType type);
-	~QFir();
+	~QFir()=default;
 
 	GaussianTable & growTable() override;
 	GaussianTable & precipirationGrowFactorTable() override;

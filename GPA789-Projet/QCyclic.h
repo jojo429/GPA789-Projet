@@ -23,7 +23,7 @@ class QCyclic : public QEnvironmentalFactor
 
 public:
 	QCyclic(int cycle, int average, int variation, bool noNegative);
-	virtual ~QCyclic();
+	virtual ~QCyclic()=default;
 
 	void setTable(int cycle, int average, int variation);
 	float getFactor(int time);

@@ -22,7 +22,7 @@ class QOak : public QTrees
 
 public:
 	QOak(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, treeType tree, generalType type);
-	~QOak();
+	~QOak()=default;
 
 	GaussianTable & growTable() override;
 	GaussianTable & precipirationGrowFactorTable() override;

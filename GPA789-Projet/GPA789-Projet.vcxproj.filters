@@ -97,9 +97,6 @@
     <ClCompile Include="QCyclic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QPonctual.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RandomUniform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -23,7 +23,10 @@
 #include <QList>
 class QForestScene;
 
+// Valeurs que peuvent prendre un arbre (Na = non applicable)
 enum treeType { Oak, Fir, Hazel, Birch , Na};
+
+// Valeurs que peuvent prendre une entité
 enum generalType { Squirrel, Tree, Seed };
 
 class QEntity : public QGraphicsItem
@@ -31,7 +34,7 @@ class QEntity : public QGraphicsItem
 
 public:
 	QEntity(QEnvironment const &environment, QForestScene &forestscene, int lifeSpan, treeType tree, generalType type);
-	virtual ~QEntity();
+	virtual ~QEntity()=default;
 
 	virtual void reproduce();
 	virtual void die();
@@ -53,7 +56,7 @@ protected:
 	QPen mPen;
 	int mHeight;
 	void advanceTime();
-	RandomUniform mDied;
+	static RandomUniform mDied;
 };
 
 #endif //Q_ENTITY_H

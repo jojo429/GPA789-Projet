@@ -25,7 +25,7 @@ class QSeeds : public QDynamic
 
 public:
 	QSeeds(QEnvironment const & environment, QForestScene & forestscene,  int lifeSpan, treeType tree, generalType type,  int height=0);
-	~QSeeds();
+	~QSeeds()=default;
 
 	void germinate();
 	void picked();

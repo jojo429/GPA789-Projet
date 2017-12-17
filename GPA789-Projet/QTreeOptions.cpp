@@ -1,3 +1,16 @@
+// QStatisticAdvanceMenu.h
+//
+// Description:
+// Widget gérant l'affichage des sliders permetant de choisir le nombre d'arbre.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
 #include "QTreeOptions.h"
 
 QTreeOptions::QTreeOptions(QWidget *parent)
@@ -31,11 +44,6 @@ QTreeOptions::QTreeOptions(QString treeName, int minNumbTrees, int maxNumbTrees,
 	connect(mTreeSlider, &QSlider::valueChanged, this, &QTreeOptions::updateValues);
 
 	setLayout(mTreeOptionsGridLayout);
-}
-
-QTreeOptions::~QTreeOptions()
-{
-
 }
 
 void QTreeOptions::updateValues()

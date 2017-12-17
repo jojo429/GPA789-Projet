@@ -36,7 +36,7 @@ class QEnvironment : public QObject
 
 public:
 	QEnvironment();
-	~QEnvironment();
+	~QEnvironment()=default;
 
 	void calculateFactors(int Time);
 	void setParameters(SimulationParameters &simulationParameters);

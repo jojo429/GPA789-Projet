@@ -39,7 +39,7 @@ protected:
 	QPushButton * setPushButton(QString const & caption);
 
 protected slots:
-	void setMesBoxAbout(); // Configurer la fenêtre "À propos de Forest"
+	void setMesBoxAbout(); // Configurer la fenêtre "À propos de Forest Simulation"
 };
 
 #endif // Q_SUPPLEMENT_H

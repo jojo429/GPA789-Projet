@@ -187,7 +187,6 @@
     <ClCompile Include="QCyclic.cpp" />
     <ClCompile Include="GPA789Projet.cpp" />
     <ClCompile Include="QHazel.cpp" />
-    <ClCompile Include="QPonctual.cpp" />
     <ClCompile Include="QLuminosity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QForestScene.cpp" />

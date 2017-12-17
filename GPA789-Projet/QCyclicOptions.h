@@ -35,7 +35,7 @@ public:
 	int variationMin, int variationMax, int cycleMin, int cycleMax,
 	bool enableAverage, bool enableVariation, bool enableCycle,
 	int averageInitValue, int variationInitValue, int cycleInitValue);
-	~QCyclicOptions();
+	~QCyclicOptions()=default;
 
 	void defineSlider(QSlider *slider, int min, int max, int initValue); // Définir le minimum, le maximum, la valeur initiale d'un slider
 	int getAverageValue();

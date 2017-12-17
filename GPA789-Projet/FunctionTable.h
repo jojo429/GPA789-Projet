@@ -20,7 +20,7 @@ class FunctionTable
 {
 public:
 	FunctionTable(int lenght);
-	~FunctionTable();
+	~FunctionTable()=default;
 
 	virtual void set();
 	virtual double getValue(int position);

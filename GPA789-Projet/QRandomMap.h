@@ -25,7 +25,7 @@ class QRandomMap : public QWidget
 
 public:
 	QRandomMap(QWidget *parent = Q_NULLPTR);
-	~QRandomMap();
+	~QRandomMap()=default;
 
 	void setMap(); // Algorithme "Diamond-Square" appliqué
 	void scaleValuesRangeMap(double minScaleValue, double maxScaleValue); // Redimensionner les valeurs à chaque point de la carte dans l'intervalle choisie

@@ -21,7 +21,7 @@ class GaussianTable : public FunctionTable
 {
 public:
 	GaussianTable(int lenght, int mainValue, int spreadFactor, int shiftFactor=0);
-	~GaussianTable();
+	~GaussianTable()=default;
 
 	void set(int mainValue, int spreadFactor);
 	double getValue(int position) override;

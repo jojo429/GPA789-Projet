@@ -1,4 +1,4 @@
-// QNoisettier.h
+// QHazel.h
 //
 // Description:
 // Classe contenant les données particulières à un arbre de type Noisettier.
@@ -22,7 +22,7 @@ class QHazel : public QTrees
 
 public:
 	QHazel(QEnvironment const & environment, QForestScene & forestscene,  int lifeSpan, treeType tree, generalType type);
-	~QHazel();
+	~QHazel()=default;
 
 	GaussianTable & growTable() override;
 	GaussianTable & precipirationGrowFactorTable() override;

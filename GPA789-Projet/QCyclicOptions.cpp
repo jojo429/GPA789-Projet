@@ -1,3 +1,17 @@
+// QCyclicOptions.cpp
+//
+// Description:
+// Widget permetant de choisir les paramètres de simulation d'un facteur environmental cyclique.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #include "QCyclicOptions.h"
 
 QCyclicOptions::QCyclicOptions(QWidget *parent)
@@ -11,40 +25,40 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 	int variationMax, int cycleMin, int cycleMax, bool enableAverage, bool enableVariation, 
 	bool enableCycle, int averageInitValue, int variationInitValue, int cycleInitValue)
 {
-	//Define member caption
+	//Définir le label pour l'affichage
 	mCaption = caption;
 
-	//Scale icon
+	//Mettre l'icône à la bonne taille
 	mIcon = QPixmap(iconName);
 	QPixmap mTmpPixmap = mIcon.scaled(QSize(50, 50), Qt::KeepAspectRatio);
 
-	//Show icon
+	//Afficher l'icône
 	mIconLabel = new QLabel;
 	mIconLabel->setPixmap(mTmpPixmap);
 
-	//Define minimum and maximum of average slider
+	//Définition du minimum et du maximum du slider moyenne
 	mAverageSlider = new QSlider(Qt::Horizontal);
 	this->defineSlider(mAverageSlider, averageMin, averageMax, averageInitValue);
 
-	//Define minimum and maximum of variation slider
+	//Définition du minimum et du maximum du slider variation
 	mVariationSlider = new QSlider(Qt::Horizontal);
 	this->defineSlider(mVariationSlider, variationMin, variationMax, variationInitValue);
 
-	//Define minimum and maximum of cycle slider
+	//Définition du minimum et du maximum du slider cycle
 	mCycleSlider = new QSlider(Qt::Horizontal);
 	this->defineSlider(mCycleSlider, cycleMin, cycleMax, cycleInitValue);
 
-	//Declare sliders labels
+	//Déclaration des étiquettes de slider
 	mAverageLabel = new QLabel(averageName);
 	mVariationLabel = new QLabel(variationName);
 	mCycleLabel = new QLabel(cycleName);
 
-	//Declare sliders initial labels
+	//Declaration de la valeur des étiquettes
 	mAverageValue = new QLabel(QString::number(averageInitValue));
 	mVariationValue = new QLabel(QString::number(variationInitValue));
 	mCycleValue = new QLabel(QString::number(cycleInitValue));
 
-	//Define layout of cyclic options menu
+	//Affichage des slider voulus
 	mCyclicOptionsGridLayout = new QGridLayout;
 	if (enableAverage) {
 		mCyclicOptionsGridLayout->addWidget(mAverageLabel, 0, 0);
@@ -67,12 +81,11 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 	// Assemblage
 	mCyclicOptionsGroupBox = new QGroupBox(caption);
 	mCyclicOptionsGroupBox->setLayout(mCyclicOptionsGridLayout);
-
 	mLayout = new QHBoxLayout;
 	mLayout->addWidget(mIconLabel);
 	mLayout->addWidget(mCyclicOptionsGroupBox);
 
-	//Define sliders connections
+	//Connection entre les sliders
 	if (enableAverage) {
 		connect(mAverageSlider, &QSlider::valueChanged, this, &QCyclicOptions::updateValues);
 	}
@@ -90,13 +103,9 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 	setLayout(mLayout);
 }
 
-QCyclicOptions::~QCyclicOptions()
-{
-
-}
-
 void QCyclicOptions::defineSlider(QSlider *slider, int min, int max, int initValue)
 {
+	// Définition des valeurs minimum, maximum, de la position et de la valeur du slider
 	slider->setMinimum(min);
 	slider->setMaximum(max);
 	slider->setSliderPosition(initValue);
@@ -105,6 +114,7 @@ void QCyclicOptions::defineSlider(QSlider *slider, int min, int max, int initVal
 
 void QCyclicOptions::updateValues()
 {
+	//Mise à jour des étiquettes du slider
 	mAverageValue->setText(QString::number(mAverageSlider->value()));
 	mVariationValue->setText(QString::number(mVariationSlider->value()));
 	mCycleValue->setText(QString::number(mCycleSlider->value()));
@@ -112,6 +122,8 @@ void QCyclicOptions::updateValues()
 
 void QCyclicOptions::cycleValueStep()
 {
+	// Choisis une valeur prédéterminée en fonction de la valeur choisie. 
+	// Les valeurs gardées sont celles qui font un cycle complet sur 2190
 	if (mCycleSlider->value() >= 0 && mCycleSlider->value() <= 50) {
 		mCycleSlider->setSliderPosition(30);
 		mCycleSlider->setValue(30);
@@ -138,6 +150,7 @@ void QCyclicOptions::cycleValueStep()
 	}
 }
 
+// Les trois fonction suivantes retournent les valeurs des slider de moyenne, de cycle et de vatiation
 int QCyclicOptions::getAverageValue()
 {
 	return mAverageSlider->value();

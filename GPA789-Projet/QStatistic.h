@@ -28,7 +28,7 @@ class QStatistic : public QWidget
 
 public:
 	QStatistic(QWidget *parent = Q_NULLPTR);
-	~QStatistic();
+	~QStatistic()=default;
 
 public slots:
 	void updateData(); 

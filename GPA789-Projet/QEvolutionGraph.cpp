@@ -1,5 +1,18 @@
-#include "QEvolutionGraph.h"
+// QEvoluationGraph.cpp
+//
+// Description:
+// Widget gérant les graphiques affichant les statistiques de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
 
+#include "QEvolutionGraph.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGroupBox>
@@ -73,9 +86,6 @@ QEvolutionGraph::QEvolutionGraph(size_t nSeries, QWidget *parent)
 	setLayout(mainLayout);
 }
 
-QEvolutionGraph::~QEvolutionGraph()
-{
-}
 
 void QEvolutionGraph::initializeGraph(QString xAxisName, QString yAxisName, QString graphTitle) {
 	mChart->setTitle(graphTitle);
