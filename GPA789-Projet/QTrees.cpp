@@ -5,8 +5,8 @@
 
 
 
-QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, treeType value, int lifeSpan, generalType type)
-	: QStatic(environment, forestscene, lifeSpan), mGenerateSeed(0, 3), mTreeType{ value }, mEmpty(0, 0, 0), mGenerateTime(700, 1500), mGeneralType{type}
+QTrees::QTrees(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, treeType tree, generalType type)
+	: QStatic(environment, forestscene, lifeSpan, tree, type), mGenerateSeed(0, 3), mEmpty(0, 0, 0), mGenerateTime(700, 1500)
 {
 	
 	mAge = 0;

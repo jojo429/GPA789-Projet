@@ -13,7 +13,7 @@ class QSeeds : public QDynamic
 {
 
 public:
-	QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type);
+	QSeeds(QEnvironment const & environment, QForestScene & forestscene,  int lifeSpan, treeType tree, generalType type,  int height=0);
 	~QSeeds();
 
 
@@ -22,9 +22,7 @@ public:
 	void droped( QPointF coordinate );
 	void setCarried(bool status);
 
-	friend class QForestScene;
-	treeType mTreeType;
-	generalType mGeneralType;
+
 
 
 private:

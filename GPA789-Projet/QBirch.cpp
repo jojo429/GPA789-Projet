@@ -9,8 +9,8 @@ GaussianTable QBirch::mTemperatureGrowFactor(150, 30, 1200, -75);
 GaussianTable QBirch::mGrowTable(500, 0, 1000);
 
 
-QBirch::QBirch(QEnvironment const & environment,  QForestScene & forestscene, treeType tree, int lifeSpan, generalType type)
-	: QTrees{ environment ,forestscene, tree, lifeSpan, type}
+QBirch::QBirch(QEnvironment const & environment,  QForestScene & forestscene, int lifeSpan, treeType tree, generalType type)
+	: QTrees{ environment ,forestscene,lifeSpan, tree, type}
 {
 
 	mLeafColor.setRgb(85, 200, 25);

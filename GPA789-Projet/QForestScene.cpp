@@ -35,8 +35,7 @@ QForestScene::~QForestScene()
 
 void QForestScene::createSeed(QTrees* parent)
 {
-	QSeeds *newSeed = new QSeeds(mEnvironment, *this , parent->mTreeType, mGenerateShortLifespan.random(),Seed);
-	newSeed->mHeight = parent->getHeight();
+	QSeeds *newSeed = new QSeeds(mEnvironment, *this ,  mGenerateShortLifespan.random(), parent->mTreeType, Seed, parent->getHeight());
 	addItem(newSeed);
 	newSeed->setPos(QPointF((parent->pos().x() + (parent->getRadius()*mGenerate.random()/100)),( parent->pos().y()+(parent->getRadius() *mGenerate.random() / 100))));
 	mSimulationStatistics->mNumberOfSeeds++;
@@ -45,39 +44,40 @@ void QForestScene::createSeed(QTrees* parent)
 void QForestScene::createTree(QSeeds* parent)
 {
 	QTrees *newTree;
-	switch (parent->mTreeType) {
-	mSimulationStatistics->mNumberOfSeeds--;
 	mSimulationStatistics->mNumberOfTrees++;
+	mSimulationStatistics->mNumberOfGermination++;
+	switch (parent->mTreeType) {
+	
 	case Hazel:
-		newTree = new QHazel(mEnvironment, *this, Hazel, mGenerateShortLifespan.random(),Tree);
+		newTree = new QHazel(mEnvironment, *this,  mGenerateShortLifespan.random(), Hazel, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
 		mSimulationStatistics->mNumberOfHazel++;
 		break;
 
 	case Birch:
-		newTree = new QBirch(mEnvironment, *this, Birch, mGenerateShortLifespan.random(), Tree);
+		newTree = new QBirch(mEnvironment, *this,  mGenerateShortLifespan.random(), Birch, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
 		mSimulationStatistics->mNumberOfBirch++;
 		break;
 
 	case Fir:
-		newTree = new QFir(mEnvironment, *this, Fir, mGenerateLongLifespan.random(), Tree);
+		newTree = new QFir(mEnvironment, *this,  mGenerateLongLifespan.random(), Fir, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
 		mSimulationStatistics->mNumberOfFir++;
 		break;
 
 	case Oak:
-		newTree = new QOak(mEnvironment, *this, Oak, mGenerateShortLifespan.random(), Tree);
+		newTree = new QOak(mEnvironment, *this,  mGenerateLongLifespan.random(), Oak, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
 		mSimulationStatistics->mNumberOfOak++;
 		break;
 
 	default:
-		newTree = new QOak(mEnvironment, *this, Oak, mGenerateShortLifespan.random(), Tree);
+		newTree = new QOak(mEnvironment, *this,  mGenerateLongLifespan.random(), Oak, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF((parent->pos().x()), (parent->pos().y())));
 		mSimulationStatistics->mNumberOfOak++;
@@ -110,14 +110,14 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 
 	for (int i{ 0 }; i < simulationParameters.mNumberSquirrel; ++i)
 	{
-		newSquirrel = new QSquirrel(mEnvironment, *this, 5, Squirrel);
+		newSquirrel = new QSquirrel(mEnvironment, *this, 5, Na, Squirrel);
 		this->addItem(newSquirrel);
 		newSquirrel->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfSquirrel++;
 	}
 	for (int i{ 0 }; i < simulationParameters.mNumberHazel; ++i)
 	{
-		newTree = new QHazel(mEnvironment, *this, Hazel, mGenerateShortLifespan.random(), Tree);
+		newTree = new QHazel(mEnvironment, *this,  mGenerateShortLifespan.random(), Hazel, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfHazel++;
@@ -125,7 +125,7 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 	}
 	for (int i{ 0 }; i < simulationParameters.mNumberBirch; ++i) 
 	{
-		newTree = new QBirch(mEnvironment,*this, Birch, mGenerateShortLifespan.random(), Tree);
+		newTree = new QBirch(mEnvironment,*this,  mGenerateShortLifespan.random(), Birch, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfBirch++;
@@ -133,7 +133,7 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 	}
 	for (int i{ 0 }; i < simulationParameters.mNumberOak; ++i)
 	{
-		newTree = new QOak(mEnvironment, *this, Oak, 200, Tree);
+		newTree = new QOak(mEnvironment, *this, mGenerateLongLifespan.random(), Oak, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfOak++;
@@ -141,7 +141,7 @@ void QForestScene::setParameters(SimulationParameters &simulationParameters)
 	}
 	for (int i{ 0 }; i < simulationParameters.mNumberFir; ++i)
 	{
-		newTree = new QFir(mEnvironment, *this, Fir, 500, Tree);
+		newTree = new QFir(mEnvironment, *this, mGenerateLongLifespan.random(), Fir, Tree);
 		this->addItem(newTree);
 		newTree->setPos(QPointF(mGenerateCoordinate.random(), mGenerateCoordinate.random()));
 		mSimulationStatistics->mNumberOfFir++;
@@ -179,6 +179,44 @@ void QForestScene::destroyDeadEntities()
 		{
 			if ((entity->isDead()))
 			{
+
+				switch (entity->mGeneralType) 
+				{
+
+				case Seed:
+					mSimulationStatistics->mNumberOfSeeds--;
+					break;
+
+				case Tree:
+
+					mSimulationStatistics->mNumberOfTrees--;
+
+					switch (entity->mTreeType)
+					{
+
+					case Birch:
+						mSimulationStatistics->mNumberOfBirch--;
+						break;
+
+					case Fir:
+						mSimulationStatistics->mNumberOfFir--;
+						break;
+					case Oak:
+						mSimulationStatistics->mNumberOfOak--;
+						break;
+					case Hazel:
+						mSimulationStatistics->mNumberOfHazel--;
+						break;
+					default:
+						mSimulationStatistics->mNumberOfOak--;
+						break;
+					}
+					break;
+				default:
+					mSimulationStatistics->mNumberOfSeeds--;
+					break;
+				}
+
 				removeItem(entity);
 				delete entity;
 			}

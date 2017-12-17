@@ -19,8 +19,8 @@
 #include "QSeeds.h"
 
 
-QSquirrel::QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, generalType type)
-	: QAnimals{ environment, forestscene , lifeSpan }, mGenerateAngle(-180, 180), mRandomSeedDrop(0, 500), mGeneralType{type}
+QSquirrel::QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, treeType tree, generalType type)
+	: QAnimals{ environment, forestscene , lifeSpan, tree, type }, mGenerateAngle(-180, 180), mRandomSeedDrop(0, 500)
 {
 
 

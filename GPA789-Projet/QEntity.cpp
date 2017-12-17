@@ -1,8 +1,8 @@
 #include "QEntity.h"
 #include "QForestScene.h"
 
-QEntity::QEntity(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan)
-	: mEnvironment{ environment }, mForestScene{ forestscene }, mLifeSpan{ lifeSpan }, mDied(1,500)
+QEntity::QEntity(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, treeType tree, generalType type)
+	: mEnvironment{ environment }, mForestScene{ forestscene }, mLifeSpan{ lifeSpan }, mDied(1,500), mTreeType{tree}, mGeneralType{type}
 {
 
 }
