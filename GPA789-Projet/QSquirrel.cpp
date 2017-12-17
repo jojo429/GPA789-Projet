@@ -1,3 +1,16 @@
+// QSquirrel.cpp
+//
+// Description:
+// Création et comportement d'un écureuil
+//
+//
+// Auteur:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
 #include "QSquirrel.h"
 #include <QPainter>
 #include "QTrees.h"
