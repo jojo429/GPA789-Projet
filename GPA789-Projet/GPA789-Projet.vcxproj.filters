@@ -10,74 +10,11 @@
     <ClCompile Include="GeneratedFiles\qrc_GPA789Projet.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="QAnimals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QSquirrel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QSeeds.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QBirch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QDynamic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QEntity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QEnvironment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QEnvironmentalFactor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QFertility.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QFir.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QHazel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QLuminosity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QOak.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QPrecipitation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QStatic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QTemperature.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QTrees.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QWind.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QForestScene.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QForestScene.cpp">
       <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QForestScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QSimulation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QStatistic.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QStatistic.cpp">
       <Filter>Generated Files</Filter>
@@ -91,38 +28,17 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QSimulationMenu.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="QSimulationMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QCyclic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomUniform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SinusTable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QCyclicOptions.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QCyclicOptions.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="QCyclicOptions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QSimulationAdvancementOptions.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QSimulationAdvancementOptions.cpp">
       <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QSimulationAdvancementOptions.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QEnvironment.cpp">
       <Filter>Generated Files</Filter>
@@ -136,12 +52,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QRandomMap.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="QRandomMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QEvolutionGraph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_GPA789Projet.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -153,15 +63,6 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QEvolutionGraph.cpp">
       <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GaussianTable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FunctionTable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QSimulationTimeScale.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QSimulationTimeScale.cpp">
       <Filter>Generated Files</Filter>
@@ -181,17 +82,11 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QTreeOptions.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="QTreeOptions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QAnimalOptions.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QAnimalOptions.cpp">
       <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QAnimalOptions.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QStatisticAdvanceMenu.cpp">
       <Filter>Generated Files</Filter>
@@ -199,17 +94,122 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QStatisticAdvanceMenu.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="QStatisticAdvanceMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QSupplement.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QSupplement.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="FunctionTable.cpp">
+      <Filter>Source Files\Environment\Cycle Management</Filter>
+    </ClCompile>
+    <ClCompile Include="GaussianTable.cpp">
+      <Filter>Source Files\Environment\Cycle Management</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGenerator.cpp">
+      <Filter>Source Files\Random Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomUniform.cpp">
+      <Filter>Source Files\Random Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="QCyclic.cpp">
+      <Filter>Source Files\Environment\Cycle Management</Filter>
+    </ClCompile>
+    <ClCompile Include="QEnvironmentalFactor.cpp">
+      <Filter>Source Files\Environment\Cycle Management</Filter>
+    </ClCompile>
+    <ClCompile Include="QEnvironment.cpp">
+      <Filter>Source Files\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="QSimulation.cpp">
+      <Filter>Source Files\Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="QTemperature.cpp">
+      <Filter>Source Files\Environment\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="QWind.cpp">
+      <Filter>Source Files\Environment\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="QLuminosity.cpp">
+      <Filter>Source Files\Environment\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="QFertility.cpp">
+      <Filter>Source Files\Environment\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="QPrecipitation.cpp">
+      <Filter>Source Files\Environment\Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="SinusTable.cpp">
+      <Filter>Source Files\Environment\Cycle Management</Filter>
+    </ClCompile>
+    <ClCompile Include="QAnimals.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="QEntity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="QSeeds.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="QSquirrel.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="QStatic.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="QDynamic.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="QForestScene.cpp">
+      <Filter>Source Files\Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="QRandomMap.cpp">
+      <Filter>Source Files\Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="QAnimalOptions.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="QCyclicOptions.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="QSimulationAdvancementOptions.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="QSimulationMenu.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="QEvolutionGraph.cpp">
+      <Filter>Source Files\Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="QStatisticAdvanceMenu.cpp">
+      <Filter>Source Files\Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="QStatistic.cpp">
+      <Filter>Source Files\Statistics</Filter>
+    </ClCompile>
     <ClCompile Include="QSupplement.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="QSimulationTimeScale.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="QTreeOptions.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="QBirch.cpp">
+      <Filter>Source Files\Entities\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="QTrees.cpp">
+      <Filter>Source Files\Entities\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="QOak.cpp">
+      <Filter>Source Files\Entities\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="QHazel.cpp">
+      <Filter>Source Files\Entities\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="QFir.cpp">
+      <Filter>Source Files\Entities\Trees</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +238,60 @@
       <Extensions>ui</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
+    <Filter Include="Header Files\Environment">
+      <UniqueIdentifier>{d401aed9-1534-48b8-866e-7d5ba4165fe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{9e559b45-b0a2-470c-83c1-b8132e2ff599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Simulation">
+      <UniqueIdentifier>{0b486b4e-8408-4fa1-81b9-0928d6f9b1e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Random Generation">
+      <UniqueIdentifier>{746e7673-0fa6-4142-8b18-47089573cd6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Environment\Parameters">
+      <UniqueIdentifier>{59e35b7a-a38e-4ce3-8be2-ec73032899a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface">
+      <UniqueIdentifier>{40b6421e-e4bf-40ed-be0d-a98c1f479da5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Statistics">
+      <UniqueIdentifier>{ee89526f-704e-4d72-8966-06e3d3bcde43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Environment">
+      <UniqueIdentifier>{7cca8170-54af-4e71-95c2-7607c5733c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Environment\Cycle Management">
+      <UniqueIdentifier>{cdfefaa5-37d2-4413-b0bf-93562df87732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Environment\Cycle Management">
+      <UniqueIdentifier>{19de998f-0e1e-4cdd-ae6d-3c17b42df401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Environment\Parameters">
+      <UniqueIdentifier>{2a174d71-9af7-48b5-8e44-b81edec2db52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{9c210437-bc3b-482f-aa80-a62830964765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Statistics">
+      <UniqueIdentifier>{6e5561cb-0e26-49d1-a849-06f1acb15f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Random Generation">
+      <UniqueIdentifier>{7f1a8444-d373-49f0-b4ca-d50206e411cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Simulation">
+      <UniqueIdentifier>{896b377c-ed3c-4bfa-a9d7-eafddd333ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interface">
+      <UniqueIdentifier>{b192a912-3eb6-4be4-abb1-30d2b704ba9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Trees">
+      <UniqueIdentifier>{48c43789-3620-43e5-aa67-3b97ec439c70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Trees">
+      <UniqueIdentifier>{4c97cc56-dba2-455e-88d0-1794f94aaff6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="GPA789Projet.ui">
@@ -249,133 +303,133 @@
     <CustomBuild Include="GPA789Projet.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="QBirch.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="QCyclicOptions.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QEntity.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QEnvironment.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QEnvironmentalFactor.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QFertility.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QFir.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QForestScene.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QHazel.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QOak.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QRandomMap.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QSimulation.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QSimulationAdvancementOptions.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QSimulationMenu.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QStatistic.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QEvolutionGraph.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QTrees.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QSimulationTimeScale.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QTreeOptions.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interface</Filter>
     </CustomBuild>
     <CustomBuild Include="QAnimalOptions.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interface</Filter>
     </CustomBuild>
-    <CustomBuild Include="QStatisticAdvanceMenu.h">
-      <Filter>Header Files</Filter>
+    <CustomBuild Include="QEntity.h">
+      <Filter>Header Files\Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QEnvironment.h">
+      <Filter>Header Files\Environment</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QEnvironmentalFactor.h">
+      <Filter>Header Files\Environment\Cycle Management</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QEvolutionGraph.h">
+      <Filter>Header Files\Statistics</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QFertility.h">
+      <Filter>Header Files\Environment\Parameters</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QForestScene.h">
+      <Filter>Header Files\Simulation</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTreeOptions.h">
+      <Filter>Header Files\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QStatistic.h">
+      <Filter>Header Files\Statistics</Filter>
     </CustomBuild>
     <CustomBuild Include="QSupplement.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSimulationAdvancementOptions.h">
+      <Filter>Header Files\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSimulationTimeScale.h">
+      <Filter>Header Files\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSimulation.h">
+      <Filter>Header Files\Simulation</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QRandomMap.h">
+      <Filter>Header Files\Simulation</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QStatisticAdvanceMenu.h">
+      <Filter>Header Files\Statistics</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QSimulationMenu.h">
+      <Filter>Header Files\Interface</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QBirch.h">
+      <Filter>Header Files\Entities\Trees</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QFir.h">
+      <Filter>Header Files\Entities\Trees</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QHazel.h">
+      <Filter>Header Files\Entities\Trees</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QOak.h">
+      <Filter>Header Files\Entities\Trees</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTrees.h">
+      <Filter>Header Files\Entities\Trees</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_GPA789Projet.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="QAnimals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QCyclic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QDynamic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QLuminosity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QPonctual.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QPrecipitation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QSeeds.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QSquirrel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QStatic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QTemperature.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QWind.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomUniform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SimulationParameters.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SinusTable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SimulationStatistics.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="FunctionTable.h">
+      <Filter>Header Files\Environment\Cycle Management</Filter>
     </ClInclude>
     <ClInclude Include="GaussianTable.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Environment\Cycle Management</Filter>
     </ClInclude>
-    <ClInclude Include="FunctionTable.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="QCyclic.h">
+      <Filter>Header Files\Environment\Cycle Management</Filter>
+    </ClInclude>
+    <ClInclude Include="QAnimals.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="QDynamic.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="QLuminosity.h">
+      <Filter>Header Files\Environment\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="QSquirrel.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="QStatic.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="QWind.h">
+      <Filter>Header Files\Environment\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="QTemperature.h">
+      <Filter>Header Files\Environment\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="QPrecipitation.h">
+      <Filter>Header Files\Environment\Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="QPonctual.h">
+      <Filter>Header Files\Environment\Cycle Management</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGenerator.h">
+      <Filter>Header Files\Random Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomUniform.h">
+      <Filter>Header Files\Random Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="QSeeds.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulationParameters.h">
+      <Filter>Header Files\Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulationStatistics.h">
+      <Filter>Header Files\Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="SinusTable.h">
+      <Filter>Header Files\Environment\Cycle Management</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

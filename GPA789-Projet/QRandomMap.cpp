@@ -1,4 +1,4 @@
-// QRandomMap.h
+// QRandomMap.cpp
 //
 // Description:
 // Widget permetant de générer une carte de valeurs aléatoires et de la transformer en image.
