@@ -15,6 +15,7 @@ public:
 	QAnimalOptions(QString animalName, int minNumbAnimals, int maxNumbAnimals, int numbAnimalsInit);
 	~QAnimalOptions();
 	int getValue();
+
 private:
 	QSlider *mAnimalSlider;
 
@@ -24,7 +25,7 @@ private:
 	QGridLayout *mAnimalOptionsGridLayout;
 
 protected slots:
-	void updateValues();
+	void updateValues(); // Mise à jour du label qui affiche la valeur du slider
 };
 
 #endif //Q_ANIMAL_OPTIONS_H

@@ -127,8 +127,10 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 	mGColor = gColor;
 	mBColor = bColor;
 
+	// Permet de faire un dégradé de la couleur choisie RGB
 	ajustmentRGB = (rColor + gColor + bColor) / 3.0;
 
+	// Dessiner la carte
 	for (i = 0; i < 513; ++i) {
 		for (j = 0; j < 513; ++j) {
 			shade = mMap[i][j] / ajustmentRGB;
@@ -146,11 +148,14 @@ void QRandomMap::updateDrawMap(int x, int y)
 
 	int realX, realY;
 
+	// Retrouver le pixel d'origine avant le redimensionnement
 	realX = (int)floor(x / 4.0);
 	realY = (int)floor(y / 4.0);
 
+	// Permet de faire un dégradé de la couleur choisie RGB
 	adjustmentRGB = (mRColor + mGColor + mBColor) / 3.0;
 
+	// Mise à jour du dessin de la carte
 	shade = mMap[realX][realY] / 150.0;
 	mapColor.setRgb(mRColor * shade, mGColor * shade, mBColor * shade);
 	mPainterMap->setPen(mapColor);
@@ -166,11 +171,14 @@ void QRandomMap::setMapValue(int x, int y, double value)
 {
 	int realX, realY;
 
+	// Retrouver le pixel d'origine avant le redimensionnement
 	realX = (int)floor(x / 4.0);
 	realY = (int)floor(y / 4.0);
 
+	// Ajout de fertilité à l'emplacement désiré
 	mMap[realX][realY] = mMap[realX][realY] + value;
 
+	// La fertilité maximale est de 100.0
 	if (mMap[realX][realY] > 100.0) {
 		mMap[realX][realY] = 100.0;
 	}

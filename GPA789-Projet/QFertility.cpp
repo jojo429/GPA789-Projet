@@ -17,26 +17,16 @@ double QFertility::getFertility(int x, int y) const
 
 void QFertility::setFertility(double minValue, double maxValue)
 {
-	mFertilityMap->setMap();
-	mFertilityMap->scaleValuesRangeMap(minValue, maxValue);
-	mFertilityMap->drawMap(210, 105, 30);
-	mFertilityMap->resizeMap();
+	mFertilityMap->setMap(); // Générer la carte d'origine
+	mFertilityMap->scaleValuesRangeMap(minValue, maxValue); // Redimensionner les valeurs de fertilités dans l'intervalle voulue
+	mFertilityMap->drawMap(210, 105, 30); // Dessiner la carte de fertilités initiale
+	mFertilityMap->resizeMap(); // Redimensionner la carte de 513x513 à 2052x2052
 }
 
 void QFertility::updateFertility(int x, int y, double fertility)
 {
-	mFertilityMap->updateDrawMap(x, y);
-	mFertilityMap->setMapValue(x, y, fertility);
-}
-
-void QFertility:: enableFertility()
-{
-
-}
-
-void QFertility::disableFertility()
-{
-
+	mFertilityMap->updateDrawMap(x, y); // Mise à jour du dessin de la carte de fertilités
+	mFertilityMap->setMapValue(x, y, fertility); // Mise à jour du tableau de valeurs de fertilités
 }
 
 QPixmap QFertility::getFertilityPixmap()
