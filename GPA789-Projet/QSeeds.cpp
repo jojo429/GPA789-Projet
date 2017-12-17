@@ -17,11 +17,11 @@ GaussianTable QSeeds::mPrecipitationGrowFactor(28, 6, 25);
 GaussianTable QSeeds::mLuminosityGrowFactor(200, 50, 10000, -100);
 GaussianTable QSeeds::mTemperatureGrowFactor(150, 30, 1000, -75);
 
-QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type)
-	: QDynamic{ environment,forestscene, lifeSpan }, mTreeType{tree}, mGenerateTree(0,1000), mGenerateAngle(-45,45), mGeneralType(type)
+QSeeds::QSeeds(QEnvironment const & environment, QForestScene & forestscene,  int lifeSpan, treeType tree, generalType type, int height)
+	: QDynamic{ environment,forestscene, lifeSpan , tree, type}, mGenerateTree(0, 1000), mGenerateAngle(-45, 45)
 {
 
-
+	mHeight = height;
 }
 
 QSeeds::~QSeeds()

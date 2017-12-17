@@ -7,7 +7,7 @@ class QFir : public QTrees
 {
 
 public:
-	QFir(QEnvironment const & environment, QForestScene & forestscene, treeType tree, int lifeSpan, generalType type);
+	QFir(QEnvironment const & environment, QForestScene & forestscene,  int lifeSpan, treeType tree, generalType type);
 	~QFir();
 
 	GaussianTable & growTable() override;
