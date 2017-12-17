@@ -20,6 +20,7 @@ QRandomMap::~QRandomMap()
 
 void QRandomMap::setMap()
 {
+	
 	int id, x, y, average, sum, shift, n;
 	int h{ 513 };
 	int step{ h - 1 };

@@ -23,21 +23,13 @@ class QEnvironment : public QObject
 public:
 	QEnvironment();
 	~QEnvironment();
-	//void germinateFactors(int time);
-	//void growFactors(int time);
-	//void adjustDrynessFactors(int time);
-	//void airDisplacementFactors(int time);
-	//std::vector<float> getGerminate() const;
-	//std::vector<float> getGrow() const;
-	//std::vector<float> getAdjustDryness() const;
-	//std::array<double,2>  getAirDisplacement() const;
+
 
 	void calculateFactors(int Time);
 	void setParameters(SimulationParameters &simulationParameters);
 	void getStatistics(SimulationStatistics *simulationStatistics);
 	std::vector<float> mFactors;
 	QFertility mFertility;
-	/*std::vector<float> const getFactors();*/
 
 public slots:
 	void advance();
