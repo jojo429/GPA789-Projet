@@ -1,3 +1,17 @@
+// QForestScene.h
+//
+// Description:
+// Classe principale héritant de QGraphicsScene et contrôlant les entités de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_FOREST_SCENE_H
 #define Q_FOREST_SCENE_H
 
@@ -19,6 +33,7 @@ class QForestScene : public QGraphicsScene
 public:
 	QForestScene(QEnvironment & enviromnent, QGraphicsScene * parent = Q_NULLPTR);
 	~QForestScene();
+
 	void createSeed(QTrees* parent);
 	void createTree(QSeeds* parent);
 	void setParameters(SimulationParameters &simulationParameters);
@@ -27,11 +42,7 @@ public:
 	int mWindAngle{ 0 };
 	void destroyDeadEntities();
 
-protected:
-
-
 private:
-
 	void closestTree(QPointF pt2D);
 	void lightningStrike(QPointF pt2D);
 	QBrush mBackgroundBrush{ QColor(239, 247, 153) };
@@ -42,7 +53,6 @@ private:
 	RandomUniform mGenerateLongLifespan;
 	RandomUniform mGenerateShortLifespan;
 	QList <QEntity*> mEntities;
-
 
 };
 

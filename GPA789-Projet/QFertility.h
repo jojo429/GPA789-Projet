@@ -1,3 +1,17 @@
+// QFertility.h
+//
+// Description:
+// Classe représentant un facteur de fertilité généré aléatoirement pour un carte de points donnés.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_FERTILITY_H
 #define Q_FERTILITY_H
 

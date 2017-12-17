@@ -1,3 +1,17 @@
+// GaussianTable.h
+//
+// Description:
+// Table contenant les valeurs pré-calculées d'une fonction de Gausse.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef GAUSSIAN_TABLE_H
 #define GAUSSIAN_TABLE_H
 
@@ -11,9 +25,9 @@ public:
 
 	void set(int mainValue, int spreadFactor);
 	double getValue(int position) override;
+
 protected:
 	int mShiftFactor;
 };
-
 
 #endif

@@ -1,3 +1,17 @@
+// QSupplement.h
+//
+// Description:
+// Widget gérant l'affichage du menu à propos de l'application.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_SUPPLEMENT_H
 #define Q_SUPPLEMENT_H
 
@@ -18,17 +32,14 @@ public:
 
 protected:
 	QPushButton * mButtonAbout;
-
 	QMessageBox * mMesBoxExec;
-
 	QGridLayout * mLayout;
 	QHBoxLayout * mHLayout;
 	QVBoxLayout * mVLayout;
-
 	QPushButton * setPushButton(QString const & caption);
 
 protected slots:
-	void setMesBoxAbout(); // Configurer la fenêtre "À propos de XtractCom"
+	void setMesBoxAbout(); // Configurer la fenêtre "À propos de Forest"
 };
 
 #endif // Q_SUPPLEMENT_H

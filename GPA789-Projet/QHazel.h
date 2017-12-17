@@ -1,3 +1,17 @@
+// QNoisettier.h
+//
+// Description:
+// Classe contenant les données particulières à un arbre de type Noisettier.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_HAZEL_H
 #define Q_HAZEL_H
 

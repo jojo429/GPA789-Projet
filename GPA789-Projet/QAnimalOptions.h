@@ -1,3 +1,17 @@
+// QAnimalOptions.h
+//
+// Description:
+// Widget Graphique permettant de choisir le nombre d'animal voulu.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_ANIMAL_OPTIONS_H
 #define Q_ANIMAL_OPTIONS_H
 
@@ -18,10 +32,8 @@ public:
 
 private:
 	QSlider *mAnimalSlider;
-
 	QLabel *mAnimalLabel;
 	QLabel *mAnimalValue;
-
 	QGridLayout *mAnimalOptionsGridLayout;
 
 protected slots:

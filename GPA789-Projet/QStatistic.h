@@ -1,3 +1,17 @@
+// QStatistic.h
+//
+// Description:
+// Widget gérant l'affichage de l'onglet statistique de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_STATISTIC_H
 #define Q_STATISTIC_H
 
@@ -24,12 +38,10 @@ public slots:
 	
 private: 
 	QEvolutionGraph * mMainGraph;
-	
 	QStatisticAdvanceMenu * mTemperatureStat;
 	QStatisticAdvanceMenu * mPrecipitationStat;
 	QStatisticAdvanceMenu * mLuminosityStat;
 	QStatisticAdvanceMenu * mWindStat;
-	
 	QStatisticAdvanceMenu * mTreesStat;
 	QStatisticAdvanceMenu *	mOakStat;
 	QStatisticAdvanceMenu *	mFirStat;
@@ -37,10 +49,8 @@ private:
 	QStatisticAdvanceMenu *	mHazelStat;
 	QStatisticAdvanceMenu * mSeedsStat;
 	QStatisticAdvanceMenu *	mGerminationStat;
-
 	QLabel * mTicTimeValue;
 	QLabel * mNbAdvanceCountValue;
-
 	int mTime{ 0 };
 
 private slots: 
@@ -48,7 +58,6 @@ private slots:
 	void setPrecipitationVisible(bool isVisible);
 	void setLuminosityVisible(bool isVisible);
 	void setWindVisible(bool isVisible);
-
 	void setTreesVisible(bool isVisible);
 	void setOakVisible(bool isVisible);
 	void setFirVisible(bool isVisible);

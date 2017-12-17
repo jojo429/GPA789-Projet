@@ -1,3 +1,17 @@
+// QSimulation.h
+//
+// Description:
+// Classe gérant le déroulement de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_SIMULATION_H
 #define Q_SIMULATION_H
 
@@ -45,11 +59,8 @@ private:
 	QSimulationMenu *mSimulationMenu;
 	QGraphicsView *mForestView;
 	int mZoomLimit{ 0 };
-
 	int mAdvanceCounter{ 0 };
 	bool mStarted{ false };
-
-protected:
 	virtual void wheelEvent(QWheelEvent* event);
 };
 #endif //Q_SIMULATION_H

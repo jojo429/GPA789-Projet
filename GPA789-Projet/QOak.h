@@ -1,3 +1,17 @@
+// QOak.h
+//
+// Description:
+// Classe contenant les données particulières à un arbre de type Chêne.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_OAK_H
 #define Q_OAK_H
 
@@ -15,8 +29,6 @@ public:
 	GaussianTable & luminosityGrowFactorTable() override;
 	GaussianTable & temperatureGrowFactorTable() override;
 	
-
-
 private:
 	QColor mLeafColor;
 	QColor mTrunkColor;

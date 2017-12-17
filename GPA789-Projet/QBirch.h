@@ -1,3 +1,17 @@
+// QBirch.h
+//
+// Description:
+// Classe contenant les données particulières à un arbre de type Bouleau.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_BIRCH_H
 #define Q_BIRCH_H
 

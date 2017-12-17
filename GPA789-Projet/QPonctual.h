@@ -1,3 +1,17 @@
+// QPonctual.h
+//
+// Description:
+// Classe représentant un facteur environnemental statique dans le temps.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_PONCTUAL_H
 #define Q_PONCTUAL_H
 

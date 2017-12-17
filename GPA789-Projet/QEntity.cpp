@@ -28,10 +28,6 @@ void QEntity::die()
 	}
 }
 
-bool QEntity::isItDead()
-{
-	return false;
-}
 
 
 

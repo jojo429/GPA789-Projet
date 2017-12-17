@@ -4,13 +4,16 @@
 // Création et comportement d'un écureuil
 //
 //
-// Auteur:
+// Auteurs:
 // Alex Gosselin-Pronovost
 // Joé Charest
 // Félixe Girard
 // Geneviève Dao Phan
 //
 // Automne 2017
+
+
+
 #include "QSquirrel.h"
 #include <QPainter>
 #include "QTrees.h"

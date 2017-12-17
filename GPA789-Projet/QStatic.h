@@ -1,3 +1,17 @@
+// QStatic.h
+//
+// Description:
+// Classe virtuelle représentant une entité n'ayant pas la faculté de se déplacer.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_STATIC_H
 #define Q_STATIC_H
 

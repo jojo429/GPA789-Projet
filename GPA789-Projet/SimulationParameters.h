@@ -1,3 +1,17 @@
+// SimulationParameters.h
+//
+// Description:
+// Classe contenant les paramètres de de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef SIMULATION_PARAMETERS_H
 #define SIMULATION_PARAMETERS_H
 
@@ -26,6 +40,5 @@ public:
 	int mNumberSquirrel;
 
 };
-
 
 #endif

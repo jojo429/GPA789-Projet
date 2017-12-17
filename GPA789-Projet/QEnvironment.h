@@ -1,3 +1,17 @@
+// QEnvironment.h
+//
+// Description:
+// Classe principale gérant les facteurs environnementaux de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_ENVIRONMENT_H
 #define Q_ENVIRONMENT_H
 
@@ -24,7 +38,6 @@ public:
 	QEnvironment();
 	~QEnvironment();
 
-
 	void calculateFactors(int Time);
 	void setParameters(SimulationParameters &simulationParameters);
 	void getStatistics(SimulationStatistics *simulationStatistics);
@@ -39,12 +52,9 @@ private:
 	QLuminosity mLuminosity;
 	QPrecipitation mPrecipitation;
 	QTemperature mTemperature;
-	
-
 	QWind mWind;
 	int mTime{ 0 };
 	RandomUniform mGenerate;
-	
 
 };
 

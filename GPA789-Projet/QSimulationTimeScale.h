@@ -1,3 +1,17 @@
+// QSimulationTimeScale.h
+//
+// Description:
+// Widget gérant l'affichage d'un slider de contrôle du temps.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_SIMULATION_TIME_SCALE_H
 #define Q_SIMULATION_TIME_SCALE_H
 

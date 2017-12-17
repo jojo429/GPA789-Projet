@@ -1,6 +1,19 @@
+// SimulationStatistics.h
+//
+// Description:
+// Classe contenant les statistiques de la simulation
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef SIMULATION_STATISTICS_H
 #define SIMULATION_STATISTICS_H
-
 
 class SimulationStatistics
 {
@@ -12,7 +25,6 @@ public:
 	double mWind{ 0.0 };
 	double mTemperature{ 0.0 };
 	double mLuminosity{ 0.0 };
-
 	int mNumberOfTrees{ 0 };
 	int mNumberOfOak{ 0 };
 	int mNumberOfFir{ 0 };
@@ -23,5 +35,6 @@ public:
 	int mNumberOfSquirrel{ 0 };
 
 };
+
 #endif
 

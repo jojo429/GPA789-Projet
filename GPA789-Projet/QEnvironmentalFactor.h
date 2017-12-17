@@ -1,3 +1,17 @@
+// QEnvironmentalFactor.h
+//
+// Description:
+// Classe virtuelle représentant un facteur environnemental.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_ENVIRONMENTAL_FACTOR_H
 #define Q_ENVIRONMENTAL_FACTOR_H
 

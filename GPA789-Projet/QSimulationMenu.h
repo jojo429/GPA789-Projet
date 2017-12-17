@@ -1,3 +1,17 @@
+// QSimulationMenu.h
+//
+// Description:
+// Widget gérant l'affichage et la connection du menu de la section simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_SIMULATION_MENU_H
 #define	Q_SIMULATION_MENU_H
 
@@ -58,31 +72,25 @@ private:
 	QHBoxLayout *mAnimalsHBoxLayout;
 	QHBoxLayout *mAngleDialLayout;
 	QGridLayout *mMenuGridLayout;
-
 	QSimulationAdvancementOptions *mPlayButton;
 	QSimulationAdvancementOptions *mPauseButton;
 	QSimulationAdvancementOptions *mStopButton;
 	QSimulationAdvancementOptions *mStepButton;
-
 	QSimulationTimeScale *mTimeScaleSlider;
 	QLabel *mAdvanceCounterLabel;
-
 	QCyclicOptions *mLuminosity;
 	QCyclicOptions *mWind;
 	QCyclicOptions *mPrecipitation;
 	QCyclicOptions *mTemperature;
-
 	QTreeOptions *mOak;
 	QTreeOptions *mBirch;
 	QTreeOptions *mHazel;
 	QTreeOptions *mFir;
-
 	QAnimalOptions *mSquirrel;
-
 	QGroupBox *mTreesGroupBox;
 	QGroupBox *mAnimalsGroupBox;
-
 	QDial *mAngleDial;
+
 };
 
 #endif //Q_SIMULATION_MENU_H

@@ -1,6 +1,19 @@
+// QEntity.h
+//
+// Description:
+// Classe virtuelle représentant un être vivant qui sera simulé et les fonctions de bases le contrôlant.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_ENTITY_H
 #define Q_ENTITY_H
-
 
 #include "QEnvironment.h"
 #include <QGraphicsItem>
@@ -19,9 +32,9 @@ class QEntity : public QGraphicsItem
 public:
 	QEntity(QEnvironment const &environment, QForestScene &forestscene, int lifeSpan, treeType tree, generalType type);
 	virtual ~QEntity();
+
 	virtual void reproduce();
 	virtual void die();
-	virtual bool isItDead();
 	int getHeight();
 	bool isDead();
 	treeType mTreeType;

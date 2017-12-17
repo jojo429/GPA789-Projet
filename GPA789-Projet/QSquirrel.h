@@ -1,3 +1,17 @@
+// QSquirrel.h
+//
+// Description:
+// Classe gérant la création et le comportement d'une entité de type écureuil.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_SQUIRREL_H
 #define Q_SQUIRREL_H
 
@@ -11,14 +25,13 @@ class QSquirrel : public QAnimals
 public:
 	QSquirrel(QEnvironment const & environment, QForestScene & forestscene, int lifeSpan, treeType tree, generalType type);
 	~QSquirrel();
+
 	enum TargetType {
 		NoTarget = 0,
 		Seed = 1
 	};
 
-
 private:
-
 	TargetType mTargetType{NoTarget};
 	QGraphicsItem * mTarget{ Q_NULLPTR };
 	int mActionCounter{0};
@@ -27,7 +40,6 @@ private:
 	QColor mFurColor{204, 144, 24};
 	QColor mTailColor{ 232, 157, 6 };
 	double mVisionRadius{150};
-	int mHunger{100};
 	int actionCounter{0};
 	QList<QGraphicsItem*> mPastTarget;
 	RandomUniform mGenerateAngle;
@@ -35,8 +47,6 @@ private:
 	QList<QSeeds*> mSeeds;
 	const int mSeedsLimit{ 4 };
 	const int mPastTargetLimit{ 30 };
-
-
 	QGraphicsItem* getTarget();
 	QList<QGraphicsItem*> compareTargetList(QList<QGraphicsItem*> &newTarget);
 	void randomDropSeed();

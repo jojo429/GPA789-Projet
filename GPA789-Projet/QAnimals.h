@@ -1,3 +1,17 @@
+// QAnimals.h
+//
+// Description:
+// Classe virtuelle représentant une entité dynamique qui est un animal.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_ANIMALS_H
 #define Q_ANIMALS_H
 

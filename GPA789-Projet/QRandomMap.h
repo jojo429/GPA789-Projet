@@ -1,3 +1,17 @@
+// QRandomMap.h
+//
+// Description:
+// Widget permetant de générer une carte de valeurs aléatoires et de la transformer en image.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_RANDOM_MAP_H
 #define Q_RANDOM_MAP_H
 
@@ -32,10 +46,9 @@ private:
 	int mBColor;
 	double mMap[513][513];
 	double mMapResize[2052][2052];
-	
 	QPixmap mPixelsMap;
-	
 	QPainter *mPainterMap;
+
 };
 
 #endif //Q_RANDOM_MAP_H

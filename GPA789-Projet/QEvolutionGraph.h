@@ -1,10 +1,23 @@
+// QEvoluationGraph.h
+//
+// Description:
+// Widget gérant les graphiques affichant les statistiques de la simulation.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_EVOLUTION_GRAPH_H
 #define Q_EVOLUTION_GRAPH_H
 
 #include <QtWidgets>
 #include <QtCharts>
 using namespace QtCharts;
-
 #include <QVector>
 
 class QEvolutionGraph : public QWidget

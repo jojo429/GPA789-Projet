@@ -1,3 +1,17 @@
+// QTrees.h
+//
+// Description:
+// Classe gérant la création et le comportement d'une entité de type arbre.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_TREES_H
 #define Q_TREES_H
 

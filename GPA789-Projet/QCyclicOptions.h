@@ -1,3 +1,17 @@
+// QCyclicOptions.h
+//
+// Description:
+// Widget permetant de choisir les paramètres de simulation d'un facteur environmental cyclique.
+//
+//
+// Auteurs:
+// Alex Gosselin-Pronovost
+// Joé Charest
+// Félixe Girard
+// Geneviève Dao Phan
+//
+// Automne 2017
+
 #ifndef Q_CYCLIC_OPTIONS_H
 #define Q_CYCLIC_OPTIONS_H
 
@@ -24,20 +38,16 @@ public:
 	~QCyclicOptions();
 
 	void defineSlider(QSlider *slider, int min, int max, int initValue); // Définir le minimum, le maximum, la valeur initiale d'un slider
-
 	int getAverageValue();
 	int getCycleValue();
 	int getVariationValue();
 
 private:
 	QString mCaption;
-
 	QPixmap mIcon;
-
 	QSlider *mAverageSlider;
 	QSlider *mVariationSlider;
 	QSlider *mCycleSlider;
-
 	QLabel *mIconLabel;
 	QLabel *mAverageLabel;
 	QLabel *mVariationLabel;
@@ -45,11 +55,8 @@ private:
 	QLabel *mAverageValue;
 	QLabel *mVariationValue;
 	QLabel *mCycleValue;
-
 	QGridLayout *mCyclicOptionsGridLayout;
-
 	QHBoxLayout *mLayout;
-
 	QGroupBox *mCyclicOptionsGroupBox;
 
 protected slots:
