@@ -7,35 +7,20 @@ QFertility::QFertility()
 
 QFertility::~QFertility()
 {
-
+	delete mFertilityMap;
 }
 
-double QFertility::getFertility(int x, int y)
+double QFertility::getFertility(int x, int y) const
 {
 	return mFertilityMap->getMapValue(x, y); 
 }
 
 void QFertility::setFertility(double minValue, double maxValue)
 {
-	mFertilityMap->setMap();
-	mFertilityMap->scaleValuesRangeMap(minValue, maxValue);
-	mFertilityMap->drawMap(244, 164, 96); 
-}
-
-void QFertility::updateFertility(int x, int y, double fertility)
-{
-	mFertilityMap->updateDrawMap(x, y);
-	mFertilityMap->setMapValue(x, y, fertility);
-}
-
-void QFertility:: enableFertility()
-{
-
-}
-
-void QFertility::disableFertility()
-{
-
+	mFertilityMap->setMap(); // Générer la carte d'origine
+	mFertilityMap->scaleValuesRangeMap(minValue, maxValue); // Redimensionner les valeurs de fertilités dans l'intervalle voulue
+	mFertilityMap->drawMap(210, 105, 30); // Dessiner la carte de fertilités initiale
+	mFertilityMap->resizeMap(); // Redimensionner la carte de 513x513 à 2052x2052
 }
 
 QPixmap QFertility::getFertilityPixmap()
@@ -43,12 +28,3 @@ QPixmap QFertility::getFertilityPixmap()
 	return mFertilityMap->getPixmap();
 }
 
-//float QFertility::germinate(int x, int y)
-//{
-//	return 0;
-//}
-//
-//float QFertility::grow(int x, int y)
-//{
-//	return 0;
-//}

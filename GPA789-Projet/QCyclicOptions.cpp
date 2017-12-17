@@ -64,6 +64,7 @@ QCyclicOptions::QCyclicOptions(QString caption, QString iconName, QString averag
 		mCyclicOptionsGridLayout->addWidget(mCycleValue, 2, 2);
 	}
 
+	// Assemblage
 	mCyclicOptionsGroupBox = new QGroupBox(caption);
 	mCyclicOptionsGroupBox->setLayout(mCyclicOptionsGridLayout);
 

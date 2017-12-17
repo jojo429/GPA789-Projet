@@ -114,6 +114,9 @@ void QSimulation::stop()
 	emit updateAdvanceCount(mAdvanceCounter);
 	mStarted = false;
 	mForestScene.clear();
+	QPixmap fertilityPixmap = (mEnvironment.mFertility).getFertilityPixmap();
+	mEnvironment.mFertility.setFertility(10.0, 100.0);
+	mForestScene.setBackgroundBrush(QBrush(fertilityPixmap.scaled(2052, 2052, Qt::KeepAspectRatio)));
 }
 
 void QSimulation::step()

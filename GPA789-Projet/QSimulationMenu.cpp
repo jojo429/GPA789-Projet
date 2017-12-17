@@ -3,7 +3,6 @@
 #include "QSimulation.h"
 #include <QLabel>
 #include <QScrollArea>
-#include <QGroupBox>
 
 QSimulationMenu::QSimulationMenu(QWidget *parent)
 	: QWidget(parent)
@@ -28,11 +27,13 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mHazel = new QTreeOptions("Hazel", 0, 25, 10);
 	mFir = new QTreeOptions("Fir", 0, 25, 10);
 
+	//Afficher l'icône pour les sliders d'arbres
 	QPixmap treeIcon = QPixmap(":/GPA789Projet/iconForest");
 	QPixmap tmpPixmap = treeIcon.scaled(QSize(50, 50), Qt::KeepAspectRatio);
 	QLabel *treeIconLabel = new QLabel;
 	treeIconLabel->setPixmap(tmpPixmap);
 
+	//Assemblage
 	mTreesVBoxLayout = new QVBoxLayout;
 	mTreesVBoxLayout->addStretch();
 	mTreesVBoxLayout->addWidget(mOak);
@@ -54,8 +55,10 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	QLabel *animalIconLabel = new QLabel;
 	animalIconLabel->setPixmap(tmpPixmap2);
 
+	//Création du slider d'écureuils
 	mSquirrel = new QAnimalOptions("Squirrel", 0, 25, 3);
 
+	//Assemblage
 	mAnimalsVBoxLayout = new QVBoxLayout;
 	mAnimalsVBoxLayout->addWidget(mSquirrel);
 
@@ -74,27 +77,15 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 	mAngleDial->setFixedHeight(100);
 	mAngleDial->setFixedWidth(100);
 
+	//Définir le label du dial d'angle
 	QLabel *dialLabel = new QLabel("Wind Direction");
 	
+	//Assemblage
 	mAngleDialLayout = new QHBoxLayout;
 	mAngleDialLayout->addStretch();
 	mAngleDialLayout->addWidget(dialLabel);
 	mAngleDialLayout->addWidget(mAngleDial);
 	mAngleDialLayout->addStretch();
-	
-	////Définition de l'icône de l'éclair
-	//mThunderIcon = QPixmap(":/GPA789Projet/iconThunder");
-
-	////Définition du bouton générant un éclair
-	//mThunderButton = new QCheckBox;
-	//mThunderButton->setText("Act of God");
-	//mThunderButton->setIcon(mThunderIcon);
-
-	////Définition du layout du bouton générant un éclair
-	//mThunderLayout = new QHBoxLayout;
-	//mThunderLayout->addStretch();
-	//mThunderLayout->addWidget(mThunderButton);
-	//mThunderLayout->addStretch();
 
 	//Définition des boutons d'avancement
 	mPlayButton = new QSimulationAdvancementOptions("Play", ":/GPA789Projet/iconPlay");
@@ -131,6 +122,8 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 
 	//Comportement du bouton step
 	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::step);
+	connect(mStepButton, &QSimulationAdvancementOptions::clicked, this, &QSimulationMenu::unfreezeStopButton);
+
 
 	//Comportement du bouton d'angle du vent
 	connect(mAngleDial, &QDial::valueChanged, this, &QSimulationMenu::windAngle);
@@ -174,7 +167,6 @@ QSimulationMenu::QSimulationMenu(QWidget *parent)
 
 	mMenuLayout = new QVBoxLayout;
 	mMenuLayout->addWidget(optionsArea);
-	//mMenuLayout->addLayout(mThunderLayout);
 	mMenuLayout->addLayout(mMenuGridLayout);
 	mMenuLayout->addLayout(mBottomMenuLayout);
 	mMenuLayout->addWidget(mAdvanceCounterLabel);

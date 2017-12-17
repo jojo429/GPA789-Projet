@@ -45,7 +45,6 @@ QStatistic::QStatistic(QWidget *parent)
 	generalStatGroupBox->setLayout(generalStatLayout);
 
 	QVBoxLayout * valueRightLayout = new QVBoxLayout;
-	//valueRightLayout->addWidget(generalStatGroupBox);
 	valueRightLayout->addWidget(mTemperatureStat);
 	valueRightLayout->addWidget(mPrecipitationStat);
 	valueRightLayout->addWidget(mLuminosityStat);
@@ -62,13 +61,16 @@ QStatistic::QStatistic(QWidget *parent)
 	valueLeftLayout->addWidget(mGerminationStat);
 	valueLeftLayout->addStretch();
 
-	QHBoxLayout * valueStatLayout = new QHBoxLayout;
-	valueStatLayout->addLayout(valueRightLayout);
-	valueStatLayout->addLayout(valueLeftLayout);
-	valueStatLayout->setSizeConstraint(QLayout::SetMinimumSize);
+	QHBoxLayout * valueSpecificStatLayout = new QHBoxLayout;
+	valueSpecificStatLayout->addLayout(valueRightLayout);
+	valueSpecificStatLayout->addLayout(valueLeftLayout);
+
+	QVBoxLayout * valueGeneralStatLayout = new QVBoxLayout;
+	valueGeneralStatLayout->addWidget(generalStatGroupBox);
+	valueGeneralStatLayout->addLayout(valueSpecificStatLayout);
 
 	QGroupBox * valueStatGroupBox = new QGroupBox;
-	valueStatGroupBox->setLayout(valueStatLayout);
+	valueStatGroupBox->setLayout(valueGeneralStatLayout);
 	valueStatGroupBox->setFlat(true);
 
 	QScrollArea * statsScrollArea = new QScrollArea;

@@ -3,7 +3,6 @@
 #include <math.h>
 
 #include <array>
-#include <QDebug>
 #include <QColor>
 #include <QImage>
 
@@ -21,6 +20,7 @@ QRandomMap::~QRandomMap()
 
 void QRandomMap::setMap()
 {
+	
 	int id, x, y, average, sum, shift, n;
 	int h{ 513 };
 	int step{ h - 1 };
@@ -128,8 +128,10 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 	mGColor = gColor;
 	mBColor = bColor;
 
+	// Permet de faire un dégradé de la couleur choisie RGB
 	ajustmentRGB = (rColor + gColor + bColor) / 3.0;
 
+	// Dessiner la carte
 	for (i = 0; i < 513; ++i) {
 		for (j = 0; j < 513; ++j) {
 			shade = mMap[i][j] / ajustmentRGB;
@@ -138,9 +140,6 @@ void QRandomMap::drawMap(int rColor, int gColor, int bColor)
 			mPainterMap->drawPoint(i, j);
 		}
 	}
-
-	//QImage image = mPixelsMap.toImage();
-	//image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest.png");
 }
 
 void QRandomMap::updateDrawMap(int x, int y)
@@ -150,19 +149,18 @@ void QRandomMap::updateDrawMap(int x, int y)
 
 	int realX, realY;
 
+	// Retrouver le pixel d'origine avant le redimensionnement
 	realX = (int)floor(x / 4.0);
 	realY = (int)floor(y / 4.0);
 
+	// Permet de faire un dégradé de la couleur choisie RGB
 	adjustmentRGB = (mRColor + mGColor + mBColor) / 3.0;
 
+	// Mise à jour du dessin de la carte
 	shade = mMap[realX][realY] / 150.0;
 	mapColor.setRgb(mRColor * shade, mGColor * shade, mBColor * shade);
 	mPainterMap->setPen(mapColor);
 	mPainterMap->drawPoint(realX, realY);
-	
-	/*
-	QImage image = mPixelsMap.toImage();
-	image.save("C:/Github/GPA789-Projet/GPA789-Projet/Resources/imageTest2.png");*/
 }
 
 double QRandomMap::getMapValue(int x, int y)
@@ -174,11 +172,14 @@ void QRandomMap::setMapValue(int x, int y, double value)
 {
 	int realX, realY;
 
+	// Retrouver le pixel d'origine avant le redimensionnement
 	realX = (int)floor(x / 4.0);
 	realY = (int)floor(y / 4.0);
 
+	// Ajout de fertilité à l'emplacement désiré
 	mMap[realX][realY] = mMap[realX][realY] + value;
 
+	// La fertilité maximale est de 100.0
 	if (mMap[realX][realY] > 100.0) {
 		mMap[realX][realY] = 100.0;
 	}
@@ -204,15 +205,6 @@ void QRandomMap::resizeMap()
 			nextY = 0;
 		}
 	}
-
-	/*
-	qDebug() << QString::number(mMapResize[0][3]);
-	qDebug() << QString::number(mMapResize[2][2]);
-	qDebug() << QString::number(mMapResize[3][2]);
-	qDebug() << QString::number(mMap[0][0]);
-	qDebug() << QString::number(nextX);
-	qDebug() << QString::number(nextY);*/
-
 }
 
 void QRandomMap::resizeOnePixel(int nextPixelIndexX, int nextPixelIndexY, int pixelIndexX, int pixelIndexY)

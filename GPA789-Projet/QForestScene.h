@@ -17,7 +17,7 @@ class QForestScene : public QGraphicsScene
 	Q_OBJECT
 
 public:
-	QForestScene(QEnvironment const & enviromnent, QGraphicsScene * parent = Q_NULLPTR);
+	QForestScene(QEnvironment & enviromnent, QGraphicsScene * parent = Q_NULLPTR);
 	~QForestScene();
 	void createSeed(QTrees* parent);
 	void createTree(QSeeds* parent);
@@ -37,7 +37,7 @@ private:
 	QBrush mBackgroundBrush{ QColor(239, 247, 153) };
 	RandomUniform mGenerate;
 	RandomUniform mGenerateCoordinate;
-	QEnvironment const & mEnvironment;
+	QEnvironment & mEnvironment;
 	SimulationStatistics * mSimulationStatistics;
 	RandomUniform mGenerateLongLifespan;
 	RandomUniform mGenerateShortLifespan;

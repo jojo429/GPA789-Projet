@@ -17,13 +17,13 @@ class QCyclicOptions : public QWidget
 public:
 	QCyclicOptions(QWidget *parent = Q_NULLPTR);
 	QCyclicOptions(QString caption, QString iconName, QString averageName,
-		QString variationName, QString cycleName, int averageMin, int averageMax,
-		int variationMin, int variationMax, int cycleMin, int cycleMax,
-		bool enableAverage, bool enableVariation, bool enableCycle,
-		int averageInitValue, int variationInitValue, int cycleInitValue);
+	QString variationName, QString cycleName, int averageMin, int averageMax,
+	int variationMin, int variationMax, int cycleMin, int cycleMax,
+	bool enableAverage, bool enableVariation, bool enableCycle,
+	int averageInitValue, int variationInitValue, int cycleInitValue);
 	~QCyclicOptions();
 
-	void defineSlider(QSlider *slider, int min, int max, int initValue);
+	void defineSlider(QSlider *slider, int min, int max, int initValue); // Définir le minimum, le maximum, la valeur initiale d'un slider
 
 	int getAverageValue();
 	int getCycleValue();
@@ -53,8 +53,8 @@ private:
 	QGroupBox *mCyclicOptionsGroupBox;
 
 protected slots:
-	void updateValues();
-	void cycleValueStep();
+	void updateValues(); // Mise à jour de l'affichage des valeurs: average, variation, cycle
+	void cycleValueStep(); // Définir des sauts pour le slider de cycle
 };
 
 #endif //Q_CYCLIC_OPTIONS_H

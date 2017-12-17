@@ -9,7 +9,7 @@
 QEnvironment::QEnvironment()
 	: mWind(6,0,0), mPrecipitation(6,0,0), mTemperature(6,0,0), mLuminosity(6,0,0), mGenerate(-100,100)
 {
-
+	mFertility.setFertility(10.0, 100.0);
 	mEnvironmentalFactor.emplace_back(&mTemperature);
 	mEnvironmentalFactor.emplace_back(&mPrecipitation);
 	mEnvironmentalFactor.emplace_back(&mLuminosity);
@@ -32,11 +32,7 @@ void QEnvironment::advance()
 
 }
 
-//std::vector<float> const QEnvironment::getFactors()
-//{
-//
-//	return mFactors;
-//}
+
 
 void QEnvironment::getStatistics(SimulationStatistics *simulationStatistics)
 {
@@ -64,61 +60,6 @@ QEnvironment::~QEnvironment()
 {
 
 }
-
-//void QEnvironment::germinateFactors(int time)
-//{
-//	for (int i(0); i < mEnvironmentalFactor.size(); i++)
-//	{
-//		mGerminateFactors[i] = mEnvironmentalFactor[i].germinate(time);
-//
-//	}
-//	
-//}
-//
-//
-//void QEnvironment::growFactors(int time)
-//{
-//	for (int i(0); i < mEnvironmentalFactor.size(); i++)
-//	{
-//		mGrowFactors[i] = mEnvironmentalFactor[i].germinate(time);
-//
-//	}
-//}
-
-//void QEnvironment::adjustDrynessFactors(int time)
-//{
-//
-//}
-//
-//void QEnvironment::airDisplacementFactors(int time)
-//{
-//
-//}
-//
-//std::vector<float> QEnvironment::getGerminate() const
-//{
-//
-//	return mGerminateFactors;
-//}
-//
-//std::vector<float> QEnvironment::getGrow() const
-//{
-//	std::list<float> tmp;
-//
-//	return mGrowFactors;
-//}
-//
-//std::vector<float> QEnvironment::getAdjustDryness() const
-//{
-//
-//	return mAdjustDrynessFactors;
-//}
-//
-//std::array<double, 2> QEnvironment::getAirDisplacement() const
-//{
-//
-//	return mAirDisplacementFactors;
-//}
 
 
 void QEnvironment::setParameters(SimulationParameters &simulationParameters)
