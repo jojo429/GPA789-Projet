@@ -28,9 +28,13 @@ public:
 	QEvolutionGraph(size_t nSeries = 1, QWidget *parent = Q_NULLPTR);
 	~QEvolutionGraph()=default;
 
+	//Permet d'ajouter un point à une série de donnée
 	void addPoint(size_t index, qreal t, qreal value);
+	//Permet de ronnomer les axes ainsi que le titre du graphique
 	void initializeGraph(QString xAxisName, QString yAxisName, QString graphTitle);
+	//Permet de mettre les axes du graphique à jour
 	void updateAxis();
+	//Permet de rendre visible ou de cacher une série de donnée
 	void setDataSerieVisibility(int index, bool setVisible);
 
 private:
@@ -49,7 +53,6 @@ private:
 	QWidget* initializeTimeScale();
 	void updateMinMaxValues(size_t index, int count);
 
-	QRadioButton * mScaleOneHour;
 	QRadioButton * mScaleOneWeek;
 	QRadioButton * mScaleOneMonth;
 	QRadioButton * mScaleFiveMonths;
@@ -61,7 +64,6 @@ private:
 
 	int mMaxNbData;
 	int mNbDataVisible;
-	int mTimeScaler;
 	int mNbAdvanceInOneDay;
 	int mNbAdvanceInOneWeek;
 	int mNbAdvanceInOneMonth;
