@@ -31,9 +31,13 @@ public:
 	~QStatistic()=default;
 
 public slots:
-	void updateData(); 
+	//Mise à jour du graphique
+	void updateData();
+	//Réception du temps passé pour une boucle du programme
 	void ticTime(qint64 timePassed);
+	//Mise à jour du nombre de boucle exécuté depuis le début de la simulation
 	void updateAdvanceCount(int advanceCount);
+	//Ajout d'un point de donnée pour les statistiques
 	void addPoints(SimulationStatistics stats);
 	
 private: 
@@ -54,6 +58,7 @@ private:
 	int mTime{ 0 };
 
 private slots: 
+	//Permet de rendre visible ou invisible une série de donnée dans l'espace graphiqe
 	void setTemperatureVisible(bool isVisible);
 	void setPrecipitationVisible(bool isVisible);
 	void setLuminosityVisible(bool isVisible);

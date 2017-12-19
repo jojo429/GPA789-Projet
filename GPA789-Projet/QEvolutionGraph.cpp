@@ -162,7 +162,7 @@ void QEvolutionGraph::addPoint(size_t index, qreal t, qreal value) {
 
 	//Supression de la plus vieille donné si l'on dépasse le nombre de 
 	//données maximal pouvant être affiché au graphique
-	if (mDataSeries[index]->count() > mMaxNbData) {
+	if (mDataSeries[index]->at(mDataSeries[index]->count()-1).x() > mMaxNbData) {
 			mDataSeries[index]->remove(0);
 	}
 }
