@@ -24,13 +24,15 @@ public:
 	RandomUniform(int min = 0, int max = 100);
 	~RandomUniform()=default;
 
+	//Retourne un nombre aléatoire entre les valeurs définit par le constructeur
 	int random();
+	//Retourne des un nombre aléatoire entre les valeurs définit par la fonctction.
 	int random(int min, int max);
-	//double randomDouble(double max, double min);
 
 protected:
+	//Déclaration de l'engin pour générer des nombres aléatoire
+	// de format "int" selon une distribution uniform
 	std::uniform_int_distribution<int> mDistribution;
-	//std::uniform_int_distribution<double> mDistributionDouble;
 };
 
 #endif

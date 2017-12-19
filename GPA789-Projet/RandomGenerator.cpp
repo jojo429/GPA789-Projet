@@ -14,5 +14,7 @@
 
 #include "RandomGenerator.h"
 
+//Déclaration de l'outil de génération de nombres aléatoires
 std::random_device RandomGenerator::mRD;
+//Assignation des paramètres à l'outil de génération de nombres aléatoires
 std::mt19937 RandomGenerator::mMT32(mRD());

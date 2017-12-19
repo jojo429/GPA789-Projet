@@ -20,10 +20,14 @@ RandomUniform::RandomUniform(int min, int max)
 }
 
 int RandomUniform::random() {
+	//Retourne un nombre aléatoire entre les valeurs
+	//min et max fournit au constructeur
 	return  mDistribution(RandomGenerator::mMT32);
 }
 
 int RandomUniform::random(int min, int max)
 {
+	//Retourne un nombre aléatoire entre les valeurs
+	//min et max fournit à la fonction
 	return std::uniform_int_distribution<int>(min, max)(mMT32);
 }
