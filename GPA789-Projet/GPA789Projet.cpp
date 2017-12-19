@@ -51,10 +51,13 @@ GPA789Projet::GPA789Projet(QWidget *parent)
 	mMainTab->addTab(mStatistic, "Statistics");
 	mMainTab->addTab(mSupplement, "Supplement");
 
-	//Connection requises entre les onglets 
+	//Mise à jour de l'espace graphique des statistiques quand un cycle complet est terminé
 	connect(mSimulation, &QSimulation::advanceDone, mStatistic, &QStatistic::updateData);
+	//Calcul du temps d'exécution d'un tic et rend la donnée disponible à l'onglet statistique
 	connect(mSimulation, &QSimulation::ticTime, mStatistic, &QStatistic::ticTime);
+	//Mise à jour du nombre de cycle écoulé depuis le départ de la simulation et transfert de l'information à l'onglet statistique
 	connect(mSimulation, &QSimulation::updateAdvanceCount, mStatistic, &QStatistic::updateAdvanceCount);
+	//Indique que de nouveaux points sont disponibles
 	connect(mSimulation, &QSimulation::sendStatistics, mStatistic, &QStatistic::addPoints);
 
 	//Affichage des onglets

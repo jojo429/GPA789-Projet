@@ -24,12 +24,14 @@ QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDevia
 	QVBoxLayout * labelLayout = new QVBoxLayout;
 	QVBoxLayout * valueLayout = new QVBoxLayout;
 
+	//Affichage de la valeur actuelle
 	mActualValueLabel = new QLabel("Actual Value :");
 	mActualValueValue = new QLabel(QString::number(mActualValue));
 	
 	labelLayout->addWidget(mActualValueLabel);
 	valueLayout->addWidget(mActualValueValue);
 
+	//Déclaration pour l'afichage de la moyenne si celle-ci est désiré
 	if (meanOption) {
 		mMeanValueLabel = new QLabel("Mean :");
 		mMeanValueValue = new QLabel(QString::number(mMean));
@@ -38,6 +40,7 @@ QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDevia
 		valueLayout->addWidget(mMeanValueValue);
 	}
 
+	//Déclaration pour l'afichage de la l'écart-type si celle-ci est désiré
 	if (standardDeviationOption) {
 		mStandardDeviationValueLabel = new QLabel("Standard deviation :");
 		mStandardDeviationValueValue = new QLabel(QString::number(mStandardDeviation));
@@ -46,6 +49,7 @@ QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDevia
 		valueLayout->addWidget(mStandardDeviationValueValue);
 	}
 
+	//Déclaration pour l'afichage de la valeur minimale et maximal si celle-ci est désiré
 	if (minMaxOption) {
 		mMinValueLabel = new QLabel("Minimum reached value :");
 		mMinValueValue = new QLabel(QString::number(mMinValue));
@@ -59,11 +63,12 @@ QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDevia
 		labelLayout->addWidget(mMaxValueLabel);
 		valueLayout->addWidget(mMaxValueValue);
 	}
-
+	//Correspondance des données avec leur définiton
 	QHBoxLayout * dataLayout = new QHBoxLayout;
 	dataLayout->addLayout(labelLayout);
 	dataLayout->addLayout(valueLayout);
 
+	//Création de l'option d'inclure ou d'exclure l'évolution de la donnée dans le graphique
 	mVisibilityCheckBox = new QCheckBox("Show values on graph");
 
 	QHBoxLayout * showDataLayout = new QHBoxLayout;
@@ -73,12 +78,10 @@ QStatisticAdvanceMenu::QStatisticAdvanceMenu(bool meanOption, bool standardDevia
 	prepLayout->addLayout(dataLayout);
 	prepLayout->addLayout(showDataLayout);
 
+	//Inclure les information de statistiques dans un group box et retourner le widget
 	QGroupBox * statisticGroupBox = new QGroupBox(groupBoxName);
 	statisticGroupBox->setLayout(prepLayout);
-	//statisticGroupBox->setFixedWidth(250);
-	//statisticGroupBox->setFixedHeight(statisticGroupBox->sizeHint());
 	statisticGroupBox->setFixedSize(statisticGroupBox->sizeHint());
-	//statisticGroupBox->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
 
 	QVBoxLayout * mainLayout = new QVBoxLayout;
 	mainLayout->addWidget(statisticGroupBox);
@@ -94,21 +97,24 @@ void QStatisticAdvanceMenu::setNewValue(int count, qreal value) {
 	mActualValue = value;
 	mActualValueValue->setText(QString::number(mActualValue));
 	
+	//Calcul de la moyenne si celle-ci est désiré
 	if (mMeanOption) {
 		cauculateMean(count);
 		mMeanValueValue->setText(QString::number(mMean));
 	}
+	//Calcul de la l'écart-type si celle-ci est désiré
 	if (mStandardDeviationOption) {
 		calculateStandardDeviation();
 		mStandardDeviationValueValue->setText(QString::number(mStandardDeviation));
 	}
+	//Calcul de la valeur minimale et maximal si celle-ci est désiré
 	if (mMinMaxOption) {
 		calculateMinMaxValues(); 
 			mMinValueValue->setText(QString::number(mMinValue));
 			mMaxValueValue->setText(QString::number(mMaxValue));
 	}
 }
-
+//Calcul de la moyenne en continue
 void QStatisticAdvanceMenu::cauculateMean(int count) {	
 	if (count > 1) {
 		mMean = (mMean * (count - 1) + mActualValue) / count;
@@ -117,11 +123,11 @@ void QStatisticAdvanceMenu::cauculateMean(int count) {
 		mMean = mActualValue;
 	}
 }
-
+//Calcul de l'écart tyoe en continue (À faire)
 void QStatisticAdvanceMenu::calculateStandardDeviation() {
 
 }
-
+//Calcul de la valeur minimal et maximale atteinde
 void QStatisticAdvanceMenu::calculateMinMaxValues() {
 	if (mInitMinMax) {
 		mInitMinMax = false;

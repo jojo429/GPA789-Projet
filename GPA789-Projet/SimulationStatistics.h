@@ -21,6 +21,8 @@ public:
 	SimulationStatistics() = default;
 	~SimulationStatistics() = default;
 
+	//Mise à disposition des données pour calculer diverses statistique
+	//et l'affichage graphique de l'évolution de la simulation
 	double mPrecipitation{ 0.0 };
 	double mWind{ 0.0 };
 	double mTemperature{ 0.0 };

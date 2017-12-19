@@ -30,12 +30,16 @@ public:
 
 	void setNewValue(int count, qreal value);
 
-signals: 
+signals:
+	//Permet de retourner la valeur du check box pour afficher ou cacher la courbe sur un graphique
 	void showGraphToggled(bool toggled);
 
 private:
+	//Calcul de la moyenne en continue
 	void calculateStandardDeviation();
+	//Calcul de l'écart tyoe en continue
 	void cauculateMean(int count);
+	//Calcul de la valeur minimal et maximale atteinde
 	void calculateMinMaxValues();
 	qreal mActualValue;
 	qreal mMean;
